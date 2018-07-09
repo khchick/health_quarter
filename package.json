@@ -1,0 +1,29 @@
+{
+  "name": "health_quarter",
+  "version": "1.0.0",
+  "description": "Healthy eating info directory website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khchick/health_quarter.git"
+  },
+  "author": "King Hei Chick, Sam O'Shaughnessy, Sonya Wong, Wesley Yung",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khchick/health_quarter/issues"
+  },
+  "homepage": "https://github.com/khchick/health_quarter#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "knex": "^0.15.0",
+    "pg": "^7.4.3"
+  },
+  "devDependencies": {
+    "jasmine": "^3.1.0"
+  }
+}
