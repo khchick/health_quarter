@@ -1,6 +1,6 @@
 exports.up = function (knex) {
     return Promise.all([
-        knex.schema.createTable('restaurant_tag', (table) => {
+        knex.schema.createTable('restaurant_tag', function (table) {
             table.increments('id').primary();
 
             //FK: rest.id 
