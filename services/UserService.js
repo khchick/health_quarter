@@ -4,7 +4,7 @@ class UserService {
         this.knex = knex;
     }
 
-    createUser(email,password,name) {
+    createUser(email,password,img,name,tags) {
         // Insert record to User table with passed in arguments
     }
 
@@ -14,7 +14,7 @@ class UserService {
         // Get User.email from DB for matching userID
     }
 
-    updateUserDetail(userID,img,name) {
+    updateUserDetail(userID,img,name,tags) {
         // Update record on form submission
     }
 

@@ -20,6 +20,23 @@ class FavService {
             // If recURL match with api_url in User_Fav_Recipe table for matching user_id, return true
         }
 
+        // For status update
+
+        toggleFavRest(restID, userID) {
+            // if isFavRest(restID, userID) === false, create record in User_Fav_Restaurant with rest_id and user_id pair
+            // if isFavRest(restID, userID) === true, delete record
+        }
+
+        toggleFavDish(dishID, userID) {
+            // if isFavDish(dishID, userID) === false, create record in User_Fav_Dish with dish_id and user_id pair
+            // if isFavDish(dishID, userID) === true, delete record
+        }
+
+        toggleFavRec(recURL, userID) {
+            // if isFavRest(recURL, userID) === false, create record in User_Fav_Recipe with recURL and user_id pair
+            // if isFavRest(recURL, userID) === true, delete record
+        }
+
     // @ Favourite page
 
         // For listing
@@ -53,7 +70,7 @@ class FavService {
             // For info display, get User_Fav_Recipe.api_url to download from external data source
         }
 
-        // For preference setting @ sign up / user profile
+    // For preference setting @ sign up / user profile
 
         listFavTag(userID) {
             // Get all records from Tag table from DB
@@ -62,22 +79,7 @@ class FavService {
             // If tag_id === listed Tag.id, return true
         }
 
-    // For status update (common)
 
-    toggleFavRest(restID, userID) {
-        // if isFavRest(restID, userID) === false, create record in User_Fav_Restaurant with rest_id and user_id pair
-        // if isFavRest(restID, userID) === true, delete record
-    }
-
-    toggleFavRest(dishID, userID) {
-        // if isFavDish(dishID, userID) === false, create record in User_Fav_Dish with dish_id and user_id pair
-        // if isFavDish(dishID, userID) === true, delete record
-    }
-
-    toggleFavRest(recURL, userID) {
-        // if isFavRest(recURL, userID) === false, create record in User_Fav_Recipe with recURL and user_id pair
-        // if isFavRest(recURL, userID) === true, delete record
-    }
 
 }
 

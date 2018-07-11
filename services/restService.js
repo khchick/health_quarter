@@ -11,11 +11,6 @@ class RestService {
         // Look up Restaurant_Tag table for tag_id per matching rest_id, return tag name for all tag_id(s), excluding the passed in arguement
     }
 
-    listRestByFavTag(userID) {
-        // Get Rest...
-
-    }
-
     listRestByGeo(coord) {
         // Get all restaurants from DB within range of specified coordinates (user's location)
         // For each restaurant, get own coordinate for pin location on map"
