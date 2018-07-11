@@ -37,7 +37,7 @@ app.use(basicAuth({
 let restService = new RestService(knex);
 
 // Insert path to note router
-app.use('/api/notes', (new RestRouter(restService)).router());
+app.use('/api/rest', (new RestRouter(restService)).router());
 
 // Handle initial get request after login
 app.get('/', (req,res) => {

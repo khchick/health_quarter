@@ -5,14 +5,15 @@ class RestService {
     }
 
     listRestByTag(tagID) {
-        // Get Restaurant.name from DB
+        // Get Restaurant.name from DB with matching tag
         // Return average from sum of all ratings with matching rest_id
         // Get Restaurant.price from DB
         // Look up Restaurant_Tag table for tag_id per matching rest_id, return tag name for all tag_id(s), excluding the passed in arguement
     }
 
     listRestByFavTag(userID) {
- 
+        // Get Rest...
+
     }
 
     listRestByGeo(coord) {
