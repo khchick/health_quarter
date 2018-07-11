@@ -33,15 +33,23 @@ app.use(basicAuth({
     realm: 'Health Quarter'
 }))
 
-// Initiate restService
+// Initiate services
+let dishService = new DishService(knex);
+let favService = new FavService(knex);
+let mealService = new MealService(knex);
 let restService = new RestService(knex);
+let userService = new UserService(knex);
 
-// Insert path to note router
+// Insert path to routers
+app.use('/api/dish', (new RestRouter(dishService)).router());
+app.use('/api/fav', (new RestRouter(favService)).router());
+app.use('/api/meal', (new RestRouter(mealService)).router());
 app.use('/api/rest', (new RestRouter(restService)).router());
+app.use('/api/user', (new RestRouter(userService)).router());
 
 // Handle initial get request after login
 app.get('/', (req,res) => {
-    restService.list()
+    restService.listRestByTag() // Insert default tags
         .then((restaurants) => {
             res.render('restaurant', {
                 restaurants: restaurants
