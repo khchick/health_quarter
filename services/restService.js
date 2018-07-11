@@ -4,119 +4,47 @@ class RestService {
         this.knex = knex;
     }
 
-//     add(noteTitle,noteContent,username) {
-//         let query = this.knex
-//                     .select()
-//                     .from('users')
-//                     .where('users.username',username);
+    listRestByTag(tagID) {
+        // Get Restaurant.name from DB
+        // Return average from sum of all ratings with matching rest_id
+        // Get Restaurant.price from DB
+        // Look up Restaurant_Tag table for tag_id per matching rest_id, return tag name for all tag_id(s), excluding the passed in arguement
+    }
 
-//         return query.then((rows) => {
-//             if (rows.length !== 1) {
-//                 throw new Error('Invalid user');
-//             } else {
-//                 return this.knex  
-//                     .insert({
-//                         user_id: rows[0].id,
-//                         title: noteTitle,
-//                         content: noteContent
-//                     })
-//                     .into('notes');
-//             }
-//         })
-//     }
-
-//     list(username) {
-//         if (typeof username !== 'undefined') {
-//             let query = this.knex
-//                 .select('notes.id','notes.title','notes.content','notes.updated_at')
-//                 .from('notes')
-//                 .innerJoin('users','notes.user_id','users.id')
-//                 .where('users.username',username)
-//                 .orderBy('notes.id');
-
-//             return query.then((rows) => {
-//                 return rows.map(row => ({
-//                     id: row.id,
-//                     title: row.title,
-//                     content: row.content,
-//                     updated_at: row.updated_at
-//                 }));
-//             });
-//         } 
-//         else {
-//             let query = this.knex.select('notes.title','notes.content','notes.updated_at')
-//                 .from('notes')
-
-//             return query.then((rows) => {
-//                 return rows.forEach((row) => ({
-//                     id: row.id,
-//                     title: row.title,
-//                     content: row.content,
-//                     updated_at: row.updated_at
-//                 }));
-//             });
-
-//             // Alternative solution (to be revisited)
-//             // let query = this.knex.select('users.username', 'notes.id', 'content')
-//             // .from('notes')
-//             // .innerJoin('users', 'notes.user_id', 'users.id');
-
-//             // return query.then((rows) => {
-//             //     const result = {};
-                
-//             //     rows.forEach(r => {
-//             //         if (typeof result[r.username] === 'undefined') {
-//             //             result[r.username] = [];
-//             //         }
-//             //         result[r.username].push({
-//             //             id: r.id,
-//             //             content: r.content
-//             //         });
-//             //     });
-
-//             //     return result;
-//             // });
-
-//         }
-//     }
-
-//     update(id,noteTitle,noteContent,username) {
-//         let query = this.knex
-//                     .select()
-//                     .from('users')
-//                     .where('users.username',username);
-
-//         return query.then((rows) => {
-//             if (rows.length !== 1) {
-//                 return new Error('Invalid user');
-//             } else {
-//                 return this.knex('notes')
-//                     .where('id',id)
-//                     .update({
-//                         title: noteTitle,
-//                         content: noteContent
-//                     });
-//             }
-//         });
-//     }
-
-//     remove(id,username) {
-//         let query = this.knex
-//                     .select()
-//                     .from('users')
-//                     .where('users.username',username);
-
-//         return query.then((rows) => {
-//             if (rows.length !== 1) {
-//                 return new Error('Invalid user');
-//             } else {
-//                 return this.knex('notes')
-//                     .where('id',id)
-//                     .delete();
-//             }
-//         })
-//     }
+    listRestByFavTag(userID) {
  
+    }
+
+    listRestByGeo(coord) {
+        // Get all restaurants from DB within range of specified coordinates (user's location)
+        // For each restaurant, get own coordinate for pin location on map"
+        // Get Restaurant.name for each restaurant
+        // Get Restaurant.short_desc for each restaurant
+    }
+
+    getRestDetail(restID) {
+        // Get Restaurant.name from DB for matching restID
+        // Get Restaurant.img from DB for matching restID
+        // Get Restaurant.about from DB for matching restID
+        // Get Restaurant.price from DB for matching restID
+        // Get Restaurant.website from DB for matching restID
+        // Get Restaurant.phone from DB for matching restID
+        // Get Restaurant.hours from DB for matching restID
+        // Get Restaurant.map from DB for matching restID
+        // Get Restaurant.location from DB for matching restID
+    }
+
+    listReview(restID) {
+        // Look up User_Review table for matching restID
+        // Return User_Review.user_id(s)
+        // For each user_id, look up User table for matching records
+        // Return User.img
+        // For each user_id, look up User table for matching records
+        // Return User.name
+        // For each user_id, return matching rating from User_Review table
+        // For each user_id, return matching comment from User_Review table
+    }
+
 }
 
 module.exports = RestService;
