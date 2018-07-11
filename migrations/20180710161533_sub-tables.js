@@ -1,6 +1,6 @@
 exports.up = function (knex) {
     return Promise.all([
-        knex.schema.createTable('meal-plan', (table) => {
+        knex.schema.createTable('meal_plan', (table) => {
             table.increments('id').primary();
             table.string('name');
             table.text('about');
@@ -23,7 +23,7 @@ exports.up = function (knex) {
             table.timestamps(false, true);
         }),
 
-        knex.schema.createTable('users-review', function (table) {
+        knex.schema.createTable('users_review', function (table) {
             table.increments('id').primary();
             table.text('comment');
             table.integer('rating');
@@ -43,8 +43,8 @@ exports.up = function (knex) {
             table.string('name');
 
             //FK: rest.id
-            table.integer('rest_id').unsigned();
-            table.foreign('rest_id').references('restaurant.id');
+            // table.integer('rest_id').unsigned();
+            // table.foreign('rest_id').references('restaurant.id');
             table.timestamps(false, true);
         }),
     ]);
@@ -53,11 +53,11 @@ exports.up = function (knex) {
 //reverse order 
 exports.down = function (knex, Promise) {
     return knex.schema.dropTable('tag').then(() => {
-        return knex.schema.dropTable('users-review')
+        return knex.schema.dropTable('users_review')
     }).then(() =>{
         return knex.schema.dropTable('dish')
     }).then(() =>{
-        return knex.schema.dropTable('meal-plan')
+        return knex.schema.dropTable('meal_plan')
     });
 }
 
