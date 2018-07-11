@@ -14,7 +14,7 @@ class RestRouter {
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/:coord', (req, res) => { // ???
+        router.get('/:coord', (req, res) => {
             this.restService.listRestByGeo(req.params.coord)
                 .then((restaurants) => res.json(restaurants))
                 .catch((err) => res.status(500).json(err));
