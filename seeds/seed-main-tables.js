@@ -57,6 +57,12 @@ exports.seed = function (knex, Promise) {
               email: 'king@king.com'
             },
             {
+              name: 'Sam',
+              password: '123456',
+              img: 'https://onedarnleyroad.com/content/uploads/work/HarpercollinsHQ/HarperCollins-HQ-Branding-Logo-One-Darnley-Road.jpg',
+              email: 'samoshaughnessy123@hotmail.com'
+            },
+            {
               name: 'Sonya',
               password: 'Sonya1234',
               img: 'https://5.imimg.com/data5/OK/OW/MY-37775609/lotus-flower-500x500.jpg',
