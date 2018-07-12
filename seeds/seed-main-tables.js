@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const restaurantData = require('../database_data/restaurant_data');
 const usersData = require('../database_data/users_data');
 const tagData = require('../database_data/tag_data');
@@ -13,10 +14,14 @@ const usersReview = require('../database_data/users_review_data');
 
 
 exports.seed = function(knex, Promise) {
+=======
+exports.seed = function (knex, Promise) {
+>>>>>>> 5a0796b7821698ddbf579eba934a3508a3d66bdc
   // Deletes ALL existing entries
   return knex('restaurant').del()
     .then(function () {
       // Inserts seed entries
+<<<<<<< HEAD
       return knex('restaurant').insert(restaurantData);
     })
   
