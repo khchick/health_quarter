@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const restaurantData = require('../database_data/restaurant_data');
 const usersData = require('../database_data/users_data');
 const tagData = require('../database_data/tag_data');
@@ -14,22 +13,15 @@ const usersReview = require('../database_data/users_review_data');
 
 
 exports.seed = function(knex, Promise) {
-=======
-exports.seed = function (knex, Promise) {
->>>>>>> 5a0796b7821698ddbf579eba934a3508a3d66bdc
-  // Deletes ALL existing entries
+
   return knex('restaurant').del()
     .then(function () {
-      // Inserts seed entries
-<<<<<<< HEAD
       return knex('restaurant').insert(restaurantData);
     })
-  
 
     .then(()=> {
       return knex('users').del()
       .then(function () {
-        // Inserts seed entries
         return knex('users').insert(usersData);
       })
     })
@@ -37,7 +29,6 @@ exports.seed = function (knex, Promise) {
     .then(()=> {
       return knex('tag').del()
     .then(function () {
-      // Inserts seed entries
       return knex('tag').insert(tagData);
     })
     })
@@ -45,7 +36,6 @@ exports.seed = function (knex, Promise) {
     .then(()=> {
       return knex('dish').del()
     .then(function () {
-      // Inserts seed entries
       return knex('dish').insert(dishData);
     })
     })
@@ -53,7 +43,6 @@ exports.seed = function (knex, Promise) {
     .then(()=> {
       return knex('restaurant_tag').del()
     .then(function () {
-      // Inserts seed entries
       return knex('restaurant_tag').insert(restaurantTagData);
     })
     })
@@ -61,7 +50,6 @@ exports.seed = function (knex, Promise) {
     .then(()=> {
       return knex('meal_plan').del()
     .then(function () {
-      // Inserts seed entries
       return knex('meal_plan').insert(mealPlanData);
     })
     })
@@ -69,7 +57,6 @@ exports.seed = function (knex, Promise) {
     .then(()=> {
       return knex('users_fav_dish').del()
     .then(function () {
-      // Inserts seed entries
       return knex('users_fav_dish').insert(usersFavDishData);
     })
     })
@@ -77,7 +64,6 @@ exports.seed = function (knex, Promise) {
     .then(()=> {
       return knex('users_fav_meal_plan').del()
     .then(function () {
-      // Inserts seed entries
       return knex('users_fav_meal_plan').insert(usersFavMealPlanData);
     })
     })
@@ -85,7 +71,6 @@ exports.seed = function (knex, Promise) {
     .then(()=> {
       return knex('users_fav_recipe').del()
     .then(function () {
-      // Inserts seed entries
       return knex('users_fav_recipe').insert(usersFavRecipeData);
     })
     })
@@ -93,7 +78,6 @@ exports.seed = function (knex, Promise) {
     .then(()=> {
       return knex('users_fav_restaurant').del()
     .then(function () {
-      // Inserts seed entries
       return knex('users_fav_restaurant').insert(usersFavRestaurantData);
     })
     })
@@ -101,7 +85,6 @@ exports.seed = function (knex, Promise) {
     .then(()=> {
       return knex('users_fav_tag').del()
     .then(function () {
-      // Inserts seed entries
       return knex('users_fav_tag').insert(usersFavTag);
     })
     })
@@ -109,7 +92,6 @@ exports.seed = function (knex, Promise) {
     .then(()=> {
       return knex('users_review').del()
     .then(function () {
-      // Inserts seed entries
       return knex('users_review').insert(usersReview);
     })
     })

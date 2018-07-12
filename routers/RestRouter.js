@@ -8,25 +8,25 @@ class RestRouter {
     router() {
         let router = express.Router();
 
-        router.get('/:tagID', (req, res) => {
+        router.get('/tag/:tagID', (req, res) => {
             this.restService.listRestByTag(req.params.tagID)
                 .then((restaurants) => res.json(restaurants))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/:coord', (req, res) => {
+        router.get('/location/:coord', (req, res) => {
             this.restService.listRestByGeo(req.params.coord)
                 .then((restaurants) => res.json(restaurants))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/:restID', (req, res) => { 
+        router.get('/detail/:restID', (req, res) => { 
             this.restService.getRestDetail(req.params.restID)
                 .then((restDetail) => res.json(restDetail))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/:restID', (req, res) => { 
+        router.get('/review/:restID', (req, res) => { 
             this.restService.listReview(req.params.restID)
                 .then((reviews) => res.json(reviews))
                 .catch((err) => res.status(500).json(err));
