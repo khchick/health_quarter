@@ -19,7 +19,7 @@ module.exports = (app) => {
 passport.use('local-login', new LocalStrategy(
     async (email, password, done) => {
         try {
-            let users = await knex('user').where({ user_email: email });
+            let users = await knex('users').where({ user_email: email });
             if (users.length == 0) {
                 return done(null, false, { message: 'Incorrect Credentials.' });
             }
@@ -39,16 +39,19 @@ passport.use('local-login', new LocalStrategy(
 passport.use('local-signup', new LocalStrategy(
     async (email, password, done) => {
         try{
-            let users = await knex('user').where({email:email});
+            let users = await knex('users').where({users_name:name});
             if (users.length > 0) {
-                return done(null, false, { message: 'Email already taken' });
+                return done(null, false, { message: 'Username already taken' });
             }
             let hash = await bcrypt.hashPassword(password)
             const newUser = {
-                email:email,
-                password: hash
+                name:name,
+                password: hash,
+                img: img,              
+                email:email
+
             };
-            let userId = await knex('user').insert(newUser).returning('id');
+            let userId = await knex('users').insert(newUser).returning('id');
             newUser.id = userId;
             done(null,newUser);
         }catch(err){
@@ -63,7 +66,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-    let users = await knex('user').where({ id: id });
+    let users = await knex('users').where({ id: id });
     if (users.length == 0) {
         return done(new Error(`Wrong user id ${id}`));
     }
@@ -72,5 +75,4 @@ passport.deserializeUser(async (id, done) => {
 });
 };
 
-// this is used to installize passport put in app.js
-setupPassport(app);
+ 

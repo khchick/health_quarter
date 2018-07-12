@@ -33,6 +33,10 @@ app.use(basicAuth({
     realm: 'Health Quarter'
 }))
 
+//Setup Passportjs
+setupPassport(app);
+
+
 // Initiate services
 let dishService = new DishService(knex);
 let favService = new FavService(knex);
