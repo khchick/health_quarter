@@ -35,7 +35,7 @@ app.use(basicAuth({
 
 //Setup Passportjs
 setupPassport(app);
-
+app.use('/routers', UserRouter);
 
 // Initiate services
 let dishService = new DishService(knex);
