@@ -1,11 +1,19 @@
 // Import modules
 const express = require('express');
 const bodyParser = require('body-parser');
+const setupPassport = require('./passport');
 const hb = require('express-handlebars');
 const path = require('path');
-const RestService = require('./service/restService');
-const RestRouter = require('./router/restRouter');
-const myAuthorizer = require('./myAuthorizer');
+const DishService = require('./services/DishService');
+const FavService = require('./services/FavService');
+const MealService = require('./services/MealService');
+const RestService = require('./services/RestService');
+const UserService = require('./services/UserService');
+const DishRouter = require('./routers/DishRouter');
+const FavRouter = require('./routers/FavRouter');
+const MealRouter = require('./routers/MealRouter');
+const RestRouter = require('./routers/RestRouter');
+const UserRouter = require('./routers/UserRouter');
 
 // Connect to DB
 const knexConfig = require('./knexfile').development;
@@ -25,14 +33,6 @@ app.use(express.static("public"));
 app.engine('handlebars', hb({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-// Import authorizer
-app.use(basicAuth({
-    authorizer: myAuthorizer(knex),
-    authorizeAsync: true,
-    challenge: true,
-    realm: 'Health Quarter'
-}))
-
 //Setup Passportjs
 setupPassport(app);
 app.use('/routers', UserRouter);
@@ -45,11 +45,11 @@ let restService = new RestService(knex);
 let userService = new UserService(knex);
 
 // Insert path to routers
-app.use('/api/dish', (new RestRouter(dishService)).router());
-app.use('/api/fav', (new RestRouter(favService)).router());
-app.use('/api/meal', (new RestRouter(mealService)).router());
+app.use('/api/dish', (new DishRouter(dishService)).router());
+app.use('/api/fav', (new FavRouter(favService)).router());
+app.use('/api/meal', (new MealRouter(mealService)).router());
 app.use('/api/rest', (new RestRouter(restService)).router());
-app.use('/api/user', (new RestRouter(userService)).router());
+app.use('/api/user', (new UserRouter(userService)).router());
 
 // Handle initial get request after login
 app.get('/', (req,res) => {

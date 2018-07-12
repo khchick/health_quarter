@@ -9,7 +9,25 @@ class RestService {
         // Return average from sum of all ratings with matching rest_id
         // Get Restaurant.price from DB
         // Look up Restaurant_Tag table for tag_id per matching rest_id, return tag name for all tag_id(s), excluding the passed in arguement
-    }
+
+        let query = this.knex
+            .select('restaurant.name','restaurant.price','restaurant.img','tag.name')
+            .from('restaurant')
+            .innerJoin('restaurant_tag','restaurant_tag.rest_id','restaurant.id')
+            .innerJoin('tag','restaurant_tag.tag_id','tag.id')
+            .where('tag.id',tagID)
+            .orderBy('tag.name');
+
+        return query.then((rows) => {
+            console.log(rows);
+            return rows.map(row => ({
+                name: row.name,
+                price: row.price,
+                img: row.img,
+                name: row.name
+            }));
+        });
+    }  
 
     listRestByGeo(coord) {
         // Get all restaurants from DB within range of specified coordinates (user's location)
@@ -19,15 +37,38 @@ class RestService {
     }
 
     getRestDetail(restID) {
-        // Get Restaurant.name from DB for matching restID
-        // Get Restaurant.img from DB for matching restID
-        // Get Restaurant.about from DB for matching restID
-        // Get Restaurant.price from DB for matching restID
-        // Get Restaurant.website from DB for matching restID
-        // Get Restaurant.phone from DB for matching restID
-        // Get Restaurant.hours from DB for matching restID
-        // Get Restaurant.map from DB for matching restID
-        // Get Restaurant.location from DB for matching restID
+        let query = this.knex
+        .select(
+            'restaurant.name',
+            'restaurant.img',
+            'restaurant.about',
+            'restaurant.price',
+            'restaurant.website',
+            'restaurant.phone',
+            'restaurant.hours',
+            'restaurant.lat',
+            'restaurant.lng',
+            'restaurant.location'
+        )
+        .from('restaurant')
+        .where('restaurant.id',restID)
+
+        return query.then((rows) => {
+            console.log(rows);
+            return rows.map(row => ({
+                name: row.name,
+                img: row.img,
+                about: row.about,
+                price: row.price,
+                website: row.website,
+                phone: row.phone,
+                hours: row.hours,
+                lat: row.lat,
+                lng: row.lng,
+                location: row.location,
+                tags: row.tags
+            }));
+        });
     }
 
     listReview(restID) {
