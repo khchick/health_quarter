@@ -4,12 +4,30 @@ class RestService {
         this.knex = knex;
     }
 
+    // Get Restaurant.name from DB with matching tag
+    // Return average from sum of all ratings with matching rest_id
+    // Get Restaurant.price from DB
+    // Look up Restaurant_Tag table for tag_id per matching rest_id, return tag name for all tag_id(s), excluding the passed in arguement
+
     listRestByTag(tagID) {
-        // Get Restaurant.name from DB with matching tag
-        // Return average from sum of all ratings with matching rest_id
-        // Get Restaurant.price from DB
-        // Look up Restaurant_Tag table for tag_id per matching rest_id, return tag name for all tag_id(s), excluding the passed in arguement
-    }
+            let query = this.knex
+                .select('restaurant.name','restaurant.price','restaurant.img','tag.name')
+                .from('restaurant')
+                .innerJoin('restaurant_tag','restaurant_tag.rest_id','restaurant.id')
+                .innerJoin('tag','restaurant_tag.tag_id','tag.id')
+                .where('tag.id',tagID)
+                .orderBy('tag.name');
+
+            return query.then((rows) => {
+                console.log(rows);
+                return rows.map(row => ({
+                    name: row.name,
+                    price: row.price,
+                    img: row.img,
+                    tags: row.tags
+                }));
+            });
+        }  
 
     listRestByGeo(coord) {
         // Get all restaurants from DB within range of specified coordinates (user's location)

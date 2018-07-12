@@ -3,9 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const hb = require('express-handlebars');
 const path = require('path');
-const RestService = require('./service/restService');
-const RestRouter = require('./router/restRouter');
-const myAuthorizer = require('./myAuthorizer');
+
+// const myAuthorizer = require('./myAuthorizer');
 
 // Connect to DB
 const knexConfig = require('./knexfile').development;
