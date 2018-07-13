@@ -33,11 +33,23 @@ module.exports = [
         lng: '114.154384',
         about: 'High-protein/low-carb friendly, Rotisserie chicken, sandwiches, sides and hot dishes',
         phone: '24890100',
-        website: '"http://www.healthychicken.com/',
+        website: 'http://www.healthychicken.com/',
         price: '$51-100',
         hours: 'Mon - Sat 11:00 - 22:00, Sun 12:00 - 20:00',
         img: 'https://www.greenqueen.com.hk/wp-content/uploads/2015/11/Healthy-Chicken.png',
         short_desc: 'Peruvian-style rotisserie chicken, available for pickup. The chicken is sourced from South America and is antibiotic-free, hormone-free and cage free.'
     },
-
+    {
+        name: 'NOSH',
+        location: 'NA',
+        lat: '22.283644',
+        lng: '114.154344',
+        about: 'High-protein/low-carb friendly, Rotisserie chicken, sandwiches, sides and hot dishes',
+        phone: '23881999',
+        website: 'https://www.nosh.hk/Mealplans',
+        price: '$250-400',
+        hours: 'We stop taking orders at 9am on Saturdays for Monday delivery. Or you can order before Monday at 9 am for a Tuesday start.',
+        img: 'https://insideretail.hk/wp-content/uploads/2016/10/Nosh.jpg',
+        short_desc: 'At NOSH, we focus on every step of our ingredients journeys. From field to cutting board, our sourcing teams work tirelessly to ensure that both premium and sustainable ingredients make it into every box.'
+    },
 ];

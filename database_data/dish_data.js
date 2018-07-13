@@ -44,5 +44,4 @@ module.exports = [
         img: '/images/The_Cakery_vegan_latte.jpg',
         rest_id: 2
     }
-
 ];

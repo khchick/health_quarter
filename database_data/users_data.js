@@ -11,4 +11,10 @@ module.exports = [
         img: 'https://5.imimg.com/data5/OK/OW/MY-37775609/lotus-flower-500x500.jpg',
         email: 'Sonya@gmail.com'
     },
+    {
+        name: 'Sam',
+        password: 'Sam1234',
+        img: 'https://5.imimg.com/data5/OK/OW/MY-37775609/lotus-flower-500x500.jpg',
+        email: 'Sam@gmail.com'
+    },
 ];
