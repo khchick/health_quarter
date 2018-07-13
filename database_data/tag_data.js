@@ -1,4 +1,6 @@
 module.exports = [
+    {name: 'Restaurant'},
+    {name: 'Meal-Plan'},
     {name: 'Plant-based'},
     {name: 'Gluten-free'},
     {name: 'Dairy-free'},
