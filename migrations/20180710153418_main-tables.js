@@ -13,6 +13,7 @@ exports.up = function (knex) {
             table.string('hours');
             table.string('img');
             table.text('short_desc');
+            table.integer('rating');
             table.timestamps(false, true);
         }),
 

@@ -19,12 +19,12 @@ module.exports = (app) => {
 passport.use('local-login', new LocalStrategy(
     async (email, password, done) => {
         try {
-            let users = await knex('users').where({ user_email: email });
+            let users = await knex('users').where({ email: email });
             if (users.length == 0) {
                 return done(null, false, { message: 'Incorrect Credentials.' });
             }
             let user = users[0];
-            let result = await bcrypt.checkPassword(user_password, password);
+            let result = await bcrypt.checkPassword(password, password);
             if (result) {
                 return done(null, user);
             } else {
@@ -39,7 +39,7 @@ passport.use('local-login', new LocalStrategy(
 passport.use('local-signup', new LocalStrategy(
     async (email, password, done) => {
         try{
-            let users = await knex('users').where({users_name:name});
+            let users = await knex('users').where({name:name});
             if (users.length > 0) {
                 return done(null, false, { message: 'Username already taken' });
             }
@@ -66,7 +66,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser(async (id, done) => {
-    let users = await knex('users').where({ id: id });
+    let users = await knex('users').where({ id:id });
     if (users.length == 0) {
         return done(new Error(`Wrong user id ${id}`));
     }
