@@ -12,7 +12,7 @@ class RestService {
         // Look up Restaurant_Tag table for tag_id per matching rest_id, return tag name for all tag_id(s), excluding the passed in arguement
 
         let query = this.knex
-            .select('restaurant.id', 'restaurant.name', 'restaurant.price', 'restaurant.img')
+            .select('tag.name as tag_name','restaurant.id', 'restaurant.name', 'restaurant.price', 'restaurant.img')
             .from('restaurant')
             .innerJoin('restaurant_tag', 'restaurant_tag.rest_id', 'restaurant.id')
             .innerJoin('tag', 'restaurant_tag.tag_id', 'tag.id')
@@ -21,6 +21,7 @@ class RestService {
 
         return query.then((rows) => {
             return rows.map(row => ({
+                tag_name: row.tag_name,
                 id: row.id,
                 name: row.name,
                 price: row.price,
@@ -28,22 +29,22 @@ class RestService {
                 tags: []
             }))
         })
-        .then((rows) => {
+        .then(rows => {
             return Promise.all(
                 rows.map(row => {
                     let query = this.knex
-                        .select('tag.name')
-                        .from('tag')
-                        .innerJoin('restaurant_tag', 'tag.id', 'restaurant_tag.tag_id')
-                        .where('restaurant_tag.rest_id', row.id)
-                        .orderBy('tag.name')
+                    .select('tag.name')
+                    .from('tag')
+                    .innerJoin('restaurant_tag', 'tag.id', 'restaurant_tag.tag_id')
+                    .where('restaurant_tag.rest_id', row.id)
+                    .orderBy('tag.name')
 
                     return query.then(tagRows => {
                         tagRows.forEach(tagRow => {
                             row.tags.push(tagRow.name);
                         });
-                        return rows;
-                    });
+                        return row;
+                    })
                 })
             )
         })
@@ -73,9 +74,9 @@ class RestService {
             .from('restaurant')
             .where('restaurant.id', restID)
 
-        return query.then((rows) => {
-            console.log(rows);
+        return query.then(rows => {
             return rows.map(row => ({
+                id: row.id,
                 name: row.name,
                 img: row.img,
                 about: row.about,
@@ -86,9 +87,29 @@ class RestService {
                 lat: row.lat,
                 lng: row.lng,
                 location: row.location,
-                tags: row.tags
+                tags: []
             }));
-        });
+        })
+
+        // .then(rows => {
+        //     return Promise.all(
+        //         rows.map(row => {
+        //             let query = this.knex
+        //             .select('tag.name')
+        //             .from('tag')
+        //             .innerJoin('restaurant_tag', 'tag.id', 'restaurant_tag.tag_id')
+        //             .where('restaurant_tag.rest_id', row.id)
+        //             .orderBy('tag.name')
+
+        //             return query.then(tagRows => {
+        //                 tagRows.forEach(tagRow => {
+        //                     row.tags.push(tagRow.name);
+        //                 });
+        //                 return row;
+        //             })
+        //         })
+        //     )
+        // })
     }
 
     listReview(restID) {

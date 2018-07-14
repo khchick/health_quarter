@@ -1,6 +1,6 @@
 module.exports = [
     {rest_id: 1, tag_id: 1},
-    {rest_id: 2, tag_id: 2},
+    {rest_id: 2, tag_id: 1}, // tag_id changed from 2 to 1 for testing purpose
     {rest_id: 2, tag_id: 3},
     {rest_id: 2, tag_id: 4},
     {rest_id: 2, tag_id: 5},

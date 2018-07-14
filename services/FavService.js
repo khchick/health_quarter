@@ -25,6 +25,7 @@ class FavService {
         toggleFavRest(restID, userID) {
             // if isFavRest(restID, userID) === false, create record in User_Fav_Restaurant with rest_id and user_id pair
             // if isFavRest(restID, userID) === true, delete record
+            
         }
 
         toggleFavDish(dishID, userID) {
