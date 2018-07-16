@@ -12,7 +12,7 @@ module.exports = [
         hours: 'Mon - Sat 09:00 - 21:00',
         img: 'http://www.confusion.hk/uploads/1/1/2/7/112766607/img-5470_orig.jpg',
         short_desc: '100% plant-based kitchen serving healthy Asian and Western cuisine. Environmentally conscious aiming for zero waste. Daily and weekly specials. Breakfast, lunch, sides, burgers and wraps, desserts and drinks.',
-        rating: 0
+        rating: 0,
     },
     {
         name: 'The Cakery',
@@ -42,17 +42,17 @@ module.exports = [
         short_desc: 'Peruvian-style rotisserie chicken, available for pickup. The chicken is sourced from South America and is antibiotic-free, hormone-free and cage free.',
         rating: 0
     },
-    // {
-    //     name: 'NOSH',
-    //     location: 'NA',
-    //     lat: '22.283644',
-    //     lng: '114.154344',
-    //     about: 'High-protein/low-carb friendly, Rotisserie chicken, sandwiches, sides and hot dishes',
-    //     phone: '23881999',
-    //     website: 'https://www.nosh.hk/Mealplans',
-    //     price: '$250-400',
-    //     hours: 'We stop taking orders at 9am on Saturdays for Monday delivery. Or you can order before Monday at 9 am for a Tuesday start.',
-    //     img: 'https://insideretail.hk/wp-content/uploads/2016/10/Nosh.jpg',
-    //     short_desc: 'At NOSH, we focus on every step of our ingredients journeys. From field to cutting board, our sourcing teams work tirelessly to ensure that both premium and sustainable ingredients make it into every box.'
-    // },
+    {
+        name: 'NOSH',
+        location: 'NA',
+        lat: '22.283644',
+        lng: '114.154344',
+        about: 'High-protein/low-carb friendly, Rotisserie chicken, sandwiches, sides and hot dishes',
+        phone: '23881999',
+        website: 'https://www.nosh.hk/Mealplans',
+        price: '$250-400',
+        hours: 'We stop taking orders at 9am on Saturdays for Monday delivery. Or you can order before Monday at 9 am for a Tuesday start.',
+        img: 'https://insideretail.hk/wp-content/uploads/2016/10/Nosh.jpg',
+        short_desc: 'At NOSH, we focus on every step of our ingredients journeys. From field to cutting board, our sourcing teams work tirelessly to ensure that both premium and sustainable ingredients make it into every box.'
+    },
 ];
