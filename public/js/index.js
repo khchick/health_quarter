@@ -1,6 +1,9 @@
 let tags = [1,2,3];
 
 $(()=>{
+    sessionStorage.setItem('status','loggedIn');
+    console.log(sessionStorage);
+    // If! session ID
     for(let i = 0;i < tags.length;i++) {
         $.get(`/api/rest/tag/${tags[i]}`).then((data)=>{
             console.log(data);
@@ -20,5 +23,7 @@ $(()=>{
                 </div>`
         };
     }
+    
+    // /favourite/categories/
 })
 

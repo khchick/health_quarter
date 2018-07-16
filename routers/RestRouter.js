@@ -14,6 +14,12 @@ class RestRouter {
                 .catch((err) => res.status(500).json(err));
         })
 
+        router.get('/favourite/categories/', (req,res)=> {
+            this.restService.listRestByUserFavTag (userID)
+            .then((restaurants) => res.json(restaurants))
+            .catch((err) => res.status(500).json(err));
+        })
+
         router.get('/location/:coord', (req, res) => {
             this.restService.listRestByGeo(req.params.coord)
                 .then((restaurants) => res.json(restaurants))

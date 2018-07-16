@@ -14,10 +14,15 @@ module.exports = class ViewRouter{
         // Login page
         router.get('/login',(req,res)=>res.render("login")); // Login panel with FB login button
         router.post('/login', passport.authenticate('local-login', {
-            successRedirect: '/',
+            // successRedirect: '/',
             failureRedirect: '/error',
             failureFlash: true
-        }));
+        })
+        ,(req,res) => {
+            console.log(req.session.passport.user);
+            res.redirect('/');
+        }
+    );
 
         router.get("/auth/facebook",passport.authenticate('facebook',{ // Run when the FB login button is clicked
             scope: ['user_friends', 'manage_pages'] 

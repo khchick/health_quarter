@@ -9,6 +9,6 @@ module.exports = [
     {rest_id: 3, tag_id: 8},
     {rest_id: 3, tag_id: 9},
     {rest_id: 3, tag_id: 10},
-    {rest_id: 4, tag_id: 2},
-    {rest_id: 4, tag_id: 10},
+    // {rest_id: 4, tag_id: 2},
+    // {rest_id: 4, tag_id: 10},
 ];
