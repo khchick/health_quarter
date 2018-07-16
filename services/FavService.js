@@ -9,8 +9,6 @@ class FavService {
         // For status display
 
         isFavRest(restID, userID) {
-            console.log(restID);
-            console.log(userID);
             // If restID found in User_Fav_Restaurant table for matching user_id, return true
             let query = this.knex
             .select()
@@ -118,13 +116,27 @@ class FavService {
             // For info display, get User_Fav_Recipe.api_url to download from external data source
         }
 
-    // For preference setting @ sign up / user profile
+    // For personalised home page & preference setting @ sign up / user profile 
 
         listFavTag(userID) {
             // Get all records from Tag table from DB
             // Get Tag.name for display and sorting by alphabetical order
             // Retrieve tag_id from User_Fav_Tag table for matching userID
             // If tag_id === listed Tag.id, return true
+            let query = this.knex
+            .select('tag.id', 'tag.name')
+            .from('users_fav_tag')
+            .where('users_id',userID)
+            .innerJoin('tag', 'tag_id', 'tag.id')
+            .orderBy('tag.name');
+
+            return query.then(rows => {
+                console.log(rows);
+                return rows.map(row => ({
+                    id: row.id,
+                    name: row.name
+                }))
+            })
         }
 
 

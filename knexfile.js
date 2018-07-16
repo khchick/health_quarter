@@ -2,7 +2,7 @@ require('dotenv').config();
 
 module.exports = {
   development: {
-    debug: true,
+    debug: false,
     client: 'postgresql',
     connection: {
       database: process.env.DB_NAME,

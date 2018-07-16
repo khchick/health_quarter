@@ -1,14 +1,10 @@
 let tags = [1,2,3];
 
 $(()=>{
-    sessionStorage.setItem('status','loggedIn');
-    console.log(sessionStorage);
-    // If! session ID
     for(let i = 0;i < tags.length;i++) {
         $.get(`/api/rest/tag/${tags[i]}`).then((data)=>{
             console.log(data);
             data.forEach(e =>{
-                console.log(e.name);
                 $('#rest-list').append(Rest(e.tag_name,e.id,e.name,e.price,e.img,e.tags));
             });
         });
@@ -23,7 +19,5 @@ $(()=>{
                 </div>`
         };
     }
-    
-    // /favourite/categories/
 })
 

@@ -8,16 +8,10 @@ class RestRouter {
     router() {
         let router = express.Router();
 
-        router.get('/tag/:tagID', (req, res) => {
+        router.get('/tag/:tagID', (req, res) => { // DONE
             this.restService.listRestByTag(req.params.tagID)
                 .then((restaurants) => res.json(restaurants))
                 .catch((err) => res.status(500).json(err));
-        })
-
-        router.get('/favourite/categories/', (req,res)=> {
-            this.restService.listRestByUserFavTag (userID)
-            .then((restaurants) => res.json(restaurants))
-            .catch((err) => res.status(500).json(err));
         })
 
         router.get('/location/:coord', (req, res) => {
@@ -26,7 +20,7 @@ class RestRouter {
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/detail/:restID', (req, res) => { 
+        router.get('/detail/:restID', (req, res) => { // DONE
             this.restService.getRestDetail(req.params.restID)
                 .then((restDetail) => res.json(restDetail))
                 .catch((err) => res.status(500).json(err));

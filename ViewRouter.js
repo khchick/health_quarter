@@ -9,31 +9,31 @@ module.exports = class ViewRouter{
 
         // Home page
         router.get('/',(req,res)=>res.render("index")); // Display default lists of restaurants
-        router.get('/',isLoggedIn,(req,res)=>res.render("index")); // DISPLAY CUSTOM LISTS FOR LOGGED IN USERS (FAV TAGS)
+        router.get('/',isLoggedIn,(req,res)=>res.render("home")); // DISPLAY CUSTOM LISTS FOR LOGGED IN USERS (FAV TAGS)
 
         // Login page
         router.get('/login',(req,res)=>res.render("login")); // Login panel with FB login button
         router.post('/login', passport.authenticate('local-login', {
-            // successRedirect: '/',
+            // successRedirect: '/', 
             failureRedirect: '/error',
             failureFlash: true
-        })
-        ,(req,res) => {
-            console.log(req.session.passport.user);
-            res.redirect('/');
-        }
-    );
+            }),(req,res) => {
+                res.render("home",{
+                    userID: req.session.passport.user.id
+                })
+            }
+        );
 
         router.get("/auth/facebook",passport.authenticate('facebook',{ // Run when the FB login button is clicked
             scope: ['user_friends', 'manage_pages'] 
         }));
         router.get("/auth/facebook/callback",passport.authenticate('facebook',{ //Handle redirections after FB login
             failureRedirect: "/error"
-        }),(req,res)=>res.redirect('/'));
+        }),(req,res)=>res.redirect('/')); // CREATE LOCAL ACCOUNTS UPON FIRST FB LOGIN
 
         // Sign up page
-        router.get('/signup',(req,res)=>res.render("signup"));  // SIGN UP FORM REQUIRED
-        router.post('/signup', passport.authenticate('local-signup', { // CREATE USER IN DB
+        router.get('/signup',(req,res)=>res.render("signup"));
+        router.post('/signup', passport.authenticate('local-signup', {
             successRedirect: '/',
             failureRedirect: '/error',
             failureFlash: true

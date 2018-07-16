@@ -9,13 +9,13 @@ class FavRouter {
         let router = express.Router();
 
         // Check favourite status
-        router.get('/rest/:restID', (req, res) => {
+        router.get('/rest/:restID', (req, res) => { // DONE
             this.favService.isFavRest(req.params.restID, req.session.passport.user.id)
                 .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/dish/:dishID', (req, res) => {
+        router.get('/dish/:dishID', (req, res) => { 
             this.favService.isFavDish(req.params.dishID, req.session.passport.user.id)
                 .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
@@ -28,42 +28,42 @@ class FavRouter {
         })
 
         // Update favourite status
-        router.post('/rest/:restID', (req, res) => { // Add to favourite
+        router.post('/rest/:restID', (req, res) => { // DONE
             this.favService.addFavRest(req.params.restID, req.session.passport.user.id)
                 .then(() => this.favService.isFavRest(req.params.restID, req.session.passport.user.id))
                 .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.delete('/rest/:restID', (req, res) => { // Remove from favourite
+        router.delete('/rest/:restID', (req, res) => { // DONE
             this.favService.delFavRest(req.params.restID, req.session.passport.user.id)
                 .then(() => this.favService.isFavRest(req.params.restID, req.session.passport.user.id))
                 .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.post('/dish/:dishID', (req, res) => { // Add to favourite
+        router.post('/dish/:dishID', (req, res) => { 
             this.favService.addFavDish(req.params.dishID, req.session.passport.user.id)
                 .then((res) => this.favService.isFavDish(req.params.dishID, req.session.passport.user.id))
                 .then((res) => res.json(res))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.delete('/dish/:dishID', (req, res) => { // Remove from favourite
+        router.delete('/dish/:dishID', (req, res) => { 
             this.favService.delFavDish(req.params.dishID, req.session.passport.user.id)
                 .then((res) => this.favService.isFavDish(req.params.dishID, req.session.passport.user.id))
                 .then((res) => res.json(res))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.post('/meal/:mealID', (req, res) => { // Add to favourite
+        router.post('/meal/:mealID', (req, res) => { 
             this.favService.addFavMeal(req.params.mealID, req.session.passport.user.id)
                 .then((res) => this.favService.isFavMeal(req.params.mealID, req.session.passport.user.id))
                 .then((res) => res.json(res))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.delete('/meal/:mealID', (req, res) => { // Remove from favourite
+        router.delete('/meal/:mealID', (req, res) => { 
             this.favService.delFavMeal(req.params.mealID, req.session.passport.user.id)
                 .then((res) => this.favService.isFavMeal(req.params.mealID, req.session.passport.user.id))
                 .then((res) => res.json(res))
@@ -96,7 +96,7 @@ class FavRouter {
         })
 
         // Tag preference setting at profile page
-        router.get('/myfav', (req, res) => {
+        router.get('/preference', (req, res) => { // DONE
             this.favService.listFavTag(req.session.passport.user.id)
                 .then((tags) => res.json(tags))
                 .catch((err) => res.status(500).json(err));
