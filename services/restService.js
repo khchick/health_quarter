@@ -173,25 +173,27 @@ class RestService {
     // }
 
     addReview(comment,rating,userID,restID) {
-        let query = this.knex
-                    .select()
-                    .from('users')
-                    .where('users.id',userID)
+        // let query = this.knex
+        //             .select()
+        //             .from('users')
+        //             .where('users.id',userID)
 
-        return query.then((rows) => {
-            if (rows.length !== 1) {
-                throw new Error('Invalid user');
-            } else {
+        // return query.then((rows) => {
+        //     console.log(rows);
+        //     if (rows.length !== 1) {
+        //         throw new Error('Invalid user');
+        //     } else {
+                
                 return this.knex  
                     .insert({
-                        users_id: rows[0].id,
+                        users_id: userID,
                         rest_id: restID,
                         comment: comment,
                         rating: rating,
                     })
                     .into('users_review');
-            }
-        })
+        //     }
+        // })
     }
 }
 

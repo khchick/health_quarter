@@ -1,9 +1,8 @@
 $(()=>{
-    $.get(`/api/fav/preference`).then((tags)=>{
+    $.get(`/api/fav/preference`).then(tags=>{
         console.log(tags);
         tags.forEach(tag =>{
-            console.log(tag.id);
-            $.get(`/api/rest/tag/${tag.id}`).then((data)=>{
+            $.get(`/api/rest/tag/${tag.id}`).then(data=>{
                 data.forEach(e =>{
                     $('#rest-list').append(Rest(e.tag_name,e.id,e.name,e.price,e.img,e.tags));
                 });

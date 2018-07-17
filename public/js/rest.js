@@ -38,6 +38,7 @@ $(()=>{
 
     // Get favourite status
     $.get(`/api/fav/rest/${restID}`).then(res => {
+        console.log(res);
         let status = JSON.parse(res);
         if (status === true) {
             $('#favBtn').html("isFav");
@@ -86,18 +87,18 @@ $(()=>{
         // console.log(comment);
         // console.log(rating);
 
-        axios.post('/api/rest/review/:restID', {
+        axios.post(`/api/rest/review/${restID}`, {
             "comment": comment,
             "rating": rating
         })
-            .then((res) => {
-            console.log(res);
-            refreshReviews(res.data);
-            $('#alert').html('Review added!');
-            setTimeout(() => {
-                $('#alert').html('&nbsp;');
-            }, 1000);
-        })
+        //     .then((res) => {
+        //     console.log(res);
+        //     refreshReviews(res.data);
+        //     $('#alert').html('Review added!');
+        //     setTimeout(() => {
+        //         $('#alert').html('&nbsp;');
+        //     }, 1000);
+        // })
     })
 })
 
@@ -113,3 +114,4 @@ function toggleFav(restID) {
         })
     }
 }
+
