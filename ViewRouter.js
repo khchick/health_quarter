@@ -52,7 +52,10 @@ module.exports = class ViewRouter {
 
         //Recipe Finder page
         router.get('/recipeFinder', (req, res) => res.render("recipeFinder"));
-        router.get('/recipeFinder', isLoggedIn, (req, res) => res.render("recipeFinder")); // DISPLAY CUSTOM LISTS FOR LOGGED IN USERS (FAV TAGS)
+        router.get('/recipeFinder', passport.authenticate('local-signup', {
+            failureRedirect: '/error',
+            failureFlash: true 
+            }),(req,res) => { res.render("recipeFinder", {userID: req.session.passport.user.id})}); // DISPLAY CUSTOM LISTS FOR LOGGED IN USERS (FAV TAGS)
         
         
         //search by calorie
@@ -65,7 +68,7 @@ module.exports = class ViewRouter {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
                     console.log(dataString);
-                    res.render('searchcal', { data: dataString });
+                    res.render('searchcal', { data: dataString, userID: req.session.passport.user.id });
                 });
         });
 
@@ -80,7 +83,7 @@ module.exports = class ViewRouter {
                     console.log(result.status, result.headers, result.body, result.body);
                     let dataString = JSON.stringify(result.body);
                     console.log(dataString);
-                    res.render('searchtag', { data: dataString });
+                    res.render('searchtag', { data: dataString, userID: req.session.passport.user.id });
                 });
         });
 
@@ -95,7 +98,7 @@ module.exports = class ViewRouter {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
                     console.log(dataString);
-                    res.render('searching', { data: dataString });
+                    res.render('searching', { data: dataString, userID: req.session.passport.user.id });
                 });
         });
 

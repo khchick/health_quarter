@@ -13,7 +13,7 @@ class FavService {
             let query = this.knex
             .select()
             .from('users_fav_restaurant')
-            .where('users_id',userID)
+            .where('users_id',userID) 
             .andWhere('rest_id',restID)
 
             return query.then((rows) => {
@@ -31,7 +31,20 @@ class FavService {
         }
 
         isFavRec(recURL, userID) {
-            // If recURL match with api_url in User_Fav_Recipe table for matching user_id, return true
+            let query = this.knex
+            .select()
+            .from('users_fav_recipe')
+            .where('users_id', userID)
+            .andWhere('api_url', recURL)
+            
+            return query.then((rows) => {
+                console.log(rows);
+                if (rows.length === 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            })
         }
 
         // For status update
@@ -56,6 +69,7 @@ class FavService {
         addFavRec(recURL, userID) {
             // if isFavRec(recURL, userID) === false, create record in User_Fav_Recipe with recURL and user_id pair
             // if isFavRec(recURL, userID) === true, delete record
+            return this.knex("users_fav_recipe").insert({"users_id":userID,"api_url":recURL})
         }
 
         delFavRest(restID, userID) {
@@ -81,6 +95,11 @@ class FavService {
         delFavRec(recURL, userID) {
             // if isFavRec(recURL, userID) === false, create record in User_Fav_Recipe with recURL and user_id pair
             // if isFavRec(recURL, userID) === true, delete record
+
+        return this.knex("users_fav_recipe")
+        .where("users_id", userID)
+        .andWhere('api_url', recURL)
+        .delete()
         }
 
     // @ Favourite page

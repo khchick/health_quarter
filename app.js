@@ -37,7 +37,7 @@ const { DishService,
 let dishService = new DishService(knex);
 let favService = new FavService(knex,redisClient); // REDIS ONLY REQUIRED FOR USER RELATED SERVICES?
 let mealService = new MealService(knex);
-// let restService = new RestService(knex,redisClient); // REDIS ONLY REQUIRED FOR USER RELATED SERVICES?
+let restService = new RestService(knex,redisClient); // REDIS ONLY REQUIRED FOR USER RELATED SERVICES?
 let userService = new UserService(knex,redisClient); // REDIS ONLY REQUIRED FOR USER RELATED SERVICES?
 
 const {app,server,io} = require('./utils/init-app')(redisClient);
@@ -48,11 +48,11 @@ app.use('/',new ViewRouter().router());
 app.use('/api/dish', (new DishRouter(dishService)).router());
 app.use('/api/fav', (new FavRouter(favService)).router());
 app.use('/api/meal', (new MealRouter(mealService)).router());
-// app.use('/api/rest', (new RestRouter(restService)).router());
+app.use('/api/rest', (new RestRouter(restService)).router());
 app.use('/api/user', (new UserRouter(userService)).router());
   
 app.use('/api/fav',isLoggedIn,new FavRouter(favService).router()); // DO SOMETHING FOR LOGGED IN USERS?
-// app.use('/api/rest',isLoggedIn,new RestRouter(restService).router()); // DO SOMETHING FOR LOGGED IN USERS?
+app.use('/api/rest',isLoggedIn,new RestRouter(restService).router()); // DO SOMETHING FOR LOGGED IN USERS?
 app.use('/api/user',isLoggedIn,new UserRouter(userService).router()); // DO SOMETHING FOR LOGGED IN USERS?
 
 
