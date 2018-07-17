@@ -50,6 +50,26 @@ class RestService {
         })
     }
 
+    listRestByUserFavTag (userID) {
+        let query = this.knex
+            .select('tag_id')
+            .from('users_fav_tag')
+            .innerJoin('tag','tag_id','tag.id')
+            .where('users_id', userID)
+            .orderBy('tag.name');
+
+        return query.then(rows => {
+            return rows.map(row => ({
+                tagID: row.tag_id
+            }))
+            .then((tagIDrows)=> {
+                tagIDrows.forEach(tagID => {
+                    listRestByTag(tagID);
+                })
+            }) 
+        })
+    }
+
     listRestByGeo(coord) {
         // Get all restaurants from DB within range of specified coordinates (user's location)
         // For each restaurant, get own coordinate for pin location on map"
@@ -60,6 +80,7 @@ class RestService {
     getRestDetail(restID) {
         let query = this.knex
             .select(
+                'restaurant.id',
                 'restaurant.name',
                 'restaurant.img',
                 'restaurant.about',
@@ -91,25 +112,26 @@ class RestService {
             }));
         })
 
-        // .then(rows => {
-        //     return Promise.all(
-        //         rows.map(row => {
-        //             let query = this.knex
-        //             .select('tag.name')
-        //             .from('tag')
-        //             .innerJoin('restaurant_tag', 'tag.id', 'restaurant_tag.tag_id')
-        //             .where('restaurant_tag.rest_id', row.id)
-        //             .orderBy('tag.name')
+        .then(rows => {
+            return Promise.all(
+                rows.map(row => {
+                    console.log("hi");
+                    let query = this.knex
+                    .select('tag.name')
+                    .from('tag')
+                    .innerJoin('restaurant_tag', 'tag.id', 'restaurant_tag.tag_id')
+                    .where('restaurant_tag.rest_id', row.id)
+                    .orderBy('tag.name')
 
-        //             return query.then(tagRows => {
-        //                 tagRows.forEach(tagRow => {
-        //                     row.tags.push(tagRow.name);
-        //                 });
-        //                 return row;
-        //             })
-        //         })
-        //     )
-        // })
+                    return query.then(tagRows => {
+                        tagRows.forEach(tagRow => {
+                            row.tags.push(tagRow.name);
+                        });
+                        return row;
+                    })
+                })
+            )
+        })
     }
 
     listReview(restID) {
@@ -122,6 +144,7 @@ class RestService {
         // For each user_id, return matching rating from User_Review table
         // For each user_id, return matching comment from User_Review table
     }
+
 }
 
 module.exports = RestService;

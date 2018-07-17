@@ -9,74 +9,95 @@ class FavRouter {
         let router = express.Router();
 
         // Check favourite status
-        router.get('/:restID', (req, res) => {
-            this.favService.isFavRest(req.params.restID, req.auth.user)
-                .then((res) => res.json(res))
+        router.get('/rest/:restID', (req, res) => { // DONE
+            this.favService.isFavRest(req.params.restID, req.session.passport.user.id)
+                .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/:dishID', (req, res) => {
-            this.favService.isFavDish(req.params.dishID, req.auth.user)
-                .then((res) => res.json(res))
+        router.get('/dish/:dishID', (req, res) => { 
+            this.favService.isFavDish(req.params.dishID, req.session.passport.user.id)
+                .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/:mealID', (req, res) => {
-            this.favService.isFavMeal(req.params.mealID, req.auth.user)
-                .then((res) => res.json(res))
+        router.get('/meal/:mealID', (req, res) => {
+            this.favService.isFavMeal(req.params.mealID, req.session.passport.user.id)
+                .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
         })
 
         // Update favourite status
-        router.put('/:restID', (req, res) => {
-            this.favService.toggleFavRest(req.params.restID, req.auth.user)
-                .then((res) => this.favService.isFavRest(req.params.restID, req.auth.user))
+        router.post('/rest/:restID', (req, res) => { // DONE
+            this.favService.addFavRest(req.params.restID, req.session.passport.user.id)
+                .then(() => this.favService.isFavRest(req.params.restID, req.session.passport.user.id))
+                .then((status) => res.json(status))
+                .catch((err) => res.status(500).json(err));
+        })
+
+        router.delete('/rest/:restID', (req, res) => { // DONE
+            this.favService.delFavRest(req.params.restID, req.session.passport.user.id)
+                .then(() => this.favService.isFavRest(req.params.restID, req.session.passport.user.id))
+                .then((status) => res.json(status))
+                .catch((err) => res.status(500).json(err));
+        })
+
+        router.post('/dish/:dishID', (req, res) => { 
+            this.favService.addFavDish(req.params.dishID, req.session.passport.user.id)
+                .then((res) => this.favService.isFavDish(req.params.dishID, req.session.passport.user.id))
                 .then((res) => res.json(res))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.put('/:dishID', (req, res) => {
-            this.favService.toggleFavDish(req.params.dishID, req.auth.user)
-                .then((res) => this.favService.isFavDish(req.params.dishID, req.auth.user))
+        router.delete('/dish/:dishID', (req, res) => { 
+            this.favService.delFavDish(req.params.dishID, req.session.passport.user.id)
+                .then((res) => this.favService.isFavDish(req.params.dishID, req.session.passport.user.id))
                 .then((res) => res.json(res))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.put('/:mealID', (req, res) => {
-            this.favService.toggleFavMeal(req.params.mealID, req.auth.user)
-                .then((res) => this.favService.isFavMeal(req.params.mealID, req.auth.user))
+        router.post('/meal/:mealID', (req, res) => { 
+            this.favService.addFavMeal(req.params.mealID, req.session.passport.user.id)
+                .then((res) => this.favService.isFavMeal(req.params.mealID, req.session.passport.user.id))
+                .then((res) => res.json(res))
+                .catch((err) => res.status(500).json(err));
+        })
+
+        router.delete('/meal/:mealID', (req, res) => { 
+            this.favService.delFavMeal(req.params.mealID, req.session.passport.user.id)
+                .then((res) => this.favService.isFavMeal(req.params.mealID, req.session.passport.user.id))
                 .then((res) => res.json(res))
                 .catch((err) => res.status(500).json(err));
         })
 
         // Favourite page listing
-        router.get('/restaurants', (req, res) => {
-            this.favService.listFavRest(req.auth.user)
+        router.get('/fav/restaurants', (req, res) => {
+            this.favService.listFavRest(req.session.passport.user.id)
                 .then((restaurants) => res.json(restaurants))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/dishes', (req, res) => {
-            this.favService.listFavDish(req.auth.user)
+        router.get('/fav/dishes', (req, res) => {
+            this.favService.listFavDish(req.session.passport.user.id)
                 .then((dishes) => res.json(dishes))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/meals', (req, res) => {
-            this.favService.listFavMeal(req.auth.user)
+        router.get('/fav/meals', (req, res) => {
+            this.favService.listFavMeal(req.session.passport.user.id)
                 .then((meals) => res.json(meals))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/recipes', (req, res) => {
-            this.favService.listFavRec(req.auth.user)
+        router.get('/fav/recipes', (req, res) => {
+            this.favService.listFavRec(req.session.passport.user.id)
                 .then((recURLs) => res.json(recURLs))
                 .catch((err) => res.status(500).json(err));
         })
 
         // Tag preference setting at profile page
-        router.get('/:userID', (req, res) => {
-            this.favService.listFavTag(req.params.userID)
+        router.get('/preference', (req, res) => { // DONE
+            this.favService.listFavTag(req.session.passport.user.id)
                 .then((tags) => res.json(tags))
                 .catch((err) => res.status(500).json(err));
         })

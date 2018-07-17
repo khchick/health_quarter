@@ -11,5 +11,8 @@ module.exports = [
     {name: 'Chicken'},
     {name: 'Protein'},
     {name: 'Takeaway'},
-    {name: 'Detoxic'}
+    {name: 'Detoxic'},
+    {name: 'Chinese Cruisine'},
+    {name: 'Food'},
+    {name: 'Drink'},
 ];

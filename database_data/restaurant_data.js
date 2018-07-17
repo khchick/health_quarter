@@ -12,7 +12,7 @@ module.exports = [
         hours: 'Mon - Sat 09:00 - 21:00',
         img: 'http://www.confusion.hk/uploads/1/1/2/7/112766607/img-5470_orig.jpg',
         short_desc: '100% plant-based kitchen serving healthy Asian and Western cuisine. Environmentally conscious aiming for zero waste. Daily and weekly specials. Breakfast, lunch, sides, burgers and wraps, desserts and drinks.',
-        rating: 0
+        rating: 0,
     },
     {
         name: 'The Cakery',

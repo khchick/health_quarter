@@ -1,6 +1,7 @@
 $(()=>{
     let restID = window.location.href.split("/").pop();
-    $.get(`/api/rest/detail/${restID}`).then((data)=>{
+
+    $.get(`/api/rest/detail/${restID}`).then(data =>{
         data.forEach(e =>{
             $('#rest-detail').append(RestDetail(
                 e.name,
@@ -33,5 +34,31 @@ $(()=>{
                 <label class="lbl-info">Tags: </label><p>${tags}</p>
             </div>`
     }
+
+    $.get(`/api/fav/rest/${restID}`).then(res => {
+        console.log(res);
+        let status = JSON.parse(res);
+        if (status === true) {
+            $('#favBtn').html("isFav");
+        } else {
+            $('#favBtn').html("notFav");
+        }
+    })
+
+    $('#favBtn').on('click',()=> {
+        toggleFav(restID);
+    })
 })
 
+function toggleFav(restID) {
+    if ($('#favBtn').html() === "isFav") {
+        axios.delete(`/api/fav/rest/${restID}`).then(()=> {
+            $('#favBtn').html("notFav");
+        })
+    }
+    if ($('#favBtn').html() === "notFav") {
+        axios.post(`/api/fav/rest/${restID}`).then(()=> {
+            $('#favBtn').html("isFav");
+        })
+    }
+}
