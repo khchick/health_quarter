@@ -1,10 +1,11 @@
-<a href="/signup">SIGN UP</a>
-<a href="/login">LOG IN</a>
-<p>Logged in as:
-    <strong>
-        <span>{{userID}}</span>
-    </strong>
-</p>
+<div class="container">
+    <header>
+        <h1><a href="/home">Health Quarter</a></h1>
+        <a href="/delivery">Delivery</a>
+        <a href="/favouriteRest">My Favourites</a>
+        Recipe Finder
+        <a href="/logout">LOGOUT</a>
+    </header>
 
 <h2>Recipe(s) found: </h2>
 <table class="table" id="recipe_table">
@@ -13,59 +14,26 @@
         <th>Image:</th>
         <th>Learn more button:</th>
         </th>Favourite Recipe </th>
-    </tr>
-</table>
+        </tr>
+        </table>
 
-<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-<scripr src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'>
-    </script>
-    <script type='text/javascript'>
+</div>
 
-        // make data useable
-        let recipes = {{{ data }}};
+        <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+        <scripr src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script type='text/javascript'>
 
-        $.each(recipes, function (key, value) {
-            recipes += '<tr>';
-            recipes += '<td>' + value.title + '</td>';
-            recipes += '<td><img src=' + value.image + '></td>';
-            recipes += '<td><a href="https://spoonacular.com/' + value.title + '-' + value.id + '">Learn More</a></td>';
-            recipes += '<td><button name="submit" id="saveRecipe" class="ui save recipe button" type="submit">Favourite Recipe</button></td>'
-            recipes += '</tr>';
-        });
-        $('#recipe_table').append(recipes);
+// make data useable
+let recipes = {{{ data }}};
 
+$.each(recipes, function(key, value){
+             recipes += '<tr>';
+             recipes += '<td>'+value.title+'</td>';
+             recipes += '<td><img src='+value.image+'></td>';
+             recipes += '<td><a href="https://spoonacular.com/'+value.title+'-'+value.id+'">Learn More</a></td>';
+             recipes += '<td><button name="submit" id="saveRecipe" class="ui save recipe button" type="submit">Favourite Recipe</button></td>'
+             recipes += '</tr>';
+         });
+         $('#recipe_table').append(recipes);
 
-        //favourite recipe
-
-            let recURL = `https://spoonacular.com/${recipes.title}-${recipes.id}`;
-            $.get(`/api/fav/rec/${recURL}`).then(res => {
-        console.log(res);
-            let status = JSON.parse(recURL);
-            if (status === true) {
-                $('#saveRecipe').html("isFav");
-            } else {
-                $('#saveRecipe').html("notFav");
-            }
-        })
-
-        $('#saveRecipe').on('click', () => {
-                        console.log('clicked.');
-            toggleFav(recURL);
-        })
-
-
-        function toggleFav(recURL) {
-            if ($('#saveRecipe').html() === "isFav") {
-                axios.delete(`/api/fav/rec/${recURL}`).then(() => {
-                    $('#saveRecipe').html("notFav");
-                })
-            }
-            if ($('#saveRecipe').html() === "notFav") {
-                axios.post(`/api/fav/rec/${recURL}`).then(() => {
-                    $('#saveRecipe').html("isFav");
-                })
-            }
-        }
-
-
-    </script>
+         </script>
