@@ -71,25 +71,25 @@ class FavRouter {
         })
 
         // Favourite page listing
-        router.get('/fav/restaurants', (req, res) => {
+        router.get('/restaurants', (req, res) => {
             this.favService.listFavRest(req.session.passport.user.id)
                 .then((restaurants) => res.json(restaurants))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/fav/dishes', (req, res) => {
+        router.get('/dishes', (req, res) => {
             this.favService.listFavDish(req.session.passport.user.id)
                 .then((dishes) => res.json(dishes))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/fav/meals', (req, res) => {
+        router.get('/meals', (req, res) => {
             this.favService.listFavMeal(req.session.passport.user.id)
                 .then((meals) => res.json(meals))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/fav/recipes', (req, res) => {
+        router.get('/recipes', (req, res) => {
             this.favService.listFavRec(req.session.passport.user.id)
                 .then((recURLs) => res.json(recURLs))
                 .catch((err) => res.status(500).json(err));
