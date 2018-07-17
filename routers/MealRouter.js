@@ -14,7 +14,11 @@ class MealRouter {
                 .catch((err) => res.status(500).json(err));
         })
 
-        return router;
+        router.get('/all'), (req, res) =>{
+            this.mealService.listAllMeal()
+                .then((meals) => res.json(meals))
+                .catch((err) => res.status(500).json(err));
+        }
     }
 }
 
