@@ -47,12 +47,7 @@ $(()=>{
             </div>`
     }
 
-<<<<<<< HEAD
-
-    //codee to see if restaurant is favourited 
-=======
     // Get favourite status
->>>>>>> 2f71295ffe62816fcd76ea15bde3794194fe168a
     $.get(`/api/fav/rest/${restID}`).then(res => {
         console.log(res);
         let status = JSON.parse(res);

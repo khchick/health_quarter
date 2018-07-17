@@ -19,6 +19,8 @@ class MealRouter {
                 .then((meals) => res.json(meals))
                 .catch((err) => res.status(500).json(err));
         }
+
+        return router;
     }
 }
 
