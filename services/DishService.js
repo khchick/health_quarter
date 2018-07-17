@@ -38,8 +38,7 @@ class DishService {
         .from('dish')
         .where('dish.id', dishID)
 
-        return query.then((rows) => {
-            console.log(rows);
+        return query.then(rows => {
             return rows.map(row => ({
                 id: row.id,
                 name: row.name,

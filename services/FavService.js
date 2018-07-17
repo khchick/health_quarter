@@ -17,7 +17,6 @@ class FavService {
             .andWhere('rest_id',restID)
 
             return query.then((rows) => {
-                console.log(rows);
                 if (rows.length === 1) {
                     return true;
                 } else {
@@ -28,11 +27,41 @@ class FavService {
 
         isFavDish(dishID, userID) {
             // If dishID found in User_Fav_Dish table for matching user_id, return true
+            let query = this.knex
+            .select()
+            .from('users_fav_dish')
+            .where('users_id',userID)
+            .andWhere('dish_id',dishID)
+
+            return query.then((rows) => {
+                if (rows.length === 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            })
         }
 
-        isFavRec(recURL, userID) {
-            // If recURL match with api_url in User_Fav_Recipe table for matching user_id, return true
+        isFavMeal(mealID, userID) {
+            // If dishID found in User_Fav_Dish table for matching user_id, return true
+            let query = this.knex
+            .select()
+            .from('users_fav_meal_plan')
+            .where('users_id',userID)
+            .andWhere('meal_plan_id',mealID)
+
+            return query.then((rows) => {
+                if (rows.length === 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            })
         }
+
+        // isFavRec(recURL, userID) {
+        //     // If recURL match with api_url in User_Fav_Recipe table for matching user_id, return true
+        // }
 
         // For status update
 
@@ -46,17 +75,19 @@ class FavService {
         addFavDish(dishID, userID) {
             // if isFavDish(dishID, userID) === false, create record in User_Fav_Dish with dish_id and user_id pair
             // if isFavDish(dishID, userID) === true, delete record
+            return this.knex("users_fav_dish").insert({"users_id":userID,"dish_id":dishID})
         }
 
-        addFavMeal(recURL, userID) {
+        addFavMeal(mealID, userID) {
             // if isFavMeal(mealID, userID) === false, create record in User_Fav_Meal with recURL and user_id pair
             // if isFavMeal(mealID, userID) === true, delete record
+            return this.knex("users_fav_meal_plan").insert({"users_id":userID,"meal_plan_id":mealID})
         }
 
-        addFavRec(recURL, userID) {
-            // if isFavRec(recURL, userID) === false, create record in User_Fav_Recipe with recURL and user_id pair
-            // if isFavRec(recURL, userID) === true, delete record
-        }
+        // addFavRec(recURL, userID) {
+        //     // if isFavRec(recURL, userID) === false, create record in User_Fav_Recipe with recURL and user_id pair
+        //     // if isFavRec(recURL, userID) === true, delete record
+        // }
 
         delFavRest(restID, userID) {
 
@@ -71,17 +102,25 @@ class FavService {
         delFavDish(dishID, userID) {
             // if isFavDish(dishID, userID) === false, create record in User_Fav_Dish with dish_id and user_id pair
             // if isFavDish(dishID, userID) === true, delete record
+            return this.knex("users_fav_dish")
+            .where("users_id",userID)
+            .andWhere("dish_id",dishID)
+            .delete()
         }
 
-        delFavMeal(dishID, userID) {
+        delFavMeal(mealID, userID) {
             // if isFavMeal(mealID, userID) === false, create record in User_Fav_Meal with dish_id and user_id pair
             // if isFavMeal(mealID, userID) === true, delete record
+            return this.knex("users_fav_meal_plan")
+            .where("users_id",userID)
+            .andWhere("meal_plan_id",mealID)
+            .delete()
         }
 
-        delFavRec(recURL, userID) {
-            // if isFavRec(recURL, userID) === false, create record in User_Fav_Recipe with recURL and user_id pair
-            // if isFavRec(recURL, userID) === true, delete record
-        }
+        // delFavRec(recURL, userID) {
+        //     // if isFavRec(recURL, userID) === false, create record in User_Fav_Recipe with recURL and user_id pair
+        //     // if isFavRec(recURL, userID) === true, delete record
+        // }
 
     // @ Favourite page
 
@@ -115,6 +154,22 @@ class FavService {
             // Join Dish table to retrieve Dish.img and Dish.name for display
             // Dish.id for getting dish details
             // Restaurant.id for getting the link back to the restaurant
+            let query = this.knex
+            .select('restaurant.id','dish.name','dish.img')
+            .from('dish')
+            .innerJoin('users_fav_dish', 'dish.id', 'users_fav_dish.dish_id')
+            .innerJoin('restaurant','dish.rest_id', 'restaurant.id')
+            .where('users_fav_dish.users_id',userID)
+            .orderBy('users_fav_dish.created_at','desc');
+
+            return query.then((rows) => {
+                console.log(rows);
+                return rows.map(row => ({
+                    id: row.id,
+                    name: row.name,
+                    img: row.img
+                }))
+            })
         }
 
         listFavMeal(userID) {

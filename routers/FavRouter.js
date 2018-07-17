@@ -42,31 +42,31 @@ class FavRouter {
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.post('/dish/:dishID', (req, res) => { 
+        router.post('/dish/:dishID', (req, res) => {
             this.favService.addFavDish(req.params.dishID, req.session.passport.user.id)
-                .then((res) => this.favService.isFavDish(req.params.dishID, req.session.passport.user.id))
-                .then((res) => res.json(res))
+                .then(() => this.favService.isFavDish(req.params.dishID, req.session.passport.user.id))
+                .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
         })
 
         router.delete('/dish/:dishID', (req, res) => { 
             this.favService.delFavDish(req.params.dishID, req.session.passport.user.id)
-                .then((res) => this.favService.isFavDish(req.params.dishID, req.session.passport.user.id))
-                .then((res) => res.json(res))
+                .then(() => this.favService.isFavDish(req.params.dishID, req.session.passport.user.id))
+                .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
         })
 
         router.post('/meal/:mealID', (req, res) => { 
             this.favService.addFavMeal(req.params.mealID, req.session.passport.user.id)
-                .then((res) => this.favService.isFavMeal(req.params.mealID, req.session.passport.user.id))
-                .then((res) => res.json(res))
+                .then(() => this.favService.isFavMeal(req.params.mealID, req.session.passport.user.id))
+                .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
         })
 
         router.delete('/meal/:mealID', (req, res) => { 
             this.favService.delFavMeal(req.params.mealID, req.session.passport.user.id)
-                .then((res) => this.favService.isFavMeal(req.params.mealID, req.session.passport.user.id))
-                .then((res) => res.json(res))
+                .then(() => this.favService.isFavMeal(req.params.mealID, req.session.passport.user.id))
+                .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
         })
 

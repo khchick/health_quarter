@@ -8,6 +8,17 @@ class RestRouter {
     router() {
         let router = express.Router();
 
+        router.get('/rest/:id', (req, res) => {
+            this.restService.listReview(req.params.restID)
+            .then(review => {
+                console.log(review);
+                res.render("restaurant", {
+                    user: req.session.passport.user,
+                    review: review
+                });
+            });
+        });
+
         router.get('/tag/:tagID', (req, res) => { // DONE
             this.restService.listRestByTag(req.params.tagID)
                 .then((restaurants) => res.json(restaurants))
@@ -33,7 +44,6 @@ class RestRouter {
         })
 
         router.post('/review/:restID', (req, res) => {
-            console.log("im run");
             this.restService.addReview(req.body.comment,req.body.rating,req.session.passport.user.id,req.params.restID)
                 .then(() => this.restService.listReview(req.params.restID))
                 .then((reviews) => res.json(reviews))

@@ -37,23 +37,37 @@ module.exports = class ViewRouter {
         // Sign up page
         router.get('/signup',(req,res)=>res.render("signup"));
         router.post('/signup', passport.authenticate('local-signup', {
-            successRedirect: '/',
+            successRedirect: '/home',
             failureRedirect: '/error',
             failureFlash: true
         }));
+
+        router.get('/logout', function (req, res){
+            req.session.destroy(function (err) {
+              res.redirect('/'); 
+            });
+        });
 
         // Error page
         router.get('/error', (req, res) => {
             res.send('You are not logged in!' + "   " + "***" + JSON.stringify(req.flash().error[0]) + "***");
         });
 
+        // Home page
+        router.get('/home', (req, res)=>res.render('home'));
+
         // Restaurant details page
-        router.get('/rest/:id', (req, res) => res.render("restaurant", { id: req.params.id }));
+        router.get('/rest/:id', (req, res)=>res.render('restaurant'));
+
+        // Dish details page
+        router.get('/dish/:id', (req, res)=>res.render('dish'));
+
+        // Meal plan details page
+        router.get('/meal/:id', (req, res)=>res.render('meal'));
 
         //Recipe Finder page
         router.get('/recipeFinder', (req, res) => res.render("recipeFinder"));
         router.get('/recipeFinder', isLoggedIn, (req, res) => res.render("recipeFinder")); // DISPLAY CUSTOM LISTS FOR LOGGED IN USERS (FAV TAGS)
-        
         
         //search by calorie
         router.post('/searchcal', urlencodedParser, function (req, res) {
@@ -101,6 +115,9 @@ module.exports = class ViewRouter {
 
         // My Favourites
         router.get('/favouriteRest',(req,res)=>res.render("favouriteRest"));
+        router.get('/favouriteDish',(req,res)=>res.render("favouriteDish"));
+        router.get('/favouriteMeal',(req,res)=>res.render("favouriteMeal"));
+        router.get('/favouriteRec',(req,res)=>res.render("favouriteRec"));
 
 
         // INSERT ROUTERS FOR OTHER PAGES
