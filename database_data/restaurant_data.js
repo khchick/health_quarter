@@ -53,6 +53,11 @@ module.exports = [
         price: '$250-400',
         hours: 'We stop taking orders at 9am on Saturdays for Monday delivery. Or you can order before Monday at 9 am for a Tuesday start.',
         img: 'https://insideretail.hk/wp-content/uploads/2016/10/Nosh.jpg',
+<<<<<<< HEAD
+        short_desc: 'At NOSH, we focus on every step of our ingredients journeys. From field to cutting board, our sourcing teams work tirelessly to ensure that both premium and sustainable ingredients make it into every box.',
+        rating: 0
+=======
         short_desc: 'At NOSH, we focus on every step of our ingredients journeys. From field to cutting board, our sourcing teams work tirelessly to ensure that both premium and sustainable ingredients make it into every box.'
+>>>>>>> ed8c6ad18c10899c9b590dc64254dae2ff56b396
     },
 ];

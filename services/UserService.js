@@ -25,12 +25,12 @@ class UserService {
         // Get User_Review.rating of matching rest_id
     }
 
-    isLoggedIn (req, res, next){
-        if(req.isAuthenticated()){
-            return next();
-        }
-        res.redirect('/login');
-    }
+    // isLoggedIn (req, res, next){
+    //     if(req.isAuthenticated()){
+    //         return next();
+    //     }
+    //     res.redirect('/login');
+    // }
 
 }
 

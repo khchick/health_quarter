@@ -143,8 +143,56 @@ class RestService {
         // Return User.name
         // For each user_id, return matching rating from User_Review table
         // For each user_id, return matching comment from User_Review table
+        let query = this.knex
+            .select('users.name','users_review.comment','users_review.rating','users_review.created_at')
+            .from('users_review')
+            .innerJoin('restaurant', 'users_review.rest_id', 'restaurant.id')
+            .innerJoin('users', 'users_review.users_id', 'users.id')
+            .where('rest_id',restID)
+            .orderBy('users_review.created_at','desc');
+
+        return query.then((rows) => {
+            return rows.map(row => ({
+                name: row.name,
+                comment: row.comment,
+                rating: row.rating,
+                dateSubmitted: row.created_at
+            }))
+        })
     }
 
+    // addReview(restID,userID,comment,rating) {
+    //     return this.knex
+    //         .insert({
+    //             comment:comment,
+    //             rating:rating,
+    //             user_id:userID,
+    //             rest_id:restID
+    //         })
+    //         .into('users_review');
+    // }
+
+    addReview(comment,rating,userID,restID) {
+        let query = this.knex
+                    .select()
+                    .from('users')
+                    .where('users.id',userID)
+
+        return query.then((rows) => {
+            if (rows.length !== 1) {
+                throw new Error('Invalid user');
+            } else {
+                return this.knex  
+                    .insert({
+                        users_id: rows[0].id,
+                        rest_id: restID,
+                        comment: comment,
+                        rating: rating,
+                    })
+                    .into('users_review');
+            }
+        })
+    }
 }
 
 module.exports = RestService;
