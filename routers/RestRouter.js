@@ -14,11 +14,11 @@ class RestRouter {
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/location/:coord', (req, res) => {
-            this.restService.listRestByGeo(req.params.coord)
-                .then((restaurants) => res.json(restaurants))
-                .catch((err) => res.status(500).json(err));
-        })
+        // router.get('/location/:coord', (req, res) => {
+        //     this.restService.listRestByGeo(req.params.coord)
+        //         .then((restaurants) => res.json(restaurants))
+        //         .catch((err) => res.status(500).json(err));
+        // })
 
         router.get('/detail/:restID', (req, res) => { // DONE
             this.restService.getRestDetail(req.params.restID)
@@ -28,6 +28,14 @@ class RestRouter {
 
         router.get('/review/:restID', (req, res) => { 
             this.restService.listReview(req.params.restID)
+                .then((reviews) => res.json(reviews))
+                .catch((err) => res.status(500).json(err));
+        })
+
+        router.post('/review/:restID', (req, res) => {
+            console.log("im run");
+            this.restService.addReview(req.body.comment,req.body.rating,req.session.passport.user.id,req.params.restID)
+                .then(() => this.restService.listReview(req.params.restID))
                 .then((reviews) => res.json(reviews))
                 .catch((err) => res.status(500).json(err));
         })

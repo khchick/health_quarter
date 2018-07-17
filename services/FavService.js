@@ -111,6 +111,21 @@ class FavService {
             // Get created_at for sorting
             // Join Restaurant table to get Restaurant.img and Restaurant.name
             // Restaurant.id for getting the link back to the restaurant
+            let query = this.knex
+            .select('restaurant.id','restaurant.name','restaurant.img')
+            .from('restaurant')
+            .innerJoin('users_fav_restaurant', 'restaurant.id', 'users_fav_restaurant.rest_id')
+            .where('users_fav_restaurant.users_id',userID)
+            .orderBy('users_fav_restaurant.created_at','desc');
+
+            return query.then((rows) => {
+                console.log(rows);
+                return rows.map(row => ({
+                    id: row.id,
+                    name: row.name,
+                    img: row.img
+                }))
+            })
         }
 
         listFavDish(userID) {

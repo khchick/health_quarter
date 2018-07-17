@@ -3,7 +3,6 @@ let tags = [1,2,3];
 $(()=>{
     for(let i = 0;i < tags.length;i++) {
         $.get(`/api/rest/tag/${tags[i]}`).then((data)=>{
-            console.log(data);
             data.forEach(e =>{
                 $('#rest-list').append(Rest(e.tag_name,e.id,e.name,e.price,e.img,e.tags));
             });

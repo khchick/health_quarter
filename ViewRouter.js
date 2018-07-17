@@ -102,6 +102,8 @@ module.exports = class ViewRouter {
                 });
         });
 
+        // My Favourites
+        router.get('/favouriteRest',(req,res)=>res.render("favouriteRest"));
 
 
         // INSERT ROUTERS FOR OTHER PAGES
