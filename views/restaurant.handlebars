@@ -2,14 +2,41 @@
 <div class="container">
     <header>
         <h1>Health Quarter</h1>
-        <p>Logged in as: <strong><span>{{userID}}</span></strong></p>
+        <p>Logged in as:
+            <strong>
+                <span>{{userID}}</span>
+            </strong>
+        </p>
     </header>
     <div class="row no-gutters" id="mainContent">
         <div id="myNotes">
             <div class="container bg-light">
-                <h2 id="myNotesTitle">Restaurant Details</h2>
                 <button id="favBtn">Fav</button>
+                <h2 id="myNotesTitle">Restaurant Details</h2>
                 <div id='rest-detail'></div>
+                <h2>User reviews</h2>
+                <div id='rest-review'></div>
+                <h2>Submit your comments:</h2>
+                <form action="/review/:restID" method="post">
+                    <div>
+                        <label>Comment:</label>
+                        <input type="text" id="comment" name="comment" />
+                    </div>
+                    <div>
+                        <label>Rating:</label>
+                        <div>
+                            <input type="radio" name="rating" value="1">1
+                            <input type="radio" name="rating" value="2">2
+                            <input type="radio" name="rating" value="3">3
+                            <input type="radio" name="rating" value="4">4
+                            <input type="radio" name="rating" value="5" checked="checked">5
+                        </div>
+                    </div>
+                    <div>
+                        <input type="submit" id="submitReview" value="Submit" />
+                    </div>
+                    <div id="alert"></div>
+                </form>
             </div>
         </div>
     </div>

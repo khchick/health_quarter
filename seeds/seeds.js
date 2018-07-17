@@ -15,84 +15,28 @@ const usersReview = require('../database_data/users_review_data');
 exports.seed = function(knex, Promise) {
 
   return knex('restaurant').del()
-    .then(function () {
-      return knex('restaurant').insert(restaurantData);
-    })
+  .then(()=> knex('users').del())
+  .then(()=> knex('dish').del())
+  .then(()=> knex('meal_plan').del())
+  .then(()=> knex('tag').del())
+  .then(()=> knex('restaurant_tag').del())
+  .then(()=> knex('users_fav_restaurant').del())
+  .then(()=> knex('users_fav_dish').del())
+  .then(()=> knex('users_fav_meal_plan').del())
+  .then(()=> knex('users_fav_recipe').del())
+  .then(()=> knex('users_fav_tag').del())
+  .then(()=> knex('users_review').del())
+  .then(()=> knex('restaurant').insert(restaurantData))
+  .then(()=> knex('users').insert(usersData))
+  .then(()=> knex('dish').insert(dishData))
+  .then(()=> knex('meal_plan').insert(mealPlanData))
+  .then(()=> knex('tag').insert(tagData))
+  .then(()=> knex('restaurant_tag').insert(restaurantTagData))
+  .then(()=> knex('users_fav_restaurant').insert(usersFavRestaurantData))
+  .then(()=> knex('users_fav_dish').insert(usersFavDishData))
+  .then(()=> knex('users_fav_meal_plan').insert(usersFavMealPlanData))
+  .then(()=> knex('users_fav_recipe').insert(usersFavRecipeData))
+  .then(()=> knex('users_fav_tag').insert(usersFavTag))
+  .then(()=> knex('users_review').insert(usersReview))
 
-    .then(()=> {
-      return knex('users').del()
-      .then(function () {
-        return knex('users').insert(usersData);
-      })
-    })
-
-    .then(()=> {
-      return knex('tag').del()
-    .then(function () {
-      return knex('tag').insert(tagData);
-    })
-    })
-
-    .then(()=> {
-      return knex('dish').del()
-    .then(function () {
-      return knex('dish').insert(dishData);
-    })
-    })
-
-    .then(()=> {
-      return knex('restaurant_tag').del()
-    .then(function () {
-      return knex('restaurant_tag').insert(restaurantTagData);
-    })
-    })
-
-    .then(()=> {
-      return knex('meal_plan').del()
-    .then(function () {
-      return knex('meal_plan').insert(mealPlanData);
-    })
-    })
-
-    .then(()=> {
-      return knex('users_fav_dish').del()
-    .then(function () {
-      return knex('users_fav_dish').insert(usersFavDishData);
-    })
-    })
-
-    .then(()=> {
-      return knex('users_fav_meal_plan').del()
-    .then(function () {
-      return knex('users_fav_meal_plan').insert(usersFavMealPlanData);
-    })
-    })
-
-    .then(()=> {
-      return knex('users_fav_recipe').del()
-    .then(function () {
-      return knex('users_fav_recipe').insert(usersFavRecipeData);
-    })
-    })
-
-    .then(()=> {
-      return knex('users_fav_restaurant').del()
-    .then(function () {
-      return knex('users_fav_restaurant').insert(usersFavRestaurantData);
-    })
-    })
-
-    .then(()=> {
-      return knex('users_fav_tag').del()
-    .then(function () {
-      return knex('users_fav_tag').insert(usersFavTag);
-    })
-    })
-
-    .then(()=> {
-      return knex('users_review').del()
-    .then(function () {
-      return knex('users_review').insert(usersReview);
-    })
-    })
 };
