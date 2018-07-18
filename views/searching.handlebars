@@ -30,7 +30,7 @@
             recipes += '<td>' + value.title + '</td>';
             recipes += '<td><img src=' + value.image + '></td>';
             recipes += '<td><a href="https://spoonacular.com/' + value.title + '-' + value.id + '">Learn More</a></td>';
-            recipes += '<td><button class="saveRecipe" type="button" data-id="https://spoonacular.com/' + value.title + '-' + value.id + '">Favourite Recipe</button></td>';
+            recipes += '<td><button class="saveRecipe" type="button" data-id="' + value.title + '-' + value.id + '">Favourite Recipe</button></td>';
             recipes += '</tr>';
         });
         $('#recipe_table').append(recipes);

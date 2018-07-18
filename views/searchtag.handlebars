@@ -36,7 +36,7 @@
             recipes += '<td>' + value.instructions + '</td>';
             recipes += '<td>' + value.readyInMinutes + '</td';
             recipes += '<td><a href=' + value.spoonacularSourceUrl + '>Learn More</a></td>';
-            recipes += '<td><button class="saveRecipe" type="button" data-id="https://spoonacular.com/' + value.title + '-' + value.id + '">Favourite Recipe</button></td>';
+            recipes += '<td><button class="saveRecipe" type="button" data-id="' + value.title + '-' + value.id + '">Favourite Recipe</button></td>';
             recipes += '</tr>';
         });
         $('#recipe_table').append(recipes);
