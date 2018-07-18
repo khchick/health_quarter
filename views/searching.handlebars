@@ -19,8 +19,7 @@
 
 </div>
 
-        <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-        <scripr src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+       
 <script type='text/javascript'>
 
  let recipes = {{{ data }}};
@@ -37,35 +36,51 @@
         $('#recipe_table').append(recipes);
 
 
-        //favourite recipe
- $('.saveRecipe').on('click', (e) => {
+          let actionCounter = 0;
+        $('.saveRecipe').on('click', (e) => {
             console.log('clicked.')
+             actionCounter++;
             let recURL = $(e.currentTarget).data('id')
-            toggleFav(recURL);
-//wont get the results, they don't exist/ can't find location?
-            $.get(`/api/fav/rec/${recURL}`).then(res => {
-                console.log(res);
-                let status = JSON.parse(recURL);
-                if (status === true) {
-                    $('.saveRecipe').html("isFav");
-                } else {
-                    $('.saveRecipe').html("notFav");
-                }
-            });
-
-            function toggleFav(recURL) {
-                if ($('.saveRecipe').html() === "isFav") {
-                    axios.delete(`/api/fav/rec/${recURL}`).then(() => {
-                        $('.saveRecipe').html("notFav");
-                    })
-                }
-                if ($('.saveRecipe').html() === "notFav") {
-                    axios.post(`/api/fav/rec/${recURL}`).then(() => {
-                        $('.saveRecipe').html("isFav");
-                    })
-                }
+           
+            console.log(recURL);
+            if (actionCounter === 1) {
+                axios({
+                    method: 'post',
+                    url: '/api/fav/recipes',
+                    data: {
+                        recURL: `${recURL}`
+                    }
+                }).then(() => {
+                    $(e.currentTarget).html("isFav");
+                })
+                console.log(actionCounter);
+            } if (actionCounter === 2) {
+                axios({
+                    method: 'delete',
+                    url: '/api/fav/recipes',
+                    data: {
+                        recURL: `${recURL}`
+                    }
+                }).then(() => {
+                    $(e.currentTarget).html("notFav");
+                })
+                console.log(actionCounter)
             }
-        })
 
+            if (actionCounter === 3) {
+                axios({
+                    method: 'post',
+                    url: '/api/fav/recipes',
+                    data: {
+                        recURL: `${recURL}`
+                    }
+                }).then(() => {
+                    $(e.currentTarget).html("isFav");
+                })
+                console.log(actionCounter)
+                actionCounter = 0;
+                console.log(actionCounter)
 
+            }
+        });
     </script>

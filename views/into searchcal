@@ -13,3 +13,7 @@
                 }
             });
  
+
+  axios.post(`/api/fav/recipes/${recURL}`)
+
+  axios.delete(`/api/fav/recipes/${recURL}`)

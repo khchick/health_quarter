@@ -202,6 +202,17 @@ class FavService {
             // For each matching record in User_Fav_Recipe table
             // Get created_at for sorting
             // For info display, get User_Fav_Recipe.api_url to download from external data source
+            let query = this.knex.select('api_url')
+            .from('users_fav_recipe')
+            .where('users_id',userID)
+            return query.then(rows => {
+                console.log(rows);
+                return rows.map(row => ({
+                    recURL: row.api_url,
+                }))
+            })
+
+
         }
 
     // For personalised home page & preference setting @ sign up / user profile 

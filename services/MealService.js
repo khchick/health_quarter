@@ -28,9 +28,15 @@ class MealService {
 
     // If restID === null, list all records from Meal_Plan table
 listAllMeal() {
+    console.log("me")
     let query = this.knex
+<<<<<<< HEAD
     .select('meal_plan.id as meal_id', 'meal_plan.name', 'meal_plan.img', 'meal_plan.about', 'restaurant.id')
     .from('meal_plan','restaurant')
+=======
+    .select('meal_plan.id', 'meal_plan.name', 'meal_plan.img', 'meal_plan.about', 'restaurant.id as rest_id')
+    .from('meal_plan')
+>>>>>>> 4c8c852ca8c80f45c8513d540a547d7b99b64d00
     .innerJoin('restaurant', 'meal_plan.rest_id', 'restaurant.id')
     .orderBy('meal_plan.name');
 
@@ -41,7 +47,12 @@ listAllMeal() {
                 name: row.name,
                 img: row.img,
                 about: row.about,
+<<<<<<< HEAD
                 rest_id: row.id
+=======
+                rest_id: row.rest_id
+                // date: row.created_at
+>>>>>>> 4c8c852ca8c80f45c8513d540a547d7b99b64d00
             })
             )
         }

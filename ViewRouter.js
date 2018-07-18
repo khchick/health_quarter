@@ -82,6 +82,9 @@ module.exports = class ViewRouter {
         // Home page
         router.get('/home', (req, res)=>res.render('home'));
 
+        // Meal Plans page
+        router.get('/delivery', (req, res)=>res.render('meal'));
+
         // Restaurant details page
         router.get('/rest/:id', (req, res)=>res.render('restaurant'));
 
