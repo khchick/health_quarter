@@ -1,6 +1,3 @@
-<script type='text/javascript' src="/js/searchcal.js"></script>
-
-
 <div class="container">
     <header>
         <h1>
@@ -43,45 +40,52 @@
             recipes += '</tr>';
         });
         $('#recipe_table').append(recipes);
-
-
+             
+             let actionCounter = 0;
         $('.saveRecipe').on('click', (e) => {
             console.log('clicked.')
+             actionCounter++;
             let recURL = $(e.currentTarget).data('id')
-            toggleFav(recURL);
+           
             console.log(recURL);
-            axios({
-                method: 'post',
-                url: '/api/fav/recipes',
-                data: {
-                    recURL: `${recURL}`
-                }
-            }).then(() => {
-                $(e.currentTarget).html("isFav");
-            })
-            function toggleFav(recURL) {
-                if ($(e.currentTarget).html() === "isFav") {
-                    axios({
-                        method: 'delete',
-                        url: '/api/fav/recipes',
-                        data: {
-                            recURL: `${recURL}`
-                        }
-                    }).then(() => { 
-                        $(e.currentTarget).html("notFav");
-                    })
-                }
-                if ($(e.currentTarget).html() === "notFav") {
-                    axios({
-                        method: 'post',
-                        url: '/api/fav/recipes',
-                        data: {
-                            recURL: `${recURL}`
-                        }
-                    }).then(() => {
-                        $(e.currentTarget).html("isFav");
-                    })
-                }
+            if (actionCounter === 1) {
+                axios({
+                    method: 'post',
+                    url: '/api/fav/recipes',
+                    data: {
+                        recURL: `${recURL}`
+                    }
+                }).then(() => {
+                    $(e.currentTarget).html("isFav");
+                })
+                console.log(actionCounter);
+            } if (actionCounter === 2) {
+                axios({
+                    method: 'delete',
+                    url: '/api/fav/recipes',
+                    data: {
+                        recURL: `${recURL}`
+                    }
+                }).then(() => {
+                    $(e.currentTarget).html("notFav");
+                })
+                console.log(actionCounter)
+            }
+
+            if (actionCounter === 3) {
+                axios({
+                    method: 'post',
+                    url: '/api/fav/recipes',
+                    data: {
+                        recURL: `${recURL}`
+                    }
+                }).then(() => {
+                    $(e.currentTarget).html("isFav");
+                })
+                console.log(actionCounter)
+                actionCounter = 0;
+                console.log(actionCounter)
+
             }
         });
 
