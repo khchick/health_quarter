@@ -15,7 +15,13 @@ class FavRouter {
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.get('/dish/:dishID', (req, res) => { 
+        router.get('/recipes/:recURL', (req, res) => {
+            this.faveService.isFavRec(req.params.recURL, req.session.passport.user.id)
+                .then((status) => res.json(status))
+                .catch((err) => res.status(500).json(err));
+        })
+
+        router.get('/dish/:dishID', (req, res) => {
             this.favService.isFavDish(req.params.dishID, req.session.passport.user.id)
                 .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
@@ -35,12 +41,29 @@ class FavRouter {
                 .catch((err) => res.status(500).json(err));
         })
 
+
         router.delete('/rest/:restID', (req, res) => { // DONE
             this.favService.delFavRest(req.params.restID, req.session.passport.user.id)
                 .then(() => this.favService.isFavRest(req.params.restID, req.session.passport.user.id))
                 .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
         })
+
+        router.post('/recipes/:recURL', (req, res) => {
+            this.favService.addFavRec(req.params.recURL, req.session.passport.user.id)
+                .then(() => this.favService.isFavRec(req.params.recURL, req.session.passport.user.id))
+                .then((status) => res.json(status))
+                .catch((err) => res.status(500).json(err));
+        })
+
+        router.delete('/recipes/:recUrl', (req, res)=>{
+            this.favService.delFavRec(req.params.recURL, req.session.passport.user.id)
+                .then(()=> this.favService.isFavRec(req.params.recURL, req.session.passport.user.id))
+                .then((status) => res.json(status))
+                .catch((err)=> res.status(500).json(err));
+        })
+
+
 
         router.post('/dish/:dishID', (req, res) => {
             this.favService.addFavDish(req.params.dishID, req.session.passport.user.id)
@@ -49,21 +72,21 @@ class FavRouter {
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.delete('/dish/:dishID', (req, res) => { 
+        router.delete('/dish/:dishID', (req, res) => {
             this.favService.delFavDish(req.params.dishID, req.session.passport.user.id)
                 .then(() => this.favService.isFavDish(req.params.dishID, req.session.passport.user.id))
                 .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.post('/meal/:mealID', (req, res) => { 
+        router.post('/meal/:mealID', (req, res) => {
             this.favService.addFavMeal(req.params.mealID, req.session.passport.user.id)
                 .then(() => this.favService.isFavMeal(req.params.mealID, req.session.passport.user.id))
                 .then((status) => res.json(status))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.delete('/meal/:mealID', (req, res) => { 
+        router.delete('/meal/:mealID', (req, res) => {
             this.favService.delFavMeal(req.params.mealID, req.session.passport.user.id)
                 .then(() => this.favService.isFavMeal(req.params.mealID, req.session.passport.user.id))
                 .then((status) => res.json(status))
