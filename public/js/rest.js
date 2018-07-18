@@ -1,3 +1,14 @@
+// var reviewObject = Handlebars.compile(`
+// {{#each review}}
+//     <div class="info-container">
+//         <label class="lbl-info">Name: </label><p>${name}</p>
+//         <label class="lbl-info">Comment: </label><p>${comment}</p>
+//         <label class="lbl-info">Rating: </label><p>${rating}</p>
+//         <label class="lbl-info">Date: </label><p>${date}</p>
+//     </div>
+// {{/each}}
+// `);
+
 $(()=>{
     let restID = window.location.href.split("/").pop();
 
@@ -84,21 +95,13 @@ $(()=>{
             return;
         }
 
-        // console.log(comment);
-        // console.log(rating);
-
         axios.post(`/api/rest/review/${restID}`, {
             "comment": comment,
             "rating": rating
         })
-        //     .then((res) => {
-        //     console.log(res);
-        //     refreshReviews(res.data);
-        //     $('#alert').html('Review added!');
-        //     setTimeout(() => {
-        //         $('#alert').html('&nbsp;');
-        //     }, 1000);
-        // })
+        .then((res) => {
+            document.location=`/rest/${restID}`;
+        })
     })
 })
 
@@ -114,4 +117,8 @@ function toggleFav(restID) {
         })
     }
 }
+
+// function refreshReviews(review) {
+//     $('#rest-review').html(reviewObject({review: review}));
+// }
 

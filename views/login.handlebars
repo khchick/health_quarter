@@ -1,19 +1,24 @@
 <div class="container">
-    <h1>Health Quarter</h1>
+    <header>
+        <h1><a href="/">Health Quarter</a></h1>
+        <a href="/delivery">Delivery</a>
+        <a href="/recipeFinder">Recipes Finder</a>
+        <a href="/signup">SIGNUP</a>
+    </header>
     <div class="row no-gutters" id="mainContent">
-        <div class="col-12" id="loginPanel">
-            <div class="container bg-light">
+        <div id="myNotes">
+            <div class="container bg-light d-flex flex-column align-items-center">
                 <h2 id="loginTitle">User login</h2>
                 <form action="/login" method="post">
-                    <div>
-                        <label>email:</label>
+                   <div class="d-flex justify-content">
+                        <label>Email:</label>
                         <input type="text" name="username" />
                     </div>
-                    <div>
+                    <div class="d-flex justify-content">
                         <label>Password:</label>
                         <input type="password" name="password" />
                     </div>
-                    <div>
+                    <div class="d-flex flex-column align-items-center">
                         <input type="submit" value="Log In" />
                     </div>
                 </form>
