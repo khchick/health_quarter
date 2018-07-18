@@ -4,52 +4,43 @@ class UserService {
         this.knex = knex;
     }
 
-    // // Define write function
-    // writeFile(file, data) {
-    //     return new Promise((resolve, reject) => {
-    //         fs.writeFile(`${uploadDirectory}${path.sep}${file}`, data, (err) => {
-    //             if (err) {
-    //                 reject(err);
-    //             } else {
-    //                 resolve(file);
-    //             }
-    //         })
-    //     })
-    // }
-
-    // // Define read function
-    // readFile(file) {
-    //     return new Promise((resolve, reject) => {
-    //         fs.readFile(`${uploadDirectory}${path.sep}${file}`, (err, data) => {
-    //             if (err) {
-    //                 reject(err);
-    //             } else {
-    //                 resolve(data);
-    //             }
-    //         })
-    //     })
-    // }
-
-    // // Define functions to get file name and extension, for inserting timestamp
-    // getFilename(filename) {
-    //     return filename.split('.').shift();
-    // }
-    // getExtension(filename) {
-    //     return filename.split('.').pop();
-    // }
-
-    createUser(email, password, img, name, tags) {
-        // Insert record to User table with passed in arguments
-    }
-
     getUserDetail(userID) {
         // Get User.img from DB for matching userID
         // Get User.name from DB for matching userID
         // Get User.email from DB for matching userID
+        let query = this.knex
+            .select('users.img','users.email', 'users.name')
+            .from('users')
+            .where('users.id', userID)
+
+        return query.then(rows => {
+            return rows.map(row => ({
+                img: row.img,
+                email: row.email,
+                name: row.name
+            }))
+        })
     }
 
-    updateUserDetail(userID, img, name, tags) {
+    updateUserDetail(userID,name,imgURL) {
         // Update record on form submission
+        let query = this.knex
+            .select()
+            .from('users')
+            .where('users.id',userID);
+
+        return query.then(rows => {
+            if (rows.length !==1) {
+                return new Error('Invalid user');
+            } else {
+                return this.knex('users')
+                    .where('id',userID)
+                    .update({
+                        name: name,
+                        img: imgURL
+                    })
+            }
+        })
     }
 
     listOwnReview(userID) {

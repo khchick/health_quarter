@@ -1,0 +1,31 @@
+<script type='text/javascript' src="/js/profile.js"></script>
+<div class="container">
+    <header>
+        <h1><a href="/home">Health Quarter</a></h1>
+        <a href="/delivery">Delivery</a>
+        <a href="/favouriteRest">My Favourites</a>
+        <a href="/recipeFinder">Recipes Finder</a>
+        <a href="/logout">LOGOUT</a>
+    </header>
+    <div class="row no-gutters" id="mainContent">
+        <div id="myNotes" class="d-flex flex-row justify-content-center">
+            <div class="container bg-light col-">
+                <h2 id="myNotesTitle">Account details</h2>
+                <div id='my-detail'></div>
+            </div>
+            <div class="container bg-light col-4">
+                <h2>My reviews</h2>
+                <div id='rest-review'>
+                    {{!-- {{#each review}}
+                        <div class="info-container">
+                            <label class="lbl-info">Name: </label><p>{{this.name}}</p>
+                            <label class="lbl-info">Comment: </label><p>{{this.comment}}</p>
+                            <label class="lbl-info">Rating: </label><p>{{this.rating}}</p>
+                            <label class="lbl-info">Date: </label><p>{{this.date}}</p>
+                        </div>
+                    {{/each}} --}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

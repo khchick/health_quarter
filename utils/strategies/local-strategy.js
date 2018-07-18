@@ -26,7 +26,7 @@ module.exports = (app) => {
                     email:email,
                     password:hash,
                     name:req.body.nickname,
-                    img:`/public/images/users/${req.file.filename}`
+                    img:`/images/users/${req.file.originalname}`
                 };
                 let userId = await knex('users').insert(newUser).returning('id');
                 newUser.id = userId;

@@ -12,7 +12,9 @@ const storage = multer.diskStorage({
       cb(null, './public/images/users')
     },
     filename: function (req, file, cb) {
-      cb(null, Date.now() + '-' + file.originalname)
+      cb(null, 
+        // Date.now() + '-' + 
+        file.originalname)
     }
   })
 const upload = multer({ storage: storage })
@@ -63,7 +65,7 @@ module.exports = class ViewRouter {
         // Sign up page
         router.get('/signup',(req,res)=>res.render("signup"));
         router.post('/signup', upload.single('profilePic'), passport.authenticate('local-signup', {
-            successRedirect: '/home',
+            successRedirect: '/login',
             failureRedirect: '/error',
             failureFlash: true
         }));
@@ -145,12 +147,14 @@ module.exports = class ViewRouter {
                 });
         });
 
-        // My Favourites
+        // My Favourites page
         router.get('/favouriteRest',(req,res)=>res.render("favouriteRest"));
         router.get('/favouriteDish',(req,res)=>res.render("favouriteDish"));
         router.get('/favouriteMeal',(req,res)=>res.render("favouriteMeal"));
         router.get('/favouriteRec',(req,res)=>res.render("favouriteRec"));
 
+        // My Account page
+        router.get('/profile', (req, res)=>res.render('profile'));
 
         // INSERT ROUTERS FOR OTHER PAGES
 

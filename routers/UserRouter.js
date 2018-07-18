@@ -10,15 +10,16 @@ class UserRouter {
     router() {
         let router = express.Router();
 
-        router.get('/:userID', (req, res) => {
-            this.userService.getUserDetail(req.params.userID)
+        router.get('/', (req, res) => {
+            this.userService.getUserDetail(req.session.passport.user.id)
                 .then((userDetails) => res.json(userDetails))
                 .catch((err) => res.status(500).json(err));
         })
 
-        router.put('/:userID', (req, res) => {
-            this.userService.updateUserDetail(req.params.userID, req.body.image, req.body.name, req.body.tags)
-                .then(() => this.userService.getUserDetail(req.params.userID))
+        router.put('/', (req, res) => {
+            console.log(req.body.image);
+            this.userService.updateUserDetail(req.session.passport.user.id)
+                // .then(() => this.userService.getUserDetail(req.session.passport.user.id))
                 .then((userDetails) => res.json(userDetails))
                 .catch((err) => res.status(500).json(err));
         })
