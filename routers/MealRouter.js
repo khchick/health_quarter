@@ -19,10 +19,6 @@ class MealRouter {
                 .then((meals) => res.json(meals))
                 .catch((err) => res.status(500).json(err));
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> 85bca108f7b99df0901d5d04ae5df1eeeaae74c9
         return router;
     }
 }

@@ -17,7 +17,6 @@
         <th>Cooking Time:</th>
         <th>Learn more button:</th>
         </th>Favourite Recipe </th>
-<<<<<<< HEAD
     </tr>
 </table>
 
@@ -72,31 +71,3 @@
             }
         })
     </script>
-=======
-        </tr>
-        </table>
-
-</div>
-
-        <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-        <scripr src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-<script type='text/javascript'>
-
-// make data useable
-let recipes = {{{ data }}};
-
-$.each(recipes.recipes, function(key, value){
-             recipes += '<tr>';
-             recipes += '<td>'+value.title+'</td>';
-             recipes += '<td>'+value.servings+'</td>';
-             recipes += '<td><img src='+value.image+'></td>';
-             recipes += '<td>'+value.instructions+'</td>';
-             recipes += '<td>'+value.readyInMinutes+'</td';
-             recipes += '<td><a href='+value.spoonacularSourceUrl+'>Learn More</a></td>';
-             recipes += '<td><button name="submit" id="saveRecipe" class="ui save recipe button" type="submit">Favourite Recipe</button></td>'
-             recipes += '</tr>';
-         });
-         $('#recipe_table').append(recipes);
-
-         </script>
->>>>>>> 85bca108f7b99df0901d5d04ae5df1eeeaae74c9

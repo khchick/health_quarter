@@ -59,9 +59,22 @@ class FavService {
             })
         }
 
-        // isFavRec(recURL, userID) {
+        isFavRec(recURL, userID) {
         //     // If recURL match with api_url in User_Fav_Recipe table for matching user_id, return true
-        // }
+
+            let query = this.knex
+            .select()
+            .from('users_fav_recipe')
+            .where('users_id', userID)
+            .andWhere('api_url', recURL)
+            return query.then((rows) => {
+                if (rows.length === 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            })
+        }
 
         // For status update
 
@@ -84,10 +97,11 @@ class FavService {
             return this.knex("users_fav_meal_plan").insert({"users_id":userID,"meal_plan_id":mealID})
         }
 
-        // addFavRec(recURL, userID) {
-        //     // if isFavRec(recURL, userID) === false, create record in User_Fav_Recipe with recURL and user_id pair
-        //     // if isFavRec(recURL, userID) === true, delete record
-        // }
+        addFavRec(recURL, userID) {
+            // if isFavRec(recURL, userID) === false, create record in User_Fav_Recipe with recURL and user_id pair
+            // if isFavRec(recURL, userID) === true, delete record
+            return this.knex('users_fav_recipe').insert({"users_id":userID,"api_url":recURL})
+        }
 
         delFavRest(restID, userID) {
 
@@ -117,10 +131,14 @@ class FavService {
             .delete()
         }
 
-        // delFavRec(recURL, userID) {
-        //     // if isFavRec(recURL, userID) === false, create record in User_Fav_Recipe with recURL and user_id pair
-        //     // if isFavRec(recURL, userID) === true, delete record
-        // }
+        delFavRec(recURL, userID) {
+            // if isFavRec(recURL, userID) === false, create record in User_Fav_Recipe with recURL and user_id pair
+            // if isFavRec(recURL, userID) === true, delete record
+            return this.knex('users_fav_recipe')
+            .where('users_id',userID)
+            .andWhere('api_url',recURL)
+            .delete()
+        }
 
     // @ Favourite page
 

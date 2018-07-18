@@ -1,0 +1,15 @@
+ $('.saveRecipe').on('click', (e) => {
+            console.log('clicked.')
+            let recURL = $(e.currentTarget).data('id')
+            toggleFav(recURL);
+//wont get the results, they don't exist/ can't find location?
+            $.get(`/api/fav/rec/${recURL}`).then(res => {
+                console.log(res);
+                let status = JSON.parse(recURL);
+                if (status === true) {
+                    $('.saveRecipe').html("isFav");
+                } else {
+                    $('.saveRecipe').html("notFav");
+                }
+            });
+ 

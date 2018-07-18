@@ -49,7 +49,6 @@ class FavRouter {
                 .catch((err) => res.status(500).json(err));
         })
 
-<<<<<<< HEAD
         router.post('/recipes/:recURL', (req, res) => {
             this.favService.addFavRec(req.params.recURL, req.session.passport.user.id)
                 .then(() => this.favService.isFavRec(req.params.recURL, req.session.passport.user.id))
@@ -66,8 +65,6 @@ class FavRouter {
 
 
 
-=======
->>>>>>> 85bca108f7b99df0901d5d04ae5df1eeeaae74c9
         router.post('/dish/:dishID', (req, res) => {
             this.favService.addFavDish(req.params.dishID, req.session.passport.user.id)
                 .then(() => this.favService.isFavDish(req.params.dishID, req.session.passport.user.id))
