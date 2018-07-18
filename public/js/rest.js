@@ -47,6 +47,42 @@ $(()=>{
             </div>`
     }
 
+ // Get dish details
+ $.get(`/api/dish/rest/${restID}`).then(data =>{
+   data.forEach(e =>{
+        $('#dish-detail').append(DishDetail(
+            e.name,
+            e.img,
+        ))
+    });
+});
+const DishDetail = (name,img)=>{
+    return `
+        <div class="info-container">
+            <label class="lbl-info">Name: </label><p>${name}</p>
+            <label class="lbl-info">img: </label><p>${img}</p>
+        </div>`
+}
+
+ // Get meal details
+ $.get(`/api/meal/${restID}`).then(data =>{
+    data.forEach(e =>{
+        $('#meal-detail').append(MealDetail(
+            e.name,
+            e.img,
+            e.about,
+        ))
+    });
+});
+const MealDetail = (name,img,about)=>{
+    return `
+        <div class="info-container">
+            <label class="lbl-info">Name: </label><p>${name}</p>
+            <label class="lbl-info">img: </label><p>${img}</p>
+            <label class="lbl-info">About: </label><p>${about}</p>
+        </div>`
+}
+
     // Get favourite status
     $.get(`/api/fav/rest/${restID}`).then(res => {
         console.log(res);
