@@ -49,11 +49,11 @@ app.use('/api/dish', (new DishRouter(dishService)).router());
 app.use('/api/fav', (new FavRouter(favService)).router());
 app.use('/api/meal', (new MealRouter(mealService)).router());
 app.use('/api/rest', (new RestRouter(restService)).router());
-// app.use('/api/user', (new UserRouter(userService)).router());
+app.use('/api/user', (new UserRouter(userService)).router());
   
 // app.use('/api/fav',isLoggedIn,new FavRouter(favService).router()); // DO SOMETHING FOR LOGGED IN USERS?
 // app.use('/api/rest',isLoggedIn,new RestRouter(restService).router()); // DO SOMETHING FOR LOGGED IN USERS?
-app.use('/api/user',isLoggedIn,new UserRouter(userService).router()); // DO SOMETHING FOR LOGGED IN USERS?
+// app.use('/api/user',isLoggedIn,new UserRouter(userService).router()); // DO SOMETHING FOR LOGGED IN USERS?
 
 const httpsOptions = {
     key: fs.readFileSync('./localhost.key'),

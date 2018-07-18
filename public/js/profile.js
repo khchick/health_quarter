@@ -1,7 +1,6 @@
 $(()=>{
     // Get account details
     $.get(`/api/user/`).then(data =>{
-        console.log("hi");
         data.forEach(e =>{
             $('#my-detail').append(UserDetail(
                 e.img,
@@ -29,12 +28,35 @@ $(()=>{
                         <label>Nickname:  </label>
                         <input type="text" name="nickname" id="nickname" value="${name}"/>
                     </div>
+
                     <div class="d-flex flex-column align-items-center">
                         <input type="submit" id="updateBtn" value="Update"/>
                     </div>
                 </form> 
             </div>`
     }
+
+    $.get('/api/user/tags/all').then(data =>{
+        data.forEach(e =>{
+            $('#tag-list').append(Tags(
+                e.id,
+                e.name
+            ))
+        });
+    });
+    const Tags = (id,name)=>{
+        return `
+            <div class="info-container">
+                <input type="checkbox" name="tag" id="${id}${name}" value="${id}">${name}
+            </div>`
+    }
+
+    $.get(`/api/user/tags/fav`).then(data => {
+        console.log(data);
+        return data.forEach(e =>{
+            return $(`#${e.id}${e.name}`).prop('checked', true);
+        });
+    })
 
     // Update account details
     $('#my-detail').on('click', '#updateBtn', (e) => {
@@ -44,19 +66,23 @@ $(()=>{
         let file = $('#imgfile').val();
 
         var formData = new FormData();
-        formData.append("nickname",nickname);
+        // formData.append("nickname",nickname);
 
         for(let i = 0;i < file.length; i++) {
             formData.append("imgfile",file[i]);
         }
     
-        axios.put('/api/user/', formData, {
+        axios.post('/api/user', formData, {
             headers: {
             'Content-Type': 'multipart/form-data'
             }
         })
         .then(res => {
-            document.location='/profile';
+            axios.put('api/user', {
+                "nickname": nickname,
+                "imgURL": `/public/users/${file}`
+            })
+            .then(res=>document.location='/profile')
         })
         .catch(err => {
             console.log(err);

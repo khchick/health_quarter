@@ -28,8 +28,14 @@ module.exports = (app) => {
                     name:req.body.nickname,
                     img:`/images/users/${req.file.originalname}`
                 };
+                console.log(req.body);
                 let userId = await knex('users').insert(newUser).returning('id');
                 newUser.id = userId;
+
+                for(let i = 0; i < req.body.tag.length; i++) {
+                    let favTagId = await knex("users_fav_tag").insert({users_id:`${newUser.id}`,tag_id:req.body.tag[i]}).returning('tag_id');
+                }
+
                 done(null,newUser);
             }catch(err){
                 done(err);

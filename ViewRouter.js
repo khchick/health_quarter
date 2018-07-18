@@ -155,6 +155,7 @@ module.exports = class ViewRouter {
 
         // My Account page
         router.get('/profile', (req, res)=>res.render('profile'));
+        router.post('/', upload.single('imgfile', (req, res) => res.render("profile")));
 
         // INSERT ROUTERS FOR OTHER PAGES
 
