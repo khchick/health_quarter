@@ -1,25 +1,27 @@
 $(()=>{
-    let mealID = window.location.href.split("/").pop();
+    //let mealID = window.location.href.split("/").pop();
 
-    // Get meal details
-    $.get(`/api/meal/detail/${mealID}`).then(data =>{
+    // List all meal details
+    $.get(`/api/meal/`).then(data =>{
         data.forEach(e =>{
-            $('#meal-detail').append(MealDetail(
+            $('#meal-listAll').append(ListAllMeal(
                 e.name,
-                e.img
+                e.img,
+                e.about
             ))
         });
     });
-    const MealDetail = (name,img)=>{
+    const ListAllMeal = (name,img,about)=>{
         return `
             <div class="info-container">
                 <label class="lbl-info">Name: </label><p>${name}</p>
                 <label class="lbl-info">img: </label><p>${img}</p>
+                <label class="lbl-info">about: </label><p>${about}</p>
             </div>`
     }
 
     // Get favourite status
-    $.get(`/api/fav/meal/${mealID}`).then(res => {
+    $.get(`/api/fav/meal/`).then(res => {
         let status = JSON.parse(res);
         if (status === true) {
             $('#favBtn').html("isFav");
@@ -37,14 +39,13 @@ $(()=>{
 
 function toggleFav(mealID) {
     if ($('#favBtn').html() === "isFav") {
-        axios.delete(`/api/fav/meal/${mealID}`).then(()=> {
+        axios.delete(`/api/fav/meal/`).then(()=> {
             $('#favBtn').html("notFav");
         })
     }
     if ($('#favBtn').html() === "notFav") {
-        axios.post(`/api/fav/meal/${mealID}`).then(()=> {
+        axios.post(`/api/fav/meal/`).then(()=> {
             $('#favBtn').html("isFav");
         })
     }
 }
-
