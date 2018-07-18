@@ -1,3 +1,6 @@
+<script type='text/javascript' src="/js/searchtag.js"></script>
+
+
 <div class="container">
     <header>
         <h1><a href="/home">Health Quarter</a></h1>
@@ -46,28 +49,40 @@
             console.log('clicked.')
             let recURL = $(e.currentTarget).data('id')
             toggleFav(recURL);
-//wont get the results, they don't exist/ can't find location?
-            $.get(`/api/fav/rec/${recURL}`).then(res => {
-                console.log(res);
-                let status = JSON.parse(recURL);
-                if (status === true) {
-                    $('.saveRecipe').html("isFav");
-                } else {
-                    $('.saveRecipe').html("notFav");
+            console.log(recURL);
+            axios({
+                method: 'post',
+                url: '/api/fav/recipes',
+                data: {
+                    recURL: `${recURL}`
                 }
-            });
-
+            }).then(() => {
+                $(e.currentTarget).html("isFav");
+            })
             function toggleFav(recURL) {
-                if ($('.saveRecipe').html() === "isFav") {
-                    axios.delete(`/api/fav/rec/${recURL}`).then(() => {
-                        $('.saveRecipe').html("notFav");
+                if ($(e.currentTarget).html() === "isFav") {
+                    axios({
+                        method: 'delete',
+                        url: '/api/fav/recipes',
+                        data: {
+                            recURL: `${recURL}`
+                        }
+                    }).then(() => {
+                        $(e.currentTarget).html("notFav");
                     })
                 }
-                if ($('.saveRecipe').html() === "notFav") {
-                    axios.post(`/api/fav/rec/${recURL}`).then(() => {
-                        $('.saveRecipe').html("isFav");
+                if ($(e.currentTarget).html() === "notFav") {
+                    axios({
+                        method: 'post',
+                        url: '/api/fav/recipes',
+                        data: {
+                            recURL: `${recURL}`
+                        }
+                    }).then(() => {
+                        $(e.currentTarget).html("isFav");
                     })
                 }
             }
-        })
+
+        });
     </script>

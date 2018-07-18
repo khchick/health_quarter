@@ -1,3 +1,6 @@
+<script type='text/javascript' src="/js/searchcal.js"></script>
+
+
 <div class="container">
     <header>
         <h1>
@@ -36,7 +39,7 @@
             recipes += '<td>' + value.calories + '</td>';
             recipes += '<td><img src=' + value.image + '></td>';
             recipes += '<td><a href="https://spoonacular.com/' + value.title + '-' + value.id + '">Learn More</a></td>';
-            recipes += '<td><button class="saveRecipe" type="button" data-id="https://spoonacular.com/' + value.title + '-' + value.id + '">Favourite Recipe</button></td>';
+            recipes += '<td><button class="saveRecipe" type="button" data-id="' + value.title + '-' + value.id + '">Favourite Recipe</button></td>';
             recipes += '</tr>';
         });
         $('#recipe_table').append(recipes);
@@ -46,25 +49,40 @@
             console.log('clicked.')
             let recURL = $(e.currentTarget).data('id')
             toggleFav(recURL);
-             $('.saveRecipe').html("isFav");           
+            console.log(recURL);
+            axios({
+                method: 'post',
+                url: '/api/fav/recipes',
+                data: {
+                    recURL: `${recURL}`
+                }
+            }).then(() => {
+                $(e.currentTarget).html("isFav");
+            })
             function toggleFav(recURL) {
-                if ($('.saveRecipe').html() === "isFav") {
-                    axios.delete(`/api/fav/rec/${recURL}`).then(() => {
-                        $('.saveRecipe').html("notFav");
+                if ($(e.currentTarget).html() === "isFav") {
+                    axios({
+                        method: 'delete',
+                        url: '/api/fav/recipes',
+                        data: {
+                            recURL: `${recURL}`
+                        }
+                    }).then(() => { 
+                        $(e.currentTarget).html("notFav");
                     })
                 }
-                if ($('.saveRecipe').html() === "notFav") {
-                    axios.post(`/api/fav/rec/${recURL}`).then(() => {
-                        $('.saveRecipe').html("isFav");
+                if ($(e.currentTarget).html() === "notFav") {
+                    axios({
+                        method: 'post',
+                        url: '/api/fav/recipes',
+                        data: {
+                            recURL: `${recURL}`
+                        }
+                    }).then(() => {
+                        $(e.currentTarget).html("isFav");
                     })
                 }
             }
-
         });
-
-
-
-//event.target/event.current.target/event.target.parent
-
 
     </script>
