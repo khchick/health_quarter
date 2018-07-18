@@ -9,7 +9,7 @@
         <div id="myNotes">
                 <div class="container bg-light d-flex flex-column align-items-center">
                 <h2 id="loginTitle">Sign Up</h2>
-                <form action="/signup" method="post">
+                <form action="/signup" method="post" enctype="multipart/form-data">
                     <div class="d-flex justify-content">
                         <label>Email:  </label>
                         <input type="text" name="username"/>
@@ -21,6 +21,10 @@
                     <div class="d-flex justify-content">
                         <label>Nickname:  </label>
                         <input type="text" name="nickname"/>
+                    </div>
+                    <div class="d-flex justify-content">
+                        <label>Profile pic:  </label>
+                        <input type="file" accept="image/*" name="profilePic">
                     </div>
                     <div class="d-flex flex-column align-items-center">
                         <input type="submit" value="Sign up"/>

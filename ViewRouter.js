@@ -5,6 +5,32 @@ const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 const isLoggedIn = require('./utils/guard').isLoggedIn;
 
+// For handling profile image upload
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './public/images/users')
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + '-' + file.originalname)
+    }
+  })
+const upload = multer({ storage: storage })
+// require('dotenv').config(); // Define environments
+// const REDIS_HOST = process.env.REDIS_HOST || 'localhost';
+// const REDIS_PORT = process.env.REDIS_PORT || 6379
+// const NODE_ENV = process.env.NODE_ENV || 'development' 
+
+// const knexFile = require('./knexfile')[NODE_ENV] // Connect to DB
+// const knex = require('knex')(knexFile)
+
+// const redis = require('redis'); // Connect to Redis server
+// const redisClient = redis.createClient({
+//     host: REDIS_HOST,
+//     port: REDIS_PORT
+// })
+// 
+
 module.exports = class ViewRouter {
 
     router() {
@@ -36,7 +62,7 @@ module.exports = class ViewRouter {
 
         // Sign up page
         router.get('/signup',(req,res)=>res.render("signup"));
-        router.post('/signup', passport.authenticate('local-signup', {
+        router.post('/signup', upload.single('profilePic'), passport.authenticate('local-signup', {
             successRedirect: '/home',
             failureRedirect: '/error',
             failureFlash: true
@@ -44,7 +70,7 @@ module.exports = class ViewRouter {
 
         router.get('/logout', function (req, res){
             req.session.destroy(function (err) {
-              res.redirect('/'); 
+              res.redirect('/');
             });
         });
 

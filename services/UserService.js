@@ -4,7 +4,41 @@ class UserService {
         this.knex = knex;
     }
 
-    createUser(email,password,img,name,tags) {
+    // // Define write function
+    // writeFile(file, data) {
+    //     return new Promise((resolve, reject) => {
+    //         fs.writeFile(`${uploadDirectory}${path.sep}${file}`, data, (err) => {
+    //             if (err) {
+    //                 reject(err);
+    //             } else {
+    //                 resolve(file);
+    //             }
+    //         })
+    //     })
+    // }
+
+    // // Define read function
+    // readFile(file) {
+    //     return new Promise((resolve, reject) => {
+    //         fs.readFile(`${uploadDirectory}${path.sep}${file}`, (err, data) => {
+    //             if (err) {
+    //                 reject(err);
+    //             } else {
+    //                 resolve(data);
+    //             }
+    //         })
+    //     })
+    // }
+
+    // // Define functions to get file name and extension, for inserting timestamp
+    // getFilename(filename) {
+    //     return filename.split('.').shift();
+    // }
+    // getExtension(filename) {
+    //     return filename.split('.').pop();
+    // }
+
+    createUser(email, password, img, name, tags) {
         // Insert record to User table with passed in arguments
     }
 
@@ -14,7 +48,7 @@ class UserService {
         // Get User.email from DB for matching userID
     }
 
-    updateUserDetail(userID,img,name,tags) {
+    updateUserDetail(userID, img, name, tags) {
         // Update record on form submission
     }
 
