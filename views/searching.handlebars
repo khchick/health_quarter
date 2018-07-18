@@ -29,43 +29,41 @@
             recipes += '<td>' + value.title + '</td>';
             recipes += '<td><img src=' + value.image + '></td>';
             recipes += '<td><a href="https://spoonacular.com/' + value.title + '-' + value.id + '">Learn More</a></td>';
-            recipes += '<td><button name="submit" id="saveRecipe" class="ui save recipe button" type="submit">Favourite Recipe</button></td>'
+            recipes += '<td><button class="saveRecipe" type="button" data-id="https://spoonacular.com/' + value.title + '-' + value.id + '">Favourite Recipe</button></td>';
             recipes += '</tr>';
         });
         $('#recipe_table').append(recipes);
 
 
         //favourite recipe
-
-            let recURL = `https://spoonacular.com/${recipes.title}-${recipes.id}`;
-            $.get(`/api/fav/rec/${recURL}`).then(res => {
-        console.log(res);
-            let status = JSON.parse(recURL);
-            if (status === true) {
-                $('#saveRecipe').html("isFav");
-            } else {
-                $('#saveRecipe').html("notFav");
-            }
-        })
-
-        $('#saveRecipe').on('click', () => {
-                        console.log('clicked.');
+ $('.saveRecipe').on('click', (e) => {
+            console.log('clicked.')
+            let recURL = $(e.currentTarget).data('id')
             toggleFav(recURL);
+//wont get the results, they don't exist/ can't find location?
+            $.get(`/api/fav/rec/${recURL}`).then(res => {
+                console.log(res);
+                let status = JSON.parse(recURL);
+                if (status === true) {
+                    $('.saveRecipe').html("isFav");
+                } else {
+                    $('.saveRecipe').html("notFav");
+                }
+            });
+
+            function toggleFav(recURL) {
+                if ($('.saveRecipe').html() === "isFav") {
+                    axios.delete(`/api/fav/rec/${recURL}`).then(() => {
+                        $('.saveRecipe').html("notFav");
+                    })
+                }
+                if ($('.saveRecipe').html() === "notFav") {
+                    axios.post(`/api/fav/rec/${recURL}`).then(() => {
+                        $('.saveRecipe').html("isFav");
+                    })
+                }
+            }
         })
-
-
-        function toggleFav(recURL) {
-            if ($('#saveRecipe').html() === "isFav") {
-                axios.delete(`/api/fav/rec/${recURL}`).then(() => {
-                    $('#saveRecipe').html("notFav");
-                })
-            }
-            if ($('#saveRecipe').html() === "notFav") {
-                axios.post(`/api/fav/rec/${recURL}`).then(() => {
-                    $('#saveRecipe').html("isFav");
-                })
-            }
-        }
 
 
     </script>
