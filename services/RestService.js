@@ -4,13 +4,8 @@ class RestService {
         this.knex = knex;
     }
 
-    listRestByTag(tagID) {
-        // Get Restaurant.name from DB with matching tag
-        // Return average from sum of all ratings with matching rest_id 
-            // >>> NEED ADDITIONAL COLUMN IN DB
-        // Get Restaurant.price from DB
-        // Look up Restaurant_Tag table for tag_id per matching rest_id, return tag name for all tag_id(s), excluding the passed in arguement
-
+    // Restaurant services
+    listRestByTag(tagID) {  // For generic home page content
         let query = this.knex
             .select('tag.name as tag_name','restaurant.id', 'restaurant.name', 'restaurant.price', 'restaurant.img')
             .from('restaurant')
@@ -29,7 +24,7 @@ class RestService {
                 tags: []
             }))
         })
-        .then(rows => {
+        .then(rows => { // Get all other tags for each restaurant
             return Promise.all(
                 rows.map(row => {
                     let query = this.knex
@@ -50,7 +45,7 @@ class RestService {
         })
     }
 
-    listRestByUserFavTag (userID) {
+    listRestByUserFavTag (userID) { // For personalised home page content
         let query = this.knex
             .select('tag_id')
             .from('users_fav_tag')
@@ -70,13 +65,14 @@ class RestService {
         })
     }
 
-    listRestByGeo(coord) {
+    listRestByGeo(coord) { // To be implemented
         // Get all restaurants from DB within range of specified coordinates (user's location)
         // For each restaurant, get own coordinate for pin location on map"
         // Get Restaurant.name for each restaurant
         // Get Restaurant.short_desc for each restaurant
     }
 
+    // Restaurant details services
     getRestDetail(restID) {
         let query = this.knex
             .select(
@@ -113,10 +109,9 @@ class RestService {
             }));
         })
 
-        .then(rows => {
+        .then(rows => { // Get all other tags for restaurant
             return Promise.all(
                 rows.map(row => {
-                    console.log("hi");
                     let query = this.knex
                     .select('tag.name')
                     .from('tag')
@@ -135,15 +130,8 @@ class RestService {
         })
     }
 
+    // Review services
     listReview(restID) {
-        // Look up User_Review table for matching restID
-        // Return User_Review.user_id(s)
-        // For each user_id, look up User table for matching records
-        // Return User.img
-        // For each user_id, look up User table for matching records
-        // Return User.name
-        // For each user_id, return matching rating from User_Review table
-        // For each user_id, return matching comment from User_Review table
         let query = this.knex
             .select('users.name','users_review.comment','users_review.rating','users_review.created_at')
             .from('users_review')
@@ -162,17 +150,6 @@ class RestService {
         })
     }
 
-    // addReview(restID,userID,comment,rating) {
-    //     return this.knex
-    //         .insert({
-    //             comment:comment,
-    //             rating:rating,
-    //             user_id:userID,
-    //             rest_id:restID
-    //         })
-    //         .into('users_review');
-    // }
-
     addReview(comment,rating,userID,restID) {
         let query = this.knex
                     .select()
@@ -180,11 +157,9 @@ class RestService {
                     .where('users.id',userID)
 
         return query.then((rows) => {
-            console.log(rows);
             if (rows.length !== 1) {
                 throw new Error('Invalid user');
             } else {
-                
                 return this.knex  
                     .insert({
                         users_id: userID,
@@ -193,7 +168,6 @@ class RestService {
                         rating: rating
                     })
                     .into('users_review');
-
             }
         })
     }

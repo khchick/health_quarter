@@ -1,8 +1,7 @@
 $(()=>{
-    $.get(`/api/fav/preference`).then(tags=>{
-        console.log(tags);
+    $.get(`/api/fav/preference`).then(tags=>{ // Get all fav tags
         tags.forEach(tag =>{
-            $.get(`/api/rest/tag/${tag.id}`).then(data=>{
+            $.get(`/api/rest/tag/${tag.id}`).then(data=>{ // Get list of restaurants by each tag
                 data.forEach(e =>{
                     $('#rest-list').append(Rest(e.tag_name,e.id,e.name,e.price,e.img,e.tags));
                 });

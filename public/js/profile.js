@@ -1,5 +1,5 @@
 $(() => {
-    // Get account details
+    // Get profile details
     $.get(`/api/user/`).then(data => {
         data.forEach(e => {
             $('#my-detail').append(UserDetail(
@@ -9,7 +9,7 @@ $(() => {
             ))
         });
     });
-    const UserDetail = (img, email, name) => {
+    const UserDetail = (img, email, name) => { // Append form with embedded details to page
         return `
             <div class="info-container">
                 <form action="/api/user" method="put" enctype="multipart/form-data">
@@ -33,7 +33,7 @@ $(() => {
             </div>`
     }
 
-    $.get('/api/user/tags/all').then(data => {
+    $.get('/api/user/tags/all').then(data => { // Get all available tags as checkboxes
         data.forEach(e => {
             $('#tag-list').append(Tags(
                 e.id,
@@ -48,7 +48,7 @@ $(() => {
             </div>`
     }
 
-    $.get(`/api/user/tags/fav`).then(data => {
+    $.get(`/api/user/tags/fav`).then(data => { // Get all fav tags (already checked)
         return data.forEach(e => {
             return $(`#tag_${e.id}`).prop('checked', true);
         });
@@ -59,14 +59,14 @@ $(() => {
         e.preventDefault();
 
         axios.put('/api/user', {
-            "nickname": $('#nickname').val(),
+            "nickname": $('#nickname').val(), // Update nickname only
         })
             .then(() => {
-                axios.delete('/api/user/tags/fav')
+                axios.delete('/api/user/tags/fav') // Clear all fav tags
                 .then(()=> {
                     var checked = $('input:checked');
                     for (i = 0;i < checked.length;i++) {
-                        axios.put('/api/user/tags/fav',{
+                        axios.put('/api/user/tags/fav',{ // Insert new fav tags
                             tag: {
                                 tag_id: checked[i].defaultValue
                             }
@@ -78,7 +78,7 @@ $(() => {
             .catch(err => console.log(err));
     })
 
-    // Update avatar
+    // Update avatar image (post new)
     $('#tag-list').on('click','#updateImg', (e) => {
         e.preventDefault();
         let file = $('#avatar').get(0).files;
@@ -91,7 +91,7 @@ $(() => {
         })
         .then(()=> {
             axios.put('/api/user', {
-                "imgURL": `/images/users/${file[0].name}`
+                "imgURL": `/images/users/${file[0].name}` // Insert image URL to DB
             }) 
         })
         .then(()=>location.reload())

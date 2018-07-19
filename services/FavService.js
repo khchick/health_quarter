@@ -7,9 +7,7 @@ class FavService {
     // @ Add to favourite button
 
         // For status display
-
         isFavRest(restID, userID) {
-            // If restID found in User_Fav_Restaurant table for matching user_id, return true
             let query = this.knex
             .select()
             .from('users_fav_restaurant')
@@ -26,7 +24,6 @@ class FavService {
         }
 
         isFavDish(dishID, userID) {
-            // If dishID found in User_Fav_Dish table for matching user_id, return true
             let query = this.knex
             .select()
             .from('users_fav_dish')
@@ -43,7 +40,6 @@ class FavService {
         }
 
         isFavMeal(mealID, userID) {
-            // If dishID found in User_Fav_Dish table for matching user_id, return true
             let query = this.knex
             .select()
             .from('users_fav_meal_plan')
@@ -60,8 +56,6 @@ class FavService {
         }
 
         isFavRec(recURL, userID) {
-        //     // If recURL match with api_url in User_Fav_Recipe table for matching user_id, return true
-
             let query = this.knex
             .select()
             .from('users_fav_recipe')
@@ -77,63 +71,44 @@ class FavService {
         }
 
         // For status update
-
         addFavRest(restID, userID) {
-
-            // if isFavRest(restID, userID) === false, create record in User_Fav_Restaurant with rest_id and user_id pair
-            // if isFavRest(restID, userID) === true, delete record
             return this.knex("users_fav_restaurant").insert({"users_id":userID,"rest_id":restID})
         }
 
-        addFavDish(dishID, userID) {
-            // if isFavDish(dishID, userID) === false, create record in User_Fav_Dish with dish_id and user_id pair
-            // if isFavDish(dishID, userID) === true, delete record
-            return this.knex("users_fav_dish").insert({"users_id":userID,"dish_id":dishID})
-        }
-
-        addFavMeal(mealID, userID) {
-            // if isFavMeal(mealID, userID) === false, create record in User_Fav_Meal with recURL and user_id pair
-            // if isFavMeal(mealID, userID) === true, delete record
-            return this.knex("users_fav_meal_plan").insert({"users_id":userID,"meal_plan_id":mealID})
-        }
-
-        addFavRec(recURL, userID) {
-            // if isFavRec(recURL, userID) === false, create record in User_Fav_Recipe with recURL and user_id pair
-            // if isFavRec(recURL, userID) === true, delete record
-            return this.knex('users_fav_recipe').insert({"users_id":userID,"api_url":recURL})
-        }
-
         delFavRest(restID, userID) {
-
-            // if isFavRest(restID, userID) === false, create record in User_Fav_Restaurant with rest_id and user_id pair
-            // if isFavRest(restID, userID) === true, delete record
             return this.knex("users_fav_restaurant")
             .where("users_id",userID)
             .andWhere("rest_id",restID)
             .delete()
         }
 
+        addFavDish(dishID, userID) {
+            return this.knex("users_fav_dish").insert({"users_id":userID,"dish_id":dishID})
+        }
+
         delFavDish(dishID, userID) {
-            // if isFavDish(dishID, userID) === false, create record in User_Fav_Dish with dish_id and user_id pair
-            // if isFavDish(dishID, userID) === true, delete record
             return this.knex("users_fav_dish")
             .where("users_id",userID)
             .andWhere("dish_id",dishID)
             .delete()
         }
 
+        addFavMeal(mealID, userID) {
+            return this.knex("users_fav_meal_plan").insert({"users_id":userID,"meal_plan_id":mealID})
+        }
+
         delFavMeal(mealID, userID) {
-            // if isFavMeal(mealID, userID) === false, create record in User_Fav_Meal with dish_id and user_id pair
-            // if isFavMeal(mealID, userID) === true, delete record
             return this.knex("users_fav_meal_plan")
             .where("users_id",userID)
             .andWhere("meal_plan_id",mealID)
             .delete()
         }
 
+        addFavRec(recURL, userID) {
+            return this.knex('users_fav_recipe').insert({"users_id":userID,"api_url":recURL})
+        }
+
         delFavRec(recURL, userID) {
-            // if isFavRec(recURL, userID) === false, create record in User_Fav_Recipe with recURL and user_id pair
-            // if isFavRec(recURL, userID) === true, delete record
             return this.knex('users_fav_recipe')
             .where('users_id',userID)
             .andWhere('api_url',recURL)
@@ -143,12 +118,7 @@ class FavService {
     // @ Favourite page
 
         // For listing
-
         listFavRest(userID) {
-            // For each matching rest_id in User_Fav_Restaurant table
-            // Get created_at for sorting
-            // Join Restaurant table to get Restaurant.img and Restaurant.name
-            // Restaurant.id for getting the link back to the restaurant
             let query = this.knex
             .select('restaurant.id','restaurant.name','restaurant.img')
             .from('restaurant')
@@ -167,11 +137,6 @@ class FavService {
         }
 
         listFavDish(userID) {
-            // For each matching dish_id in User_Fav_Dish table
-            // Get created_at for sorting
-            // Join Dish table to retrieve Dish.img and Dish.name for display
-            // Dish.id for getting dish details
-            // Restaurant.id for getting the link back to the restaurant
             let query = this.knex
             .select('restaurant.id','dish.name','dish.img')
             .from('dish')
@@ -181,7 +146,6 @@ class FavService {
             .orderBy('users_fav_dish.created_at','desc');
 
             return query.then((rows) => {
-                console.log(rows);
                 return rows.map(row => ({
                     id: row.id,
                     name: row.name,
@@ -199,29 +163,18 @@ class FavService {
         }
 
         listFavRec(userID) {
-            // For each matching record in User_Fav_Recipe table
-            // Get created_at for sorting
-            // For info display, get User_Fav_Recipe.api_url to download from external data source
             let query = this.knex.select('api_url')
             .from('users_fav_recipe')
             .where('users_id',userID)
             return query.then(rows => {
-                console.log(rows);
                 return rows.map(row => ({
                     recURL: row.api_url,
                 }))
             })
-
-
         }
 
     // For personalised home page & preference setting @ sign up / user profile 
-
         listFavTag(userID) {
-            // Get all records from Tag table from DB
-            // Get Tag.name for display and sorting by alphabetical order
-            // Retrieve tag_id from User_Fav_Tag table for matching userID
-            // If tag_id === listed Tag.id, return true
             let query = this.knex
             .select('tag.id', 'tag.name')
             .from('users_fav_tag')
@@ -230,15 +183,12 @@ class FavService {
             .orderBy('tag.name');
 
             return query.then(rows => {
-                console.log(rows);
                 return rows.map(row => ({
                     id: row.id,
                     name: row.name
                 }))
             })
         }
-
-
 
 }
 

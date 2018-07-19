@@ -1,5 +1,5 @@
 $(() => {
-    $.get(`/api/fav/dishes`).then(data => {
+    $.get(`/api/fav/dishes`).then(data => { // Get list of all fav dishes
         data.forEach(e => {
             $('#fav-dish-list').append(Dish(e.name, e.img, e.id));
         });

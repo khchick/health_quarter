@@ -4,9 +4,7 @@ class DishService {
         this.knex = knex;
     }
 
-    listDish(restID) {
-        // Get Dish.img from DB for matching restID
-        // Get Dish.name for matching restID
+    listDish(restID) { // List all dishes of current restaurant
         let query = this.knex
         .select('dish.id','dish.name','dish.img')
         .from('dish')
@@ -24,10 +22,7 @@ class DishService {
         })
     }
 
-    getDishDetail(dishID) {
-        // Get Dish.img from DB for matching restID
-        // Get Dish.name for matching restID
-        // Get Dish.rest_id to link back to restaurant page
+    getDishDetail(dishID) { // Get dish details of current dish
         let query = this.knex
         .select(
             'dish.id',

@@ -37,6 +37,7 @@ $(()=>{
 
 })
 
+// Define fav button function
 function toggleFav(mealID) {
     if ($('#favBtn').html() === "isFav") {
         axios.delete(`/api/fav/meal/`).then(()=> {

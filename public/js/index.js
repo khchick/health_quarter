@@ -1,7 +1,7 @@
-let tags = [1,2,3];
+let tags = [1,2,3]; // Predefine tags for restaurant listing on generic landing page
 
 $(()=>{
-    for(let i = 0;i < tags.length;i++) {
+    for(let i = 0;i < tags.length;i++) { // Get lists of restaurants by tags
         $.get(`/api/rest/tag/${tags[i]}`).then((data)=>{
             data.forEach(e =>{
                 $('#rest-list').append(Rest(e.tag_name,e.id,e.name,e.price,e.img,e.tags));

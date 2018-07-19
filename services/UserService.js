@@ -4,10 +4,8 @@ class UserService {
         this.knex = knex;
     }
 
+    // Profile details services
     getUserDetail(userID) {
-        // Get User.img from DB for matching userID
-        // Get User.name from DB for matching userID
-        // Get User.email from DB for matching userID
         let query = this.knex
             .select('users.img', 'users.email', 'users.name')
             .from('users')
@@ -23,7 +21,6 @@ class UserService {
     }
 
     updateUserDetail(userID, name, imgURL) {
-        // Update record on form submission
         let query = this.knex
             .select()
             .from('users')
@@ -43,13 +40,7 @@ class UserService {
         })
     }
 
-    listOwnReview(userID) {
-        // Get rest_id from User_Review table for matching userID
-        // Join Restaurant table to retrieve Restaurant.name
-        // Get User_Review.comment of matching rest_id
-        // Get User_Review.rating of matching rest_id
-    }
-
+    // Tag services
     listAllTags() {
         let query = this.knex
             .select('tag.id', 'tag.name')
@@ -64,7 +55,7 @@ class UserService {
         })
     }
 
-    listFavTags(userID) {
+    getFavTags(userID) {
         let query = this.knex
             .select('users_fav_tag.tag_id','tag.name')
             .from('users_fav_tag')
@@ -90,6 +81,15 @@ class UserService {
                 tag_id:tagID
             })
     }
+
+    // User's review services
+    listOwnReview(userID) {
+        // Get rest_id from User_Review table for matching userID
+        // Join Restaurant table to retrieve Restaurant.name
+        // Get User_Review.comment of matching rest_id
+        // Get User_Review.rating of matching rest_id
+    }
+
 }
 
 module.exports = UserService;

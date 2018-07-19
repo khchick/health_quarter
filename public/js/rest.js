@@ -1,20 +1,9 @@
-// var reviewObject = Handlebars.compile(`
-// {{#each review}}
-//     <div class="info-container">
-//         <label class="lbl-info">Name: </label><p>${name}</p>
-//         <label class="lbl-info">Comment: </label><p>${comment}</p>
-//         <label class="lbl-info">Rating: </label><p>${rating}</p>
-//         <label class="lbl-info">Date: </label><p>${date}</p>
-//     </div>
-// {{/each}}
-// `);
-
-$(()=>{
-    let restID = window.location.href.split("/").pop();
+$(() => {
+    let restID = window.location.href.split("/").pop(); // Get restaurant ID from URL
 
     // Get restaurant details
-    $.get(`/api/rest/detail/${restID}`).then(data =>{
-        data.forEach(e =>{
+    $.get(`/api/rest/detail/${restID}`).then(data => {
+        data.forEach(e => {
             $('#rest-detail').append(RestDetail(
                 e.name,
                 e.img,
@@ -31,7 +20,7 @@ $(()=>{
             ))
         });
     });
-    const RestDetail = (name,img,map,about,price,website,phone,hours,lat,lng,location,tags)=>{
+    const RestDetail = (name, img, map, about, price, website, phone, hours, lat, lng, location, tags) => {
         return `
             <div class="info-container">
                 <label class="lbl-info">Name: </label><p>${name}</p>
@@ -49,43 +38,43 @@ $(()=>{
             </div>`
     }
 
- // Get dish details
- $.get(`/api/dish/rest/${restID}`).then(data =>{
-   data.forEach(e =>{
-        $('#dish-detail').append(DishDetail(
-            e.name,
-            e.img,
-        ))
+    // Get all dishes of current restaurant
+    $.get(`/api/dish/rest/${restID}`).then(data => {
+        data.forEach(e => {
+            $('#dish-detail').append(DishDetail(
+                e.name,
+                e.img,
+            ))
+        });
     });
-});
-const DishDetail = (name,img)=>{
-    return `
-        <div class="info-container">
-            <label class="lbl-info">Name: </label><p>${name}</p>
-            <label class="lbl-info">img: </label><p>${img}</p>
-        </div>`
-}
+    const DishDetail = (name, img) => {
+        return `
+            <div class="info-container">
+                <label class="lbl-info">Name: </label><p>${name}</p>
+                <label class="lbl-info">img: </label><p>${img}</p>
+            </div>`
+    }
 
- // Get meal details
- $.get(`/api/meal/${restID}`).then(data =>{
-    data.forEach(e =>{
-        $('#meal-detail').append(MealDetail(
-            e.name,
-            e.img,
-            e.about,
-        ))
+    // Get all meal plans of current restaurant
+    $.get(`/api/meal/${restID}`).then(data => {
+        data.forEach(e => {
+            $('#meal-detail').append(MealDetail(
+                e.name,
+                e.img,
+                e.about,
+            ))
+        });
     });
-});
-const MealDetail = (name,img,about)=>{
-    return `
+    const MealDetail = (name, img, about) => {
+        return `
         <div class="info-container">
             <label class="lbl-info">Name: </label><p>${name}</p>
             <label class="lbl-info">img: </label><p>${img}</p>
             <label class="lbl-info">About: </label><p>${about}</p>
         </div>`
-}
+    }
 
-    // Get favourite status
+    // Get favourite status 
     $.get(`/api/fav/rest/${restID}`).then(res => {
         console.log(res);
         let status = JSON.parse(res);
@@ -97,13 +86,13 @@ const MealDetail = (name,img,about)=>{
     })
 
     // Listen to click to toggle favourite status
-    $('#favBtn').on('click',()=> {
+    $('#favBtn').on('click', () => {
         toggleFav(restID);
     })
 
     // Get users' reviews
     $.get(`/api/rest/review/${restID}`).then(data => {
-        data.forEach(e =>{
+        data.forEach(e => {
             $('#rest-review').append(UsersReview(
                 e.name,
                 e.comment,
@@ -112,7 +101,7 @@ const MealDetail = (name,img,about)=>{
             ))
         });
     });
-    const UsersReview = (name,comment,rating,date)=>{
+    const UsersReview = (name, comment, rating, date) => {
         return `
             <div class="info-container">
                 <label class="lbl-info">Name: </label><p>${name}</p>
@@ -125,7 +114,7 @@ const MealDetail = (name,img,about)=>{
     // Post user review
     $('#submitReview').on('click', (e) => {
         e.preventDefault();
-        
+
         let comment = $('#comment').val();
         let rating = $('input[name=rating]:checked').val()
 
@@ -137,26 +126,23 @@ const MealDetail = (name,img,about)=>{
             "comment": comment,
             "rating": rating
         })
-        .then((res) => {
-            document.location=`/rest/${restID}`;
-        })
+            .then((res) => {
+                document.location = `/rest/${restID}`;
+            })
     })
 })
 
+// Define fav button function
 function toggleFav(restID) {
     if ($('#favBtn').html() === "isFav") {
-        axios.delete(`/api/fav/rest/${restID}`).then(()=> {
+        axios.delete(`/api/fav/rest/${restID}`).then(() => {
             $('#favBtn').html("notFav");
         })
     }
     if ($('#favBtn').html() === "notFav") {
-        axios.post(`/api/fav/rest/${restID}`).then(()=> {
+        axios.post(`/api/fav/rest/${restID}`).then(() => {
             $('#favBtn').html("isFav");
         })
     }
 }
-
-// function refreshReviews(review) {
-//     $('#rest-review').html(reviewObject({review: review}));
-// }
 

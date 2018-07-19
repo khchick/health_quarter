@@ -1,5 +1,5 @@
 $(() => {
-    $.get(`/api/fav/recipes`).then(data => {
+    $.get(`/api/fav/recipes`).then(data => { // Get list of all fav recipes
         data.forEach(e => {
             $('#fav-rec-list').append(Recipe(e.recURL));
         });

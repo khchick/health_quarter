@@ -1,5 +1,5 @@
 $(()=>{
-    let dishID = window.location.href.split("/").pop();
+    let dishID = window.location.href.split("/").pop(); // Get dish ID from URL
 
     // Get Dish details
     $.get(`/api/dish/detail/${dishID}`).then(data =>{
@@ -20,7 +20,6 @@ $(()=>{
 
     // Get favourite status
     $.get(`/api/fav/dish/${dishID}`).then(res => {
-        console.log(res);
         let status = JSON.parse(res);
         if (status === true) {
             $('#favBtn').html("isFav");
@@ -36,6 +35,7 @@ $(()=>{
 
 })
 
+// Define fav button function
 function toggleFav(dishID) {
     if ($('#favBtn').html() === "isFav") {
         axios.delete(`/api/fav/dish/${dishID}`).then(()=> {
