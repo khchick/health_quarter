@@ -60,7 +60,7 @@ module.exports = [
         short_desc: 'At NOSH, we focus on every step of our ingredients journeys. From field to cutting board, our sourcing teams work tirelessly to ensure that both premium and sustainable ingredients make it into every box.',
         rating: 0
     },
-    {
+    { 
         name: 'Locofama',
         location: 'G/F, 9-13 Fuk Sau Lane, Sai Ying Pun, Western District',
         lat: '22.2859732',
@@ -105,7 +105,7 @@ module.exports = [
         short_desc: 'Sohofama embodies the ideals of East meets West, they boast a variety of dishes that resembles Chinese tapas. The ingredients sourced for this restaurant are of the highest quality to ensure that thier dishes are remebered by all.',
         rating: 0
     },
-    {
+    { 
         name: 'Veggie SF',
         location: '10f Stanley Street 11, Central',
         lat: '22.282222',
@@ -120,7 +120,7 @@ module.exports = [
         short_desc: "Despite being themed as a 1950's diner the food is very much modern, its menu boasts brilliant vegetarian and vegan food, it is a wondeful place for anyone looking for a slice of the past.",
         rating: 0
     },
-    {
+    { 
         name: 'Veggie Monster',
         location: 'G/F, 1/B, Cheungs Building, 1 Wing Lok St, Hong Kong Island, Hong Kong, China',
         lat: '22.2856383',
@@ -150,7 +150,7 @@ module.exports = [
         short_desc: "Something Fresh is a vegetarian's paradise, this takeaway production kitchen offers patrons a variety of quality produce, a must visit.",
         rating: 0
     },
-    {
+    { 
         name: 'Open Kitchen',
         location: 'Shop 1081, 1/F, ifc mall, Central, Hong Kong',
         lat: '22.2838472',
@@ -225,7 +225,7 @@ module.exports = [
         short_desc: "Zumufi have a variety of differnt smoothies that benefit the immune system while being delicous, this is a fabulus place to get a meal in a cup to go, or as a afternoon boost of energy.",
         rating: 0
     },
-    {
+    { 
         name: 'The Kinnet Cafe',
         location: "3/F, 33 Hillier Street, Sheung Wan",
         lat: '22.284786',

@@ -11,4 +11,4 @@ $(() => {
                     <label class="lbl-info">Full Information: </label><p><a href='https://spoonacular.com/${recURL}'>View details</a></p>
                     </div>`
     };
-})
+}) 
