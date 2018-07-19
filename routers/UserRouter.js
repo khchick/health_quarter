@@ -23,6 +23,19 @@ class UserRouter {
                 .catch((err) => res.status(500).json(err));
         });
 
+        router.delete('/tags/fav',(req,res)=> {
+            this.userService.clearFavTags(req.session.passport.user.id)
+                .then((favTag) => res.json(favTag))
+                .catch((err) => res.status(500).json(err));
+        });
+
+        router.put('/tags/fav',(req,res)=> {
+            console.log(req.body.tag.tag_id);
+            this.userService.insertFavTag(req.session.passport.user.id,req.body.tag.tag_id)
+                .then((favTag) => res.json(favTag))
+                .catch((err) => res.status(500).json(err));
+        });
+
         router.get('/', (req, res) => {
             this.userService.getUserDetail(req.session.passport.user.id)
                 .then((userDetails) => res.json(userDetails))
@@ -30,7 +43,6 @@ class UserRouter {
         })
 
         router.put('/', (req, res) => {
-            console.log(req.body.name);
             this.userService.updateUserDetail(req.session.passport.user.id,req.body.nickname,req.body.imgURL)
                 // .then(() => this.userService.getUserDetail(req.session.passport.user.id))
                 .then((userDetails) => res.json(userDetails))
@@ -42,6 +54,8 @@ class UserRouter {
                 .then((reviews) => res.json(reviews))
                 .catch((err) => res.status(500).json(err));
         })
+
+        
 
 
 

@@ -77,44 +77,18 @@ class UserService {
                     name: row.name
                 }))
             })
-        // let query = this.knex
-        //     .select('tag.id', 'tag.name')
-        //     .from('tag')
-        //     .orderBy('tag.name')
+    }
 
-        // return query.then(rows => {
-        //     console.log(rows)
-        //     return rows.map(row => ({
-        //         id: row.id,
-        //         name: row.name,
-        //         checked: null
-        //     }))
-        // })
-        //     .then(rows => {
-        //         return rows.forEach(row => {
-        //             let query = this.knex
-        //                 .select('users_fav_tag.id')
-        //                 .from('users_fav_tag')
-        //                 .where('users_fav_tag.users_id', userID)
-        //                 .andWhere('users_fav_tag.tag_id', row.id)
+    clearFavTags(userID) {
+        return this.knex("users_fav_tag").where("users_id",userID).delete()
+    }
 
-        //             return query.then(favTags => {
-        //                 if (favTags[0] === 1) {
-        //                     return rows.map(row => ({
-        //                         id: row.id,
-        //                         name: row.name,
-        //                         checked: true
-        //                     }))
-        //                 } else {
-        //                     return rows.map(row => ({
-        //                         id: row.id,
-        //                         name: row.name,
-        //                         checked: false
-        //                     }))
-        //                 }
-        //             })
-        //         })
-        //     })
+    insertFavTag(userID,tagID) {
+        return this.knex("users_fav_tag")
+            .insert({
+                users_id:userID,
+                tag_id:tagID
+            })
     }
 }
 
