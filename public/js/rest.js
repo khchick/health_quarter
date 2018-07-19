@@ -18,6 +18,7 @@ $(()=>{
             $('#rest-detail').append(RestDetail(
                 e.name,
                 e.img,
+                e.map,
                 e.about,
                 e.price,
                 e.website,
@@ -30,11 +31,12 @@ $(()=>{
             ))
         });
     });
-    const RestDetail = (name,img,about,price,website,phone,hours,lat,lng,location,tags)=>{
+    const RestDetail = (name,img,map,about,price,website,phone,hours,lat,lng,location,tags)=>{
         return `
             <div class="info-container">
                 <label class="lbl-info">Name: </label><p>${name}</p>
                 <label class="lbl-info">img: </label><p>${img}</p>
+                <label class="lbl-info">img: </label><p>${map}</p>
                 <label class="lbl-info">About: </label><p>${about}</p>
                 <label class="lbl-info">Price: </label><p>${price}</p>
                 <label class="lbl-info">Website: </label><p>${website}</p>
