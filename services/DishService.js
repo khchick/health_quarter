@@ -13,7 +13,6 @@ class DishService {
         .orderBy('dish.name');
 
         return query.then((rows) => {
-            console.log(rows);
             return rows.map(row => ({
                 id: row.id,
                 name: row.name,
