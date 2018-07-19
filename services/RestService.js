@@ -83,6 +83,7 @@ class RestService {
                 'restaurant.id',
                 'restaurant.name',
                 'restaurant.img',
+                'restaurant.map',
                 'restaurant.about',
                 'restaurant.price',
                 'restaurant.website',
