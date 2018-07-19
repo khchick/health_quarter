@@ -6,6 +6,7 @@ exports.up = function (knex) {
             table.string('location');
             table.decimal('lat');
             table.decimal('lng');
+            table.text('map');
             table.text('about');
             table.integer('phone');
             table.string('website');
