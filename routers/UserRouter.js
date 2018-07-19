@@ -50,11 +50,23 @@ class UserRouter {
             });
 
         // User's review services
-        router.get('/reviews', (req, res) => { // List all reviews submitted by current user
-            this.userService.listOwnReview(req.session.passport.user.id)
-                .then((reviews) => res.json(reviews))
-                .catch((err) => res.status(500).json(err));
-        })
+            router.get('/review', (req, res) => { // List all reviews submitted by current user
+                this.userService.listOwnReview(req.session.passport.user.id)
+                    .then((reviews) => res.json(reviews))
+                    .catch((err) => res.status(500).json(err));
+                });
+
+            router.put('/review/:reviewID', (req, res) => { // Update target review
+                this.userService.updateReview(req.params.reviewID,req.body.comment,req.body.rating)
+                    .then((review) => res.json(review))
+                    .catch((err) => res.status(500).json(err));
+                });
+
+            router.delete('/review/:reviewID', (req, res) => { // Delete target review
+                this.userService.deleteReview(req.params.reviewID)
+                    .then((review) => res.json(review))
+                    .catch((err) => res.status(500).json(err));
+                });
 
         return router;
     }

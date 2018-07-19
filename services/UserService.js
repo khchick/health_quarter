@@ -84,10 +84,47 @@ class UserService {
 
     // User's review services
     listOwnReview(userID) {
-        // Get rest_id from User_Review table for matching userID
-        // Join Restaurant table to retrieve Restaurant.name
-        // Get User_Review.comment of matching rest_id
-        // Get User_Review.rating of matching rest_id
+        let query = this.knex
+            .select('restaurant.name', 'users_review.id', 'users_review.comment', 'users_review.rating')
+            .from('users_review')
+            .innerJoin('restaurant','users_review.rest_id','restaurant.id')
+            .where('users_review.users_id', userID)
+            .orderBy('users_review.created_at')
+
+        return query.then(rows => {
+            return rows.map(row => ({
+                rest_name: row.name,
+                id: row.id,
+                comment: row.comment,
+                rating: row.rating
+            }))
+        })
+    }
+
+    updateReview(reviewID,comment,rating) {
+        let query = this.knex
+            .select()
+            .from('users_review')
+            .where('users_review.id', reviewID);
+
+        return query.then(rows => {
+            if (rows.length !== 1) {
+                return new Error('Invalid user');
+            } else {
+                return this.knex('users_review')
+                    .where('users_review.id', reviewID)
+                    .update({
+                        comment: comment,
+                        rating: rating
+                    })
+            }
+        })
+    }
+
+    deleteReview(reviewID) {
+        return this.knex("users_review")
+        .where("users_review.id",reviewID)
+        .delete()
     }
 
 }

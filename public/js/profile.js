@@ -20,6 +20,8 @@ $(() => {
                     <div class="d-flex justify-content">
                         <label>Upload new image</label>
                         <input type="file" id="avatar" accept="image/*" name="avatar">
+                    </div>
+                    <div>
                         <button id="updateImg">Upload</button>
                     </div>
                         <label>Email:  </label>
@@ -84,7 +86,7 @@ $(() => {
         let file = $('#avatar').get(0).files;
         var formData = new FormData();
         formData.append("avatar", file);
-        axios.post(`/api/user/avatar`, formData, {
+        axios.post(`/profile`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -94,6 +96,57 @@ $(() => {
                 "imgURL": `/images/users/${file[0].name}` // Insert image URL to DB
             }) 
         })
+        // .then(()=>location.reload())
+    })
+
+    // Get all reviews submitted by current user
+    $.get(`/api/user/review`).then(data => {
+        data.forEach(e => {
+            $('#review-list').append(ReviewDetail(
+                e.rest_name,
+                e.id,
+                e.comment,
+                e.rating
+            ))
+        });
+    });
+    const ReviewDetail = (rest_name, id, comment, rating) => {
+        return `
+        <form action="/api/user/review/${id}" method="put">
+            <p value="${id}">${rest_name}</p>
+            <div class="d-flex justify-content">
+                <label>Your comment:</label>
+                <input type="text" name="comment" id="comment" value="${comment}"/>
+            </div>
+            <div class="d-flex justify-content">
+                <label>Rating:  </label>
+                <input type="text" name="rating" id="rating" value="${rating}"/>
+            </div>
+            <div>
+                <input type="submit" id="updateReview" value="Update" data-id="${id}" />
+                <input type="submit" id="deleteReview" value="Delete" data-id="${id}" />
+            </div>
+        </form>`
+    }
+
+    // Update review on button click
+    $('#review-list').on('click','#updateReview',(e) => {
+        e.preventDefault();
+        
+        let reviewID = $(e.currentTarget).data();
+        axios.put(`/api/user/review/${reviewID.id}`, {
+            "comment": $(e.currentTarget).parent().prev().prev().children().next().val(),
+            "rating": $(e.currentTarget).parent().prev().children().next().val()
+        })
+        .then(()=>location.reload())
+    })
+
+    // Delete review on button click
+    $('#review-list').on('click','#deleteReview',(e) => {
+        e.preventDefault();
+        
+        let reviewID = $(e.currentTarget).data();
+        axios.delete(`/api/user/review/${reviewID.id}`)
         .then(()=>location.reload())
     })
 

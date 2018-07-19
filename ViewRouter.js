@@ -100,7 +100,7 @@ module.exports = class ViewRouter {
 
         // My Account page
         router.get('/profile', (req, res)=>res.render('profile'));
-        router.post('/api/user/avatar', upload.single('avatar', (req, res) => res.render('profile')));
+        router.post('/profile', upload.single('avatar', (req, res) => res.render('profile')));
 
         // Sign up page
         router.get('/signup',(req,res)=>res.render("signup"));
