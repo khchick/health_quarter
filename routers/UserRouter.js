@@ -12,14 +12,14 @@ class UserRouter {
         let router = express.Router();
 
         // Profile details services        
-            router.get('/', (req, res) => { // Get profile details of current user
+            router.get('/details', (req, res) => { // Get profile details of current user
                 this.userService.getUserDetail(req.session.passport.user.id)
                     .then((userDetails) => res.json(userDetails))
                     .catch((err) => res.status(500).json(err));
             })
 
-            router.put('/', (req, res) => { // Update profile details of current user
-                this.userService.updateUserDetail(req.session.passport.user.id,req.body.nickname,req.body.imgURL)
+            router.put('/details', (req, res) => { // Update profile details of current user
+                this.userService.updateUserDetail(req.session.passport.user.id,req.body.nickname,req.body.img)
                     .then((userDetails) => res.json(userDetails))
                     .catch((err) => res.status(500).json(err));
             })

@@ -1,6 +1,6 @@
 $(() => {
     // Get profile details
-    $.get(`/api/user/`).then(data => {
+    $.get(`/api/user/details`).then(data => {
         data.forEach(e => {
             $('#my-detail').append(UserDetail(
                 e.img,
@@ -12,7 +12,7 @@ $(() => {
     const UserDetail = (img, email, name) => { // Append form with embedded details to page
         return `
             <div class="info-container">
-                <form action="/api/user" method="put" enctype="multipart/form-data">
+                <form action="/api/user/details" method="put" enctype="multipart/form-data">
                     <div class="d-flex justify-content">
                         <label>Profile pic:  </label>
                         <img src="${img}" height="100" width="100">
@@ -60,7 +60,7 @@ $(() => {
     $('#updateBtn').on('click', (e) => {
         e.preventDefault();
 
-        axios.put('/api/user', {
+        axios.put('/api/user/details', {
             "nickname": $('#nickname').val(), // Update nickname only
         })
             .then(() => {
@@ -82,21 +82,24 @@ $(() => {
 
     // Update avatar image (post new)
     $('#tag-list').on('click','#updateImg', (e) => {
+
         e.preventDefault();
+
         let file = $('#avatar').get(0).files;
         var formData = new FormData();
         formData.append("avatar", file);
-        axios.post(`/profile`, formData, {
+        console.log(formData);
+        axios.post(`/api/user/avatar`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
         .then(()=> {
             axios.put('/api/user', {
-                "imgURL": `/images/users/${file[0].name}` // Insert image URL to DB
+                "img": `/images/users/${file[0].name}` // Insert image URL to DB
             }) 
         })
-        // .then(()=>location.reload())
+        .then(()=>location.reload())
     })
 
     // Get all reviews submitted by current user
