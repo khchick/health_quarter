@@ -44,14 +44,12 @@ $(()=>{
                     $(`#rating_${e.id}`).append('<i class="fa fa-star-o" aria-hidden="true"></i>');
                 }
             });
-        });
+
             // Append associated tags and linkages
-            for (let i = 0;i < data.length;i++) {
-            let tagData = data[i].tags;
-            return tagData.forEach(e =>{
-                $(`#rest_${data[i].id}`).append(RestTags(e.tag_id,e.tag_name));
-            });
-        }
+            e.tags.forEach(tag =>{
+                $(`#rest_${e.id}`).append(RestTags(tag.tag_id,tag.tag_name));
+            })
+        });
     });
 
     const Rest = (id,name,img)=>{
