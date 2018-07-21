@@ -33,7 +33,7 @@ class MealService {
 
         return query.then(rows => {
             return rows.map(row => ({
-                    id: row.meal_id,
+                    id: row.id,
                     name: row.name,
                     img: row.img,
                     about: row.about,
