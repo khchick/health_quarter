@@ -28,6 +28,12 @@ class RestRouter {
                     .catch((err) => res.status(500).json(err));
             })
 
+            router.get('/rating/:restID', (req, res) => { // Get details of current restaurant
+                this.restService.getRestRating(req.params.restID)
+                    .then((restDetail) => res.json(restDetail))
+                    .catch((err) => res.status(500).json(err));
+            })
+
         // Review servcies
             router.get('/review/:restID', (req, res) => {  // Get reviews of current restaurant
                 this.restService.listReview(req.params.restID)

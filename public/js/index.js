@@ -33,6 +33,17 @@ $(()=>{
                     })
                 }
             }
+
+            // Calculate average rating and show as stars
+            $.get(`/api/rest/rating/${e.id}`).then(res => {
+                for (let i = 0;i < res;i++) {
+                    $(`#foodRating_${e.id}`).append('<i class="fa fa-star" aria-hidden="true"></i>');
+                }
+                for (let i = 0;i < (5-res);i++) {
+                    $(`#foodRating_${e.id}`).append('<i class="fa fa-star-o" aria-hidden="true"></i>');
+                }
+            });
+
         });
         // Append associated tags and linkages
         for (let i = 0;i < data.length;i++) {
@@ -45,7 +56,7 @@ $(()=>{
         }
     });
 
-    const FoodRest = (id,name,img,rating)=>{
+    const FoodRest = (id,name,img)=>{
         return `
             <div class="innerwrapper">
                 <div class="name"><a href="/rest/${id}">${name}</a></div>
@@ -54,7 +65,7 @@ $(()=>{
                                 <img src="${img}">
                             </div>
                         <div class="ratings">ratings</div>
-                    <div class="stars">${rating}stars</div>
+                    <div class="stars" id="foodRating_${id}"></div>
                 <div class="tags" id="rest_${id}"></div>
             </div>
             `
@@ -66,7 +77,7 @@ $(()=>{
             `
     }
 
-    // Get lists of restaurants tagged as Food
+    // Get lists of restaurants tagged as Drinks
     $.get(`/api/rest/tag/10`).then(data=>{ 
         data.forEach(e =>{
             $('#2ndTagList').append(DrinkRest(e.id,e.name,e.img,e.rating)); // Append restaurant details
@@ -100,6 +111,17 @@ $(()=>{
                     })
                 }
             }
+
+            // Calculate average rating and show as stars
+            $.get(`/api/rest/rating/${e.id}`).then(res => {
+                for (let i = 0;i < res;i++) {
+                    $(`#drinkRating_${e.id}`).append('<i class="fa fa-star" aria-hidden="true"></i>');
+                }
+                for (let i = 0;i < (5-res);i++) {
+                    $(`#drinkRating_${e.id}`).append('<i class="fa fa-star-o" aria-hidden="true"></i>');
+                }
+            });
+            
         });
         // Append associated tags and linkages
         for (let i = 0;i < data.length;i++) {
@@ -112,7 +134,7 @@ $(()=>{
         }
     });
 
-    const DrinkRest = (id,name,img,rating)=>{
+    const DrinkRest = (id,name,img)=>{
         return `
             <div class="innerwrapper">
                 <div class="name"><a href="/rest/${id}">${name}</a></div>
@@ -121,7 +143,7 @@ $(()=>{
                                 <img src="${img}">
                             </div>
                         <div class="ratings">ratings</div>
-                    <div class="stars">${rating}stars</div>
+                    <div class="stars" id="drinkRating_${id}"></div>
                 <div class="tags" id="rest_${id}"></div>
             </div>
             `

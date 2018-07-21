@@ -51,7 +51,7 @@ module.exports = class ViewRouter {
 
         // Personalised home page
         router.get('/home', (req, res, next) => {
-            res.render('index', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+            res.render('home', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
         });
 
         // Restaurant list (of certain tag)
@@ -211,7 +211,7 @@ module.exports = class ViewRouter {
             res.render('login', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
         });
         router.post('/login', passport.authenticate('local-login', {
-            // successRedirect: '/', 
+            successRedirect: '/home', 
             failureRedirect: '/error',
             failureFlash: true
         }), (req, res) => {

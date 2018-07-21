@@ -8,7 +8,7 @@ class RestService {
 
     listRestByTag(tagID) {  // For generic home page content
         let query = this.knex
-            .select('tag.name as tag_name','restaurant.id', 'restaurant.name', 'restaurant.img', 'restaurant.rating')
+            .select('tag.id as tag_id','tag.name as tag_name','restaurant.id', 'restaurant.name', 'restaurant.img', 'restaurant.rating')
             .from('restaurant')
             .innerJoin('restaurant_tag', 'restaurant_tag.rest_id', 'restaurant.id')
             .innerJoin('tag', 'restaurant_tag.tag_id', 'tag.id')
@@ -17,6 +17,7 @@ class RestService {
 
         return query.then(rows => {
             return rows.map(row => ({
+                tag_id: row.tag_id,
                 tag_name: row.tag_name,
                 id: row.id,
                 name: row.name,
@@ -172,6 +173,28 @@ class RestService {
                     })
                 })
             )
+        })
+    }
+
+    getRestRating(restID) {
+        let query = this.knex
+            .select('users_review.rating')
+            .from('users_review')
+            .where('users_review.rest_id', restID)
+
+        return query.then(rows => {
+            if (rows.length === 0) {
+                return 0;
+            } else {
+                let values = [];
+                for (let i = 0;i < rows.length;i++) {
+                    values.push(rows[i].rating);
+                }
+                let sum = values.reduce((acc,next) => {
+                    return acc + next;
+                });
+                return sum / rows.length;
+            }
         })
     }
 
