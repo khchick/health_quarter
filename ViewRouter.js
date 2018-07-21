@@ -25,11 +25,22 @@ module.exports = class ViewRouter {
         const router = express.Router();
 
         // Generic landing page
-        router.get('/',(req,res)=>res.render("index"));
-        router.get('/',isLoggedIn,(req,res)=>res.render("home")); 
+        router.get('/', (req, res, next) => {
+            res.render('index', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+        });
+        router.get('/', isLoggedIn, (req, res, next) => { // May not work
+            res.render('index', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+        });
 
         // Personalised home page
-        router.get('/home', (req, res)=>res.render('home'));
+        router.get('/home', (req, res, next) => {
+            res.render('index', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+        });
+
+        // Restaurant list (of certain tag)
+        router.get('/tag/:id', (req, res, next) => {
+            res.render('restlist', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+        });
 
             // Restaurant details page
             router.get('/rest/:id', (req, res)=>res.render('restaurant'));
@@ -41,7 +52,9 @@ module.exports = class ViewRouter {
                 router.get('/meal/:id', (req, res)=>res.render('meal'));
 
         // Meal Plans page
-        router.get('/delivery', (req, res)=>res.render('meal'));
+        router.get('/mealplans', (req, res, next) => {
+            res.render('mealplans', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+        });
 
         //Recipe Finder page
         router.get('/recipeFinder', (req, res) => res.render("recipeFinder"));
@@ -93,17 +106,29 @@ module.exports = class ViewRouter {
             });
 
         // My Favourites page
-        router.get('/favouriteRest',(req,res)=>res.render("favouriteRest"));
-        router.get('/favouriteDish',(req,res)=>res.render("favouriteDish"));
-        router.get('/favouriteMeal',(req,res)=>res.render("favouriteMeal"));
-        router.get('/favouriteRec',(req,res)=>res.render("favouriteRec"));
+        router.get('/favouriteRest', (req, res, next) => {
+            res.render('favouriteRest', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+        });
+        router.get('/favouriteDish', (req, res, next) => {
+            res.render('favouriteDish', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+        });
+        router.get('/favouriteMeal', (req, res, next) => {
+            res.render('favouriteMeal', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+        });
+        router.get('/favouriteRec', (req, res, next) => {
+            res.render('favouriteRec', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+        });
 
         // My Account page
-        router.get('/profile', (req, res)=>res.render('profile'));
+        router.get('/profile', (req, res, next) => {
+            res.render('profile', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+        });
         router.post('/api/user/avatar', upload.single('avatar'), (req, res) => res.redirect('/profile'));
 
         // Sign up page
-        router.get('/signup',(req,res)=>res.render("signup"));
+        router.get('/signup', (req, res, next) => {
+            res.render('signup', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+        });
         router.post('/signup', upload.single('profilePic'), passport.authenticate('local-signup', {
             successRedirect: '/login',
             failureRedirect: '/error',
@@ -111,7 +136,9 @@ module.exports = class ViewRouter {
         }));
 
         // Login page
-        router.get('/login', (req, res) => res.render("login")); // Login panel with FB login button
+        router.get('/login', (req, res, next) => {
+            res.render('login', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+        });
         router.post('/login', passport.authenticate('local-login', {
             // successRedirect: '/', 
             failureRedirect: '/error',

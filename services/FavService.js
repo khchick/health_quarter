@@ -155,11 +155,21 @@ class FavService {
         }
 
         listFavMeal(userID) {
-            // For each matching meal_plan_id in User_Fav_Meal_Plan
-            // Get created_at for sorting
-            // Join Meal_Plan table to return Meal_Plan.img and Meal_Plan.name for display
-            // Meal_Plan.id for getting meal plan details
-            // Restaurant.id for getting the link back to the restaurant
+            let query = this.knex
+            .select('restaurant.id','meal_plan.name','meal_plan.img')
+            .from('meal_plan')
+            .innerJoin('users_fav_meal_plan', 'meal_plan.id', 'users_fav_meal_plan.meal_plan_id')
+            .innerJoin('restaurant','meal_plan.rest_id', 'restaurant.id')
+            .where('users_fav_meal_plan.users_id',userID)
+            .orderBy('users_fav_meal_plan.created_at','desc');
+
+            return query.then((rows) => {
+                return rows.map(row => ({
+                    id: row.id,
+                    name: row.name,
+                    img: row.img
+                }))
+            })
         }
 
         listFavRec(userID) {

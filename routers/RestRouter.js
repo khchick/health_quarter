@@ -10,7 +10,7 @@ class RestRouter {
 
         // Restaurant services
             router.get('/tag/:tagID', (req, res) => { // Get list of restaurants by tag
-                this.restService.list3RestByTag(req.params.tagID)
+                this.restService.listRestByTag(req.params.tagID)
                     .then((restaurants) => res.json(restaurants))
                     .catch((err) => res.status(500).json(err));
             })

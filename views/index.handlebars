@@ -1,23 +1,5 @@
-<script type='text/javascript' src="../js/index.js"></script> {{!--
-<link rel="stylesheet" href="../public/css/index.css"> --}}
+<script type='text/javascript' src="../js/index.js"></script>
 
-<!-- Nav Bar-->
-<header>
-    <div class="topnav" id="myTopnav">
-        <a href="#" class="active">HealthQuarter</a>
-        <a href="#">HOME</a>
-        <a href="#">FOOD</a>
-        <a href="#">DRINKS</a>
-        <a href="#">MEAL PLANS</a>
-        <a href="#">RECIPES</a>
-        <a href="#">SIGN UP</a>
-        <a href="#">SIGN IN</a>
-
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
-</header>
 <!-- Banner Background Image -->
 <section>
     <div class="bannerbackground">
@@ -48,171 +30,52 @@
     <div class="title">
         <div>
             <span>FOOD</span>
+            <a href="/tag/1">VIEW ALL</a>
+
+        </div>
+    </div>
+
+    <div class="wrapper" id="1stTagList">
+        {{!-- index.js > $.get(`/api/rest/tag/1`) --}}
+    </div>
+
+    <div class="title">
+        <div>
+            <span>DRINKS</span>
+            <a href="/tag/10">VIEW ALL</a>
+
+        </div>
+    </div>
+
+    <div class="wrapper" id="2ndTagList">
+        {{!-- index.js > $.get(`/api/rest/tag/10`) --}}
+    </div>
+
+    <div class="title">
+        <div>
+            <span>MEAL PLANS</span>
             <a href="#">VIEW ALL</a>
 
         </div>
     </div>
 
-    <div class="wrapper" id="1stRecList">
-        {{!-- index.js > $.get(`/api/rest/tag/15`) --}}
-    </div>
-
-
-    <div class="title">
-        <span>DRINKS</span>
-        <a href="#">VIEW ALL</a>
-    </div>
-
-    <div class="wrapper">
-        <div class="innerwrapper" id="2ndRecList">
-            <div class="name">name</div>
-            <div class="heart">heart</div>
-            <div class="image">
-                <img src=images/grassrootspantry.jpg>
-            </div>
-            <div class="name">ratings</div>
-            <div class="stars">stars</div>
-            <div class="tags">tags</div>
-        </div>
-        <div class="innerwrapper">
-            <div class="name">name</div>
-            <div class="heart">heart</div>
-            <div class="image">
-                <img src=images/grassrootspantry.jpg>
-            </div>
-            <div class="ratings">ratings</div>
-            <div class="stars">stars</div>
-            <div class="tags">tags</div>
-        </div>
-
-        <div class="innerwrapper">
-            <div class="name">name</div>
-            <div class="heart">heart</div>
-            <div class="image">
-                <img src=images/grassrootspantry.jpg>
-            </div>
-            <div class="ratings">ratings</div>
-            <div class="stars">stars</div>
-            <div class="tags">tags</div>
-        </div>
-    </div>
-    <div class="title">
-        <span>MEAL PLANS</span>
-        <a href="#">VIEW ALL</a>
-    </div>
-    <div class="wrapper">
-        <div class="innerwrapper" id="3rdRecList">
-            <div class="name">name</div>
-            <div class="heart">heart</div>
-            <div class="image">
-                <img src=images/grassrootspantry.jpg>
-            </div>
-            <div class="ratings">ratings</div>
-            <div class="stars">stars</div>
-            <div class="tags">tags</div>
-        </div>
-        <div class="innerwrapper">
-            <div class="name">name</div>
-            <div class="heart">heart</div>
-            <div class="image">
-                <img src=images/grassrootspantry.jpg>
-            </div>
-            <div class="ratings">ratings</div>
-            <div class="stars">stars</div>
-            <div class="tags">tags</div>
-        </div>
-
-        <div class="innerwrapper">
-            <div class="name">name</div>
-            <div class="heart">heart</div>
-            <div class="image">
-                <img src=images/grassrootspantry.jpg>
-            </div>
-            <div class="ratings">ratings</div>
-            <div class="stars">stars</div>
-            <div class="tags">tags</div>
-        </div>
+    <div class="wrapper" id="mealPlanList">
+        {{!-- index.js > $.get(`/api/meal`) --}}
     </div>
 
     <div class="title">
-        <span>RECIPES</span>
-        <a href="#">VIEW ALL</a>
+        <div>
+            <span>RECIPES</span>
+            <a href="/tag/1">VIEW ALL</a>
+
+        </div>
     </div>
-    <div class="wrapper">
-        <div class="innerwrapper">
-            <div class="name">name</div>
-            <div class="heart">heart</div>
-            <div class="image">
-                <img src=images/grassrootspantry.jpg>
-            </div>
-            <div class="ratings">ratings</div>
-            <div class="stars">stars</div>
-            <div class="tags">tags</div>
-        </div>
 
-
-        <div class="innerwrapper">
-            <div class="name">name</div>
-            <div class="heart">heart</div>
-            <div class="image">
-                <img src=images/grassrootspantry.jpg>
-            </div>
-            <div class="ratings">ratings</div>
-            <div class="stars">stars</div>
-            <div class="tags">tags</div>
-        </div>
-
-        <div class="innerwrapper">
-            <div class="name">name</div>
-            <div class="heart">heart</div>
-            <div class="image">
-                <img src=images/grassrootspantry.jpg>
-            </div>
-            <div class "ratings">ratings</div>
-            <div class="stars">stars</div>
-            <div class="tags">tags</div>
-        </div>
+    <div class="wrapper" id="RecipeList">
+        {{!-- index.js > $.get(`/api/rest/tag/1`) --}}
     </div>
 
 </section>
-
-<footer>
-    <div class="footerwrapper">
-        <div>
-            <p>HQ</p>
-        </div>
-        <div>
-            <p>
-                HOME
-                <br>FOOD
-                <br>DRINKS
-
-            </p>
-        </div>
-        <div>
-            <p>
-                RECIPES
-                <br>MEAL PLANS
-                <br>FAVORITES
-
-            </p>
-        </div>
-        <div>
-            <p>
-                SIGN IN
-                <br>SIGN UP
-                <br>PROFILE
-
-            </p>
-        </div>
-        <div>
-            <p>ARROW</p>
-        </div>
-
-    </div>
-    <div class="copyright">copyright</div>
-
-</footer>
 
 <script>
     function myFunction() {

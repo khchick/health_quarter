@@ -1,10 +1,10 @@
 $(() => {
-    $.get(`/api/fav/restaurants`).then(data => { // Get list of all fav restaurants
+    $.get(`/api/fav/meals`).then(data => { // Get list of all fav meals
         data.forEach(e => {
-            $('#fav-rest-list').append(Rest(e.name, e.img, e.id));
+            $('#fav-meal-list').append(Meal(e.name, e.img, e.id));
         });
     });
-    const Rest = (name, img, id) => {
+    const Meal = (name, img, id) => {
         return `
             <div class="innerwrapper">
                 <div class="name">${name}</div>
