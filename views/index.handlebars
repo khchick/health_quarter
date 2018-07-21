@@ -138,39 +138,27 @@
         <span>RECIPES</span>
         <a href="#">VIEW ALL</a>
     </div>
-    <div class="wrapper">
+    <div class="wrapper" id="4thRecList">
         <div class="innerwrapper">
             <div class="name">name</div>
-            <div class="heart">heart</div>
             <div class="image">
                 <img src=images/grassrootspantry.jpg>
             </div>
-            <div class="ratings">ratings</div>
-            <div class="stars">stars</div>
-            <div class="tags">tags</div>
         </div>
 
 
         <div class="innerwrapper">
             <div class="name">name</div>
-            <div class="heart">heart</div>
             <div class="image">
                 <img src=images/grassrootspantry.jpg>
             </div>
-            <div class="ratings">ratings</div>
-            <div class="stars">stars</div>
-            <div class="tags">tags</div>
         </div>
 
         <div class="innerwrapper">
             <div class="name">name</div>
-            <div class="heart">heart</div>
             <div class="image">
                 <img src=images/grassrootspantry.jpg>
             </div>
-            <div class "ratings">ratings</div>
-            <div class="stars">stars</div>
-            <div class="tags">tags</div>
         </div>
     </div>
 
@@ -223,4 +211,23 @@
             x.className = "topnav";
         }
     }
+
+let recipeD = {{{ data }}}
+
+$(()=>{ // Get data from api
+        recipeD.forEach(e =>{
+            $('#4thRecList').append(recipe(e.title,e.image,e.id));
+        });
+    });
+    const recipe = (title, image, id)=>{
+        return `
+            <div class="innerwrapper">
+                <div class="name"><a href="https://spoonacular.com/${title}-${id}">${title}</a></div>
+                            <div class="image">
+                                <img src="${image}">
+                            </div>
+            </div>`
+    };
+
+
 </script>
