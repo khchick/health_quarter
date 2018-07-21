@@ -90,7 +90,25 @@ module.exports = class ViewRouter {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
                     console.log(dataString);
+                    res.render('searchcal', { data: dataString });
+                });
+        });
+
+        router.post('/searchcal', urlencodedParser, function (req, res) {
+            console.log(req.body);
+            unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?number=${req.body.quantity}&random=true&maxCalories=${req.body.maxCalorie}&minCalories=${req.body.minCalorie}`)
+                .header("X-Mashape-Key", "vCWPJf4dnVmsh6TnOwGo3q8oKumOp14Hxw8jsnhOrBKwlELEZm")
+                .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+                .end(function (result) {
+                    console.log(result.status, result.headers, result.body);
+                    let dataString = JSON.stringify(result.body);
+                    console.log(dataString);
+                    passport.authenticate('local-signup', {
+                        failureRedirect: '/error',
+                        failureFlash: true
+                    }), (req, res) => {
                     res.render('searchcal', { data: dataString, userID: req.session.passport.user.id });
+                    }
                 });
         });
 
@@ -104,7 +122,25 @@ module.exports = class ViewRouter {
                     console.log(result.status, result.headers, result.body, result.body);
                     let dataString = JSON.stringify(result.body);
                     console.log(dataString);
+                    res.render('searchtag', { data: dataString });
+                });
+        });
+
+        router.post('/searchtag', urlencodedParser, function (req, res) {
+            console.log(req.body);
+            unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?number=${req.body.quantity}&tags=${req.body.tag1}%2C${req.body.tag2}%2C${req.body.tag3}%2C${req.body.tag4}%2C${req.body.tag5}`)
+                .header("X-Mashape-Key", "vCWPJf4dnVmsh6TnOwGo3q8oKumOp14Hxw8jsnhOrBKwlELEZm")
+                .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+                .end(function (result) {
+                    console.log(result.status, result.headers, result.body, result.body);
+                    let dataString = JSON.stringify(result.body);
+                    console.log(dataString);
+                    passport.authenticate('local-signup', {
+                        failureRedirect: '/error',
+                        failureFlash: true
+                    }), (req, res) => {
                     res.render('searchtag', { data: dataString, userID: req.session.passport.user.id });
+                    }
                 });
         });
 
@@ -118,7 +154,25 @@ module.exports = class ViewRouter {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
                     console.log(dataString);
+                    res.render('searching', { data: dataString, });
+                });
+        });
+
+        router.post('/searching', urlencodedParser, function (req, res) {
+            console.log(req.body);
+            unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=${req.body.tag1}%2C${req.body.tag2}%2C${req.body.tag3}%2C${req.body.tag4}%2C${req.body.tag5}&number=${req.body.quantity}&ranking=1`)
+                .header("X-Mashape-Key", "vCWPJf4dnVmsh6TnOwGo3q8oKumOp14Hxw8jsnhOrBKwlELEZm")
+                .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+                .end(function (result) {
+                    console.log(result.status, result.headers, result.body);
+                    let dataString = JSON.stringify(result.body);
+                    console.log(dataString);
+                    passport.authenticate('local-signup', {
+                        failureRedirect: '/error',
+                        failureFlash: true
+                    }), (req, res) => {
                     res.render('searching', { data: dataString, userID: req.session.passport.user.id });
+                    }
                 });
         });
 
