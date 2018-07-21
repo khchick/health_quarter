@@ -86,4 +86,23 @@
             x.className = "topnav";
         }
     }
+
+let recipeD = {{{ data }}}
+
+$(()=>{ // Get data from api
+        recipeD.forEach(e =>{
+            $('#RecipeList').append(recipe(e.title,e.image,e.id));
+        });
+    });
+    const recipe = (title, image, id)=>{
+        return `
+            <div class="innerwrapper">
+                <div class="name"><a href="https://spoonacular.com/${title}-${id}">${title}</a></div>
+                            <div class="image">
+                                <img src="${image}">
+                            </div>
+            </div>`
+    };
+
+
 </script>

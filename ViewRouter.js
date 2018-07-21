@@ -9,14 +9,14 @@ const isLoggedIn = require('./utils/guard').isLoggedIn;
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './public/images/users')
+        cb(null, './public/images/users')
     },
     filename: function (req, file, cb) {
-      cb(null, 
-        // Date.now() + '-' + 
-        file.originalname)
+        cb(null,
+            // Date.now() + '-' + 
+            file.originalname)
     }
-  })
+})
 const upload = multer({ storage: storage })
 
 module.exports = class ViewRouter {
@@ -26,11 +26,28 @@ module.exports = class ViewRouter {
 
         // Generic landing page
         router.get('/', (req, res, next) => {
-            res.render('index', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+            unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?number=3&random=true&maxCalories=800&minCalories=600`)
+            .header("X-Mashape-Key", "vCWPJf4dnVmsh6TnOwGo3q8oKumOp14Hxw8jsnhOrBKwlELEZm")
+            .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+            .end(function (result) {
+                console.log(result.status, result.headers, result.body);
+                let dataString = JSON.stringify(result.body);
+                console.log(dataString);
+            res.render('index', { title: 'HealthQuarter // uncover your healthy lifestyle', data: dataString, css: ['common.css', 'index.css'] });
         });
+    });
+
         router.get('/', isLoggedIn, (req, res, next) => { // May not work
-            res.render('index', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+            unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?number=3&random=true&maxCalories=800&minCalories=600`)
+            .header("X-Mashape-Key", "vCWPJf4dnVmsh6TnOwGo3q8oKumOp14Hxw8jsnhOrBKwlELEZm")
+            .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+            .end(function (result) {
+                console.log(result.status, result.headers, result.body);
+                let dataString = JSON.stringify(result.body);
+                console.log(dataString);
+            res.render('index', { title: 'HealthQuarter // uncover your healthy lifestyle', data: dataString, css: ['common.css', 'index.css'] });
         });
+    });
 
         // Personalised home page
         router.get('/home', (req, res, next) => {
@@ -42,14 +59,14 @@ module.exports = class ViewRouter {
             res.render('restlist', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
         });
 
-            // Restaurant details page
-            router.get('/rest/:id', (req, res)=>res.render('restaurant'));
+        // Restaurant details page
+        router.get('/rest/:id', (req, res) => res.render('restaurant'));
 
-                // Dish details page
-                router.get('/dish/:id', (req, res)=>res.render('dish'));
+        // Dish details page
+        router.get('/dish/:id', (req, res) => res.render('dish'));
 
-                // Meal plan details page
-                router.get('/meal/:id', (req, res)=>res.render('meal'));
+        // Meal plan details page
+        router.get('/meal/:id', (req, res) => res.render('meal'));
 
         // Meal Plans page
         router.get('/mealplans', (req, res, next) => {
@@ -60,50 +77,50 @@ module.exports = class ViewRouter {
         router.get('/recipeFinder', (req, res) => res.render("recipeFinder"));
         router.get('/recipeFinder', passport.authenticate('local-signup', {
             failureRedirect: '/error',
-            failureFlash: true 
-            }),(req,res) => { res.render("recipeFinder", {userID: req.session.passport.user.id})}); // DISPLAY CUSTOM LISTS FOR LOGGED IN USERS (FAV TAGS)
-        
-            //search by calorie
-            router.post('/searchcal', urlencodedParser, function (req, res) {
-                console.log(req.body);
-                unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?number=${req.body.quantity}&random=true&maxCalories=${req.body.maxCalorie}&minCalories=${req.body.minCalorie}`)
-                    .header("X-Mashape-Key", "vCWPJf4dnVmsh6TnOwGo3q8oKumOp14Hxw8jsnhOrBKwlELEZm")
-                    .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
-                    .end(function (result) {
-                        console.log(result.status, result.headers, result.body);
-                        let dataString = JSON.stringify(result.body);
-                        console.log(dataString);
-                        res.render('searchcal', { data: dataString, userID: req.session.passport.user.id });
-                    });
-            });
+            failureFlash: true
+        }), (req, res) => { res.render("recipeFinder", { userID: req.session.passport.user.id }) }); // DISPLAY CUSTOM LISTS FOR LOGGED IN USERS (FAV TAGS)
 
-            // search by tag needs work, due to url - limited number of tags...
-            router.post('/searchtag', urlencodedParser, function (req, res) {
-                console.log(req.body);
-                unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?number=${req.body.quantity}&tags=${req.body.tag1}%2C${req.body.tag2}%2C${req.body.tag3}%2C${req.body.tag4}%2C${req.body.tag5}`)
-                    .header("X-Mashape-Key", "vCWPJf4dnVmsh6TnOwGo3q8oKumOp14Hxw8jsnhOrBKwlELEZm")
-                    .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
-                    .end(function (result) {
-                        console.log(result.status, result.headers, result.body, result.body);
-                        let dataString = JSON.stringify(result.body);
-                        console.log(dataString);
-                        res.render('searchtag', { data: dataString, userID: req.session.passport.user.id });
-                    });
-            });
+        //search by calorie
+        router.post('/searchcal', urlencodedParser, function (req, res) {
+            console.log(req.body);
+            unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?number=${req.body.quantity}&random=true&maxCalories=${req.body.maxCalorie}&minCalories=${req.body.minCalorie}`)
+                .header("X-Mashape-Key", "vCWPJf4dnVmsh6TnOwGo3q8oKumOp14Hxw8jsnhOrBKwlELEZm")
+                .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+                .end(function (result) {
+                    console.log(result.status, result.headers, result.body);
+                    let dataString = JSON.stringify(result.body);
+                    console.log(dataString);
+                    res.render('searchcal', { data: dataString, userID: req.session.passport.user.id });
+                });
+        });
 
-            //search by ingredient
-            router.post('/searching', urlencodedParser, function (req, res) {
-                console.log(req.body);
-                unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=${req.body.tag1}%2C${req.body.tag2}%2C${req.body.tag3}%2C${req.body.tag4}%2C${req.body.tag5}&number=${req.body.quantity}&ranking=1`)
-                    .header("X-Mashape-Key", "vCWPJf4dnVmsh6TnOwGo3q8oKumOp14Hxw8jsnhOrBKwlELEZm")
-                    .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
-                    .end(function (result) {
-                        console.log(result.status, result.headers, result.body);
-                        let dataString = JSON.stringify(result.body);
-                        console.log(dataString);
-                        res.render('searching', { data: dataString, userID: req.session.passport.user.id });
-                    });
-            });
+        // search by tag needs work, due to url - limited number of tags...
+        router.post('/searchtag', urlencodedParser, function (req, res) {
+            console.log(req.body);
+            unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?number=${req.body.quantity}&tags=${req.body.tag1}%2C${req.body.tag2}%2C${req.body.tag3}%2C${req.body.tag4}%2C${req.body.tag5}`)
+                .header("X-Mashape-Key", "vCWPJf4dnVmsh6TnOwGo3q8oKumOp14Hxw8jsnhOrBKwlELEZm")
+                .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+                .end(function (result) {
+                    console.log(result.status, result.headers, result.body, result.body);
+                    let dataString = JSON.stringify(result.body);
+                    console.log(dataString);
+                    res.render('searchtag', { data: dataString, userID: req.session.passport.user.id });
+                });
+        });
+
+        //search by ingredient
+        router.post('/searching', urlencodedParser, function (req, res) {
+            console.log(req.body);
+            unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=${req.body.tag1}%2C${req.body.tag2}%2C${req.body.tag3}%2C${req.body.tag4}%2C${req.body.tag5}&number=${req.body.quantity}&ranking=1`)
+                .header("X-Mashape-Key", "vCWPJf4dnVmsh6TnOwGo3q8oKumOp14Hxw8jsnhOrBKwlELEZm")
+                .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+                .end(function (result) {
+                    console.log(result.status, result.headers, result.body);
+                    let dataString = JSON.stringify(result.body);
+                    console.log(dataString);
+                    res.render('searching', { data: dataString, userID: req.session.passport.user.id });
+                });
+        });
 
         // My Favourites page
         router.get('/favouriteRest', (req, res, next) => {
@@ -143,11 +160,11 @@ module.exports = class ViewRouter {
             // successRedirect: '/', 
             failureRedirect: '/error',
             failureFlash: true
-            }),(req,res) => {
-                res.render("home",{
-                    userID: req.session.passport.user.name
-                })
-            }
+        }), (req, res) => {
+            res.render("home", {
+                userID: req.session.passport.user.name
+            })
+        }
         );
 
         router.get("/auth/facebook", passport.authenticate('facebook', { // Run when the FB login button is clicked
@@ -155,10 +172,10 @@ module.exports = class ViewRouter {
         }));
         router.get("/auth/facebook/callback", passport.authenticate('facebook', { //Handle redirections after FB login
             failureRedirect: "/error"
-        }),(req,res)=>res.redirect('/')); // CREATE LOCAL ACCOUNTS UPON FIRST FB LOGIN ---> To be implemented
+        }), (req, res) => res.redirect('/')); // CREATE LOCAL ACCOUNTS UPON FIRST FB LOGIN ---> To be implemented
 
         // Logout redirection
-        router.get('/logout', function (req, res){
+        router.get('/logout', function (req, res) {
             req.session.destroy(function (err) {
                 res.redirect('/');
             });
