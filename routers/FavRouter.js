@@ -15,13 +15,13 @@ class FavRouter {
                     .catch((err) => res.status(500).json(err));
             })
 
-            router.get('/dish/:dishID', (req, res) => { // of dish
+            router.get('/dish/:dishID', (req, res) => { // Of dish
                 this.favService.isFavDish(req.params.dishID, req.session.passport.user.id)
                     .then((status) => res.json(status))
                     .catch((err) => res.status(500).json(err));
             })
 
-            router.get('/meal/:mealID', (req, res) => { // of meal plan
+            router.get('/meal/:mealID', (req, res) => { // Of meal plan
                 this.favService.isFavMeal(req.params.mealID, req.session.passport.user.id)
                     .then((status) => res.json(status))
                     .catch((err) => res.status(500).json(err));

@@ -1,3 +1,5 @@
+sessionStorage.setItem('status','loggedIn');
+
 $(()=>{
     $.get(`/api/fav/preference`).then(tags=>{ // Get all fav tags
         tags.forEach(tag =>{ // Insert tag as title and view all linkage

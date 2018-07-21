@@ -1,6 +1,8 @@
 $(()=>{
     // Get lists of restaurants tagged as Food
-    $.get(`/api/rest/tag/1`).then(data=>{ 
+    $.get(`/api/rest/tag/1`).then(resData=>{
+        let data = resData.slice(0,3);
+
         data.forEach(e =>{
             $('#1stTagList').append(FoodRest(e.id,e.name,e.img,e.rating)); // Append restaurant details
 
@@ -155,6 +157,14 @@ $(()=>{
                 e.about,
                 e.rest_id
             ));
+
+
+            let elem = $(`#mp${e.id}_about`);
+            if(elem){
+                if (elem.text().length > 10)
+                        elem.text(elem.text().substr(0,50)+'...');
+            }
+
             $.get(`/api/fav/meal/${e.id}`).then(res => { // Check and return fav status
                 let status = JSON.parse(res);
                 if (status === true) {
@@ -194,14 +204,13 @@ $(()=>{
                     <div class="image">
                         <img src="${img}">
                     </div>
-            <div class="about">${about}"></div>
-            <div class="link"><a href="/rest/${rest_id}">View in restaurant page</div>
+                <div class="about" id="mp${id}_about">${about}"></div>
+            <div class="link"><a href="/rest/${rest_id}">View more</div>
         </div>
             `
     };
 
 })
-
 
 
 
