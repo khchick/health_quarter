@@ -1,23 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>HealthQuarter // uncover your healthy lifestyle</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" type="favicon" href="images/favicon.ico" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../css/index.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-        <title>Health Quarter</title>
-    </head>
-    <body>
 
-        {{{body}}}
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="shortcut icon" type="favicon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    {{!-- Import page title from ViewRouter.js --}}
+    <title>{{title}}</title>
+    
+    {{!-- Import CSS from ViewRouter.js --}}
+    {{#each css}}
+        <link rel="stylesheet" href="../../css/{{this}}" /> 
+    {{/each}}
+</head>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    </body>
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+    </script>
+    
+    {{!-- Header --}}
+    <header>
+        <div class="topnav" id="myTopnav">
+            <a href="/" class="active">HealthQuarter</a>
+            <a href="/">HOME</a>
+            {{!-- Update tag ID for food after data is fixed --}}
+            <a href="/tag/1">FOOD</a>
+            {{!-- Update tag ID for drinks after data is fixed --}}
+            <a href="/tag/10">DRINKS</a>
+            <a href="/mealplans">MEAL PLANS</a>
+            <a href="#">RECIPES</a>
+            <a href="/favouriteRest">MY FAVOURITES</a>
+            <a href="/profile">MY ACCOUNT</a>
+            <a href="/signup">SIGN UP</a>
+            <a href="/login">SIGN IN</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </header>
+
+    {{{body}}} 
+    
+    {{!-- Footer --}}
+    <footer>
+        <div class="footerwrapper">
+            <div>
+                <p>HQ</p>
+            </div>
+            <div>
+                <p>
+                    HOME
+                    <br>FOOD
+                    <br>DRINKS
+                </p>
+            </div>
+            <div>
+                <p>
+                    RECIPES
+                    <br>MEAL PLANS
+                    <br>FAVORITES
+                </p>
+            </div>
+            <div>
+                <p>
+                    SIGN IN
+                    <br>SIGN UP
+                    <br>PROFILE
+                </p>
+            </div>
+            <div>
+                <p>ARROW</p>
+            </div>
+        </div>
+        <div class="copyright">copyright</div>
+
+    </footer>
+</body>
+
 </html>

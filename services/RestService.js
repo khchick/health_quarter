@@ -4,52 +4,11 @@ class RestService {
         this.knex = knex;
     }
 
-    // list3RestByTag(tagID) {  // For generic home page content
-    //     let query = this.knex
-    //         .select('tag.id as tag_id','restaurant.id', 'restaurant.name', 'restaurant.img','restaurant.rating')
-    //         .from('restaurant')
-    //         .innerJoin('restaurant_tag', 'restaurant_tag.rest_id', 'restaurant.id')
-    //         .innerJoin('tag', 'restaurant_tag.tag_id', 'tag.id')
-    //         .where('tag.id', tagID)
-    //         .orderBy('tag.name');
-
-    //     return query.then(rows => {
-    //         for (i = 0;i < 3;i++) {
-    //             return rows.map(row => ({
-    //                 tag_id: row.tag_id,
-    //                 id: row.id,
-    //                 name: row.name,
-    //                 img: row.img,
-    //                 rating: row.rating,
-    //                 tags: []
-    //             }))    
-    //         }
-    //     })
-    //     .then(rows => { // Get all other tags for each restaurant
-    //         return Promise.all(
-    //             rows.map(row => {
-    //                 let query = this.knex
-    //                 .select('tag.name')
-    //                 .from('tag')
-    //                 .innerJoin('restaurant_tag', 'tag.id', 'restaurant_tag.tag_id')
-    //                 .where('restaurant_tag.rest_id', row.id)
-    //                 .orderBy('tag.name')
-
-    //                 return query.then(tagRows => {
-    //                     tagRows.forEach(tagRow => {
-    //                         row.tags.push(tagRow.name);
-    //                     });
-    //                     return row;
-    //                 })
-    //             })
-    //         )
-    //     })
-    // }
-
     // Restaurant services
-    list3RestByTag(tagID) {  // For generic home page content
+
+    listRestByTag(tagID) {  // For generic home page content
         let query = this.knex
-            .select('restaurant.id', 'restaurant.name', 'restaurant.img', 'restaurant.rating')
+            .select('tag.name as tag_name','restaurant.id', 'restaurant.name', 'restaurant.img', 'restaurant.rating')
             .from('restaurant')
             .innerJoin('restaurant_tag', 'restaurant_tag.rest_id', 'restaurant.id')
             .innerJoin('tag', 'restaurant_tag.tag_id', 'tag.id')
@@ -57,17 +16,8 @@ class RestService {
             .orderBy('tag.name');
 
         return query.then(rows => {
-            // for (let i = 0;i < 3;i++) {
-            //     return row[i] = {
-            //         tag_id: row[i].tag_id,
-            //         id: row[i].id,
-            //         name: row[i].name,
-            //         img: row[i].img,
-            //         rating: row[i].rating,
-            //         tags: []
-            //     }
-            // }
             return rows.map(row => ({
+                tag_name: row.tag_name,
                 id: row.id,
                 name: row.name,
                 img: row.img,
@@ -98,6 +48,47 @@ class RestService {
             )
         })
     }
+
+    // listRestByTag(tagID) {  // For generic home page content (PROTOTYPE VERSION)
+    //     let query = this.knex
+    //         .select('tag.name as tag_name','restaurant.id', 'restaurant.name', 'restaurant.price','restaurant.img')
+    //         .from('restaurant')
+    //         .innerJoin('restaurant_tag', 'restaurant_tag.rest_id', 'restaurant.id')
+    //         .innerJoin('tag', 'restaurant_tag.tag_id', 'tag.id')
+    //         .where('tag.id', tagID)
+    //         .orderBy('tag.name');
+
+    //     return query.then(rows => {
+    //         return rows.map(row => ({
+    //             tag_name: row.tag_name,
+    //             id: row.id,
+    //             name: row.name,
+    //             price: row.price,
+    //             img: row.img,
+    //             tags: []
+    //         }))
+    //     })
+    //     .then(rows => { // Get all other tags for each restaurant
+    //         return Promise.all(
+    //             rows.map(row => {
+    //                 let query = this.knex
+    //                 .select('tag.name')
+    //                 .from('tag')
+    //                 .innerJoin('restaurant_tag', 'tag.id', 'restaurant_tag.tag_id')
+    //                 .where('restaurant_tag.rest_id',row.id)
+    //                 .orderBy('tag.name')
+
+    //                 return query.then(tagRows => {
+    //                     tagRows.forEach(tagRow => {
+    //                         row.tags.push(tagRow.name);
+    //                     });
+    //                     return row;
+    //                 })
+    //             })
+    //         )
+    //     })
+    // }
+
 
     listRestByUserFavTag (userID) { // For personalised home page content
         let query = this.knex
