@@ -35,6 +35,8 @@ module.exports = class ViewRouter {
                 console.log(dataString);
             res.render('index', { title: 'HealthQuarter // uncover your healthy lifestyle', data: dataString, css: ['common.css', 'index.css'] });
         });
+    });
+
         router.get('/', isLoggedIn, (req, res, next) => { // May not work
             unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?number=3&random=true&maxCalories=800&minCalories=600`)
             .header("X-Mashape-Key", "vCWPJf4dnVmsh6TnOwGo3q8oKumOp14Hxw8jsnhOrBKwlELEZm")
@@ -45,6 +47,7 @@ module.exports = class ViewRouter {
                 console.log(dataString);
             res.render('index', { title: 'HealthQuarter // uncover your healthy lifestyle', data: dataString, css: ['common.css', 'index.css'] });
         });
+    });
 
         // Personalised home page
         router.get('/home', (req, res, next) => {
