@@ -43,10 +43,10 @@ $(() => {
                 }
             });
 
-            // Append associated tags and linkages
-            e.tags.forEach(tag =>{
-                $(`#rest_${e.id}`).append(RestTags(tag.tag_id,tag.tag_name));
-            })
+            // // Append associated tags and linkages
+            // e.tags.forEach(tag =>{
+            //     $(`#rest_${e.id}`).append(RestTags(tag.tag_id,tag.tag_name));
+            // })
         });
     });
     const Rest = (name, img, id) => {
