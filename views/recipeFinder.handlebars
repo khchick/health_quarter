@@ -1,4 +1,3 @@
-<script type='text/javascript' src="../js/common.js"></script>
 <div class="container">
     <header>
         <h1><a href="/home">Health Quarter</a></h1>
@@ -6,30 +5,34 @@
         <a href="/favouriteRest">My Favourites</a>
         Recipe Finder
         <a href="/logout">LOGOUT</a>
-    </header>
+    </header> 
+   
+   
+   <div class="recipeFinderBG">
+
+    <h1 class='title'>Health Quarters</h1>
+        <h2 class='title'>Recipe finding app</h2>
+        <p class='title' id='append'>If you become a member you can save your most enjoyable dishes for later</p>
     
-    <div class="firstElement"></div>
     <!--This is the template for the load in page-->
     <template id="loading template">
-        <h1>Health Quarters</h1>
-        <h2>Recipe finding app</h2>
-        <p>If you become a member you can save your most enjoyable dishes for later</p>
+        
 
         <p>
-            <button class="styled" id="search-cal" name="search-cal">Search by Calorie</button>
+            <button class="searchRecipeButton" id="search-cal" name="search-cal">Search by Calorie</button>
         </p>
         <p>
-            <button class="styled" id="search-tag" name="search-tag">Search by Tag</button>
+            <button class="searchRecipeButton" id="search-tag" name="search-tag">Search by Tag</button>
         </p>
           <p>
-            <button class="styled" id="search-ing" name="search-ing">Search by Ingredients</button>
+            <button class="searchRecipeButton" id="search-ing" name="search-ing">Search by Ingredients</button>
         </p>
 
     </template>
 
     <!--Search by calorie-->
 
-    <template id="search-cal">
+    <template id="search-temp-cal">
         <div class="ui block">
             <div class="ui grid">
                 <h2 class "page-header">Search for Recipes:</h2>
@@ -47,7 +50,7 @@
                     </div>
                     <br>
                     <p>
-                        <button name="submit" class="ui recipe button" type="submit">Find Recipe(s)</button>
+                        <button name="submit" class="searchRecipeButton" type="submit">Find Recipe(s)</button>
                     </p>
                     <br>
                     <br>
@@ -59,7 +62,7 @@
 
 
     <!--Search by tag-->
-    <template id="search-tag">
+    <template id="search-temp-tag">
         <div class="ui block">
             <div class="ui grid">
                 <h2 class "page-header">Search for Recipes:</h2>
@@ -69,7 +72,7 @@
                             Number of search requests (between 1-5):
                             <input type="number" name="quantity" min="1" max="5"> Queries:
                             <br>
-                            Popular searches include: vegetarian, vegan, cheap, popular, sustainable, glutenFree, veryHealthy
+                            Popular searches include: cheap, dairyFree, glutenFree, ketogenic, lowFodmap, sustainable, vegan, vegetarian, veryHealthy, veryPopular, whole30, 
                             <br>
                             <input type="text" name="tag1" value="">
                             <input type="text" name="tag2" value="">
@@ -80,7 +83,7 @@
                     </div>
                     <br>
                     <p>
-                        <button name="submit" id="findRecipe" class="ui recipe button" type="submit">Find Recipe(s)</button>
+                        <button name="submit" id="findRecipe" class="searchRecipeButton" type="submit">Find Recipe(s)</button>
                     </p>
                     <br>
                     <br>
@@ -90,7 +93,7 @@
         </div>
     </template> 
 
-    <template id="search-ing">
+    <template id="search-temp-ing">
         <div class="ui block">
             <div class="ui grid">
                 <h2 class "page-header">Search for Recipes:</h2>
@@ -111,7 +114,7 @@
                     </div>
                     <br>
                     <p>
-                        <button name="submit" id="findRecipe" class="ui recipe button" type="submit">Find Recipe(s)</button>
+                        <button name="submit" id="findRecipe" class="searchRecipeButton" type="submit">Find Recipe(s)</button>
                     </p>
                     <br>
                     <br>
@@ -120,6 +123,8 @@
         </div>
         </div>
     </template> 
+
+    </div>
 
 </div>
 
@@ -148,7 +153,7 @@
                 console.log('Templates are supported.');
                 let first = document.getElementById('loading template');
                 let content1 = first.content;
-                document.body.appendChild(content1);
+                document.getElementById('append').appendChild(content1);
             } else {
                 console.log('ffs')
             }
@@ -159,30 +164,27 @@
         $(document).on("click", "#search-cal", function () {
             console.log('calsearch');
            // $('#pfRecipes').hide;
-            $(this).hide();
-            $('input[name="search-tag"]').hide(); $('#recipes').hide(); $('#search-cal').hide(); $('#search-ing').hide();
-            let second = document.getElementById('search-cal');
+            $('#search-tag').hide(); $('#search-cal').hide(); $('#search-ing').hide();
+            let second = document.getElementById('search-temp-cal');
             let content2 = second.content;
-            document.body.appendChild(content2);
+            document.getElementById('append').appendChild(content2);
         });
 
         $(document).on("click", "#search-tag", function () {
             console.log('tagsearch');
             //$('#pfRecipes').hide;
-            $(this).hide();
-            $('input[name="search-cal"]').hide(); $('#recipes').hide();  $('#search-tag').hide(); $('#search-ing').hide();
-            let third = document.getElementById('search-tag');
+            $('#search-tag').hide(); $('#search-cal').hide(); $('#search-ing').hide();
+            let third = document.getElementById('search-temp-tag');
             let content3 = third.content;
-            document.body.appendChild(content3);
+            document.getElementById('append').appendChild(content3);
         });
 
           $(document).on("click", "#search-ing", function () {
             console.log('ingsearch');
             //$('#pfRecipes').hide;
-            $(this).hide();
-            $('input[name="search-cal"]').hide(); $('#recipes').hide();  $('#search-tag').hide(); $('#search-cal').hide();
-            let fourth = document.getElementById('search-ing');
+            $('#search-tag').hide(); $('#search-cal').hide(); $('#search-ing').hide();
+            let fourth = document.getElementById('search-temp-ing');
             let content4 = fourth.content;
-            document.body.appendChild(content4);
+            document.getElementById('append').appendChild(content4);
         });
         </script>
