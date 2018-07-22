@@ -97,8 +97,8 @@ $(()=>{ // Get data from api
     });
     const recipe = (title, image, id)=>{
         return `
-            <div class="innerwrapper">
-                <div class="name"><a href="https://spoonacular.com/${title}-${id}">${title}</a></div>
+            <div class="innerwrapper" id="indexRecipeStyle">
+                <div class="name"><a class="learnMore" href="https://spoonacular.com/${title}-${id}">${title}</a></div>
                             <div class="image">
                                 <img src="${image}">
                             </div>
