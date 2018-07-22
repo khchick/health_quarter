@@ -1,9 +1,9 @@
 $(() => {
-    $.get(`/api/fav/dishes`).then(data => { // Get list of all fav meals
+    $.get(`/api/fav/meals`).then(data => { // Get list of all fav meals
         data.forEach(e => {
-            $('#fav-dish-list').append(Dish(e.name, e.img, e.id, e.rest_id));
+            $('#fav-meal-list').append(Meal(e.name, e.img, e.id, e.rest_id));
 
-            $.get(`/api/fav/dish/${e.id}`).then(res => { // Check and return fav status
+            $.get(`/api/fav/meal/${e.id}`).then(res => { // Check and return fav status
                 let status = JSON.parse(res);
                 if (status === true) {
                     $(`i[data-id="${e.id}"]`).addClass("fa-heart");
@@ -16,26 +16,9 @@ $(() => {
             $(`i[data-id="${e.id}"]`).on('click', () => { // Listen to click to toggle favourite status
                 toggleFav(e.id);
             });
-
-            // Define fav button function
-            function toggleFav(dishID) {
-                if ($(`i[data-id="${dishID}"]`).hasClass("fa-heart")) {
-                    axios.delete(`/api/fav/dish/${dishID}`).then(() => {
-                        $(`i[data-id="${dishID}"]`).removeClass("fa-heart");
-                        $(`i[data-id="${dishID}"]`).addClass("fa-heart-o");
-                    })
-                }
-                if ($(`i[data-id="${dishID}"]`).hasClass("fa-heart-o")) {
-                    axios.post(`/api/fav/dish/${dishID}`).then(() => {
-                        $(`i[data-id="${dishID}"]`).removeClass("fa-heart-o");
-                        $(`i[data-id="${dishID}"]`).addClass("fa-heart");
-                    })
-                }
-            }
-
         });
     });
-    const Dish = (name, img, id, rest_id) => {
+    const Meal = (name, img, id, rest_id) => {
         return `
             <div class="innerwrapper">
                 <div class="name">${name}</div>
@@ -48,6 +31,22 @@ $(() => {
             `
     };
 })
+
+// Define fav button function
+function toggleFav(mealID) {
+    if ($(`i[data-id="${mealID}"]`).hasClass("fa-heart")) {
+        axios.delete(`/api/fav/meal/${mealID}`).then(() => {
+            $(`i[data-id="${mealID}"]`).removeClass("fa-heart");
+            $(`i[data-id="${mealID}"]`).addClass("fa-heart-o");
+        })
+    }
+    if ($(`i[data-id="${mealID}"]`).hasClass("fa-heart-o")) {
+        axios.post(`/api/fav/meal/${mealID}`).then(() => {
+            $(`i[data-id="${mealID}"]`).removeClass("fa-heart-o");
+            $(`i[data-id="${mealID}"]`).addClass("fa-heart");
+        })
+    }
+}
 
 
 

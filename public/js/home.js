@@ -27,26 +27,11 @@ $(()=>{
                             $(`i[data-id="${e.id}"]`).removeClass("fa-heart");
                         }
                     });
+
                     $(`i[data-id="${e.id}"]`).on('click', () => { // Listen to click to toggle favourite status
                         toggleFav(e.id);
                     });
         
-                    // Define fav button function
-                    function toggleFav(restID) {
-                        if ($(`i[data-id="${restID}"]`).hasClass("fa-heart")) {
-                            axios.delete(`/api/fav/rest/${restID}`).then(() => {
-                                $(`i[data-id="${restID}"]`).removeClass("fa-heart");
-                                $(`i[data-id="${restID}"]`).addClass("fa-heart-o");
-                            })
-                        }
-                        if ($(`i[data-id="${restID}"]`).hasClass("fa-heart-o")) {
-                            axios.post(`/api/fav/rest/${restID}`).then(() => {
-                                $(`i[data-id="${restID}"]`).removeClass("fa-heart-o");
-                                $(`i[data-id="${restID}"]`).addClass("fa-heart");
-                            })
-                        }
-                    }
-                    
                     // Calculate average rating and show as stars
                     $.get(`/api/rest/rating/${e.id}`).then(res => {
                         for (let i = 0;i < res;i++) {
@@ -87,3 +72,18 @@ $(()=>{
     });
 })
 
+// Define fav button function
+function toggleFav(restID) {
+    if ($(`i[data-id="${restID}"]`).hasClass("fa-heart")) {
+        axios.delete(`/api/fav/rest/${restID}`).then(() => {
+            $(`i[data-id="${restID}"]`).removeClass("fa-heart");
+            $(`i[data-id="${restID}"]`).addClass("fa-heart-o");
+        })
+    }
+    if ($(`i[data-id="${restID}"]`).hasClass("fa-heart-o")) {
+        axios.post(`/api/fav/rest/${restID}`).then(() => {
+            $(`i[data-id="${restID}"]`).removeClass("fa-heart-o");
+            $(`i[data-id="${restID}"]`).addClass("fa-heart");
+        })
+    }
+}

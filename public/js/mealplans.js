@@ -14,6 +14,20 @@ $(()=> {
                 if (elem.text().length > 10)
                         elem.text(elem.text().substr(0,50)+'...');
             }
+
+            $.get(`/api/fav/meal/${e.id}`).then(res => { // Check and return fav status
+                let status = JSON.parse(res);
+                if (status === true) {
+                    $(`i[data-id="${e.id}"]`).addClass("fa-heart");
+                    $(`i[data-id="${e.id}"]`).removeClass("fa-heart-o");
+                } else {
+                    $(`i[data-id="${e.id}"]`).addClass("fa-heart-o");
+                    $(`i[data-id="${e.id}"]`).removeClass("fa-heart");
+                }
+            });
+            $(`i[data-id="${e.id}"]`).on('click', () => { // Listen to click to toggle favourite status
+                toggleFav(e.id);
+            });
         });
     });
     const MealPlan = (id,name,img,about,rest_id)=>{
@@ -30,3 +44,19 @@ $(()=> {
             `
     };
 })
+
+// Define fav button function
+function toggleFav(mealID) {
+    if ($(`i[data-id="${mealID}"]`).hasClass("fa-heart")) {
+        axios.delete(`/api/fav/meal/${mealID}`).then(() => {
+            $(`i[data-id="${mealID}"]`).removeClass("fa-heart");
+            $(`i[data-id="${mealID}"]`).addClass("fa-heart-o");
+        })
+    }
+    if ($(`i[data-id="${mealID}"]`).hasClass("fa-heart-o")) {
+        axios.post(`/api/fav/meal/${mealID}`).then(() => {
+            $(`i[data-id="${mealID}"]`).removeClass("fa-heart-o");
+            $(`i[data-id="${mealID}"]`).addClass("fa-heart");
+        })
+    }
+}

@@ -151,7 +151,7 @@ class FavService {
 
         listFavDish(userID) {
             let query = this.knex
-            .select('restaurant.id','dish.name','dish.img')
+            .select('restaurant.id as rest_id','dish.id','dish.name','dish.img')
             .from('dish')
             .innerJoin('users_fav_dish', 'dish.id', 'users_fav_dish.dish_id')
             .innerJoin('restaurant','dish.rest_id', 'restaurant.id')
@@ -160,6 +160,7 @@ class FavService {
 
             return query.then((rows) => {
                 return rows.map(row => ({
+                    rest_id: row.rest_id,
                     id: row.id,
                     name: row.name,
                     img: row.img
@@ -169,7 +170,7 @@ class FavService {
 
         listFavMeal(userID) {
             let query = this.knex
-            .select('restaurant.id','meal_plan.name','meal_plan.img')
+            .select('restaurant.id as rest_id','meal_plan.id','meal_plan.name','meal_plan.img')
             .from('meal_plan')
             .innerJoin('users_fav_meal_plan', 'meal_plan.id', 'users_fav_meal_plan.meal_plan_id')
             .innerJoin('restaurant','meal_plan.rest_id', 'restaurant.id')
@@ -178,6 +179,7 @@ class FavService {
 
             return query.then((rows) => {
                 return rows.map(row => ({
+                    rest_id: row.rest_id,
                     id: row.id,
                     name: row.name,
                     img: row.img
