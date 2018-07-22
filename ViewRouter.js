@@ -67,7 +67,7 @@ module.exports = class ViewRouter {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
                     console.log(dataString);
-                    res.render('index', {
+                    res.render('home', {
                         title: 'HealthQuarter // uncover your healthy lifestyle',
                         data: dataString,
                         css: ['common.css', 'index.css']

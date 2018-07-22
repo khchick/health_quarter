@@ -73,19 +73,19 @@ class FavService {
         // For status update
         addFavRest(restID, userID) {
             return this.knex("users_fav_restaurant").insert({"users_id":userID,"rest_id":restID})
-            .then(()=> {
-                let query = this.knex
-                .select()
-                .from('users_fav_restaurant')
-                .where('users_fav_restaurant.users_id',userID)
-                .andWhere('users_fav_restaurant.rest_id',restID)
+            // .then(()=> {
+            //     let query = this.knex
+            //     .select()
+            //     .from('users_fav_restaurant')
+            //     .where('users_fav_restaurant.users_id',userID)
+            //     .andWhere('users_fav_restaurant.rest_id',restID)
 
-                return query.then(rows => {
-                    while (rows.length !== 1) {
-                        return this.delFavRest(restID, userID);
-                    }
-                })
-            })
+            //     return query.then(rows => {
+            //         while (rows.length !== 1) {
+            //             return this.delFavRest(restID, userID);
+            //         }
+            //     })
+            // })
         }
 
         delFavRest(restID, userID) {
@@ -131,21 +131,38 @@ class FavService {
     // @ Favourite page
 
         // For listing
-        listFavRest(userID) {
-            let query = this.knex
-            .select('restaurant.id','restaurant.name','restaurant.img')
-            .from('restaurant')
-            .innerJoin('users_fav_restaurant', 'restaurant.id', 'users_fav_restaurant.rest_id')
-            .where('users_fav_restaurant.users_id',userID)
-            .orderBy('users_fav_restaurant.created_at','desc');
-
-            return query.then((rows) => {
-                console.log(rows);
+        listFavRest(userID) {  
+            let query = this.knex // Eliminate duplicated restaurants
+                .distinct('rest_id')
+                .select()
+                .from('users_fav_restaurant')
+                .where('users_fav_restaurant.users_id',userID);
+    
+            return query.then(rows => {
                 return rows.map(row => ({
-                    id: row.id,
-                    name: row.name,
-                    img: row.img
+                    rest_id: row.rest_id,
+                    name: null,
+                    img: null
                 }))
+            })
+            .then(rows => { // Get restaurant details by ID
+                return Promise.all(
+                    rows.map(row => {
+                        let query = this.knex
+                        .select('restaurant.id','restaurant.name','restaurant.img')
+                        .from('restaurant')
+                        .where('restaurant.id',row.rest_id)
+                        .orderBy('restaurant.name')
+    
+                        return query.then(restRows => {
+                            restRows.forEach(restRow => {
+                                row.name = restRow.name;
+                                row.img = restRow.img;
+                            });
+                            return row;
+                        })
+                    })
+                )
             })
         }
 
