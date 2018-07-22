@@ -158,8 +158,7 @@ $(()=>{
                 e.rest_id
             ));
 
-
-            let elem = $(`#mp${e.id}_about`);
+            let elem = $(`#mp${e.id}_about`); // Limit about text to 50 characters
             if(elem){
                 if (elem.text().length > 10)
                         elem.text(elem.text().substr(0,50)+'...');

@@ -15,7 +15,7 @@ class FavService {
             .andWhere('rest_id',restID)
 
             return query.then((rows) => {
-                if (rows.length === 1) {
+                if (rows.length >= 1) {
                     return true;
                 } else {
                     return false;
@@ -31,7 +31,7 @@ class FavService {
             .andWhere('dish_id',dishID)
 
             return query.then((rows) => {
-                if (rows.length === 1) {
+                if (rows.length >= 1) {
                     return true;
                 } else {
                     return false;
@@ -47,7 +47,7 @@ class FavService {
             .andWhere('meal_plan_id',mealID)
 
             return query.then((rows) => {
-                if (rows.length === 1) {
+                if (rows.length >= 1) {
                     return true;
                 } else {
                     return false;
@@ -62,7 +62,7 @@ class FavService {
             .where('users_id', userID)
             .andWhere('api_url', recURL)
             return query.then((rows) => {
-                if (rows.length === 1) {
+                if (rows.length >= 1) {
                     return true;
                 } else {
                     return false;
@@ -73,6 +73,19 @@ class FavService {
         // For status update
         addFavRest(restID, userID) {
             return this.knex("users_fav_restaurant").insert({"users_id":userID,"rest_id":restID})
+            .then(()=> {
+                let query = this.knex
+                .select()
+                .from('users_fav_restaurant')
+                .where('users_fav_restaurant.users_id',userID)
+                .andWhere('users_fav_restaurant.rest_id',restID)
+
+                return query.then(rows => {
+                    while (rows.length !== 1) {
+                        return this.delFavRest(restID, userID);
+                    }
+                })
+            })
         }
 
         delFavRest(restID, userID) {

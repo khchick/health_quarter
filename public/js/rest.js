@@ -1,5 +1,6 @@
 $(() => {
     let restID = window.location.href.split("/").pop(); // Get restaurant ID from URL
+    console.log(restID); 
 
     // Get restaurant details
     $.get(`/api/rest/detail/${restID}`).then(data => {

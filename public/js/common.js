@@ -9,6 +9,8 @@ $(()=> {
         $('#favourite').css('display', 'block');
         $('#profile').css('display', 'block');
         $('#logout').css('display', 'block');
+        $('#logo').attr("href","/home");
+        $('#home').attr("href","/home");
     }
     
     if (sessionStorage.getItem('status') === null) {
@@ -17,7 +19,8 @@ $(()=> {
         $('#logout').css('display', 'none');
         $('#signup').css('display', 'block');
         $('#login').css('display', 'block');
-
+        $('#logo').attr("href","/");
+        $('#home').attr("href","/");
     }
 })
 
