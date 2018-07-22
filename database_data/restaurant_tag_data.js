@@ -11,4 +11,11 @@ module.exports = [
     {rest_id: 3, tag_id: 10},
     {rest_id: 4, tag_id: 2},
     {rest_id: 4, tag_id: 10},
+    {rest_id: 4, tag_id: 16},
+    {rest_id: 19,tag_id:7},
+    {rest_id: 19,tag_id:8},
+    {rest_id: 19,tag_id:12},
+    {rest_id: 19,tag_id:14},
+    {rest_id: 19,tag_id:15},
+    {rest_id: 19,tag_id:16},
 ];

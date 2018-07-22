@@ -11,7 +11,7 @@ module.exports = [
         website: 'http://www.confusion.hk',
         price: '$51-100',
         hours: 'Mon - Sat 09:00 - 21:00',
-        img: 'http://www.confusion.hk/uploads/1/1/2/7/112766607/img-5470_orig.jpg',
+        img: 'https://scontent.fhkg2-1.fna.fbcdn.net/v/t1.0-9/36064627_272790690126191_5585713957538103296_n.jpg?_nc_cat=0&oh=1409795a792cd74a4182c24aeb1122d3&oe=5BCE94F4',
         short_desc: '100% plant-based kitchen serving healthy Asian and Western cuisine. Environmentally conscious aiming for zero waste. Daily and weekly specials. Breakfast, lunch, sides, burgers and wraps, desserts and drinks.',
         rating: 0,
     },
@@ -283,6 +283,21 @@ module.exports = [
         hours: 'Tue-Sun 11:00-23:00',
         img: 'https://www.openrice.com/en/hongkong/p-3-3rds-p2119613',
         short_desc: "3/3rds has a bit of eveything to statisfy your every need, fom healthy and vibrant salads to warming and filling desserts. This is a nice place to relax and enjoy good food.",
+        rating: 0 
+    },
+    {
+        name: 'Youni',
+        location: "Level 9-10, The ONE, 100 Nathan Road, Tsim Sha Tsui",
+        lat: '22.2485935',
+        lng: '114.1657958',
+        map: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.4202687048833!2d114.17074027885948!3d22.29994004861632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340400edc96bc43b%3A0xed72170baf673423!2sThe+ONE!5e0!3m2!1sen!2shk!4v1532252610111" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> ',
+        about: "YOUNI is a play on the words “YOU” and “I”. It was created on the basis that everyone has their own health and fitness goals whether it is to lose weight, build muscles, fight diseases or prevent illnesses.",
+        phone: '37283983',
+        website: 'https://www.youni.com.hk/',
+        price: '$100-200',
+        hours: 'Mon-Sun 6:30-21:00',
+        img: 'https://static7.orstatic.com/userphoto/photo/M/I13/03K7WEF85E101307BAC48Epx.jpg',
+        short_desc: "We have a team of in-house Doctors, Dieticians, and Nutritionists that help develop our menu to ensure the right ingredients are used to harmonise with the seasons and our bodies.",
         rating: 0 
     }
 ];

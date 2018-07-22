@@ -45,6 +45,16 @@ module.exports = [
         rest_id: 2
     },
     {
+        name: 'Tomato Salsa',
+        img: '/images/healthy_chick/healthy_chick_tomato_salsa.jpg',
+        rest_id: 3
+    },
+    {
+        name: 'Chicken Lunch Set',
+        img: '/images/healthy_chick/healthy_chick_lunch_set.jpg',
+        rest_id: 3
+    },
+    {
         name: 'Tofu Salad',
         img: '/images/tofusalad_locofama.jpg',
         rest_id: 5
@@ -63,6 +73,11 @@ module.exports = [
         name: 'Sweet and Sour Organic Pork',
         img: '/images/sweet&sourorganicpork_sohofama.jpg',
         rest_id: 6
+    },
+    {
+        name: 'Dinner Buffet',
+        img: '/images/harvester/harvester_dinner_buffet.jpg',
+        rest_id: 7
     },
     {
         name: 'Veggie Burger',
@@ -120,6 +135,32 @@ module.exports = [
         rest_id: 15
     },
     {
+        name: 'Cucumber Cooler',
+        img: '/images/kinnet_cafe/kinnet_cafe_cucumber_cooler.jpg',
+        rest_id: 16
+    },
+    {
+        name: 'French Toast with Mixed Berry Compote and Maple Syrup',
+        img: '/images/kinnet_cafe/kinnet_cafe_french_toast.jpg',
+        rest_id: 16
+    },
+    {
+        name: 'Mixed Salad',
+        img: '/images/kinnet_cafe/kinnet_cafe_mixed_salad.jpg',
+        rest_id: 16
+    },
+    {
+        name: 'Sweet Potato Cheesecake',
+        img: '/images/kinnet_cafe/kinnet_cafe_sweet_potato_cheesecake.jpg',
+        rest_id: 16
+    },
+    {
+        name: 'Tartine with Paprika Roasted Eggplant',
+        img: '/images/kinnet_cafe/kinnet_cafe_tartine_with_paprika_roasted_eggplant.jpg',
+        rest_id: 16
+    },
+    
+    {
         name: 'Lentil Salad with Cheesey Toast',
         img: '/images/cheesytoastlentilsalad_artichokecanteen.jpg',
         rest_id: 17
@@ -148,5 +189,25 @@ module.exports = [
         name: 'Squid and Vegetables',
         img: '/images/squidveg_3rds.jpg',
         rest_id: 19
+    },
+    {
+        name: 'Energy Plate',
+        img: '/images/youni/youni_energy_plate.jpg',
+        rest_id: 20
+    },
+    {
+        name: 'Fresh Bowl',
+        img: '/images/youni/youni_fresh_bowl_acai.jpg',
+        rest_id: 20
+    },
+    {
+        name: 'No Carb Diet',
+        img: '/images/youni/youni_no_carb_diet.jpg',
+        rest_id: 20
+    },
+    {
+        name: 'Portobello Roast Vegetable Pesto Salad',
+        img: '/images/youni/youni_portobello_roast_vegetable_pesto_salad.jpg',
+        rest_id: 20
     },
 ];

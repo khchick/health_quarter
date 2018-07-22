@@ -15,4 +15,5 @@ module.exports = [
     {name: 'Chinese Cruisine'},
     {name: 'Food'},
     {name: 'Drink'},
+    {name: 'Vegan'}
 ];
