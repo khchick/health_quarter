@@ -1,17 +1,9 @@
 module.exports = [
-<<<<<<< HEAD
-    {name:'Low Carbs Plan',about:'Our low carb plan will supplement your weight loss goals while fueling your daily nutrient needs. Our dietician approved meals provide you with a balanced diet including low carbohydrates, lean protein, and healthy fats. (Daily carb intake is below 140 grams)' ,img:'images/nosh/low_carbs_plan.jpg' ,rest_id: 4},
-    {name:'Signature Plan',about:'Our Signature Lean Plan is our most popular plan. It provides you the balanced macronutrients to fuel your day and boost your performance both at work or in the gym. This meal plan consists of 3 meals and 1 snack designed by our team of executive chefs and dieticians.',img:'images/nosh/signature_plan.jpg' ,rest_id: 4},
-    {name:'High Protein Plan',about:'This package is for those with a larger appetite and will supplement your muscle building goals. This meal plan includes 3 meals packed with an average of 150 grams of protein per day which supports lean muscle growth, performance, and recovery.',img:'images/nosh/high_protein_plan.jpg' ,rest_id: 4},
-    {name:'Build Muscle Meal Plan',about:'Build Your Mucles with our special recipe',img:'/images/youni/youni_build-muscle.jpg',rest_id: 20},
-    {name:'Cold Compressed Juice Plan',about:'Follow the latest health trend- detoxic juices',img:'/images/youni/youni-cold_compressed_juice.jpg',rest_id: 20},
-=======
     {name:'Low Carbs Plan',about:'Our low carb plan will supplement your weight loss goals while fueling your daily nutrient needs. Our dietician approved meals provide you with a balanced diet including low carbohydrates, lean protein, and healthy fats. (Daily carb intake is below 140 grams)' ,img:'images/nosh/low_carbs_plan.jpg',rest_id: 4},
     {name:'Signature Plan',about:'Our Signature Lean Plan is our most popular plan. It provides you the balanced macronutrients to fuel your day and boost your performance both at work or in the gym. This meal plan consists of 3 meals and 1 snack designed by our team of executive chefs and dieticians.',img:'images/nosh/signature_plan.jpg',rest_id: 4},
     {name:'High Protein Plan',about:'This package is for those with a larger appetite and will supplement your muscle building goals. This meal plan includes 3 meals packed with an average of 150 grams of protein per day which supports lean muscle growth, performance, and recovery.',img:'images/nosh/high_protein_plan.jpg' ,rest_id: 4},
     {name:'Build Muscle Meal Plan',about:'Build Your Mucles with our special recipe',img:'/images/youni/youni_build_muscle.jpg',rest_id: 20},
     {name:'Cold Compressed Juice Plan',about:'Follow the latest health trend- detoxic juices',img:'/images/youni/youni_cold_compressed_juice.jpg',rest_id: 20},
->>>>>>> ddcddb6902b7f4afa5103dd2bba09ca503955936
     {name:'Eat Lean Plan',about:'we have prepared you the best meals for building lean muscles, no more hesitation!',img:'/images/youni/youni_eat_lean.jpg' ,rest_id: 20},
     {name:'1 Week Low Carb Gluten Free Meal Plan A',about:'We are heavily depended on highly processed carbs these days, and this plan is perfect for those who just want to stay away from carbs for some time.',img:'images/eataology/1_week_low_carb_A.jpg' ,rest_id: 21},
     {name:'1 Week Low Carb Gluten Free Meal Plan B',about:'For others who are experiencing stomach discomfort with their current eating habit - try this plan to see if your symptoms improve.',img:'/images/eataology/1_week_low_carb_B.jpg',rest_id: 21},
