@@ -71,7 +71,7 @@
     <div class="title">
         <div>
             <span>RECIPES</span>
-            <a href="#">VIEW ALL</a>
+            <a href="/favouriteRec">VIEW ALL</a>
 
         </div>
     </div>
@@ -92,22 +92,54 @@
         }
     }
 
-let recipeD = {{{ data }}}
+    let recipeD = {{{ data }}}
 
-$(()=>{ // Get data from api
-        recipeD.forEach(e =>{
-            $('#RecipeList').append(recipe(e.title,e.image,e.id));
+    $(() => { // Get data from api
+        recipeD.forEach(e => {
+            $('#RecipeList').append(recipe(e.title, e.image, e.id));
         });
     });
-    const recipe = (title, image, id)=>{
+    const recipe = (title, image, id) => {
         return `
-            <div class="innerwrapper">
-                <div class="name"><a href="https://spoonacular.com/${title}-${id}">${title}</a></div>
+            <div class="innerwrapper" id'="indexRecipeStyle">
+                <div class="heart"><i data-id="${title}-${id}" id="favBtn" class="fa fa-heart-o"></i></div>
+                <div class="name"><a class="learnMore" href="https://spoonacular.com/${title}-${id}">${title}</a></div>
                             <div class="image">
                                 <img src="${image}">
                             </div>
             </div>`
     };
 
+    let actionCounter = 0;
+    $(`i[data-id="${e.title}-${e.id}"]`).on('click', () => { 
+        if (actionCounter === 0) {
+            let recURL = $(e.currentTarget).data('id');
+            console.log('faved');
+            actionCounter++;
+            axios({
+                method: 'post',
+                url: '/api/fav/recipes',
+                data: {
+                    recURL: `${recURL}`
+                }
+            })
+            console.log(actionCounter);
+            $(`i[data-id="${e.title}-${e.id}"]`).addClass("fa-heart");
+        }
 
+        if (actionCounter === 1) {
+            axios({
+                method: 'delete',
+                url: '/api/fav/recipes',
+                data: {
+                    recURL: `${recURL}`
+                }
+            })
+            actionCounter--;
+            console.log(actionCounter)
+            $(`i[data-id="${e.title}-${e.id}"]`).addClass("fa-heart-o");
+
+        }
+    }
+    );
 </script>

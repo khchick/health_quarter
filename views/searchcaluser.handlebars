@@ -62,7 +62,9 @@
                     $(e.currentTarget).html("isFav");
                 })
                 console.log(actionCounter);
-            } if (actionCounter === 2) {
+            } 
+            
+            if (actionCounter === 2) {
                 axios({
                     method: 'delete',
                     url: '/api/fav/recipes',
