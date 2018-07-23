@@ -1,0 +1,110 @@
+/*
+  ========================================
+ Banner
+  ========================================
+*/
+
+.bannerbackground {
+    margin-top: 50px;
+    background-image: url("/images/decor/foodbanner.jpg");
+    width: 100%;
+    height: 250px; 
+    background-size: cover; 
+    background-position: center top;
+}
+
+#titleTag {
+    padding-left: 45px;
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 40px;
+    color: black;
+    padding-top: 150px;
+    text-align: center;
+}
+
+/*
+  ========================================
+  Grid
+  ========================================
+*/
+
+.grid {
+    margin: 50px;
+}
+
+.title {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    text-align: center;
+}
+
+.title span {
+    border: 2px solid black;
+    padding: 5px;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 50px;
+    }
+}
+
+.innerwrapper {
+    display: grid;
+    grid-template-areas: 'name name name name name heart' 'image image image image image image' 'image image image image image image' 'image image image image image image' 'price price . . stars stars' 'tags tags tags tags tags viewmore';
+    grid-gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.innerwrapper {
+    text-align: left;
+}
+
+.innerwrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.name {
+    grid-area: name;
+}
+
+.heart {
+    grid-area: heart;
+}
+
+.image {
+    grid-area: image;
+}
+
+.price {
+    grid-area: price;
+}
+
+.stars {
+    grid-area: stars;
+}
+
+.tags {
+    grid-area: tags;
+}
+
+.viewmore {
+    grid-area: viewmore;
+}
+
