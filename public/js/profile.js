@@ -42,6 +42,12 @@ $(() => {
                 e.name
             ))
         });
+
+        // Hide default tags
+        $('#tag_1').parent().css('display','none');
+        $('#tag_2').parent().css('display','none');
+        $('#tag_15').parent().css('display','none');
+        $('#tag_16').parent().css('display','none');
     });
     const Tags = (id, name) => {
         return `
@@ -110,10 +116,19 @@ $(() => {
                 e.id,
                 e.comment,
                 e.rating
-            ))
+            ));
+            
+            // Render rating into stars
+            for (let i = 1;i <= e.rating;i++) {
+                $(`#rating_${e.id}`).append(`<i class="fa fa-star" aria-hidden="true" id="${i}_star" data-id="${i}"></i>`);
+            }
+            for (let i = (e.rating + 1);i <= 5;i++) {
+                $(`#rating_${e.id}`).append(`<i class="fa fa-star-o" aria-hidden="true" id="${i}_star" data-id="${i}"></i>`);
+            }
         });
     });
-    const ReviewDetail = (rest_name, id, comment, rating) => {
+
+    const ReviewDetail = (rest_name, id, comment) => {
         return `
         <form action="/api/user/review/${id}" method="put">
             <p value="${id}">${rest_name}</p>
@@ -123,7 +138,7 @@ $(() => {
             </div>
             <div class="d-flex justify-content">
                 <label>Rating:  </label>
-                <input type="text" name="rating" id="rating" value="${rating}"/>
+                <div id="rating_${id}" data-id="0"></div>
             </div>
             <div>
                 <input type="submit" id="updateReview" value="Update" data-id="${id}" />
@@ -131,6 +146,76 @@ $(() => {
             </div>
         </form>`
     }
+    // <input type="text" name="rating" id="rating" value="${rating}"/>
+
+    $(`#review-list`).on('click',`#1_star`,(e)=> {
+        if ($(e.currentTarget).hasClass("fa-star")) {
+            $(e.currentTarget).addClass("fa-star-o").removeClass("fa-star");
+            $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
+            $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
+            $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star");
+            $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
+        } else {
+            $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
+            $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
+            $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
+            $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
+            $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
+            $(e.currentTarget).parent().data($(e.currentTarget).data());
+        }
+    })
+
+    $(`#review-list`).on('click',`#2_star`,(e)=> {
+        $(e.currentTarget).prev().prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).prev().prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
+        $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
+        $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
+        $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
+        $(e.currentTarget).parent().data($(e.currentTarget).data());
+    })
+
+    $(`#review-list`).on('click',`#3_star`,(e)=> {
+        $(e.currentTarget).prev().prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).prev().prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
+        $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
+        $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
+        $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
+        $(e.currentTarget).parent().data($(e.currentTarget).data());
+    })
+
+    $(`#review-list`).on('click',`#4_star`,(e)=> {
+        $(e.currentTarget).prev().prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).prev().prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
+        $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
+        $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
+        $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
+        $(e.currentTarget).parent().data($(e.currentTarget).data());
+    })
+
+    $(`#review-list`).on('click',`#5_star`,(e)=> {
+        $(e.currentTarget).prev().prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).prev().prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).prev().addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
+        $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
+        $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
+        $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
+        $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
+        $(e.currentTarget).parent().data($(e.currentTarget).data());
+    })
 
     // Update review on button click
     $('#review-list').on('click','#updateReview',(e) => {
@@ -154,4 +239,9 @@ $(() => {
     })
 
 })
+
+// Define rating function
+function updateRating() {
+
+}
 

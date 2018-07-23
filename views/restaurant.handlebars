@@ -1,49 +1,29 @@
 <script type='text/javascript' src="../js/common.js"></script>
 <script type='text/javascript' src="/js/rest.js"></script>
-<div class="container">
-    <header>
-        <h1><a href="/home">Health Quarter</a></h1>
-        <a href="/delivery">Delivery</a>
-        <a href="/favouriteRest">My Favourites</a>
-        <a href="/recipeFinder">Recipes Finder</a>
-        <a href="/logout">LOGOUT</a>
-    </header>
-    <div class="row no-gutters" id="mainContent">
-        <div id="myNotes">
-            <div class="container bg-light">
-                <button id="favBtn"></button>
-                <h2 id="myNotesTitle">Restaurant Details</h2>
-                <div id='rest-detail'></div>
-                <h2 id="myNotesTitle">Dishes Details</h2>
-                <div id='dish-detail'></div>
-                <h2 id="myNotesTitle">Meal Plans Details</h2>
-                <div id='meal-detail'></div>
-                
-                <h2>User reviews</h2>
-                <div id='rest-review'>
-                </div>
-                <h2>Submit your comments:</h2>
-                <form action="/review/:restID" method="post">
-                    <div>
-                        <label>Comment:</label>
-                        <input type="text" id="comment" name="comment" />
-                    </div>
-                    <div>
-                        <label>Rating:</label>
-                        <div>
-                            <input type="radio" name="rating" value="1">1
-                            <input type="radio" name="rating" value="2">2
-                            <input type="radio" name="rating" value="3">3
-                            <input type="radio" name="rating" value="4">4
-                            <input type="radio" name="rating" value="5" checked="checked">5
-                        </div>
-                    </div>
-                    <div>
-                        <input type="submit" id="submitReview" value="Submit" />
-                    </div>
-                    <div id="alert"></div>
-                </form>
-            </div>
+
+<div id='rest-detail'></div>
+<div id='dish-detail'></div>
+<div id='meal-detail'></div>
+<div id='rest-review'></div>
+<h2>User reviews</h2>
+<h2>Submit your comments:</h2>
+<form action="/review/:restID" method="post">
+    <div>
+        <label>Comment:</label>
+        <input type="text" id="comment" name="comment" />
+    </div>
+    <div>
+        <label>Rating:</label>
+        <div>
+            <input type="radio" name="rating" value="1">1
+            <input type="radio" name="rating" value="2">2
+            <input type="radio" name="rating" value="3">3
+            <input type="radio" name="rating" value="4">4
+            <input type="radio" name="rating" value="5" checked="checked">5
         </div>
     </div>
-</div>
+    <div>
+        <input type="submit" id="submitReview" value="Submit" />
+    </div>
+    <div id="alert"></div>
+</form>

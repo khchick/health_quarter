@@ -1,6 +1,6 @@
 module.exports = [
     {name: 'Restaurant'},
-    {name: 'Meal-Plan'},
+    {name: 'Meal-Plans'},
     {name: 'Plant-based'},
     {name: 'Gluten-free'},
     {name: 'Dairy-free'},
@@ -14,6 +14,6 @@ module.exports = [
     {name: 'Detoxic'},
     {name: 'Chinese Cruisine'},
     {name: 'Food'},
-    {name: 'Drink'},
+    {name: 'Drinks'},
     {name: 'Vegan'}
 ];

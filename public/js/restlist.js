@@ -2,7 +2,8 @@ $(()=>{
     let tagID = window.location.href.split("/").pop();
 
     $.get(`/api/rest/tag/${tagID}`).then(data=>{  // NEED TO UPDATE TAG ID INTO FOOD'S AFTER FIXING THE DATA
-        $('#tagName').append(data[0].tag_name.toUpperCase()); // Insert tag name as title
+        $('#titleTag').append(data[0].tag_name.toUpperCase()); 
+        $('#tagName').append(data[0].tag_name.toUpperCase());
 
         data.forEach(e =>{
             $('#restList').append(Rest(e.id,e.name,e.img,e.rating));

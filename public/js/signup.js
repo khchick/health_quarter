@@ -6,11 +6,17 @@ $(()=>{
                 e.name
             ))
         });
+
+        // Hide default tags
+        $('#tag_1').parent().css('display','none');
+        $('#tag_2').parent().css('display','none');
+        $('#tag_15').parent().css('display','none');
+        $('#tag_16').parent().css('display','none');
     });
     const Tags = (id,name)=>{ // Display as checkboxes
         return `
             <div class="info-container">
-                <input type="checkbox" name="tag" value="${id}">${name}
+                <input type="checkbox" name="tag" id="tag_${id}" value="${id}">${name}
             </div>`
     }
 })
