@@ -267,10 +267,10 @@ Recipe Finder
     color: white;
 }
 
-.learnMore {
+.learnMore, a {
     text-decoration: none;
     color: #006666;
-    font-size: 15;
+    font-size: 20;
     font-weight: 300;
 }
 
@@ -279,6 +279,10 @@ Recipe Finder
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+i {
+    z-index:0;
 }
 
 /*
