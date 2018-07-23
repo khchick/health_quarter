@@ -299,5 +299,20 @@ module.exports = [
         img: 'https://static7.orstatic.com/userphoto/photo/M/I13/03K7WEF85E101307BAC48Epx.jpg',
         short_desc: "We have a team of in-house Doctors, Dieticians, and Nutritionists that help develop our menu to ensure the right ingredients are used to harmonise with the seasons and our bodies.",
         rating: 0 
+    },
+    {
+        name: 'Eatology ',
+        location: "Unit 4/G, Hong Kong Industrial Building, 444-452 Des Voeux Road West, Hong Kong",
+        lat: '22.3583115',
+        lng: '113.8426278',
+        map: '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d236177.48021544726!2d114.1311023!3d22.3433136!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4a0f3f93f3985797!2sEatology+-+Healthy+Food+%26+Diet+Meal+Plan+Delivery!5e0!3m2!1sen!2shk!4v1532328154624" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> ',
+        about: "At Eatology, our mission is to provide you with the highest quality health food, and the endless positive benefits that come along with it.",
+        phone: '23686331',
+        website: 'https://www.eatologyasia.com/',
+        price: '$150-300',
+        hours: 'Mon-Sun 6:30-21:00',
+        img: '/images/eataology/eatology_main.jpg',
+        short_desc: "Eatology creates gourmet recipes comprised of wholesome, nutrient-dense ingredients with great flavors- just to help you to reach your goal, whether it is losing weight, boosting energy levels or staying healthy.",
+        rating: 0 
     }
 ];
