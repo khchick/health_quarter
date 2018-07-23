@@ -42,14 +42,18 @@ $(()=>{
     const Rest = (id,name,img)=>{
         return `
             <div class="innerwrapper">
-                <div class="name"><a href="/rest/${id}">${name}</a></div>
-                    <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i></div>
-                            <div class="image">
-                                <img src="${img}">
-                            </div>
-                        <div class="ratings">ratings</div>
-                    <div class="stars" id="rating_${id}"></div>
+                <div class="name"><a href="/rest/${id}">${name}</a>
+                </div>
+                <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
+                </div>
+                <div class="image">
+                    <img src="${img}">
+                </div>
+                <div class="price">price
+                </div>
+                <div class="stars" id="rating_${id}"></div>
                 <div class="tags" id="rest_${id}"></div>
+                <div class="viewmore">view more</div>
             </div>
             `
     };

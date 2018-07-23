@@ -37,7 +37,7 @@ module.exports = class ViewRouter {
                     res.render('index', {
                         title: 'HealthQuarter // uncover your healthy lifestyle',
                         data: dataString,
-                        css: ['common.css', 'index.css']
+                        css: ['index.css']
                     });
                 });
         });
@@ -70,19 +70,19 @@ module.exports = class ViewRouter {
                     res.render('home', {
                         title: 'HealthQuarter // uncover your healthy lifestyle',
                         data: dataString,
-                        css: ['common.css', 'index.css']
+                        css: ['index.css']
                     });
                 });
         });
 
         // Restaurant list (of certain tag)
         router.get('/tag/:id', (req, res, next) => {
-            res.render('restlist', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+            res.render('restlist', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['index.css','listing.css'] });
         });
 
         // Restaurant details page
         router.get('/rest/:id', (req, res, next) => {
-            res.render('restaurant', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+            res.render('restaurant', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['index.css','restaurant.css'] });
         });
 
         // Dish details page
@@ -93,7 +93,7 @@ module.exports = class ViewRouter {
 
         // Meal Plans page
         router.get('/mealplans', (req, res, next) => {
-            res.render('mealplans', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+            res.render('mealplans', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['index.css','listing.css'] });
         });
 
         // //Recipe Finder page
