@@ -1,5 +1,4 @@
 module.exports = [
-
     {
         name: 'Confusion Plant Based Kitchen',
         location: 'G/F, 103 Jervois Street, Sheung Wan',
@@ -11,7 +10,7 @@ module.exports = [
         website: 'http://www.confusion.hk',
         price: '$51-100',
         hours: 'Mon - Sat 09:00 - 21:00',
-        img: 'https://scontent.fhkg2-1.fna.fbcdn.net/v/t1.0-9/36064627_272790690126191_5585713957538103296_n.jpg?_nc_cat=0&oh=1409795a792cd74a4182c24aeb1122d3&oe=5BCE94F4',
+        img: 'images/restaurants/confusion_main.jpg',
         short_desc: '100% plant-based kitchen serving healthy Asian and Western cuisine. Environmentally conscious aiming for zero waste. Daily and weekly specials. Breakfast, lunch, sides, burgers and wraps, desserts and drinks.',
         rating: 0,
     },
@@ -26,7 +25,7 @@ module.exports = [
         website: '"http://www.thecakery.com',
         price: 'Below $50',
         hours: 'Mon - Sun 11:00 - 19:30',
-        img: 'https://static.wixstatic.com/media/6eece4_bf8c6414a88948d6965b7422ed65d794~mv2.jpg/v1/fill/w_1276,h_678,al_c,q_85,usm_0.66_1.00_0.01/6eece4_bf8c6414a88948d6965b7422ed65d794~mv2.webpg',
+        img: 'images/restaurants/cakery_main.jpg',
         short_desc: 'The Cakery is a health conscious dessert shop that offers a variety of gluten free, dairy free, reduced fat and organic cupcakes. This bakery uses a variety of superfoods like chia seed, gojiberries and coconut oil to make their desserts.',
         rating: 0
     },
@@ -41,7 +40,7 @@ module.exports = [
         website: 'http://www.healthychicken.com/',
         price: '$51-100',
         hours: 'Mon - Sat 11:00 - 22:00, Sun 12:00 - 20:00',
-        img: 'https://www.greenqueen.com.hk/wp-content/uploads/2015/11/Healthy-Chicken.png',
+        img: 'images/restaurants/healthy_chick_main.jpg',
         short_desc: 'Peruvian-style rotisserie chicken, available for pickup. The chicken is sourced from South America and is antibiotic-free, hormone-free and cage free.',
         rating: 0
     },
@@ -56,7 +55,7 @@ module.exports = [
         website: 'https://www.nosh.hk/Mealplans',
         price: '$250-400',
         hours: 'We stop taking orders at 9am on Saturdays for Monday delivery. Or you can order before Monday at 9 am for a Tuesday start.',
-        img: 'https://insideretail.hk/wp-content/uploads/2016/10/Nosh.jpg',
+        img: 'images/restaurants/nosh_main.jpg',
         short_desc: 'At NOSH, we focus on every step of our ingredients journeys. From field to cutting board, our sourcing teams work tirelessly to ensure that both premium and sustainable ingredients make it into every box.',
         rating: 0
     },
@@ -71,7 +70,7 @@ module.exports = [
         website: 'https://www.facebook.com/Locofama/',
         price: '$101-200',
         hours: 'Wed - Mon 12:00-22:00 (Tue closed)',
-        img: 'http://www.atmag.net/wp-content/uploads/2014/03/Locofama-organic-restaurant-hong-kong-atmag1.jpg',
+        img: 'images/restaurants/locofama_main.jpg',
         short_desc: 'Locofama is a health consious restaurant which serves a variety of healthy foods, from wonderful salads to amazing pastas, their focus is to ensure that the best healthy food is delivered  to the plate.',
         rating: 0
     },
@@ -86,7 +85,7 @@ module.exports = [
         website: 'http://sohofama.com/',
         price: '$150-200',
         hours: 'Mon - Sun  12:00-23:00',
-        img: 'https://qul.imgix.net/fb1aad57-1d92-4acd-bedf-c94f307138fa/117239_sld.jpg',
+        img: 'images/restaurants/sohofama_main.jpg',
         short_desc: 'Sohofama embodies the ideals of East meets West, they boast a variety of dishes that resembles Chinese tapas. The ingredients sourced for this restaurant are of the highest quality to ensure that thier dishes are remebered by all.',
         rating: 0
     },
@@ -101,7 +100,7 @@ module.exports = [
         website: 'N/A',
         price: '$100-150',
         hours: 'Mon-Sat 12:00-21:00',
-        img: 'https://i.pinimg.com/originals/9e/fe/8c/9efe8c883aad4576821cb134674142cf.jpg',
+        img: 'images/restaurants/harvester_main.jpg',
         short_desc: 'Sohofama embodies the ideals of East meets West, they boast a variety of dishes that resembles Chinese tapas. The ingredients sourced for this restaurant are of the highest quality to ensure that thier dishes are remebered by all.',
         rating: 0
     },
@@ -116,7 +115,7 @@ module.exports = [
         website: 'http://www.veggiesf.com/',
         price: '$101-200',
         hours: 'Mon-Sat 11:45-14:30 17:45-21:00',
-        img: 'http://atd-hk.s3.amazonaws.com/i/content/top-5-vegetarian-restaurants/veggieSF_interior.jpeg',
+        img: 'images/restaurants/veggieSF_main.jpeg',
         short_desc: "Despite being themed as a 1950's diner the food is very much modern, its menu boasts brilliant vegetarian and vegan food, it is a wondeful place for anyone looking for a slice of the past.",
         rating: 0
     },
@@ -131,7 +130,7 @@ module.exports = [
         website: 'https://www.facebook.com/veggimonsterhk/',
         price: '$80-120',
         hours: 'Mon-Sat 11:30-20:30',
-        img: 'https://static8.orstatic.com/userphoto/doorphoto/M/I2H/03KHMV2F8A048AFA1B591Cpx.jpg',
+        img: 'images/restaurants/veggie_monster_main.jpg',
         short_desc: "Veggie Monster is a brilliant place to grab and go, thier menu boasts some of the best and cost effective vegan items on the market, a must try.",
         rating: 0
     },
@@ -146,7 +145,7 @@ module.exports = [
         website: 'https://www.openrice.com/en/hongkong/r-something-fresh-central-international-vegetarian-r163022',
         price: '$75-150',
         hours: 'Mon-Sat 11:00-19:00',
-        img: 'https://lh5.googleusercontent.com/p/AF1QipM9ghSAOximZA53K04eqGanHN-w8QPkWod9orvN=w505-h200-k-no',
+        img: 'images/restaurants/something_fresh_main.jpg',
         short_desc: "Something Fresh is a vegetarian's paradise, this takeaway production kitchen offers patrons a variety of quality produce, a must visit.",
         rating: 0
     },
@@ -161,7 +160,7 @@ module.exports = [
         website: 'http://www.maxconcepts.com.hk/en/open_kitchen.asp',
         price: '$101-200',
         hours: 'Mon-Sun 11:00-23:00',
-        img: 'http://api.openrice.com/userphoto/photo/5/411/00SNE0C99127D9F8CD5D95l.jpg',
+        img: 'images/restaurants/open_kitchen_main.jpg',
         short_desc: "Open Kitchen offers freshly baked goods and salads for take away, for people who want to dine in, Open Kitchen is well designed restaurant where you can watch proffessional chefs prepare delicous food or witness the sight of Hong Kong harbour.",
         rating: 0
     },
@@ -176,7 +175,7 @@ module.exports = [
         website: 'https://www.afoodieworld.com/keshia/4021-cedele',
         price: '$150-200',
         hours: 'Mon-Sun 11:00-23:00',
-        img: 'https://static7.orstatic.com/userphoto/photo/5/4IE/00W2XA81BECC15402569C0px.jpg',
+        img: 'images/restaurants/cedele_main.jpg',
         short_desc: "Cedele focuses on providing patrons with a variety of dishes that will boost thier immune systems as well as give them the nutrients that they need, with this in mind, Cedele take pride in perfect portion control so eating isnt just tasty but also very healthy.",
         rating: 0
     },
@@ -191,7 +190,7 @@ module.exports = [
         website: 'https://www.sevva.hk',
         price: '$150-200',
         hours: 'Mon-Sat 12:00-24:00',
-        img: 'http://www.asia-bars.com/wp-content/uploads/2011/09/SEVVA-hong-kong001_2.jpg',
+        img: 'images/restaurants/sevva_main.jpg',
         short_desc: "Seeva is an innovative restaurant that elevates the diners experiance, though not wholly vegetarian they offera variety of dishes that would statisfy anyone who tries the dish.",
         rating: 0
     },
@@ -206,7 +205,7 @@ module.exports = [
         website: 'http://noodle-mi.com/',
         price: '$101-200',
         hours: 'Mon-Sun 12:00-22:00',
-        img: 'http://noodle-mi.com/wp-content/uploads/2014/02/IMG_3026.jpg',
+        img: 'images/restaurants/noodle_mi_main.jpg',
         short_desc: "NoodleMi offers patrons a wide spread of Vietnamese cusine, they are famed for thier healthy dishes which do not use MSG and other preservatives. This is a brilliant restaurant that all will enjoy.",
         rating: 0
     },
@@ -221,7 +220,7 @@ module.exports = [
         website: 'N/A',
         price: '$75-150',
         hours: 'Mon-Sat 7:30-18:30',
-        img: 'https://static7.orstatic.com/userphoto/photo/A/83K/01LLD65841696D53409D3Epx.jpg',
+        img: 'images/restaurants/zumufi_main.png',
         short_desc: "Zumufi have a variety of differnt smoothies that benefit the immune system while being delicous, this is a fabulus place to get a meal in a cup to go, or as a afternoon boost of energy.",
         rating: 0
     },
@@ -236,7 +235,7 @@ module.exports = [
         website: 'http://www.thekinnet.com/',
         price: '$150-200',
         hours: 'Mon-Sat 7:30-21:00',
-        img: 'https://static7.orstatic.com/userphoto/photo/D/AB5/021BBM66FA6B5B582DFB71px.jpg',
+        img: 'images/restaurants/kinnet_main.jpg',
         short_desc: "The Kinnet Cafe is a vibrant location and a great way to escape the hustle and bustle of Hong Kong, the cafe offers delightful dishes that are healthy, vegetarian and give you a lovely taste of the Mediterranean.",
         rating: 0
     },
@@ -251,7 +250,7 @@ module.exports = [
         website: 'http://www.artichokecanteen.com/',
         price: '$200-300',
         hours: 'Tue-Sun 12:00-22:00',
-        img: 'http://www.artichokecanteen.com/wp-content/uploads/2015/02/Eating-and-Drinking-XN-2000x1438.jpg',
+        img: 'images/restaurants/artichoke_main.jpg',
         short_desc: "The Artichoke Canteen is great for both vegetarians and meat eaters, they have a great spread of dishes that would even satisfy strictly vegan patrons, though out of the way this is a must try restaurant.",
         rating: 0
     },
@@ -266,7 +265,7 @@ module.exports = [
         website: 'https://www.afoodieworld.com/foodie/3226-kale-cafe-in-hong-kong-nbsp',
         price: '$100-200',
         hours: 'Mon-Sat 8:00-21:00',
-        img: 'https://res.cloudinary.com/hio22hxcn/image/upload/c_fill,f_auto,g_auto,h_529,q_auto,w_793/v1423814914/pvze5szfjm5jnwhordce',
+        img: 'images/restaurants/kale_main.jpg',
         short_desc: "As the name suggests the focus of this restaurant is health vegetarian affair, they have a wonderful selection of salads and entrees made with the freshest geeens.",
         rating: 0 
     },
@@ -281,7 +280,7 @@ module.exports = [
         website: 'http://www.three-3rds.com/',
         price: '$100-200',
         hours: 'Tue-Sun 11:00-23:00',
-        img: 'https://www.openrice.com/en/hongkong/p-3-3rds-p2119613',
+        img: 'images/restaurants/3:3rds_main.jpg',
         short_desc: "3/3rds has a bit of eveything to statisfy your every need, fom healthy and vibrant salads to warming and filling desserts. This is a nice place to relax and enjoy good food.",
         rating: 0 
     },
@@ -296,8 +295,23 @@ module.exports = [
         website: 'https://www.youni.com.hk/',
         price: '$100-200',
         hours: 'Mon-Sun 6:30-21:00',
-        img: 'https://static7.orstatic.com/userphoto/photo/M/I13/03K7WEF85E101307BAC48Epx.jpg',
+        img: 'images/restaurants/youni_main.jpg',
         short_desc: "We have a team of in-house Doctors, Dieticians, and Nutritionists that help develop our menu to ensure the right ingredients are used to harmonise with the seasons and our bodies.",
+        rating: 0 
+    },
+    {
+        name: 'Eatology ',
+        location: "Unit 4/G, Hong Kong Industrial Building, 444-452 Des Voeux Road West, Hong Kong",
+        lat: '22.3583115',
+        lng: '113.8426278',
+        map: '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d236177.48021544726!2d114.1311023!3d22.3433136!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4a0f3f93f3985797!2sEatology+-+Healthy+Food+%26+Diet+Meal+Plan+Delivery!5e0!3m2!1sen!2shk!4v1532328154624" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> ',
+        about: "At Eatology, our mission is to provide you with the highest quality health food, and the endless positive benefits that come along with it.",
+        phone: '23686331',
+        website: 'https://www.eatologyasia.com/',
+        price: '$150-300',
+        hours: 'Mon-Sun 6:30-21:00',
+        img: 'images/restaurants/eatalogy_main.jpg',
+        short_desc: "Eatology creates gourmet recipes comprised of wholesome, nutrient-dense ingredients with great flavors- just to help you to reach your goal, whether it is losing weight, boosting energy levels or staying healthy.",
         rating: 0 
     }
 ];
