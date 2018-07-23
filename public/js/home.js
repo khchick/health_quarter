@@ -1,8 +1,8 @@
-sessionStorage.setItem('status','loggedIn');
+sessionStorage.setItem('status', 'loggedIn');
 
-$(()=>{
-    $.get(`/api/fav/preference`).then(tags=>{ // Get all fav tags
-        tags.forEach(tag =>{ // Insert tag as title and view all linkage
+$(() => {
+    $.get(`/api/fav/preference`).then(tags => { // Get all fav tags
+        tags.forEach(tag => { // Insert tag as title and view all linkage
             $('#tag-list').append(` 
                 <div class="title">
                     <div>
@@ -13,9 +13,9 @@ $(()=>{
                 <div class="wrapper" id="tag_${tag.id}_rest"></div>
             `);
 
-            $.get(`/api/rest/tag/${tag.id}`).then(data=>{ // Get list of restaurants by each tag
-                data.forEach(e =>{
-                    $(`#tag_${e.tag_id}_rest`).append(Rest(e.tag_id,e.id,e.name,e.img,e.tags));
+            $.get(`/api/rest/tag/${tag.id}`).then(data => { // Get list of restaurants by each tag
+                data.forEach(e => {
+                    $(`#tag_${e.tag_id}_rest`).append(Rest(e.tag_id, e.id, e.name, e.img, e.tags));
 
                     $.get(`/api/fav/rest/${e.id}`).then(res => { // Check and return fav status
                         let status = JSON.parse(res);
@@ -31,23 +31,23 @@ $(()=>{
                     $(`i[data-id="${e.id}"]`).on('click', () => { // Listen to click to toggle favourite status
                         toggleFav(e.id);
                     });
-        
+
                     // Calculate average rating and show as stars
                     $.get(`/api/rest/rating/${e.id}`).then(res => {
-                        for (let i = 0;i < res;i++) {
+                        for (let i = 0; i < res; i++) {
                             $(`#rating_${e.tag_id}_${e.id}`).append('<i class="fa fa-star" aria-hidden="true"></i>');
                         }
-                        for (let i = 0;i < (5-res);i++) {
+                        for (let i = 0; i < (5 - res); i++) {
                             $(`#rating_${e.tag_id}_${e.id}`).append('<i class="fa fa-star-o" aria-hidden="true"></i>');
                         }
                     });
 
                     // Append associated tags and linkages
-                    e.tags.forEach(tag =>{
-                        $(`#rest_${e.tag_id}_${e.id}`).append(RestTags(tag.tag_id,tag.tag_name));
+                    e.tags.forEach(tag => {
+                        $(`#rest_${e.tag_id}_${e.id}`).append(RestTags(tag.tag_id, tag.tag_name));
                     })
                 });
-                
+
             });
             const Rest = (tag_id,id,name,img)=>{
                 return `
@@ -71,7 +71,7 @@ $(()=>{
                 return `
                     <a href="/tag/${tag_id}">${tag_name}</a>
                     `
-            }
+            };
         });
     });
 })
