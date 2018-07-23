@@ -81,7 +81,9 @@ module.exports = class ViewRouter {
         });
 
         // Restaurant details page
-        router.get('/rest/:id', (req, res) => res.render('restaurant'));
+        router.get('/rest/:id', (req, res, next) => {
+            res.render('restaurant', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+        });
 
         // Dish details page
         router.get('/dish/:id', (req, res) => res.render('dish'));
