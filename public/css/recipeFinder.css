@@ -5,6 +5,7 @@ Recipe Finder
 */
 
 body {
+    padding-top: 35px;
     color: #6A9605;
     font: 300 16px/22px 'futura', helvetica, sans-serif;
     background-color: #fff;
@@ -14,33 +15,40 @@ body {
 .recipeFinderBG {
     background-image: url("../images/Extra Images/recipeFinderBG.jpg");
     width: 100%;
-    height: 550px;
+    height: 700px;
     background-size: cover;
     background-position: center top;
+    background-attachment: fixed;
 }
 
 .searchcalBG {
     background-image: url("../images/Extra Images/searchcalBG.jpg");
     width: 100%;
     height: auto;
-    background-size: contain;
+    background-size: cover;
     background-position: center top;
+    background-attachment: fixed;
+
 }
 
 .searchingBG {
     background-image: url("../images/Extra Images/searchingBG.jpg");
     width: 100%;
     height: auto;
-    background-size: contain;
+    background-size: cover;
     background-position: center top;
+    background-attachment: fixed;
+
 }
 
 .searchtagBG {
     background-image: url("../images/Extra Images/searchtagBG.jpg");
     width: 100%;
     height: auto;
-    background-size: contain;
+    background-size: cover;
     background-position: center top;
+    background-attachment: fixed;
+
 }
 
 #indexRecipeStyle {
@@ -156,4 +164,6 @@ Favourite Recipe view
     height: 700px;
     background-size: cover;
     background-position: center top;
+    background-attachment: fixed;
+
 }

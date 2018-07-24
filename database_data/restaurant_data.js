@@ -115,7 +115,7 @@ module.exports = [
         website: 'http://www.veggiesf.com/',
         price: '$101-200',
         hours: 'Mon-Sat 11:45-14:30 17:45-21:00',
-        img: 'images/restaurants/veggieSF_main.jpeg',
+        img: 'images/restaurants/veggieSF_main.jpg',
         short_desc: "Despite being themed as a 1950's diner the food is very much modern, its menu boasts brilliant vegetarian and vegan food, it is a wondeful place for anyone looking for a slice of the past.",
         rating: 0
     },
@@ -280,7 +280,7 @@ module.exports = [
         website: 'http://www.three-3rds.com/',
         price: '$100-200',
         hours: 'Tue-Sun 11:00-23:00',
-        img: 'images/restaurants/3:3rds_main.jpg',
+        img: 'images/restaurants/3_3rds_main.jpg',
         short_desc: "3/3rds has a bit of eveything to statisfy your every need, fom healthy and vibrant salads to warming and filling desserts. This is a nice place to relax and enjoy good food.",
         rating: 0 
     },
