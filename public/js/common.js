@@ -27,6 +27,7 @@ $(()=> {
         $('#favBtn').css('display', 'none');
         $('.placeholderMsg').css('display','block');
         $('#reviewForm').css('display','none');
+        // $('.fa-heart').
     }
 })
 

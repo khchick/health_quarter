@@ -6,9 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <link rel="shortcut icon" type="favicon" href="images/favicon.ico" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    {{!-- For Bootstrap --}}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
     {{!-- Import page title from ViewRouter.js --}}
     <title>{{title}}</title>
     
@@ -22,9 +21,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    {{!-- For Bootstrap --}}
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script>
     function myFunction() {
         var x = document.getElementById("myTopnav");
@@ -39,14 +35,14 @@
     {{!-- Header --}}
     <header>
         <div class="topnav" id="myTopnav">
-            <a href="/" id="logo" class="active">HealthQuarter</a>
+            <a href="/" id="logo">HealthQuarter</a>
             <a href="/" id="home" >HOME</a>
             {{!-- Update tag ID for food after data is fixed --}}
-            <a href="/tag/15">FOOD</a>
+            <a href="/tag/1">FOOD</a>
             {{!-- Update tag ID for drinks after data is fixed --}}
-            <a href="/tag/16">DRINKS</a>
+            <a href="/tag/10">DRINKS</a>
             <a href="/mealplans">MEAL PLANS</a>
-            <a href="/recipeFinder">RECIPES</a>
+            <a href="#">RECIPES</a>
             <a href="/favouriteRest" id="favourite">FAVOURITES</a>
             <a href="/profile" id="profile">MY ACCOUNT</a>
             <a href="/signup" id="signup">SIGN UP</a>
@@ -63,35 +59,36 @@
     {{!-- Footer --}}
     <footer>
         <div class="footerwrapper">
-            <div>
-                <p>HQ</p>
+            <div class="a">
+                <p>
+                    <br>HQ</p>
             </div>
-            <div>
+            <div class="b">
                 <p>
                     HOME
-                    <br>FOOD
-                    <br>DRINKS
+                    <br>MEAL PLANS
+                    <br>RECIPES
                 </p>
             </div>
-            <div>
+            <div class="c">
                 <p>
-                    RECIPES
-                    <br>MEAL PLANS
+                    FOOD
+                    <br>PROFILE
                     <br>FAVORITES
                 </p>
             </div>
-            <div>
+            <div class="d">
                 <p>
-                    SIGN IN
+                    DRINKS
+                    <br>SIGN IN
                     <br>SIGN UP
-                    <br>PROFILE
                 </p>
             </div>
-            <div>
-                <p>ARROW</p>
+            <div class="e">
+                <p><br><i class="fa fa-arrow-up" aria-hidden="true"></i></p>
             </div>
         </div>
-        <div class="copyright">&copy copyright</div>
+        <div class="copyright"> &copy HealthQuarter Limited</div>
 
     </footer>
 </body>

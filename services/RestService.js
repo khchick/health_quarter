@@ -8,7 +8,7 @@ class RestService {
 
     listRestByTag(tagID) {  // For generic home page content
         let query = this.knex
-            .select('tag.id as tag_id','tag.name as tag_name','restaurant.id', 'restaurant.name', 'restaurant.img', 'restaurant.rating')
+            .select('tag.id as tag_id','tag.name as tag_name','restaurant.id', 'restaurant.name', 'restaurant.img', 'restaurant.price','restaurant.rating')
             .from('restaurant')
             .innerJoin('restaurant_tag', 'restaurant_tag.rest_id', 'restaurant.id')
             .innerJoin('tag', 'restaurant_tag.tag_id', 'tag.id')
@@ -22,6 +22,7 @@ class RestService {
                 id: row.id,
                 name: row.name,
                 img: row.img,
+                price: row.price,
                 rating: row.rating,
                 tags: []
             }))
@@ -143,6 +144,7 @@ class RestService {
                 id: row.id,
                 name: row.name,
                 img: row.img,
+                map: row.map,
                 about: row.about,
                 price: row.price,
                 website: row.website,
@@ -204,7 +206,7 @@ class RestService {
     // Review services
     listReview(restID) {
         let query = this.knex
-            .select('users_review.id','users.name','users_review.comment','users_review.rating','users_review.created_at')
+            .select('users.name','users_review.comment','users_review.rating','users_review.created_at')
             .from('users_review')
             .innerJoin('restaurant', 'users_review.rest_id', 'restaurant.id')
             .innerJoin('users', 'users_review.users_id', 'users.id')
@@ -213,7 +215,6 @@ class RestService {
 
         return query.then((rows) => {
             return rows.map(row => ({
-                review_id: row.id,
                 name: row.name,
                 comment: row.comment,
                 rating: row.rating,

@@ -1,17 +1,17 @@
 module.exports = [
     {
         name: 'Confusion Beyond Burger',
-        img: '/images/confusion/Confusion-Beyond-Burger.jpg',
+        img: '/images/confusion/Confusion_Beyond_Burger.jpg',
         rest_id: 1
     },
     {
         name: 'Confusion Indian Platter',
-        img: '/images/confusion/Confusion-Indian-Platter.jpg',
+        img: '/images/confusion/Confusion_Indian_Platter.jpg',
         rest_id: 1
     },
     {
         name: 'Confusion Vegan Wrap',
-        img: '/images/confusion/Confusion-Vegan-Wrap.jpg',
+        img: '/images/confusion/Confusion_Vegan_Wrap.jpg',
         rest_id: 1
     },
     {
