@@ -53,7 +53,7 @@ module.exports = class ViewRouter {
                     res.render('index', {
                         title: 'HealthQuarter // uncover your healthy lifestyle',
                         data: dataString,
-                        css: ['common.css', 'index.css', 'recipeFinder.css']
+                        css: ['index.css', 'recipeFinder.css']
                     });
                 });
         });
@@ -220,7 +220,7 @@ router.post('/searchtag', urlencodedParser, function (req, res) {
 
         // Login page
         router.get('/login', (req, res, next) => {
-            res.render('login', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+            res.render('login', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['login.css', 'index.css'] });
         });
         router.post('/login', passport.authenticate('local-login', {
             successRedirect: '/home',
