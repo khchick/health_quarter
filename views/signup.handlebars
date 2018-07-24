@@ -3,8 +3,8 @@
 
 <!-- Banner Background Image -->
 <section>
-    <div class="bannerbackground">
-        <div><p>sign up</p></div>
+    <div class="signupbannerbackground">
+        <div><p>SIGN UP</p></div>
     </div>
 </section> 
 
@@ -13,25 +13,26 @@
         <div class="row">
             <div class="container col-10 d-flex justify-content-center">
                 <form action="/signup" method="post" enctype="multipart/form-data">
-                <h4>Sign up now to receive personalised content</h4>
+                <h4>Join us to receive personalised content</h4>
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="text" class="form-control" name="username" id="email" placeholder="Your email here" required>
+                        <label for="email">EMAIL</label>
+                        <input type="text" class="form-control" name="username" id="email" placeholder="" required>
                     </div>
                     <div class="form-group">
-                        <label for="contactEmail">Password:</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Your password here" required>
+                        <label for="contactEmail">PASSWORD</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="" required>
                     </div>
                     <div class="form-group">
-                        <label for="nickname">Nickname:</label>
-                        <input type="text" class="form-control" name="nickname" id="nickname" placeholder="Your Nickname here" required>
+                        <label for="nickname">NAME</label>
+                        <input type="text" class="form-control" name="nickname" id="nickname" placeholder="" required>
                     </div>
                     <div class="form-group">
-                        <label for="profile pic">Profile picture:</label>
+                        <label for="profile pic">PROFILE PICTURE</label>
+                        <div></div>
                         <input type="file" accept="image/*" name="profilePic" id="profilePic">
                     </div>
-                    <div class="form-group">
-                        <label for="tag-list">Choose the categories that you are interested in:</label>
+                    <div class="form-group interest">
+                        <label for="tag-list">INTEREST</label>
                         <div id="tag-list"></div>
                     </div>
                     <div class="d-flex flex-column align-items-center">
