@@ -5,9 +5,11 @@
 <!-- Banner Background Image -->
 <section>
     <div class="bannerbackground">
-        <div><p>uncover your healthy lifestyle</p></div>
+        <div>
+            <p>uncover your healthy lifestyle</p>
+        </div>
     </div>
-</section> 
+</section>
 
 <!-- Listing by categories, where the grid format begins-->
 
@@ -85,12 +87,37 @@
     const recipe = (title, image, id) => {
         return `
             <div class="innerwrapper" id="indexRecipeStyle">
+                <div class="heart"><i data-id="${title}-${id}" id="favBtn" class="fa-heart-o" aria-hidden="true"></i> </div>
                 <div class="name"><a class="learnMore" href="https://spoonacular.com/${title}-${id}">${title}</a></div>
                             <div class="image">
                                 <img src="${image}">
                             </div>
             </div>`
+        $(`i[data-id="${recURL}"]`).on('click', () => { // Listen to click to toggle favourite status
+            toggleFav(recURL);
+        });
+
+        function toggleFav(recURL) {
+            if ($(`i[data-id="${recURL}"]`).hasClass("fa-heart")) {
+                axios.delete(`/api/fav/rest/${recURL}`).then(() => {
+                    $(`i[data-id="${recURL}"]`).removeClass("fa-heart");
+                    $(`i[data-id="${recURL}"]`).addClass("fa-heart-o");
+                })
+            }
+            if ($(`i[data-id="${recURL}"]`).hasClass("fa-heart-o")) {
+                axios.post(`/api/fav/rest/${recURL}`).then(() => {
+                    $(`i[data-id="${recURL}"]`).removeClass("fa-heart-o");
+                    $(`i[data-id="${recURL}"]`).addClass("fa-heart");
+                })
+            }
+        }
+
+
     };
+
+
+
+
 
 
 </script>

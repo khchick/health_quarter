@@ -3,9 +3,8 @@
 Recipe Finder
 =====================================
 */
-
 body {
-    padding-top: 35px;
+    padding-top: 50px;
     color: #6A9605;
     font: 300 16px/22px 'futura', helvetica, sans-serif;
     background-color: #fff;
@@ -155,7 +154,6 @@ Favourite Recipe view
     text-align: center;
     color: #006666;
     background: #AEC560;
-    border-radius: 15%;
 }
 
 .favRecipeBG {
