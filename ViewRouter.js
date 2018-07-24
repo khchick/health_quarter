@@ -210,7 +210,7 @@ router.post('/searchtag', urlencodedParser, function (req, res) {
 
         // Sign up page
         router.get('/signup', (req, res, next) => {
-            res.render('signup', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+            res.render('signup', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['signup.css', 'index.css'] });
         });
         router.post('/signup', upload.single('profilePic'), passport.authenticate('local-signup', {
             successRedirect: '/login',

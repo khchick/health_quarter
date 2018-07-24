@@ -1,33 +1,41 @@
 <script type='text/javascript' src="../js/common.js"></script>
 <script type='text/javascript' src="/js/signup.js"></script>
 
+<!-- Banner Background Image -->
+<section>
+    <div class="bannerbackground">
+        <div><p>sign up</p></div>
+    </div>
+</section> 
+
 <section class="grid">
     <div class="container">
         <div class="row">
             <div class="container col-10 d-flex justify-content-center">
                 <form action="/signup" method="post" enctype="multipart/form-data">
+                <h4>Sign up now to receive personalised content</h4>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="text" class="form-control" id="email" placeholder="Your email here" required>
+                        <input type="text" class="form-control" name="username" id="email" placeholder="Your email here" required>
                     </div>
                     <div class="form-group">
                         <label for="contactEmail">Password:</label>
-                        <input type="password" class="form-control" id="password" placeholder="Your password here" required>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Your password here" required>
                     </div>
                     <div class="form-group">
                         <label for="nickname">Nickname:</label>
-                        <input type="text" class="form-control" id="nickname" placeholder="Your Nickname here" required>
+                        <input type="text" class="form-control" name="nickname" id="nickname" placeholder="Your Nickname here" required>
                     </div>
                     <div class="form-group">
                         <label for="profile pic">Profile picture:</label>
-                        <input type="file" accept="image/*" name="profilePic">
+                        <input type="file" accept="image/*" name="profilePic" id="profilePic">
                     </div>
                     <div class="form-group">
-                        <label for="tag-list">Your message:</label>
+                        <label for="tag-list">Choose the categories that you are interested in:</label>
                         <div id="tag-list"></div>
                     </div>
                     <div class="d-flex flex-column align-items-center">
-                        <button class="btn btn-primary" type="submit" value="Sign up"/>
+                        <button class="btn btn-primary" id="submitBtn" type="submit" value="Sign up"/>SIGN UP</button>
                     </div>
 
                 </form>

@@ -15,9 +15,8 @@ $(()=>{
     });
     const Tags = (id,name)=>{ // Display as checkboxes
         return `
-            <div class="info-container">
-                <input type="checkbox" name="tag" id="tag_${id}" value="${id}">${name}
-            </div>`
+            <div class="info-container tag-option">
+                <input type="checkbox" class="tag-option" name="tag" id="tag_${id}" value="${id}">   ${name} </div>`
     }
 })
 

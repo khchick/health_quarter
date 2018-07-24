@@ -1,0 +1,23 @@
+form {
+    border: 1px solid #6A9605;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+#tag-list {
+    font-size: 1em;
+    font-weight: 100 !important;
+    color: #807f7f;
+}
+
+#submitBtn {
+    border-width: 0;
+    background-color: #6A9605;
+    border-radius: 10px;
+    padding: 10px 30px;
+}
+
+h4 {
+    color: #807f7f;
+    margin: 30px 0 50px 0;
+}
