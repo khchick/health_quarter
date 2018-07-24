@@ -115,7 +115,7 @@ module.exports = [
         website: 'http://www.veggiesf.com/',
         price: '$101-200',
         hours: 'Mon-Sat 11:45-14:30 17:45-21:00',
-        img: 'images/restaurants/veggieSF_main.jpeg',
+        img: 'images/restaurants/veggieSF_main.jpg',
         short_desc: "Despite being themed as a 1950's diner the food is very much modern, its menu boasts brilliant vegetarian and vegan food, it is a wondeful place for anyone looking for a slice of the past.",
         rating: 0
     },
@@ -135,7 +135,7 @@ module.exports = [
         rating: 0
     },
     {
-        name: 'Something Fresh',
+        name: 'Something Fresh', //10
         location: 'Central, Graham St, 35-37',
         lat: '22.2827689',
         lng: '114.1511531',
@@ -209,7 +209,7 @@ module.exports = [
         short_desc: "NoodleMi offers patrons a wide spread of Vietnamese cusine, they are famed for thier healthy dishes which do not use MSG and other preservatives. This is a brilliant restaurant that all will enjoy.",
         rating: 0
     },
-    {
+    {  //15
         name: 'Zumufi',
         location: "Willy Commercial Building, 28-36 Wing Kut St, Central",
         lat: '22.285282',
@@ -220,7 +220,7 @@ module.exports = [
         website: 'N/A',
         price: '$75-150',
         hours: 'Mon-Sat 7:30-18:30',
-        img: 'images/restaurants/zumufi_main.png',
+        img: 'images/restaurants/zumufi_main.jpg',
         short_desc: "Zumufi have a variety of differnt smoothies that benefit the immune system while being delicous, this is a fabulus place to get a meal in a cup to go, or as a afternoon boost of energy.",
         rating: 0
     },
@@ -280,7 +280,7 @@ module.exports = [
         website: 'http://www.three-3rds.com/',
         price: '$100-200',
         hours: 'Tue-Sun 11:00-23:00',
-        img: 'images/restaurants/3:3rds_main.jpg',
+        img: 'images/restaurants/3_3rds_main.jpg',
         short_desc: "3/3rds has a bit of eveything to statisfy your every need, fom healthy and vibrant salads to warming and filling desserts. This is a nice place to relax and enjoy good food.",
         rating: 0 
     },
@@ -310,7 +310,7 @@ module.exports = [
         website: 'https://www.eatologyasia.com/',
         price: '$150-300',
         hours: 'Mon-Sun 6:30-21:00',
-        img: 'images/restaurants/eatalogy_main.jpg',
+        img: 'images/restaurants/eatology_main.jpg',
         short_desc: "Eatology creates gourmet recipes comprised of wholesome, nutrient-dense ingredients with great flavors- just to help you to reach your goal, whether it is losing weight, boosting energy levels or staying healthy.",
         rating: 0 
     }

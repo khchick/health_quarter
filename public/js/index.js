@@ -1,6 +1,6 @@
 $(()=>{
     // Get lists of restaurants tagged as Food
-    $.get(`/api/rest/tag/1`).then(resData=>{
+    $.get(`/api/rest/tag/15`).then(resData=>{
         let data = resData.slice(0,3);
 
         data.forEach(e =>{
@@ -66,7 +66,7 @@ $(()=>{
     };
 
     // Get lists of restaurants tagged as Drinks
-    $.get(`/api/rest/tag/10`).then(data=>{ 
+    $.get(`/api/rest/tag/16`).then(data=>{ 
         data.forEach(e =>{
             $('#2ndTagList').append(DrinkRest(e.id,e.name,e.img,e.price,e.rating)); // Append restaurant details
 
