@@ -204,7 +204,7 @@ router.post('/searchtag', urlencodedParser, function (req, res) {
 
         // My Account page
         router.get('/profile', isLoggedIn, (req, res, next) => {
-            res.render('profile', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+            res.render('profile', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['profile.css', 'index.css'] });
         });
         router.post('/api/user/avatar', upload.single('avatar'), (req, res) => res.redirect('/profile'));
 

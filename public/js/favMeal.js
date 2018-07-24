@@ -20,14 +20,15 @@ $(() => {
     });
     const Meal = (name, img, id, rest_id) => {
         return `
-            <div class="innerwrapper">
-                <div class="name">${name}</div>
-                    <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i></div>
-                            <div class="image">
-                                <img src="${img}">
-                            </div>
-                <div class="link"><a href="/rest/${rest_id}">View in restaurant page</div>
+            <div class="mealplanwrapper">
+            <div class="name"><a href="/meal/${id}">${name}</a>
             </div>
+            <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
+            </div>
+            <div class="image">
+                <img src="${img}">
+            </div>
+            <div class="link"><a href="/rest/${rest_id}">view more</a></div>
             `
     };
 })

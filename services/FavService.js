@@ -142,14 +142,16 @@ class FavService {
                 return rows.map(row => ({
                     rest_id: row.rest_id,
                     name: null,
-                    img: null
+                    img: null,
+                    rating: null,
+                    price: null
                 }))
             })
             .then(rows => { // Get restaurant details by ID
                 return Promise.all(
                     rows.map(row => {
                         let query = this.knex
-                        .select('restaurant.id','restaurant.name','restaurant.img')
+                        .select('restaurant.id','restaurant.name','restaurant.img','restaurant.rating','restaurant.price')
                         .from('restaurant')
                         .where('restaurant.id',row.rest_id)
                         .orderBy('restaurant.name')
@@ -158,6 +160,8 @@ class FavService {
                             restRows.forEach(restRow => {
                                 row.name = restRow.name;
                                 row.img = restRow.img;
+                                row.rating = restRow.rating;
+                                row.price = restRow.price;
                             });
                             return row;
                         })

@@ -117,14 +117,16 @@ $(() => {
                 e.comment,
                 e.rating
             ));
+
+            $(`#${e.rating}_star`).attr('checked','checked');
             
-            // Render rating into stars
-            for (let i = 1;i <= e.rating;i++) {
-                $(`#rating_${e.id}`).append(`<i class="fa fa-star" aria-hidden="true" id="${i}_star" data-id="${i}"></i>`);
-            }
-            for (let i = (e.rating + 1);i <= 5;i++) {
-                $(`#rating_${e.id}`).append(`<i class="fa fa-star-o" aria-hidden="true" id="${i}_star" data-id="${i}"></i>`);
-            }
+            // // Render rating into stars
+            // for (let i = 1;i <= e.rating;i++) {
+            //     $(`#rating_${e.id}`).append(`<i class="fa fa-star" aria-hidden="true" id="${i}_star" data-id="${i}"></i>`);
+            // }
+            // for (let i = (e.rating + 1);i <= 5;i++) {
+            //     $(`#rating_${e.id}`).append(`<i class="fa fa-star-o" aria-hidden="true" id="${i}_star" data-id="${i}"></i>`);
+            // }
         });
     });
 
@@ -138,6 +140,13 @@ $(() => {
             </div>
             <div class="d-flex justify-content">
                 <label>Rating:  </label>
+                <div class="rating-group">
+                <input type="radio" name="rating" id="1_star" value="1"><span>&nbsp;1&nbsp;</span>
+                <input type="radio" name="rating" id="2_star" value="2"><span>&nbsp;2&nbsp;</span>
+                <input type="radio" name="rating" id="3_star" value="3"><span>&nbsp;3&nbsp;</span>
+                <input type="radio" name="rating" id="4_star" value="4"><span>&nbsp;4&nbsp;</span>
+                <input type="radio" name="rating" id="5_star" value="5"><span>&nbsp;5 stars&nbsp;</span>
+            </div>
                 <div id="rating_${id}" data-id="0"></div>
             </div>
             <div>
