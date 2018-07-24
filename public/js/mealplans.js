@@ -45,13 +45,14 @@ $(()=> {
 
             return `
             <div class="mealplanwrapper">
-                <div class="name"><a href="/rest/${id}">${name}</a>
+                <div class="name"><a href="/rest/${rest_id}">${name}</a>
                 </div>
                 <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
                 </div>
                 <div class="image">
                                 <img src="${img}">
                 </div>
+             
             </div>
             `
     };
