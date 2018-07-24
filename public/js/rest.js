@@ -5,7 +5,6 @@ $(() => {
     $.get(`/api/rest/detail/${restID}`).then(data => {
         data.forEach(e => {
             e.tags.forEach(tag => { // Insert tags
-                console.log(tag);
                 $('#tag-container').append(`<span class="tag"><a href="/tag/${tag.tag_id}">${tag.tag_name}</a></span>`)
             })
 
@@ -13,13 +12,15 @@ $(() => {
 
             $('#restName').text(`${e.name}`); // Insert name
 
+            console.log(e.map);
+
             $('#rest-detail').append(RestDetail( // Insert details
-                e.map,
                 e.about,
                 e.price,
                 e.phone,
                 e.hours,
                 e.location,
+                e.map
             ))
 
             // Get favourite status 
@@ -42,7 +43,7 @@ $(() => {
         })
     });
 
-    const RestDetail = (map, about, price, phone, hours, location,) => {
+    const RestDetail = (about, price, phone, hours, location, map) => {
         return `
             <h2 class="sub-heading">ABOUT</h2>
             <p id="about">${about}</p>
@@ -100,7 +101,7 @@ $(() => {
     
     const DishDetail = (id, name, img) => {
         return `
-            <div class="col-4 dish-container">
+            <div class="col-sm-12 col-md-6 col-lg-4 dish-container">
                 <div class="dish-info-container">
                     <h6 id="dishName">${name}</h6>
                     <i data-id="${id}" class="fa fa-heart" aria-hidden="true"></i>

@@ -4,7 +4,7 @@ $(()=>{
         let data = resData.slice(0,3);
 
         data.forEach(e =>{
-            $('#1stTagList').append(FoodRest(e.id,e.name,e.img,e.rating)); // Append restaurant details
+            $('#1stTagList').append(FoodRest(e.id,e.name,e.img,e.price,e.rating)); // Append restaurant details
 
             $.get(`/api/fav/rest/${e.id}`).then(res => { // Check and return fav status
                 let status = JSON.parse(res);
@@ -33,27 +33,15 @@ $(()=>{
             // Append associated tags and linkages
             e.tags.forEach(tag =>{
                 $(`#rest_${e.id}`).append(RestTags(tag.tag_id,tag.tag_name));
-            })
+            });
+
+            let lastTag = $('.tags').children().last().text(); // Remove comma from last tag
+            lastTag = lastTag.slice(0, -2);
+            $(`#rest_${e.id}`).children().last().children().text(lastTag);
         });
     });
 
-    const FoodRest = (id,name,img)=>{
-        /*return `
-            <div class="innerwrapper">
-                <div class="name"><a href="/rest/${id}">${name}</a>
-                </div>
-                <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
-                </div>
-                <div class="image">
-                    <img src="${img}">
-                </div>
-                <div class="price">price
-                </div>
-                <div class="stars" id="foodRating_${id}"></div>
-                <div class="tags" id="rest_${id}"></div>
-                <div class="viewmore">view more</div>
-            </div>
-            `*/
+    const FoodRest = (id,name,img,price)=>{
      return `
             <div class="innerwrapper">
                 <div class="name"><a href="/rest/${id}">${name}</a>
@@ -61,27 +49,26 @@ $(()=>{
                 <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
                 </div>
                 <div class="image">
-                                <img src="${img}">
+                <a href="/rest/${id}"><img src="${img}"></a>
                 </div>
-                <div class="price">price
-                </div>
+                <div class="price">${price}</div>
                 <div class="stars" id="foodRating_${id}"></div>
-                <div class="tags" id="rest_${id}"></div>
-                <div class="viewmore">view more</div>
+                <div class="tags" id="rest_${id}">Tags: </div>
+                <div class="viewmore"><a href="/rest/${id}">view more</a></div>
             </div>
             `
     };
 
     const RestTags = (tag_id,tag_name)=>{
         return `
-            <a href="/tag/${tag_id}">${tag_name}</a>
+            <i><a href="/tag/${tag_id}">${tag_name}, </a></i>
             `
     };
 
     // Get lists of restaurants tagged as Drinks
     $.get(`/api/rest/tag/10`).then(data=>{ 
         data.forEach(e =>{
-            $('#2ndTagList').append(DrinkRest(e.id,e.name,e.img,e.rating)); // Append restaurant details
+            $('#2ndTagList').append(DrinkRest(e.id,e.name,e.img,e.price,e.rating)); // Append restaurant details
 
             $.get(`/api/fav/rest/${e.id}`).then(res => { // Check and return fav status
                 let status = JSON.parse(res);
@@ -111,27 +98,14 @@ $(()=>{
             e.tags.forEach(tag =>{
                 $(`#rest_${e.id}`).append(DrinkTags(tag.tag_id,tag.tag_name));
             }) 
+
+            let lastTag = $('.tags').children().last().text(); // Remove comma from last tag
+            lastTag = lastTag.slice(0, -2);
+            $(`#rest_${e.id}`).children().last().children().text(lastTag);
         });
     });
 
-    const DrinkRest = (id,name,img)=>{
-        /*return `
-            <div class="innerwrapper">
-            <div class="name"><a href="/rest/${id}">${name}</a>
-            </div>
-            <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
-            </div>
-            <div class="image">
-                            <img src="${img}">
-            </div>
-            <div class="price">price
-            </div>
-            <div class="stars" id="drinkRating_${id}"></div>
-            <div class="tags" id="rest_${id}"></div>
-            <div class="viewmore">view more</div>
-            </div>
-            `*/
-
+    const DrinkRest = (id,name,img,price)=>{
             return `
             <div class="innerwrapper">
                 <div class="name"><a href="/rest/${id}">${name}</a>
@@ -139,13 +113,12 @@ $(()=>{
                 <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
                 </div>
                 <div class="image">
-                                <img src="${img}">
+                <a href="/rest/${id}"><img src="${img}"></a>
                 </div>
-                <div class="price">price
-                </div>
+                <div class="price">${price}</div>
                 <div class="stars" id="drinkRating_${id}"></div>
-                <div class="tags" id="rest_${id}"></div>
-                <div class="viewmore">view more</div>
+                <div class="tags" id="rest_${id}">Tags: </div>
+                <div class="viewmore"><a href="/rest/${id}">view more</a></div>
             </div>
             `
     };
@@ -203,19 +176,7 @@ $(()=>{
             }
         });
     });
-    const MealPlan = (id,name,img,about,rest_id)=>{
-        /*return `
-        <div class="innerwrapper">
-            <div class="name">${name}</div>
-                <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i></i></div>
-                    <div class="image">
-                        <img src="${img}">
-                    </div>
-                <div class="about" id="mp${id}_about">${about}"></div>
-            <div class="link"><a href="/rest/${rest_id}">View more</div>
-        </div>
-            `*/
-
+    const MealPlan = (id,name,img,rest_id)=>{
             return `
             <div class="mealplanrwrapper">
                 <div class="name"><a href="/rest/${id}">${name}</a>
