@@ -103,7 +103,6 @@ module.exports = [
 
     //Food Tag
     {rest_id: 1, tag_id: 15},
-    {rest_id: 2, tag_id: 15},
     {rest_id: 3, tag_id: 15},
     {rest_id: 4, tag_id: 15},
     {rest_id: 5, tag_id: 15},
@@ -126,10 +125,7 @@ module.exports = [
 
     //Drink Tag
     {rest_id: 2, tag_id: 16},
-    {rest_id: 4, tag_id: 16},
-    {rest_id: 6, tag_id: 16},
     {rest_id: 15, tag_id: 16},
-    {rest_id: 19,tag_id:16},
     {rest_id: 20,tag_id:16},
 
     //Vegan 
