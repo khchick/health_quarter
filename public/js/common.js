@@ -11,6 +11,9 @@ $(()=> {
         $('#logout').css('display', 'block');
         $('#logo').attr("href","/home");
         $('#home').attr("href","/home");
+        $('#favBtn').css('display', 'inline-block');
+        $('.placeholderMsg').css('display','none');
+        $('#reviewForm').css('display','block');
     }
     
     if (sessionStorage.getItem('status') === null) {
@@ -21,6 +24,9 @@ $(()=> {
         $('#login').css('display', 'block');
         $('#logo').attr("href","/");
         $('#home').attr("href","/");
+        $('#favBtn').css('display', 'none');
+        $('.placeholderMsg').css('display','block');
+        $('#reviewForm').css('display','none');
     }
 })
 

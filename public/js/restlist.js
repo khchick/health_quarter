@@ -47,7 +47,7 @@ $(() => {
                 <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
                 </div>
                 <div class="image">
-                    <img src="${img}">
+                    <img src="../${img}">
                 </div>
                 <div class="price">price
                 </div>

@@ -4,12 +4,12 @@ $(() => {
     // Get restaurant details
     $.get(`/api/rest/detail/${restID}`).then(data => {
         data.forEach(e => {
-            console.log(e.map);
             e.tags.forEach(tag => { // Insert tags
-                $('#tag-container').append(`<span class="tag">${tag}</span>`)
+                console.log(tag);
+                $('#tag-container').append(`<span class="tag"><a href="/tag/${tag.tag_id}">${tag.tag_name}</a></span>`)
             })
 
-            $('#heroImg').css('background-image',`url("${e.img}")`) // Insert hero image
+            $('#heroImg').css('background-image',`url("../${e.img}")`) // Insert hero image
 
             $('#restName').text(`${e.name}`); // Insert name
 

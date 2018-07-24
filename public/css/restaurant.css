@@ -103,6 +103,18 @@ iframe {
     justify-content: space-between;
 }
 
+p {
+    color: #525050;
+}
+
+.placeholderMsg {
+    color: #525050;
+    padding: 30px;
+    border: 1px solid #000;
+    margin: 60px;
+}
+
+
 textarea {
     width: 100%;
     margin-top: 20px;
