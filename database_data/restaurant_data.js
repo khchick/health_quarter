@@ -220,7 +220,7 @@ module.exports = [
         website: 'N/A',
         price: '$75-150',
         hours: 'Mon-Sat 7:30-18:30',
-        img: 'images/restaurants/zumufi_main.png',
+        img: 'images/restaurants/zumufi_main.jpg',
         short_desc: "Zumufi have a variety of differnt smoothies that benefit the immune system while being delicous, this is a fabulus place to get a meal in a cup to go, or as a afternoon boost of energy.",
         rating: 0
     },
@@ -310,7 +310,7 @@ module.exports = [
         website: 'https://www.eatologyasia.com/',
         price: '$150-300',
         hours: 'Mon-Sun 6:30-21:00',
-        img: 'images/restaurants/eatalogy_main.jpg',
+        img: 'images/restaurants/eatology_main.jpg',
         short_desc: "Eatology creates gourmet recipes comprised of wholesome, nutrient-dense ingredients with great flavors- just to help you to reach your goal, whether it is losing weight, boosting energy levels or staying healthy.",
         rating: 0 
     }
