@@ -1,11 +1,6 @@
 module.exports = [
-<<<<<<< HEAD
-    {rest_id: 1, tag_id: 15},
-    {rest_id: 2, tag_id: 1}, // tag_id changed from 2 to 1 for testing purpose
-=======
     {rest_id: 1, tag_id: 1},
     {rest_id: 2, tag_id: 1}, 
->>>>>>> 9450b024258fb76c03bfad086d5636b81b0e3be6
     {rest_id: 2, tag_id: 3},
     {rest_id: 2, tag_id: 4},
     {rest_id: 2, tag_id: 5},
@@ -17,13 +12,6 @@ module.exports = [
     {rest_id: 4, tag_id: 2},
     // {rest_id: 4, tag_id: 10},
     {rest_id: 4, tag_id: 16},
-<<<<<<< HEAD
-    {rest_id: 18, tag_id: 1},
-    {rest_id: 15, tag_id: 16},
-    {rest_id: 20, tag_id: 10},
-    {rest_id: 15, tag_id: 10},
-    {rest_id: 20, tag_id: 16},
-=======
     {rest_id: 5, tag_id: 1},
     {rest_id: 5, tag_id: 8},
     {rest_id: 5, tag_id: 9},
@@ -86,7 +74,6 @@ module.exports = [
     {rest_id: 18, tag_id: 8},
     {rest_id: 18, tag_id: 11},
     {rest_id: 18, tag_id: 15},
->>>>>>> 9450b024258fb76c03bfad086d5636b81b0e3be6
     {rest_id: 19,tag_id:7},
     {rest_id: 19,tag_id:8},
     {rest_id: 19,tag_id:12},
