@@ -13,8 +13,10 @@ $(() => {
                 <div class="wrapper" id="tag_${tag.id}_rest"></div>
             `);
 
-            $.get(`/api/rest/tag/${tag.id}`).then(data => { // Get list of restaurants by each tag
+            $.get(`/api/rest/tag/${tag.id}`).then(res => {
+                let data = res.slice(0,3); // Get list of restaurants by each tag
                 data.forEach(e => {
+                    
                     $(`#tag_${e.tag_id}_rest`).append(Rest(e.tag_id, e.id, e.name, e.price, e.img, e.tags));
 
                     $.get(`/api/fav/rest/${e.id}`).then(res => { // Check and return fav status

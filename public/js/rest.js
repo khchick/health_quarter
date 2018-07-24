@@ -102,7 +102,7 @@ $(() => {
             <div class="col-sm-12 col-md-6 col-lg-4 dish-container">
                 <div class="dish-info-container">
                     <h6 id="dishName">${name}</h6>
-                    <i data-id="${id}" class="fa fa-heart" aria-hidden="true"></i>
+                    <i data-id="${id}" id="favDishBtn" class="fa fa-heart" aria-hidden="true"></i>
                 </div>
                 <img class="dish-img" src="${img}" alt="">
             </div>
