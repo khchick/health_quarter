@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .recipebannerbackground {
     margin-top: 50px;
     background-image: url("/images/decor/recipebanner.jpg");
@@ -28,6 +29,19 @@
         background-position: center top;
         background-attachment: fixed;
     }
+=======
+/*
+=====================================
+Recipe Finder
+=====================================
+*/
+body {
+    padding-top: 50px;
+    color: #6A9605;
+    font: 300 16px/22px 'futura', helvetica, sans-serif;
+    background-color: #fff;
+    margin: 0;
+>>>>>>> 1afd990877eb3f328a145c180788cc0536f08cf1
 }
 
 .recipeFinderBG {
@@ -171,7 +185,6 @@ Favourite Recipe view
     text-align: center;
     color: #006666;
     background: #AEC560;
-    border-radius: 15%;
 }
 
 .favRecipeBG {

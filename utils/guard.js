@@ -6,3 +6,14 @@ module.exports.isLoggedIn =
 
     res.redirect('/login');
 } 
+
+module.exports.isLoggedInRF =
+
+(req,res,next)=>{
+    if (req.isAuthenticated()) {
+        req.isLoggedInRF = true
+    } else { req.isLoggedInRF = false;
+    }
+    return next();
+
+}

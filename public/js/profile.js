@@ -13,27 +13,31 @@ $(() => {
         return `
             <div class="info-container">
                 <form action="/api/user/details" method="put" enctype="multipart/form-data">
-                    <div class="d-flex justify-content">
-                        <label>Profile pic:  </label>
-                        <img src="${img}" height="100" width="100">
-                    </div>
-                    <div class="d-flex justify-content">
-                        <label>Upload new image</label>
-                        <input type="file" id="avatar" accept="image/*" name="avatar">
+                    <div>
+                        <label>AVATAR  </label>
+                        <div><img src="${img}" height="100" width="100"></div>
                     </div>
                     <div>
-                        <button id="updateImg">Upload</button>
+                        <label>EMAIL</label>
+                        <div><input type="text" name="username" value="${email}" readonly/></div>
                     </div>
-                        <label>Email:  </label>
-                        <input type="text" name="username" value="${email}" readonly/>
-                    </div>
-                    <div class="d-flex justify-content">
-                        <label>Nickname:  </label>
-                        <input type="text" name="nickname" id="nickname" value="${name}"/>
+                    <div>
+                        <label>NICKNAME</label>
+                        <div>
+                            <input type="text" name="nickname" id="nickname" value="${name}"/>
+                        </div>
                     </div>
                 </form> 
             </div>`
     }
+
+    // <div class="d-flex justify-content">
+    // <label>Upload new image</label>
+    // <input type="file" id="avatar" accept="image/*" name="avatar">
+    // </div>
+    // <div>
+    //     <button id="updateImg">Upload</button>
+    // </div>
 
     $.get('/api/user/tags/all').then(data => { // Get all available tags as checkboxes
         data.forEach(e => {
@@ -52,7 +56,7 @@ $(() => {
     const Tags = (id, name) => {
         return `
             <div class="info-container">
-                <input type="checkbox" name="tag" id="tag_${id}" value="${id}">${name}
+                <input type="checkbox" name="tag" id="tag_${id}" value="${id}">  ${name}
             </div>`
     }
 
@@ -114,11 +118,10 @@ $(() => {
             $('#review-list').append(ReviewDetail(
                 e.rest_name,
                 e.id,
-                e.comment,
-                e.rating
+                e.comment
             ));
 
-            $(`#${e.rating}_star`).attr('checked','checked');
+            $(`#${e.id}_${e.rating}`).attr('selected','selected');
             
             // // Render rating into stars
             // for (let i = 1;i <= e.rating;i++) {
@@ -132,99 +135,102 @@ $(() => {
 
     const ReviewDetail = (rest_name, id, comment) => {
         return `
-        <form action="/api/user/review/${id}" method="put">
-            <p value="${id}">${rest_name}</p>
-            <div class="d-flex justify-content">
-                <label>Your comment:</label>
-                <input type="text" name="comment" id="comment" value="${comment}"/>
+            <div id="reviewContainer">
+                <form action="/api/user/review/${id}" method="put">
+                    <h5 value="${id}">${rest_name}</h5>
+                    <div class="d-flex justify-content">
+                        <label>Your comment:</label>
+                        <textarea type="text" name="comment" id="comment">${comment}</textarea>
+                    </div>
+                    <div class="d-flex justify-content">
+                        <label>Rating:  </label>
+                        <select>
+                            <option value="1" id="${id}_1">1</option>
+                            <option value="2" id="${id}_2">2</option>
+                            <option value="3" id="${id}_3">3</option>
+                            <option value="4" id="${id}_4">4</option>
+                            <option value="5" id="${id}_5">5</option selected="selected">
+                        </select>
+                        </div>
+                        <div>
+                        <input type="submit" id="updateReview" value="Update" data-id="${id}" />
+                        <input type="submit" id="deleteReview" value="Delete" data-id="${id}" />
+                    </div>
+                    </div>
+                </form>
             </div>
-            <div class="d-flex justify-content">
-                <label>Rating:  </label>
-                <div class="rating-group">
-                <input type="radio" name="rating" id="1_star" value="1"><span>&nbsp;1&nbsp;</span>
-                <input type="radio" name="rating" id="2_star" value="2"><span>&nbsp;2&nbsp;</span>
-                <input type="radio" name="rating" id="3_star" value="3"><span>&nbsp;3&nbsp;</span>
-                <input type="radio" name="rating" id="4_star" value="4"><span>&nbsp;4&nbsp;</span>
-                <input type="radio" name="rating" id="5_star" value="5"><span>&nbsp;5 stars&nbsp;</span>
-            </div>
-                <div id="rating_${id}" data-id="0"></div>
-            </div>
-            <div>
-                <input type="submit" id="updateReview" value="Update" data-id="${id}" />
-                <input type="submit" id="deleteReview" value="Delete" data-id="${id}" />
-            </div>
-        </form>`
+        `
     }
-    // <input type="text" name="rating" id="rating" value="${rating}"/>
+    
 
-    $(`#review-list`).on('click',`#1_star`,(e)=> {
-        if ($(e.currentTarget).hasClass("fa-star")) {
-            $(e.currentTarget).addClass("fa-star-o").removeClass("fa-star");
-            $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
-            $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
-            $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star");
-            $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
-        } else {
-            $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
-            $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
-            $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
-            $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
-            $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
-            $(e.currentTarget).parent().data($(e.currentTarget).data());
-        }
-    })
+    // $(`#review-list`).on('click',`#1_star`,(e)=> {
+    //     if ($(e.currentTarget).hasClass("fa-star")) {
+    //         $(e.currentTarget).addClass("fa-star-o").removeClass("fa-star");
+    //         $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
+    //         $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
+    //         $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star");
+    //         $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
+    //     } else {
+    //         $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
+    //         $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
+    //         $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
+    //         $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
+    //         $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
+    //         $(e.currentTarget).parent().data($(e.currentTarget).data());
+    //     }
+    // })
 
-    $(`#review-list`).on('click',`#2_star`,(e)=> {
-        $(e.currentTarget).prev().prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).prev().prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
-        $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
-        $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
-        $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
-        $(e.currentTarget).parent().data($(e.currentTarget).data());
-    })
+    // $(`#review-list`).on('click',`#2_star`,(e)=> {
+    //     $(e.currentTarget).prev().prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).prev().prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
+    //     $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
+    //     $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
+    //     $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
+    //     $(e.currentTarget).parent().data($(e.currentTarget).data());
+    // })
 
-    $(`#review-list`).on('click',`#3_star`,(e)=> {
-        $(e.currentTarget).prev().prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).prev().prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
-        $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
-        $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
-        $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
-        $(e.currentTarget).parent().data($(e.currentTarget).data());
-    })
+    // $(`#review-list`).on('click',`#3_star`,(e)=> {
+    //     $(e.currentTarget).prev().prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).prev().prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
+    //     $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
+    //     $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
+    //     $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
+    //     $(e.currentTarget).parent().data($(e.currentTarget).data());
+    // })
 
-    $(`#review-list`).on('click',`#4_star`,(e)=> {
-        $(e.currentTarget).prev().prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).prev().prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
-        $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
-        $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
-        $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
-        $(e.currentTarget).parent().data($(e.currentTarget).data());
-    })
+    // $(`#review-list`).on('click',`#4_star`,(e)=> {
+    //     $(e.currentTarget).prev().prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).prev().prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
+    //     $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
+    //     $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
+    //     $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
+    //     $(e.currentTarget).parent().data($(e.currentTarget).data());
+    // })
 
-    $(`#review-list`).on('click',`#5_star`,(e)=> {
-        $(e.currentTarget).prev().prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).prev().prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).prev().addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
-        $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
-        $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
-        $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
-        $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
-        $(e.currentTarget).parent().data($(e.currentTarget).data());
-    })
+    // $(`#review-list`).on('click',`#5_star`,(e)=> {
+    //     $(e.currentTarget).prev().prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).prev().prev().prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).prev().prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).prev().addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).addClass("fa-star").removeClass("fa-star-o");
+    //     $(e.currentTarget).next().addClass("fa-star-o").removeClass("fa-star");
+    //     $(e.currentTarget).next().next().addClass("fa-star-o").removeClass("fa-star");
+    //     $(e.currentTarget).next().next().next().addClass("fa-star-o").removeClass("fa-star")
+    //     $(e.currentTarget).next().next().next().next().addClass("fa-star-o").removeClass("fa-star");
+    //     $(e.currentTarget).parent().data($(e.currentTarget).data());
+    // })
 
     // Update review on button click
     $('#review-list').on('click','#updateReview',(e) => {

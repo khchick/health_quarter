@@ -33,7 +33,7 @@
 
 form {
     border: 1px solid #6A9605;
-    padding: 30px;
+    padding: 0 30px !important;
     font-family: 'futura';
     color: black;
     letter-spacing: 3px;
