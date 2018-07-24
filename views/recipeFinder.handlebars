@@ -1,33 +1,34 @@
-<div class="container">
-    <header>
-        <h1><a href="/home">Health Quarter</a></h1>
-        <a href="/delivery">Delivery</a>
-        <a href="/favouriteRest">My Favourites</a>
-        Recipe Finder
-        <a href="/logout">LOGOUT</a>
-    </header> 
-   
-   
-   <div class="recipeFinderBG">
 
-    <h1 class='rftitle'>Health Quarters</h1>
-        <h2 class='rftitle'>Recipe finding app</h2>
-        <p class='rftitle' id='append'>If you become a member you can save your most enjoyable dishes for later</p>
-    
+
+<section>
+    <div class="recipebannerbackground">
+        <div><p>RECIPES</p></div>
+    </div>
+</section>
+
+
+<div class="recipeFinderBG">
+    <h2 class='rftitle'>Find your recipes</h2>
+    <p class='rftitle' id='append'>If you become a member you can save your
+        most enjoyable dishes for later</p>
+
     <!--This is the template for the load in page-->
     <template id="loading template">
-        
+        <div class="loadbuttons">
+            <p>
+                <button class="searchRecipeButton" id="search-cal"
+                    name="search-cal">Search by Calorie</button>
+            </p>
+            <p>
+                <button class="searchRecipeButton" id="search-tag"
+                    name="search-tag">Search by Tag</button>
+            </p>
+            <p>
+                <button class="searchRecipeButton" id="search-ing"
+                    name="search-ing">Search by Ingredients</button>
+            </p>
 
-        <p>
-            <button class="searchRecipeButton" id="search-cal" name="search-cal">Search by Calorie</button>
-        </p>
-        <p>
-            <button class="searchRecipeButton" id="search-tag" name="search-tag">Search by Tag</button>
-        </p>
-          <p>
-            <button class="searchRecipeButton" id="search-ing" name="search-ing">Search by Ingredients</button>
-        </p>
-
+        </div>
     </template>
 
     <!--Search by calorie-->
@@ -35,115 +36,112 @@
     <template id="search-temp-cal">
         <div class="ui block">
             <div class="ui grid">
-                <h2 class "page-header">Search for Recipes:</h2>
+                <h2 class" page-header">Search for Recipes:</h2>
                 <form action="/searchcal" method="post">
                     <div class="ui form">
                         <div class="field">
                             <label>Serch by Calorie:</label>
                             <br> Minimum Calories:
-                            <input type="text" name="minCalorie" value="150">
+                            <input type="text" name="minCalorie"
+                                value="150">
                             <br> Maximum Calories:
-                            <input type="text" name="maxCalorie" value="600">
+                            <input type="text" name="maxCalorie"
+                                value="600">
                             <br> Number of search requests (between 1-5):
-                            <input type="number" name="quantity" min="1" max="5">
+                            <input type="number" name="quantity" min="1"
+                                max="5">
                         </div>
                     </div>
                     <br>
                     <p>
-                        <button name="submit" class="searchRecipeButton" type="submit">Find Recipe(s)</button>
+                        <button name="submit" class="searchRecipeButton"
+                            type="submit">Find Recipe(s)</button>
                     </p>
                     <br>
                     <br>
-            </div>
+                </div>
             </form>
-        </div>
         </div>
     </template>
-
-
-    <!--Search by tag-->
-    <template id="search-temp-tag">
-        <div class="ui block">
-            <div class="ui grid">
-                <h2 class "page-header">Search for Recipes:</h2>
-                <form action="/searchtag" method="post">
-                    <div class="ui form">
-                        <div class='field'>
-                            Number of search requests (between 1-5):
-                            <input type="number" name="quantity" min="1" max="5"> Queries:
-                            <br>
-                            Popular searches include: cheap, dairy free, gluten free, ketogenic, low fodmap, sustainable, vegan, vegetarian, whole 30 
-                            <br>
-                            <input type="text" name="tag1" value="">
-                            <input type="text" name="tag2" value="">
-                            <input type="text" name="tag3" value="">
-                            <input type="text" name="tag4" value="">
-                            <input type="text" name="tag5" value="">
-                        </div>
-                    </div>
-                    <br>
-                    <p>
-                        <button name="submit" id="findRecipe" class="searchRecipeButton" type="submit">Find Recipe(s)</button>
-                    </p>
-                    <br>
-                    <br>
-            </div>
-            </form>
-        </div> 
-        </div>
-    </template> 
-
-    <template id="search-temp-ing">
-        <div class="ui block">
-            <div class="ui grid">
-                <h2 class "page-header">Search for Recipes:</h2>
-                <form action="/searching" method="post">
-                    <div class="ui form">
-                        <div class='field'>
-                            Number of search requests (between 1-5):
-                            <input type="number" name="quantity" min="1" max="5"> Queries:
-                            <br>
-                            Search ingredients that you have
-                            <br>
-                            <input type="text" name="tag1" value="">
-                            <input type="text" name="tag2" value="">
-                            <input type="text" name="tag3" value="">
-                            <input type="text" name="tag4" value="">
-                            <input type="text" name="tag5" value="">
-                        </div>
-                    </div>
-                    <br>
-                    <p>
-                        <button name="submit" id="findRecipe" class="searchRecipeButton" type="submit">Find Recipe(s)</button>
-                    </p>
-                    <br>
-                    <br>
-            </div>
-            </form>
-        </div>
-        </div>
-    </template> 
-
-    </div>
 
 </div>
 
 
+<!--Search by tag-->
+<template id="search-temp-tag">
+    <div class="ui block">
+        <div class="ui grid">
+            <h2 class" page-header">Search for Recipes:</h2>
+            <form action="/searchtag" method="post">
+                <div class="ui form">
+                    <div class='field'>
+                        Number of search requests (between 1-5):
+                        <input type="number" name="quantity" min="1"
+                            max="5"> Queries:
+                        <br>
+                        Popular searches include: cheap, dairy free, gluten
+                        free, ketogenic, low fodmap, sustainable, vegan,
+                        vegetarian, whole 30
+                        <br>
+                        <input type="text" name="tag1" value="">
+                        <input type="text" name="tag2" value="">
+                        <input type="text" name="tag3" value="">
+                        <input type="text" name="tag4" value="">
+                        <input type="text" name="tag5" value="">
+                    </div>
+                </div>
+                <br>
+                <p>
+                    <button name="submit" id="findRecipe"
+                        class="searchRecipeButton" type="submit">Find
+                        Recipe(s)</button>
+                </p>
+                <br>
+                <br>
+            </form>
+        </div>
+    </div>
 
-    <!--when we want to generate recipes.
-    <table class="table" id="recipe_table">
-        <tr>
-        <th>Recipe Name:</th>
-        <th>Total Calories:</th>
-        <th>Image:</th>
-        <th>Learn more button:</th>
-        <th>Favourite:</th>
-        </tr>
-        </table>-->
+</template>
 
-    <!--Frist scripts are for rendering the first template, then script give buttons functionality-->
-    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-    <script>
+<template id="search-temp-ing">
+    <div class="ui block">
+        <div class="ui grid">
+            <h2 class" page-header">Search for Recipes:</h2>
+            <form action="/searching" method="post">
+                <div class="ui form">
+                    <div class='field'>
+                        Number of search requests (between 1-5):
+                        <input type="number" name="quantity" min="1"
+                            max="5"> Queries:
+                        <br>
+                        Search ingredients that you have
+                        <br>
+                        <input type="text" name="tag1" value="">
+                        <input type="text" name="tag2" value="">
+                        <input type="text" name="tag3" value="">
+                        <input type="text" name="tag4" value="">
+                        <input type="text" name="tag5" value="">
+                    </div>
+                </div>
+                <br>
+                <p>
+                    <button name="submit" id="findRecipe"
+                        class="searchRecipeButton" type="submit">Find
+                        Recipe(s)</button>
+                </p>
+                <br>
+                <br>
+            </div>
+        </form>
+    </div>
+
+</template>
+
+
+<!--Frist scripts are for rendering the first template, then script give buttons functionality-->
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+<script>
         const supportsTemplate = function () {
             return 'content' in document.createElement('template');
         }
@@ -187,4 +185,5 @@
             let content4 = fourth.content;
             document.getElementById('append').appendChild(content4);
         });
-        </script>
+        
+ </script>
