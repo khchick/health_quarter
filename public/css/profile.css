@@ -1,0 +1,46 @@
+.review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.rating-row {
+    display: flex;
+    justify-content: space-between;
+}
+.rating-group {
+    display: inline-block;
+}
+.rating-group span {
+    vertical-align: middle;
+}
+
+.user-review {
+    margin: 20px 0 25px 0;
+}
+
+.date {
+    color: #a09e9e;
+    font-weight: 400;
+    margin: 0 10px;
+}
+
+.user-comment {
+    padding: 10px 0;
+    color: black;
+}
+
+.avatar {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.user-info {
+    vertical-align: middle;
+}
+
+#user-name {
+    margin: 0 15px;
+    color: black;
+}

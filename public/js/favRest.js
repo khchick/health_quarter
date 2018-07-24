@@ -1,8 +1,7 @@
 $(() => {
     $.get(`/api/fav/restaurants`).then(data => { // Get list of all fav restaurants
-        console.log(data);
         data.forEach(e => {
-            $('#fav-rest-list').append(Rest(e.name, e.img, e.rest_id));
+            $('#fav-rest-list').append(Rest(e.rest_id, e.name, e.img, e.rating, e.price));
 
             $.get(`/api/fav/rest/${e.rest_id}`).then(res => { // Check and return fav status
                 let status = JSON.parse(res);
@@ -37,29 +36,28 @@ $(() => {
             // Calculate average rating and show as stars
             $.get(`/api/rest/rating/${e.rest_id}`).then(res => {
                 for (let i = 0;i < res;i++) {
-                    $(`#foodRating_${e.rest_id}`).append('<i class="fa fa-star" aria-hidden="true"></i>');
+                    $(`#rating_${e.rest_id}`).append('<i class="fa fa-star" aria-hidden="true"></i>');
                 }
                 for (let i = 0;i < (5-res);i++) {
-                    $(`#foodRating_${e.rest_id}`).append('<i class="fa fa-star-o" aria-hidden="true"></i>');
+                    $(`#rating_${e.rest_id}`).append('<i class="fa fa-star-o" aria-hidden="true"></i>');
                 }
             });
-
-            // // Append associated tags and linkages
-            // e.tags.forEach(tag =>{
-            //     $(`#rest_${e.rest_id}`).append(RestTags(tag.tag_id,tag.tag_name));
-            // })
         });
     });
-    const Rest = (name, img, id) => {
+    const Rest = (id, name, img, rating, price) => {
         return `
-            <div class="innerwrapper">
-                <div class="name">${name}</div>
-                    <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i></div>
-                            <div class="image">
-                                <img src="${img}">
-                            </div>
-                <div class="link"><a href="/rest/${id}">View in restaurant page</div>
-            </div>
+                <div class="innerwrapper">
+                    <div class="name"><a href="/rest/${id}">${name}</a>
+                    </div>
+                    <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
+                    </div>
+                    <div class="image">
+                        <a href="/rest/${id}"><img src="${img}"></a>
+                    </div>
+                    <div class="price">${price}</div>
+                    <div class="stars" id="rating__${id}"></div>
+                    <div class="viewmore"><a href="/rest/${id}">view more</a></div>
+                </div>
             `
     };
 })

@@ -55,7 +55,7 @@ module.exports = class ViewRouter {
                     res.render('index', {
                         title: 'HealthQuarter // uncover your healthy lifestyle',
                         data: dataString,
-                        css: ['common.css', 'index.css', 'recipeFinder.css']
+                        css: ['index.css', 'recipeFinder.css']
                     });
                 });
         });
@@ -207,13 +207,13 @@ module.exports = class ViewRouter {
 
         // My Account page
         router.get('/profile', isLoggedIn, (req, res, next) => {
-            res.render('profile', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+            res.render('profile', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['profile.css', 'index.css'] });
         });
         router.post('/api/user/avatar', upload.single('avatar'), (req, res) => res.redirect('/profile'));
 
         // Sign up page
         router.get('/signup', (req, res, next) => {
-            res.render('signup', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+            res.render('signup', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['signup.css', 'index.css'] });
         });
         router.post('/signup', upload.single('profilePic'), passport.authenticate('local-signup', {
             successRedirect: '/login',
@@ -223,7 +223,7 @@ module.exports = class ViewRouter {
 
         // Login page
         router.get('/login', (req, res, next) => {
-            res.render('login', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+            res.render('login', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['login.css', 'index.css'] });
         });
         router.post('/login', passport.authenticate('local-login', {
             successRedirect: '/home',

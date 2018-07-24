@@ -14,6 +14,7 @@ $(()=> {
         $('#favBtn').css('display', 'inline-block');
         $('.placeholderMsg').css('display','none');
         $('#reviewForm').css('display','block');
+        $('#favDishBtn').css('display','inline-block');
     }
     
     if (sessionStorage.getItem('status') === null) {
@@ -27,7 +28,7 @@ $(()=> {
         $('#favBtn').css('display', 'none');
         $('.placeholderMsg').css('display','block');
         $('#reviewForm').css('display','none');
-        // $('.fa-heart').
+        $('#favDishBtn').css('display','none');
     }
 })
 

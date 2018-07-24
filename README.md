@@ -1,6 +1,6 @@
 # Health Quarter - Healthy Dining Directory Platform
 
-Health Quarter APP is an all-in-one healthy dining directory platform, showcasing Hong Kong's most popular healthy restaurants, delivery options and easy healthy recipes. 
+Health Quarter is an all-in-one healthy dining directory platform, showcasing Hong Kong's most popular healthy restaurants, delivery options and easy healthy recipes. 
 
 ## Design approach 
 - This platform adapts a clean, simplicity and fresh design to create an image of healthy and green dining style. 
@@ -36,10 +36,6 @@ Health Quarter APP is an all-in-one healthy dining directory platform, showcasin
 ## API References
 - Google Maps API for details regarding how to show the exact location of the restaurants.
 - Spoonacular Food and Recipe API to obtain a wide range of recipes sorted by calorie goal, tags and favorite ingredients.
-
-## Installation (TBC)
-git clone https://
-npm install
 
 ## Versioning
 - GIT has been used for version control

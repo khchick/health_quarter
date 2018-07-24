@@ -61,12 +61,13 @@ $(()=>{
 
     const RestTags = (tag_id,tag_name)=>{
         return `
-            <i><a href="/tag/${tag_id}">${tag_name}, </a></i>
+            <a href="/tag/${tag_id}">${tag_name}</a>
             `
     };
 
     // Get lists of restaurants tagged as Drinks
-    $.get(`/api/rest/tag/16`).then(data=>{ 
+    $.get(`/api/rest/tag/16`).then(res=>{ 
+        let data = res.slice(0,3);
         data.forEach(e =>{
             $('#2ndTagList').append(DrinkRest(e.id,e.name,e.img,e.price,e.rating)); // Append restaurant details
 
@@ -130,7 +131,8 @@ $(()=>{
     }
 
     // Get all meal plans
-    $.get(`/api/meal`).then(data => {
+    $.get(`/api/meal`).then(res => {
+        let data = res.slice(0,3);
         data.forEach(e => {
             $('#mealPlanList').append(MealPlan(
                 e.id,
@@ -179,7 +181,7 @@ $(()=>{
     });
     const MealPlan = (id,name,img,rest_id)=>{
             return `
-            <div class="mealplanrwrapper">
+            <div class="mealplanwrapper">
                 <div class="name"><a href="/rest/${id}">${name}</a>
                 </div>
                 <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
@@ -187,7 +189,7 @@ $(()=>{
                 <div class="image">
                                 <img src="${img}">
                 </div>
-                <div class="link"><a href="/rest/${rest_id}">view more</div>
+                <div class="link"><a href="/rest/${rest_id}">view more</a></div>
             </div>
             `
     };
