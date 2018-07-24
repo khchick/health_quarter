@@ -102,25 +102,30 @@ module.exports = [
     {rest_id: 19,tag_id:14},    
 
     //Food Tag
+    {rest_id: 1, tag_id: 15},
+    {rest_id: 3, tag_id: 15},
+    {rest_id: 4, tag_id: 15},
     {rest_id: 5, tag_id: 15},
     {rest_id: 6, tag_id: 15},    
     {rest_id: 7, tag_id: 15},
+    {rest_id: 8, tag_id: 15},
+    {rest_id: 9, tag_id: 15},
+    {rest_id: 10, tag_id: 15},
     {rest_id: 11, tag_id: 15},
     {rest_id: 12, tag_id: 15},
     {rest_id: 13, tag_id: 15},
     {rest_id: 14, tag_id: 15},
+    {rest_id: 15, tag_id: 15},
     {rest_id: 16, tag_id: 15},
     {rest_id: 17, tag_id: 15},
     {rest_id: 18, tag_id: 15},
     {rest_id: 19,tag_id: 15},
+    {rest_id: 20, tag_id: 15},
     {rest_id: 21,tag_id:15},
 
     //Drink Tag
     {rest_id: 2, tag_id: 16},
-    {rest_id: 4, tag_id: 16},
-    {rest_id: 6, tag_id: 16},
     {rest_id: 15, tag_id: 16},
-    {rest_id: 19,tag_id:16},
     {rest_id: 20,tag_id:16},
 
     //Vegan 
