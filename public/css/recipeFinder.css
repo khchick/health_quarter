@@ -4,7 +4,7 @@ Recipe Finder
 =====================================
 */
 body {
-    padding-top: 50px;
+    padding-top: 100px;
     color: #6A9605;
     font: 300 16px/22px 'futura', helvetica, sans-serif;
     background-color: #fff;
@@ -131,11 +131,7 @@ a.learnMore {
     color: #fff;
     text-align: center;
     margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-i {
-    z-index:0;
+    margin-bottom: 10px;    
 }
 
 /*

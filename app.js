@@ -60,7 +60,7 @@ const httpsOptions = {
     cert: fs.readFileSync('./localhost.crt')
 }
 
-https.createServer(httpsOptions, app).listen(8443, () => {
-    console.log('Application started at port ' + 8443)
+https.createServer(httpsOptions, app).listen(8080, () => {
+    console.log('Application started at port ' + 8080)
 })
 
