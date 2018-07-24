@@ -169,7 +169,7 @@ Favourite Recipe view
 }
 
 .favRecipeBG {
-    background-image: url("../images/Extra Images/favRecipeBG.jpg");
+    background-image: url("/images/decor/favrecipe.jpg");
     width: 100%;
     height: 700px;
     background-size: cover;

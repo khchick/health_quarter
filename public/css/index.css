@@ -277,14 +277,47 @@ body a:hover {
 .about {
     grid-area: about;
 }
-
 /*
+  ========================================
+  Favorites
+  ========================================
+*/
+
+.favwrapper {
+    display: grid;
+    grid-template-columns: 25% 1fr 1fr 1fr 1fr 25%;
+    margin: 50px;
+    text-align: center;
+    letter-spacing: 3px;
+    grid-gap: 10px;
+}
+
+.x, .y, .z, .w {
+    border: 2px solid black;
+    padding: 5px 5px 5px 8px;
+    font-weight: 400;
+}
+
+.favtitle {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.favtitle span {
+    border: 2px solid black;
+    padding: 5px 5px 5px 8px;
+    letter-spacing: 4px;
+    font-weight: 400;
+}
 
 /*
   ========================================
   Footer
   ========================================
 */
+
+
 
 .footerwrapper {
     display: grid;
