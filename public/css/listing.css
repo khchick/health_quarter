@@ -4,13 +4,14 @@
   ========================================
 */
 
-.bannerbackground {
+.restbannerbackground {
     margin-top: 50px;
     background-image: url("/images/decor/foodbanner.jpg");
     width: 100%;
     height: 250px; 
     background-size: cover; 
     background-position: center top;
+    background-attachment: fixed;
 }
 
 .mealbannerbackground {
@@ -20,6 +21,7 @@
     height: 250px; 
     background-size: cover; 
     background-position: center top;
+    background-attachment: fixed;
 }
 
 #titleTag {
