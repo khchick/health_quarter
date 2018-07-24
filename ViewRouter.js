@@ -199,7 +199,7 @@ router.post('/searchtag', urlencodedParser, function (req, res) {
             res.render('favouriteMeal', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
         });
         router.get('/favouriteRec', isLoggedIn, (req, res, next) => {
-            res.render('favouriteRec', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css', 'recipeFinder.css'] });
+            res.render('favouriteRec', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['index.css', 'recipeFinder.css'] });
         });
 
         // My Account page

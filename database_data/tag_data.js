@@ -8,12 +8,12 @@ module.exports = [
     {name: 'Cakes'},
     {name: 'Organic'},
     {name: 'Superfood'},
-    {name: 'Chicken'},
+    {name: 'Chicken'}, 
     {name: 'Protein'},
     {name: 'Takeaway'},
     {name: 'Detoxic'},
-    {name: 'Chinese Cruisine'},
-    {name: 'Food'},
+    {name: 'Chinese Cuisine'},
+    {name: 'Food'}, 
     {name: 'Drinks'},
     {name: 'Vegan'}
 ];

@@ -9,6 +9,11 @@
     border: 2px solid #000;
 }
 
+.tag a:hover {
+    text-decoration: none;
+    color: #6A9605;
+}
+
 .bannerimage {
     margin-top: 20px;
     margin-bottom: 30px;
@@ -52,6 +57,7 @@
 .sub-heading {
     font-size: 22px;
     letter-spacing: 0.2em;
+    margin-top: 30px;
 }
 
 .map {

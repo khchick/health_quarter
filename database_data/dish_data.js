@@ -36,22 +36,22 @@ module.exports = [
     },
     {
         name: 'Tofu Salad',
-        img: '/images/tofusalad_locofama.jpg',
+        img: '/images/Extra Images/tofusalad_locofama.jpg',
         rest_id: 5
     },
     {
         name: 'Cauliflower Fried Rice',
-        img: '/images/cauliflowerfriedrice_locofama.jpg',
+        img: '/images/Extra Images/cauliflowerfriedrice_locofama.jpg',
         rest_id: 5
     },
     {
         name: 'Dim Sum',
-        img: '/images/dimsum_sohofama.jpg',
+        img: '/images/Extra Images/dimsum_sohofama.jpg',
         rest_id: 6
     },
     {
         name: 'Sweet and Sour Organic Pork',
-        img: '/images/sweet&sourorganicpork_sohofama.jpg',
+        img: '/images/Extra Images/sweet&sourorganicpork_sohofama.jpg',
         rest_id: 6
     },
     {
@@ -61,57 +61,57 @@ module.exports = [
     },
     {
         name: 'Veggie Burger',
-        img: '/images/veggieburger_veggiesf.jpg',
+        img: '/images/Extra Images/veggieburger_veggiesf.jpg',
         rest_id: 8
     },
     {
         name: 'Quinoa Wrap',
-        img: '/images/quinoawrap_veggiemonster.jpg',
+        img: '/images/Extra Images/quinoawrap_veggiemonster.jpg',
         rest_id: 9
     },
     {
         name: 'Lemongrass and Tofu',
-        img: '/images/lemongrasstofu_somethingfresh.jpg',
+        img: '/images/Extra Images/lemongrasstofu_somethingfresh.jpg',
         rest_id: 10
     }, 
     {
         name: 'Baked Goods',
-        img: '/images/bakedgoods_openkitchen.jpg',
+        img: '/images/Extra Images/bakedgoods_openkitchen.jpg',
         rest_id: 11
     },
     {
         name: 'Pumpkin Rissotto',
-        img: '/images/pumpkinrissotto_openkitchen.jpg',
+        img: '/images/Extra Images/pumpkinrissotto_openkitchen.jpg',
         rest_id: 11
     },
     {
         name: 'Prawn and Quinoa',
-        img: '/images/prawnquinoa_cedele.jpg',
+        img: '/images/Extra Images/prawnquinoa_cedele.jpg',
         rest_id: 12
     },
     {
         name: 'Turkey & Cranberry Sandwich',
-        img: '/images/turkeycransandwich_cedele.jpg',
+        img: '/images/Extra Images/turkeycransandwich_cedele.jpg',
         rest_id: 12
     },
     {
         name: 'High Tea',
-        img: '/images/hightea_sevva.jpg',
+        img: '/images/Extra Images/hightea_sevva.jpg',
         rest_id: 13
     },
     {
         name: 'Mini Sliders',
-        img: '/images/minisliders_sevva.jpg',
+        img: '/images/Extra Images/minisliders_sevva.jpg',
         rest_id: 13
     },
     {
         name: 'Beef Pho',
-        img: '/images/beefphoo_noodlemi.jpg',
+        img: '/images/Extra Images/beefphoo_noodlemi.jpg',
         rest_id: 14
     },
     {
         name: 'Assorted Smoothies',
-        img: '/images/smoothies_Zumufi.jpg',
+        img: '/images/Extra Images/smoothies_Zumufi.jpg',
         rest_id: 15
     },
     {
@@ -142,32 +142,32 @@ module.exports = [
     
     {
         name: 'Lentil Salad with Cheesey Toast',
-        img: '/images/cheesytoastlentilsalad_artichokecanteen.jpg',
+        img: '/images/Extra Images/cheesytoastlentilsalad_artichokecanteen.jpg',
         rest_id: 17
     },
     {
         name: 'Tuna & Pumpkin Salad',
-        img: '/images/tunapumpkinsalad_artichokecanteen.jpg',
+        img: '/images/Extra Images/tunapumpkinsalad_artichokecanteen.jpg',
         rest_id: 17
     },
     {
         name: 'Tarro Fries',
-        img: '/images/tarrofries_kale.jpg',
+        img: '/images/Extra Images/tarrofries_kale.jpg',
         rest_id: 18
     },
     {
         name: 'Veggie Sliders',
-        img: '/images/veggiesliders_kale.jpg',
+        img: '/images/Extra Images/veggiesliders_kale.jpg',
         rest_id: 18
     },
     {
         name: 'Bacon & Avcado Toast',
-        img: '/images/baconavo_3rds.jpg',
+        img: '/images/Extra Images/baconavo_3rds.jpg',
         rest_id: 19
     },
     {
         name: 'Squid and Vegetables',
-        img: '/images/squidveg_3rds.jpg',
+        img: '/images/Extra Images/squidveg_3rds.jpg',
         rest_id: 19
     },
     {

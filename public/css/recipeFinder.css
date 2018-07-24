@@ -4,36 +4,51 @@ Recipe Finder
 =====================================
 */
 
+body {
+    padding-top: 35px;
+    color: #6A9605;
+    font: 300 16px/22px 'futura', helvetica, sans-serif;
+    background-color: #fff;
+    margin: 0;
+}
+
 .recipeFinderBG {
-    background-image: url("../images/recipeFinderBG.jpg");
+    background-image: url("../images/Extra Images/recipeFinderBG.jpg");
     width: 100%;
     height: 700px;
-    background-size: contain;
+    background-size: cover;
     background-position: center top;
+    background-attachment: fixed;
 }
 
 .searchcalBG {
-    background-image: url("../images/searchcalBG.jpg");
+    background-image: url("../images/Extra Images/searchcalBG.jpg");
     width: 100%;
     height: auto;
-    background-size: contain;
+    background-size: cover;
     background-position: center top;
+    background-attachment: fixed;
+
 }
 
 .searchingBG {
-    background-image: url("../images/searchingBG.jpg");
+    background-image: url("../images/Extra Images/searchingBG.jpg");
     width: 100%;
     height: auto;
-    background-size: contain;
+    background-size: cover;
     background-position: center top;
+    background-attachment: fixed;
+
 }
 
 .searchtagBG {
-    background-image: url("../images/searchtagBG.jpg");
+    background-image: url("../images/Extra Images/searchtagBG.jpg");
     width: 100%;
     height: auto;
-    background-size: contain;
+    background-size: cover;
     background-position: center top;
+    background-attachment: fixed;
+
 }
 
 #indexRecipeStyle {
@@ -74,6 +89,15 @@ Recipe Finder
 #recipe_table th,
 td {
     border: 2px solid black;
+    text-align: center; 
+    vertical-align: middle; 
+}
+
+td.recipeTitle,
+a.learnMore,
+button.saveRecipe {
+    text-align: center; 
+    vertical-align: middle;
 }
 
 #recipe_table tr:hover {
@@ -90,7 +114,14 @@ tr {
     color: white;
 }
 
-.learnMore, a {
+.info-container, p {
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    color: #006666;
+}
+
+a.learnMore {
     text-decoration: none;
     color: #006666;
     font-size: 20;
@@ -120,16 +151,19 @@ Favourite Recipe view
 }
 
 .info-container {
+    padding: 5px 5px 0px 5px;
     text-align: center;
     color: #006666;
     background: #AEC560;
-    border-radius: 25%;
+    border-radius: 15%;
 }
 
 .favRecipeBG {
-    background-image: url("../images/favRecipeBG.jpg");
+    background-image: url("../images/Extra Images/favRecipeBG.jpg");
     width: 100%;
-    height: auto;
+    height: 700px;
     background-size: cover;
     background-position: center top;
+    background-attachment: fixed;
+
 }

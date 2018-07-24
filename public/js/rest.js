@@ -1,17 +1,10 @@
 $(() => {
     let restID = window.location.href.split("/").pop(); // Get restaurant ID from URL
-    console.log(restID); 
 
     // Get restaurant details
     $.get(`/api/rest/detail/${restID}`).then(data => {
         data.forEach(e => {
-<<<<<<< HEAD
-            $('#rest-detail').append(RestDetail(
-                e.name,
-                e.img,
-=======
             e.tags.forEach(tag => { // Insert tags
-                console.log(tag);
                 $('#tag-container').append(`<span class="tag"><a href="/tag/${tag.tag_id}">${tag.tag_name}</a></span>`)
             })
 
@@ -20,109 +13,159 @@ $(() => {
             $('#restName').text(`${e.name}`); // Insert name
 
             $('#rest-detail').append(RestDetail( // Insert details
->>>>>>> ddbcfcb1987b39b7db5002166b43e9992e988f28
-                e.map,
                 e.about,
                 e.price,
-                e.website,
                 e.phone,
                 e.hours,
-                e.lat,
-                e.lng,
                 e.location,
-                e.tags
+                e.map
             ))
-        });
+
+            // Get favourite status 
+            $.get(`/api/fav/rest/${restID}`).then(res => {
+                let status = JSON.parse(res);
+                if (status === true) {
+                    $('#favBtn i').addClass("fa-heart").removeClass("fa-heart-o");
+                    $('#favBtn span').html('Remove from favourites');
+                } else {
+                    $('#favBtn i').addClass("fa-heart-o").removeClass("fa-heart");
+                    $('#favBtn span').html('Add to favourites');
+                }
+            })
+
+            // Listen to click to toggle favourite status
+            $('#favBtn').on('click', () => {
+                toggleFav(restID);
+            })
+
+        })
     });
-    const RestDetail = (name, img, map, about, price, website, phone, hours, lat, lng, location, tags) => {
+
+    const RestDetail = (about, price, phone, hours, location, map) => {
         return `
-            <div class="info-container">
-                <label class="lbl-info">Name: </label><p>${name}</p>
-                <label class="lbl-info">img: </label><p>${img}</p>
-                <label class="lbl-info">img: </label><p>${map}</p>
-                <label class="lbl-info">About: </label><p>${about}</p>
-                <label class="lbl-info">Price: </label><p>${price}</p>
-                <label class="lbl-info">Website: </label><p>${website}</p>
-                <label class="lbl-info">Phone: </label><p>${phone}</p>
-                <label class="lbl-info">Hours: </label><p>${hours}</p>
-                <label class="lbl-info">Lat: </label><p>${lat}</p>
-                <label class="lbl-info">Lng: </label><p>${lng}</p>
-                <label class="lbl-info">Location: </label><p>${location}</p>
-                <label class="lbl-info">Tags: </label><p>${tags}</p>
-            </div>`
+            <h2 class="sub-heading">ABOUT</h2>
+            <p id="about">${about}</p>
+            <h2 class="sub-heading">PRICE RANGE</h2>
+            <p id="price">${price}</p>
+            <h2 class="sub-heading">PHONE</h2>
+            <p id="phone">${phone}</p>
+            <h2 class="sub-heading">OPENING HOURS</h2>
+            <p id="hours">${hours}</p>
+            <h2 class="sub-heading">ADDRESS</h2>
+            <p id="address">${location}</p>
+            <div id="map">${map}</div>
+            `
     }
 
     // Get all dishes of current restaurant
     $.get(`/api/dish/rest/${restID}`).then(data => {
         data.forEach(e => {
             $('#dish-detail').append(DishDetail(
+                e.id,
                 e.name,
                 e.img,
             ))
+            $.get(`/api/fav/dish/${e.id}`).then(res => { // Check and return fav status
+                let status = JSON.parse(res);
+                if (status === true) {
+                    $(`i[data-id="${e.id}"]`).addClass("fa-heart");
+                    $(`i[data-id="${e.id}"]`).removeClass("fa-heart-o");
+                } else {
+                    $(`i[data-id="${e.id}"]`).addClass("fa-heart-o");
+                    $(`i[data-id="${e.id}"]`).removeClass("fa-heart");
+                }
+            });
+            $(`i[data-id="${e.id}"]`).on('click', () => { // Listen to click to toggle favourite status
+                toggleFav(e.id);
+            });
+
+            // Define fav button function
+            function toggleFav(dishID) {
+                if ($(`i[data-id="${dishID}"]`).hasClass("fa-heart")) {
+                    axios.delete(`/api/fav/dish/${dishID}`).then(() => {
+                        $(`i[data-id="${dishID}"]`).removeClass("fa-heart");
+                        $(`i[data-id="${dishID}"]`).addClass("fa-heart-o");
+                    })
+                }
+                if ($(`i[data-id="${dishID}"]`).hasClass("fa-heart-o")) {
+                    axios.post(`/api/fav/dish/${dishID}`).then(() => {
+                        $(`i[data-id="${dishID}"]`).removeClass("fa-heart-o");
+                        $(`i[data-id="${dishID}"]`).addClass("fa-heart");
+                    })
+                }
+            }
         });
     });
-    const DishDetail = (name, img) => {
+    
+    const DishDetail = (id, name, img) => {
         return `
-            <div class="info-container">
-                <label class="lbl-info">Name: </label><p>${name}</p>
-                <label class="lbl-info">img: </label><p>${img}</p>
-            </div>`
+            <div class="col-sm-12 col-md-6 col-lg-4 dish-container">
+                <div class="dish-info-container">
+                    <h6 id="dishName">${name}</h6>
+                    <i data-id="${id}" class="fa fa-heart" aria-hidden="true"></i>
+                </div>
+                <img class="dish-img" src="${img}" alt="">
+            </div>
+            `
     }
 
     // Get all meal plans of current restaurant
     $.get(`/api/meal/${restID}`).then(data => {
         data.forEach(e => {
             $('#meal-detail').append(MealDetail(
+                e.id,
                 e.name,
-                e.img,
-                e.about,
+                e.img
             ))
         });
     });
-    const MealDetail = (name, img, about) => {
+    const MealDetail = (id, name, img) => {
         return `
-        <div class="info-container">
-            <label class="lbl-info">Name: </label><p>${name}</p>
-            <label class="lbl-info">img: </label><p>${img}</p>
-            <label class="lbl-info">About: </label><p>${about}</p>
-        </div>`
+            <div class="col-4 meal-container">
+                <div class="meal-info-container">
+                    <h6 id="mealName">${name}</h6>
+                    <i data-id="${id}" class="fa fa-heart" aria-hidden="true"></i>
+                </div>
+                <img class="meal-img" src="${img}" alt="">
+            </div>
+        `
     }
-
-    // Get favourite status 
-    $.get(`/api/fav/rest/${restID}`).then(res => {
-        console.log(res);
-        let status = JSON.parse(res);
-        if (status === true) {
-            $('#favBtn').html("isFav");
-        } else {
-            $('#favBtn').html("notFav");
-        }
-    })
-
-    // Listen to click to toggle favourite status
-    $('#favBtn').on('click', () => {
-        toggleFav(restID);
-    })
 
     // Get users' reviews
     $.get(`/api/rest/review/${restID}`).then(data => {
         data.forEach(e => {
             $('#rest-review').append(UsersReview(
+                e.review_id,
                 e.name,
                 e.comment,
-                e.rating,
-                e.dateSubmitted
+                e.dateSubmitted.split('T',1)
             ))
+
+            // Render rating into stars
+            for (let i = 1;i <= e.rating;i++) {
+                $(`#rating_${e.review_id}`).append(`<i class="fa fa-star" aria-hidden="true"></i>\n`);
+            }
+            for (let i = (e.rating + 1);i <= 5;i++) {
+                $(`#rating_${e.review_id}`).append(`<i class="fa fa-star-o" aria-hidden="true"></i>\n`);
+            }
         });
     });
-    const UsersReview = (name, comment, rating, date) => {
+    const UsersReview = (review_id, name, comment, dateSubmitted) => {
         return `
-            <div class="info-container">
-                <label class="lbl-info">Name: </label><p>${name}</p>
-                <label class="lbl-info">Comment: </label><p>${comment}</p>
-                <label class="lbl-info">Rating: </label><p>${rating}</p>
-                <label class="lbl-info">Date: </label><p>${date}</p>
-            </div>`
+            <div class="user-review">
+                <div class="d-flex justify-content-flex-start">
+                    <div class="user-rating" id="rating_${review_id}"></div>
+                    <span class="date">${dateSubmitted}</span>
+                </div>
+                <div class="col-8 user-comment">
+                    <p>${comment}</p>
+                </div>
+                <div class="user-info d-flex justify-content-flex-start align-items-center">
+                    <img class="avatar" src="../images/users/khc.png" alt="">
+                    <p id="user-name">${name}</p>
+                </div>
+            </div>
+            `
     }
 
     // Post user review
@@ -148,14 +191,16 @@ $(() => {
 
 // Define fav button function
 function toggleFav(restID) {
-    if ($('#favBtn').html() === "isFav") {
+    if ($('#favBtn span').text() === "Remove from favourites") {
         axios.delete(`/api/fav/rest/${restID}`).then(() => {
-            $('#favBtn').html("notFav");
+            $('#favBtn i').addClass("fa-heart-o").removeClass("fa-heart");
+            $('#favBtn span').text("Add to favourites");  
         })
     }
-    if ($('#favBtn').html() === "notFav") {
+    if ($('#favBtn span').text() === "Add to favourites") {
         axios.post(`/api/fav/rest/${restID}`).then(() => {
-            $('#favBtn').html("isFav");
+            $('#favBtn i').addClass("fa-heart").removeClass("fa-heart-o");
+            $('#favBtn span').text("Remove from favourites");
         })
     }
 }

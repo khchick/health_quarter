@@ -32,8 +32,8 @@
 
         $.each(recipes.recipes, function (key, value) {
             recipes += '<tr>';
-            recipes += '<td width="25%">' + value.title + '</td>';
-            recipes += '<td>' + value.servings + '</td>';
+            recipes += '<td width="25%" class="recipeTitle">' + value.title + '</td>';
+            recipes += '<td class="recipeTitle">' + value.servings + '</td>';
             recipes += '<td><img src=' + value.image + '></td>';
             recipes += '<td><a class="learnMore" href=' + value.spoonacularSourceUrl + '>Learn More</a></td>';
             recipes += '</tr>';

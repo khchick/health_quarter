@@ -15,7 +15,7 @@ $(() => {
 
             $.get(`/api/rest/tag/${tag.id}`).then(data => { // Get list of restaurants by each tag
                 data.forEach(e => {
-                    $(`#tag_${e.tag_id}_rest`).append(Rest(e.tag_id, e.id, e.name, e.img, e.tags));
+                    $(`#tag_${e.tag_id}_rest`).append(Rest(e.tag_id, e.id, e.name, e.price, e.img, e.tags));
 
                     $.get(`/api/fav/rest/${e.id}`).then(res => { // Check and return fav status
                         let status = JSON.parse(res);
@@ -46,44 +46,34 @@ $(() => {
                     e.tags.forEach(tag => {
                         $(`#rest_${e.tag_id}_${e.id}`).append(RestTags(tag.tag_id, tag.tag_name));
                     })
+
+                    let homelastTag = $(`#rest_${e.tag_id}_${e.id}`).children().last().text(); // Remove comma from last tag
+                    console.log(homelastTag);
+                    homelastTag = homelastTag.slice(0, -1);
+                    $(`#rest_${e.tag_id}_${e.id}`).children().last().text(homelastTag);
                 });
 
             });
-            const Rest = (tag_id, id, name, img) => {
-                /*return `
-                <div class="innerwrapper">
-                    <div class="name"><a href="/rest/${id}">${name}</a></div>
-                            <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i></div>
-                                <div class="image">
-                                    <img src="${img}">
-                                </div>
-                            <div class="ratings">ratings</div>
+            const Rest = (tag_id,id,name,price,img)=>{
+                return `
+                    <div class="innerwrapper">
+                        <div class="name"><a href="/rest/${id}">${name}</a>
+                        </div>
+                        <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
+                        </div>
+                        <div class="image">
+                            <a href="/rest/${id}"><img src="${img}"></a>
+                        </div>
+                        <div class="price">${price}</div>
                         <div class="stars" id="rating_${tag_id}_${id}"></div>
-                    <div class="tags" id="rest_${tag_id}_${id}"></div>
-                </div>
-                `*/
-
+                        <div class="tags" id="rest_${tag_id}_${id}">Tags: </div>
+                        <div class="viewmore"><a href="/rest/${id}">view more</a></div>
+                    </div>
+                `
+            }
+            const RestTags = (tag_id,tag_name)=>{
                 return `
-            <div class="innerwrapper">
-                <div class="name"><a href="/rest/${id}">${name}</a>
-                </div>
-                <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
-                </div>
-                <div class="image">
-                                <img src="${img}">
-                </div>
-                <div class="price">price
-                </div>
-                <div class="stars" id="rating_${tag_id}_${id}"></div>
-                <div class="tags" id="rest_${tag_id}_${id}"></div>
-                <div class="viewmore">view more</div>
-            </div>
-            `
-            };
-
-            const RestTags = (tag_id, tag_name) => {
-                return `
-                    <a href="/tag/${tag_id}">${tag_name}</a>
+                    <a href="/tag/${tag_id}">${tag_name},</a>
                     `
             };
         });
