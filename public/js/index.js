@@ -179,7 +179,7 @@ $(()=>{
     });
     const MealPlan = (id,name,img,rest_id)=>{
             return `
-            <div class="mealplanrwrapper">
+            <div class="mealplanwrapper">
                 <div class="name"><a href="/rest/${id}">${name}</a>
                 </div>
                 <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
