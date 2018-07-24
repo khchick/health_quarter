@@ -52,7 +52,6 @@ $(()=> {
                 <div class="image">
                                 <img src="${img}">
                 </div>
-                <div class="link"><a href="/rest/${rest_id}">view more</a></div>
             </div>
             `
     };
