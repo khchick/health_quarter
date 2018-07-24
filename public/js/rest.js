@@ -5,9 +5,22 @@ $(() => {
     // Get restaurant details
     $.get(`/api/rest/detail/${restID}`).then(data => {
         data.forEach(e => {
+<<<<<<< HEAD
             $('#rest-detail').append(RestDetail(
                 e.name,
                 e.img,
+=======
+            e.tags.forEach(tag => { // Insert tags
+                console.log(tag);
+                $('#tag-container').append(`<span class="tag"><a href="/tag/${tag.tag_id}">${tag.tag_name}</a></span>`)
+            })
+
+            $('#heroImg').css('background-image',`url("../${e.img}")`) // Insert hero image
+
+            $('#restName').text(`${e.name}`); // Insert name
+
+            $('#rest-detail').append(RestDetail( // Insert details
+>>>>>>> ddbcfcb1987b39b7db5002166b43e9992e988f28
                 e.map,
                 e.about,
                 e.price,

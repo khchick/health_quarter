@@ -37,7 +37,7 @@ module.exports = class ViewRouter {
                     res.render('index', {
                         title: 'HealthQuarter // uncover your healthy lifestyle',
                         data: dataString,
-                        css: ['index.css']
+                        css: ['index.css', 'recipeFinder.css']
                     });
                 });
         });
@@ -53,7 +53,7 @@ module.exports = class ViewRouter {
                     res.render('index', {
                         title: 'HealthQuarter // uncover your healthy lifestyle',
                         data: dataString,
-                        css: ['common.css', 'index.css']
+                        css: ['common.css', 'index.css', 'recipeFinder.css']
                     });
                 });
         });
@@ -70,7 +70,7 @@ module.exports = class ViewRouter {
                     res.render('home', {
                         title: 'HealthQuarter // uncover your healthy lifestyle',
                         data: dataString,
-                        css: ['index.css']
+                        css: ['index.css', 'recipeFinder.css']
                     });
                 });
         });
@@ -97,11 +97,11 @@ module.exports = class ViewRouter {
         });
 
         // //Recipe Finder page
-        router.get('/recipeFinder', (req, res) => res.render("recipeFinder", { css: ['index.css'] }));
+        router.get('/recipeFinder', (req, res) => res.render("recipeFinder", { css: ['index.css', 'recipeFinder.css'] }));
         router.get('/recipeFinder', passport.authenticate('local-signup', {
             failureRedirect: '/error',
             failureFlash: true
-        }), (req, res) => { res.render("recipeFinder", { userID: req.session.passport.user.id, css: ['index.css'] }) }); // DISPLAY CUSTOM LISTS FOR LOGGED IN USERS (FAV TAGS)
+        }), (req, res) => { res.render("recipeFinder", { userID: req.session.passport.user.id, css: ['index.css', 'recipeFinder.css'] }) }); // DISPLAY CUSTOM LISTS FOR LOGGED IN USERS (FAV TAGS)
 
         //search by calorie
 
@@ -115,7 +115,7 @@ module.exports = class ViewRouter {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
                     console.log(dataString);
-                    res.render('searchcaluser', { data: dataString, userID: req.session.passport.user.id, css: ['index.css'] });
+                    res.render('searchcaluser', { data: dataString, userID: req.session.passport.user.id, css: ['index.css', 'recipeFinder.css'] });
                 });
         });
 
@@ -128,7 +128,7 @@ module.exports = class ViewRouter {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
                     console.log(dataString);
-                    res.render('searchcal', { data: dataString, css: ['index.css'] });
+                    res.render('searchcal', { data: dataString, css: ['index.css', 'recipeFinder.css'] });
                 });
         });
         // search by tag needs work, due to url - limited number of tags...
@@ -142,7 +142,7 @@ module.exports = class ViewRouter {
                     console.log(result.status, result.headers, result.body, result.body);
                     let dataString = JSON.stringify(result.body);
                     console.log(dataString);
-                    res.render('searchtaguser', { data: dataString, userID: req.session.passport.user.id, css: ['index.css'] });
+                    res.render('searchtaguser', { data: dataString, userID: req.session.passport.user.id, css: ['index.css', 'recipeFinder.css'] });
                 });
         });
 
@@ -155,7 +155,7 @@ router.post('/searchtag', urlencodedParser, function (req, res) {
                     console.log(result.status, result.headers, result.body, result.body);
                     let dataString = JSON.stringify(result.body);
                     console.log(dataString);
-                    res.render('searchtag', { data: dataString, css: ['index.css'] });
+                    res.render('searchtag', { data: dataString, css: ['index.css', 'recipeFinder.css'] });
                 });
         });
 
@@ -170,7 +170,7 @@ router.post('/searchtag', urlencodedParser, function (req, res) {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
                     console.log(dataString);
-                    res.render('searchinguser', { data: dataString, userID: req.session.passport.user.id, css: ['index.css'] });
+                    res.render('searchinguser', { data: dataString, userID: req.session.passport.user.id, css: ['index.css', 'recipeFinder.css'] });
                 });
         });
         
@@ -183,7 +183,7 @@ router.post('/searchtag', urlencodedParser, function (req, res) {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
                     console.log(dataString);
-                    res.render('searching', { data: dataString, css: ['index.css'] });
+                    res.render('searching', { data: dataString, css: ['index.css', 'recipeFinder.css'] });
                 });
         });
 
@@ -199,7 +199,7 @@ router.post('/searchtag', urlencodedParser, function (req, res) {
             res.render('favouriteMeal', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
         });
         router.get('/favouriteRec', isLoggedIn, (req, res, next) => {
-            res.render('favouriteRec', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+            res.render('favouriteRec', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css', 'recipeFinder.css'] });
         });
 
         // My Account page

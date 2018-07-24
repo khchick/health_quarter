@@ -20,6 +20,7 @@
             <div class="stars">stars</div>
             <div class="tags">tags</div>
         </div>
+<<<<<<< HEAD
     </div>
         <div class="wrapper">
         <div class="innerwrapper">
@@ -39,6 +40,25 @@
             <div class="heart">heart</div>
             <div class="image">
                 <img src=images/bannerbackground.jpg>
+=======
+        
+        <h2 class="heading">POPULAR ITEMS</h2>
+
+        {{!-- Dish list --}}
+        <div class="row dish-row" id="dish-detail"></div>
+
+        {{!-- Meal plan list --}}
+        <div class="row meal-row" id="meal-detail"></div>
+
+        {{!-- Review submission form --}}
+        <h2 class="heading">REVIEWS</h2>
+        <div id="reviewLoginMsg" class="d-flex justify-content-center align-items-center">
+            <h3 class="placeholderMsg">Please <a href="/login">login</a> to submit a review</h3>
+        </div>
+        <form action="/review/:restID" method="post" id="reviewForm">
+            <div class="form-group">
+                <textarea type="text" id="comment" name="comment" cols="30" rows="10" form="reviewForm" placeholder="Write a review"></textarea>
+>>>>>>> ddbcfcb1987b39b7db5002166b43e9992e988f28
             </div>
             <div class "ratings">ratings</div>
             <div class="stars">stars</div>
