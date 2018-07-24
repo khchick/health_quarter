@@ -1,12 +1,12 @@
-$(()=>{
+$(() => {
     let tagID = window.location.href.split("/").pop();
 
     $.get(`/api/rest/tag/${tagID}`).then(data=>{  // NEED TO UPDATE TAG ID INTO FOOD'S AFTER FIXING THE DATA
         $('#titleTag').append(data[0].tag_name.toUpperCase()); 
         $('#tagName').append(data[0].tag_name.toUpperCase());
 
-        data.forEach(e =>{
-            $('#restList').append(Rest(e.id,e.name,e.img,e.rating));
+        data.forEach(e => {
+            $('#restList').append(Rest(e.id, e.name, e.img, e.rating));
 
             $.get(`/api/fav/rest/${e.id}`).then(res => { // Check and return fav status
                 let status = JSON.parse(res);
@@ -24,37 +24,45 @@ $(()=>{
 
             // Calculate average rating and show as stars
             $.get(`/api/rest/rating/${e.id}`).then(res => {
-                for (let i = 0;i < res;i++) {
+                for (let i = 0; i < res; i++) {
                     $(`#rating_${e.id}`).append('<i class="fa fa-star" aria-hidden="true"></i>');
                 }
-                for (let i = 0;i < (5-res);i++) {
+                for (let i = 0; i < (5 - res); i++) {
                     $(`#rating_${e.id}`).append('<i class="fa fa-star-o" aria-hidden="true"></i>');
                 }
             });
 
             // Append associated tags and linkages
-            e.tags.forEach(tag =>{
-                $(`#rest_${e.id}`).append(RestTags(tag.tag_id,tag.tag_name));
+            e.tags.forEach(tag => {
+                $(`#rest_${e.id}`).append(RestTags(tag.tag_id, tag.tag_name));
             })
         });
     });
 
-    const Rest = (id,name,img)=>{
+    const Rest = (id, name, img) => {
         return `
             <div class="innerwrapper">
-                <div class="name"><a href="/rest/${id}">${name}</a></div>
-                    <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i></div>
-                            <div class="image">
+                <div class="name"><a href="/rest/${id}">${name}</a>
+                </div>
+                <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
+                </div>
+                <div class="image">
+<<<<<<< HEAD
                                 <img src="${img}">
-                            </div>
-                        <div class="ratings">ratings</div>
-                    <div class="stars" id="rating_${id}"></div>
+=======
+                    <img src="../${img}">
+>>>>>>> ddbcfcb1987b39b7db5002166b43e9992e988f28
+                </div>
+                <div class="price">price
+                </div>
+                <div class="stars" id="rating_${id}"></div>
                 <div class="tags" id="rest_${id}"></div>
+                <div class="viewmore">view more</div>
             </div>
             `
     };
 
-    const RestTags = (tag_id,tag_name)=>{
+    const RestTags = (tag_id, tag_name) => {
         return `
             <a href="/tag/${tag_id}">${tag_name}</a>
             `

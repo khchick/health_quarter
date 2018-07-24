@@ -159,7 +159,7 @@ class RestService {
             return Promise.all(
                 rows.map(row => {
                     let query = this.knex
-                    .select('tag.name')
+                    .select('tag.id','tag.name')
                     .from('tag')
                     .innerJoin('restaurant_tag', 'tag.id', 'restaurant_tag.tag_id')
                     .where('restaurant_tag.rest_id', row.id)
@@ -167,7 +167,10 @@ class RestService {
 
                     return query.then(tagRows => {
                         tagRows.forEach(tagRow => {
-                            row.tags.push(tagRow.name);
+                            row.tags.push({
+                                tag_id: tagRow.id,
+                                tag_name: tagRow.name
+                            });
                         });
                         return row;
                     })

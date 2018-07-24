@@ -38,7 +38,7 @@ $(()=>{
     });
 
     const FoodRest = (id,name,img)=>{
-        return `
+        /*return `
             <div class="innerwrapper">
                 <div class="name"><a href="/rest/${id}">${name}</a></div>
                         <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i></div>
@@ -49,6 +49,22 @@ $(()=>{
                     <div class="stars" id="foodRating_${id}"></div>
                 <div class="tags" id="rest_${id}"></div>
             </div>
+            `*/
+     return `
+            <div class="innerwrapper">
+                <div class="name"><a href="/rest/${id}">${name}</a>
+                </div>
+                <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
+                </div>
+                <div class="image">
+                                <img src="${img}">
+                </div>
+                <div class="price">price
+                </div>
+                <div class="stars" id="foodRating_${id}"></div>
+                <div class="tags" id="rest_${id}"></div>
+                <div class="viewmore">view more</div>
+            </div>
             `
     };
 
@@ -56,7 +72,7 @@ $(()=>{
         return `
             <a href="/tag/${tag_id}">${tag_name}</a>
             `
-    }
+    };
 
     // Get lists of restaurants tagged as Drinks
     $.get(`/api/rest/tag/10`).then(data=>{ 
@@ -95,7 +111,7 @@ $(()=>{
     });
 
     const DrinkRest = (id,name,img)=>{
-        return `
+        /*return `
             <div class="innerwrapper">
                 <div class="name"><a href="/rest/${id}">${name}</a></div>
                         <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i></div>
@@ -105,6 +121,23 @@ $(()=>{
                         <div class="ratings">ratings</div>
                     <div class="stars" id="drinkRating_${id}"></div>
                 <div class="tags" id="rest_${id}"></div>
+            </div>
+            `*/
+
+            return `
+            <div class="innerwrapper">
+                <div class="name"><a href="/rest/${id}">${name}</a>
+                </div>
+                <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
+                </div>
+                <div class="image">
+                                <img src="${img}">
+                </div>
+                <div class="price">price
+                </div>
+                <div class="stars" id="drinkRating_${id}"></div>
+                <div class="tags" id="rest_${id}"></div>
+                <div class="viewmore">view more</div>
             </div>
             `
     };
@@ -164,7 +197,7 @@ $(()=>{
         });
     });
     const MealPlan = (id,name,img,about,rest_id)=>{
-        return `
+        /*return `
         <div class="innerwrapper">
             <div class="name">${name}</div>
                 <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i></i></div>
@@ -174,6 +207,19 @@ $(()=>{
                 <div class="about" id="mp${id}_about">${about}"></div>
             <div class="link"><a href="/rest/${rest_id}">View more</div>
         </div>
+            `*/
+
+            return `
+            <div class="mealplanrwrapper">
+                <div class="name"><a href="/rest/${id}">${name}</a>
+                </div>
+                <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
+                </div>
+                <div class="image">
+                                <img src="${img}">
+                </div>
+                <div class="link"><a href="/rest/${rest_id}">view more</div>
+            </div>
             `
     };
 
@@ -194,4 +240,3 @@ function toggleFav(restID) {
         })
     }
 }
-
