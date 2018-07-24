@@ -1,30 +1,46 @@
 <script type='text/javascript' src="../js/common.js"></script>
 <script type='text/javascript' src="/js/rest.js"></script>
+<section class="grid">
+    <div class="title">
+        <div>
+            <span>FOOD</span>
+            <a href="#">VIEW ALL</a>
 
-{{!-- Tag list --}}
-<div class="container d-flex justify-content-center" id="tag-container">
-    {{!-- <span class="tag">tag1</span> --}}
-</div>
-
-{{!-- Hero image --}}
-<div class="container col-12 banner-div">
-    <div class="bannerimage" id="heroImg"></div>
-    <div class="d-flex justify-content-center">
-        <h1 id="restName"></h1>
-    </div>
-</div>
-
-{{!-- Content --}}
-<div class="container d-flex justify-content-center">
-    <div class="col-10">
-
-        {{!-- Restaurant details --}}
-        <div id="rest-detail">
-            <div id="favBtn">
-                <i class="fa" aria-hidden="true"></i>
-                <span></span>
-            </div>
         </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="innerwrapper">
+            <div class="name">name</div>
+            <div class="heart">heart</div>
+            <div class="image">
+                <img src=images/bannerbackground.jpg>
+            </div>
+            <div class "ratings">ratings</div>
+            <div class="stars">stars</div>
+            <div class="tags">tags</div>
+        </div>
+<<<<<<< HEAD
+    </div>
+        <div class="wrapper">
+        <div class="innerwrapper">
+            <div class="name">name</div>
+            <div class="heart">heart</div>
+            <div class="image">
+                <img src=images/bannerbackground.jpg>
+            </div>
+            <div class "ratings">ratings</div>
+            <div class="stars">stars</div>
+            <div class="tags">tags</div>
+        </div>
+    </div>
+        <div class="wrapper">
+        <div class="innerwrapper">
+            <div class="name">name</div>
+            <div class="heart">heart</div>
+            <div class="image">
+                <img src=images/bannerbackground.jpg>
+=======
         
         <h2 class="heading">POPULAR ITEMS</h2>
 
@@ -42,28 +58,51 @@
         <form action="/review/:restID" method="post" id="reviewForm">
             <div class="form-group">
                 <textarea type="text" id="comment" name="comment" cols="30" rows="10" form="reviewForm" placeholder="Write a review"></textarea>
+>>>>>>> ddbcfcb1987b39b7db5002166b43e9992e988f28
             </div>
-            <div class="form-group rating-row justify-content-space-between align-items-center">
-                <div style="display:inline-block">
-                    <label><strong>Please rate us: &nbsp;&nbsp;</strong></label>
-                    <div class="rating-group">
-                        <input type="radio" name="rating" value="1"><span>&nbsp;1&nbsp;</span>
-                        <input type="radio" name="rating" value="2"><span>&nbsp;2&nbsp;</span>
-                        <input type="radio" name="rating" value="3"><span>&nbsp;3&nbsp;</span>
-                        <input type="radio" name="rating" value="4"><span>&nbsp;4&nbsp;</span>
-                        <input type="radio" name="rating" value="5" checked="checked"><span>&nbsp;5 stars&nbsp;</span>
-                    </div>
-                </div>
-                <div style="display:inline-block">
-                    <button class="btn btn-primary" type="submit" id="submitReview" value="Submit">Submit</button>
-                </div>
+            <div class "ratings">ratings</div>
+            <div class="stars">stars</div>
+            <div class="tags">tags</div>
+        </div>
+    </div>
+        <div class="wrapper">
+        <div class="innerwrapper">
+            <div class="name">name</div>
+            <div class="heart">heart</div>
+            <div class="image">
+                <img src=images/bannerbackground.jpg>
             </div>
-        </form>
-
-        {{!-- User reviews --}}
-        <div id="rest-review"></div>
-        
+            <div class "ratings">ratings</div>
+            <div class="stars">stars</div>
+            <div class="tags">tags</div>
+        </div>
     </div>
     
-</div>
 
+</section>
+<div id='rest-detail'></div>
+<div id='dish-detail'></div>
+<div id='meal-detail'></div>
+<div id='rest-review'></div>
+<h2>User reviews</h2>
+<h2>Submit your comments:</h2>
+<form action="/review/:restID" method="post">
+    <div>
+        <label>Comment:</label>
+        <input type="text" id="comment" name="comment" />
+    </div>
+    <div>
+        <label>Rating:</label>
+        <div>
+            <input type="radio" name="rating" value="1">1
+            <input type="radio" name="rating" value="2">2
+            <input type="radio" name="rating" value="3">3
+            <input type="radio" name="rating" value="4">4
+            <input type="radio" name="rating" value="5" checked="checked">5
+        </div>
+    </div>
+    <div>
+        <input type="submit" id="submitReview" value="Submit" />
+    </div>
+    <div id="alert"></div>
+</form>

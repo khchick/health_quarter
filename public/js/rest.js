@@ -12,8 +12,6 @@ $(() => {
 
             $('#restName').text(`${e.name}`); // Insert name
 
-            console.log(e.map);
-
             $('#rest-detail').append(RestDetail( // Insert details
                 e.about,
                 e.price,

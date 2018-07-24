@@ -136,6 +136,7 @@ $(()=>{
                 e.id,
                 e.name,
                 e.img,
+                e.about,
                 e.rest_id
             ));
 

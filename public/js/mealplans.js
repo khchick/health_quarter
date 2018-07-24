@@ -31,7 +31,7 @@ $(()=> {
         });
     });
     const MealPlan = (id,name,img,about,rest_id)=>{
-        return `
+        /*return `
             <div class="innerwrapper">
                 <div class="name">${name}</div>
                     <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i></i></div>
@@ -41,7 +41,19 @@ $(()=> {
                     <div class="about" id="mp${id}_about">${about}"></div>
                 <div class="link"><a href="/rest/${rest_id}">View more</div>
             </div>
-            `
+            `*/
+
+            return `
+            <div class="mealplanrwrapper">
+                <div class="name"><a href="/rest/${id}">${name}</a>
+                </div>
+                <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
+                </div>
+                <div class="image">
+                                <img src="${img}">
+                </div>
+                <div class="link"><a href="/rest/${rest_id}">view more</div>
+            </div>
     };
 })
 
