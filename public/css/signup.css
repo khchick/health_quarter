@@ -1,7 +1,34 @@
+.signupbannerbackground {
+    margin-top: 50px;
+    background-image: url("/images/decor/signupbanner.jpg");
+    width: 100%;
+    height: 250px; 
+    background-size: cover; 
+    background-position: center top;
+    background-attachment: fixed;
+}
+
+.signupbannerbackground p {
+    font-size: 40px;
+    font-weight: 400;
+    letter-spacing: 35px;
+    color: black;
+    padding-top: 100px;
+    text-align: center;
+    line-height: 1.5;
+    padding-left: 30px;
+}
 form {
     border: 1px solid #6A9605;
     padding: 30px;
-    border-radius: 10px;
+    font-family: 'futura';
+    color: black;
+    letter-spacing: 3px;
+}
+
+form h4 {
+    font-family: 'Kaushan Script';
+    text-align: center; 
 }
 
 #tag-list {
@@ -13,8 +40,12 @@ form {
 #submitBtn {
     border-width: 0;
     background-color: #6A9605;
-    border-radius: 10px;
     padding: 10px 30px;
+}
+
+.interest {
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 h4 {
