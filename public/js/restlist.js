@@ -43,21 +43,21 @@ $(() => {
         });
     });
 
-    const Rest = (id, name, img, price) => {
+    const Rest = (id, name, img, rating, price) => {
         return `
-        <div class="innerwrapper">
-        <div class="name"><a href="/rest/${id}">${name}</a>
-        </div>
-        <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
-        </div>
-        <div class="image">
-            <a href="/rest/${id}"><img src="../${img}"></a>
-        </div>
-        <div class="price">${price}</div>
-        <div class="stars" id="rating_${id}"></div>
-        <div class="tags" id="rest_${id}">Tags: </div>
-        <div class="viewmore"><a href="/rest/${id}">view more</a></div>
-    </div>
+            <div class="innerwrapper">
+                <div class="name"><a href="/rest/${id}">${name}</a>
+                </div>
+                <div class="heart"><i data-id="${id}" id="favBtn" class="fa" aria-hidden="true"></i>
+                </div>
+                <div class="image">
+                <a href="/rest/${id}"><img src="../${img}"></a>
+                </div>
+                <div class="price">${price}</div>
+                <div class="stars" id="rating_${id}"></div>
+                <div class="tags" id="rest_${id}">Tags: </div>
+                <div class="viewmore"><a href="/rest/${id}">view more</a></div>
+            </div>
             `
     };
 

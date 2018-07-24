@@ -82,7 +82,7 @@ module.exports = class ViewRouter {
 
         // Restaurant details page
         router.get('/rest/:id', (req, res, next) => {
-            res.render('restaurant', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['common.css', 'index.css'] });
+            res.render('restaurant', { title: 'HealthQuarter // uncover your healthy lifestyle', css: ['restaurant.css', 'index.css'] });
         });
 
         // Dish details page
