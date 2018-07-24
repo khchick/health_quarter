@@ -1,6 +1,7 @@
 # Health Quarter - Healthy Dining Directory Platform
 
-Health Quarter is an all-in-one healthy dining directory platform, showcasing Hong Kong's most popular healthy restaurants, delivery options and easy healthy recipes. 
+Health Quarter is an all-in-one healthy dining directory platform, showcasing Hong Kong's most popular healthy restaurants, delivery options and easy healthy recipes.
+The latest version of Health Quarter can be found: https://www.feizhu.science/home
 
 ## Design approach 
 - This platform adapts a clean, simplicity and fresh design to create an image of healthy and green dining style. 
@@ -42,7 +43,7 @@ Health Quarter is an all-in-one healthy dining directory platform, showcasing Ho
 - This is the initial version (1.0) hosted on GitHub pages for presentation
 
 ## Authors
-King Hei Chick
-Sam O'Shaughnessy
-Sonya Wong
-Wesley Yung
+- King Hei Chick
+- Sam O'Shaughnessy
+- Sonya Wong
+- Wesley Yung

@@ -118,11 +118,23 @@ body a:hover {
     background-attachment: fixed;
 }
 
+
+@media screen and (max-width: 800px) {
+    .bannerbackground {
+        width: 100%;
+        height: 400px;
+        background-size: cover;
+        background-position: center top;
+        background-attachment: fixed;
+    }
+}
+
 .bannerbackground p {
     font-size: 40px;
     font-weight: 400;
     letter-spacing: 35px;
-    color: black;
+    color: white;
+    text-shadow: 3px 3px black;
     padding-top: 100px;
     text-align: center;
     line-height: 1.5;
@@ -194,7 +206,6 @@ body a:hover {
     object-fit: cover;
 }
 
-
 .mealplanwrapper {
     display: grid;
     grid-template-areas: 'name name name name name heart' 'image image image image image image' 'image image image image image image' 'image image image image image image' '. . . . . link';
@@ -212,7 +223,6 @@ body a:hover {
     height: 100%;
     object-fit: cover;
 }
-
 
 .name {
     grid-area: name;
@@ -321,7 +331,7 @@ body a:hover {
 
 .copyright {
     background-color: #D58D05;
-    color: darkgrey;
+    color: lightgrey;
     padding-left: 10px;
     padding-bottom: 10px;
 }

@@ -42,7 +42,7 @@
     
     {{!-- Header --}}
     <header>
-        <div class="topnav" id="myTopnav">
+        <div class="topnav" id="myTopnav" name="top">
             <a href="/" id="logo">HealthQuarter</a>
             {{!-- <a href="/" id="home" >HOME</a> --}}
             {{!-- Update tag ID for food after data is fixed --}}
@@ -52,7 +52,7 @@
             <a href="/mealplans">MEAL PLANS</a>
             <a href="/recipeFinder">RECIPES</a>
             <a href="/favouriteRest" id="favourite">FAVOURITES</a>
-            <a href="/profile" id="profile">MY ACCOUNT</a>
+            <a href="/profile" id="profile">PROFILE</a>
             <a href="/signup" id="signup">SIGN UP</a>
             <a href="/login" id="login">SIGN IN</a>
             <a href="/logout" id="logout">LOGOUT</a>
@@ -68,31 +68,33 @@
     <footer>
         <div class="footerwrapper">
             <div class="a">
-                <p>HQ</p>
+                <a href="/" id="home"><p>HQ</p></a>
             </div>
             <div class="b">
                 <p>
                     {{!-- <a href="/home" id="home">HOME</a> --}}
+                    <a href="/tag/1">FOOD</a> 
+                    <br> <a href="/tag/10">DRINKS</a>
                     <br> <a href="/mealplans">MEAL PLANS</a>
-                    <br> <a href="/recipeFinder">RECIPES</a>
                 </p>
             </div>
             <div class="c">
                 <p>
-                   <a href="/tag/1">FOOD</a>  
-                    <br>  <a href="/profile" id="profile">PROFILE</a>
-                    <br> <a href="/favouriteRest" id="favourite">FAVORITES</a>
+                    <a href="/login" id="login">SIGN IN</a>
+                    <br> <a href="" id="signup"></a>
+                    <br>  <a href="/signup" id="signup">SIGN UP</a>
                 </p>
             </div>
             <div class="d">
                 <p>
-                    <a href="/tag/10">DRINKS</a>
-                    <br> <a href="/login" id="login">SIGN IN</a>
-                    <br>  <a href="/signup" id="signup">SIGN UP</a>
+                    <a href="/profile" id="profile">PROFILE</a>
+                    <br> <a href="/favouriteRest" id="favourite">FAVORITES</a>
+                    <br> <a href="/recipeFinder">RECIPES</a>
                 </p>
+                
             </div>
             <div class="e">
-                <p><i class="fa fa-arrow-up" aria-hidden="true"></i></p>
+                <p><a href="#top"><i class="fa fa-arrow-up" aria-hidden="true"></i></a></p>
             </div>
         </div>
         <div class="copyright"> &copy HealthQuarter Limited</div>
