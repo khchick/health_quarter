@@ -135,7 +135,7 @@ module.exports = [
         rating: 0
     },
     {
-        name: 'Something Fresh',
+        name: 'Something Fresh', //10
         location: 'Central, Graham St, 35-37',
         lat: '22.2827689',
         lng: '114.1511531',
@@ -209,7 +209,7 @@ module.exports = [
         short_desc: "NoodleMi offers patrons a wide spread of Vietnamese cusine, they are famed for thier healthy dishes which do not use MSG and other preservatives. This is a brilliant restaurant that all will enjoy.",
         rating: 0
     },
-    {
+    {  //15
         name: 'Zumufi',
         location: "Willy Commercial Building, 28-36 Wing Kut St, Central",
         lat: '22.285282',
