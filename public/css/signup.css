@@ -18,6 +18,7 @@
     line-height: 1.5;
     padding-left: 30px;
 }
+
 form {
     border: 1px solid #6A9605;
     padding: 0 30px !important;
@@ -38,9 +39,9 @@ form h4 {
 }
 
 #submitBtn {
-    border-width: 0;
     background-color: #6A9605;
     padding: 10px 30px;
+    border-width: 0;
 }
 
 .interest {

@@ -61,7 +61,7 @@ $(()=>{
 
     const RestTags = (tag_id,tag_name)=>{
         return `
-            <i><a href="/tag/${tag_id}">${tag_name}, </a></i>
+            <a href="/tag/${tag_id}">${tag_name}</a>
             `
     };
 
