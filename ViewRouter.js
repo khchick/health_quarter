@@ -30,8 +30,8 @@ module.exports = class ViewRouter {
         // Generic landing page
         router.get('/', (req, res, next) => {
             unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?number=3&random=true&maxCalories=800&minCalories=600`)
-            .header("X-Mashape-Key", process.env.X-MASH-KEY)
-            .header("X-Mashape-Host", process.env.X-MASH-HOST)
+            .header("X-Mashape-Key",  process.env.XKEY)
+            .header("X-Mashape-Host", process.env.XHOST)
                 .end(function (result) {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
@@ -46,8 +46,8 @@ module.exports = class ViewRouter {
 
         router.get('/', isLoggedIn, (req, res, next) => { // May not work
             unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?number=3&random=true&maxCalories=800&minCalories=600`)
-                .header("X-Mashape-Key", process.env.X-MASH-KEY)
-                .header("X-Mashape-Host", process.env.X-MASH-HOST)
+                .header("X-Mashape-Key", process.env.XKEY)
+                .header("X-Mashape-Host", process.env.XHOST)
                 .end(function (result) {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
@@ -63,8 +63,8 @@ module.exports = class ViewRouter {
         // Personalised home page
         router.get('/home', isLoggedIn, (req, res, next) => {
             unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?number=3&random=true&maxCalories=800&minCalories=600`)
-            .header("X-Mashape-Key", process.env.X-MASH-KEY)
-            .header("X-Mashape-Host", process.env.X-MASH-HOST)
+            .header("X-Mashape-Key", process.env.XKEY)
+            .header("X-Mashape-Host", process.env.XHOST)
                 .end(function (result) {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
@@ -112,8 +112,8 @@ module.exports = class ViewRouter {
             if (req.isLoggedInRF === true){
             console.log(req.body); 
             unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?number=${req.body.quantity}&random=true&maxCalories=${req.body.maxCalorie}&minCalories=${req.body.minCalorie}`)
-            .header("X-Mashape-Key", process.env.X-MASH-KEY)
-            .header("X-Mashape-Host", process.env.X-MASH-HOST)
+            .header("X-Mashape-Key", process.env.XKEY)
+            .header("X-Mashape-Host", process.env.XHOST)
                 .end(function (result) {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
@@ -123,8 +123,8 @@ module.exports = class ViewRouter {
             } else {
                 console.log(req.body);
             unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?number=${req.body.quantity}&random=true&maxCalories=${req.body.maxCalorie}&minCalories=${req.body.minCalorie}`)
-            .header("X-Mashape-Key", process.env.X-MASH-KEY)
-            .header("X-Mashape-Host", process.env.X-MASH-HOST)
+            .header("X-Mashape-Key", process.env.XKEY)
+            .header("X-Mashape-Host", process.env.XHOST)
                 .end(function (result) {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
@@ -141,8 +141,8 @@ module.exports = class ViewRouter {
             if (req.isLoggedInRF === true){
             console.log(req.body);
             unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?number=${req.body.quantity}&tags=${req.body.tag1}%2C${req.body.tag2}%2C${req.body.tag3}%2C${req.body.tag4}%2C${req.body.tag5}`)
-            .header("X-Mashape-Key", process.env.X-MASH-KEY)
-            .header("X-Mashape-Host", process.env.X-MASH-HOST)
+            .header("X-Mashape-Key", process.env.XKEY)
+            .header("X-Mashape-Host", process.env.XHOST)
                 .end(function (result) {
                     console.log(result.status, result.headers, result.body, result.body);
                     let dataString = JSON.stringify(result.body);
@@ -152,8 +152,8 @@ module.exports = class ViewRouter {
             } else {
                  console.log(req.body);
             unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?number=${req.body.quantity}&tags=${req.body.tag1}%2C${req.body.tag2}%2C${req.body.tag3}%2C${req.body.tag4}%2C${req.body.tag5}`)
-            .header("X-Mashape-Key", process.env.X-MASH-KEY)
-            .header("X-Mashape-Host", process.env.X-MASH-HOST)
+            .header("X-Mashape-Key", process.env.XKEY)
+            .header("X-Mashape-Host", process.env.XHOST)
                 .end(function (result) {
                     console.log(result.status, result.headers, result.body, result.body);
                     let dataString = JSON.stringify(result.body);
@@ -170,8 +170,8 @@ module.exports = class ViewRouter {
             if (req.isLoggedInRF === true){
             console.log(req.body);
             unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=${req.body.tag1}%2C${req.body.tag2}%2C${req.body.tag3}%2C${req.body.tag4}%2C${req.body.tag5}&number=${req.body.quantity}&ranking=1`)
-            .header("X-Mashape-Key", process.env.X-MASH-KEY)
-            .header("X-Mashape-Host", process.env.X-MASH-HOST)
+            .header("X-Mashape-Key", process.env.XKEY)
+            .header("X-Mashape-Host", process.env.XHOST)
                 .end(function (result) {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
@@ -180,8 +180,8 @@ module.exports = class ViewRouter {
                 });
             } else {
                 unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=${req.body.tag1}%2C${req.body.tag2}%2C${req.body.tag3}%2C${req.body.tag4}%2C${req.body.tag5}&number=${req.body.quantity}&ranking=1`)
-                .header("X-Mashape-Key", process.env.X-MASH-KEY)
-                .header("X-Mashape-Host", process.env.X-MASH-HOST)
+                .header("X-Mashape-Key", process.env.XKEY)
+                .header("X-Mashape-Host", process.env.XHOST)
                 .end(function (result) {
                     console.log(result.status, result.headers, result.body);
                     let dataString = JSON.stringify(result.body);
