@@ -53,9 +53,12 @@
             <a href="/recipeFinder">RECIPES</a>
             <a href="/favouriteRest" id="favourite">FAVOURITES</a>
             <a href="/profile" id="profile">PROFILE</a>
+            {{#if loggedIn}}
+            <a href="/logout" id="logout">LOGOUT</a>
+            {{else}}
             <a href="/signup" id="signup">SIGN UP</a>
             <a href="/login" id="login">SIGN IN</a>
-            <a href="/logout" id="logout">LOGOUT</a>
+            {{/if}}
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>

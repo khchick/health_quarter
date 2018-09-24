@@ -72,8 +72,9 @@
         }
     }
 
-let recipeD = {{{ data }}}
+initialRecipe({{{ data }}});
 
+function initialRecipe(recipeD) {
 $(()=>{ // Get data from api
         recipeD.forEach(e =>{
             $('#RecipeList').append(recipe(e.title,e.image,e.id));
@@ -88,6 +89,6 @@ $(()=>{ // Get data from api
                             </div>
             </div>`
     };
-
+}
 
 </script>

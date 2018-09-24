@@ -183,7 +183,7 @@ class RestService {
 
     getRestRating(restID) {
         let query = this.knex
-            .select('users_review.rating')
+            .select(this.knex.raw('AVG(users_review.rating)'))
             .from('users_review')
             .where('users_review.rest_id', restID)
 

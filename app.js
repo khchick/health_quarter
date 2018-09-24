@@ -40,8 +40,15 @@ let mealService = new MealService(knex);
 let restService = new RestService(knex,redisClient); // REDIS ONLY REQUIRED FOR USER RELATED SERVICES?
 let userService = new UserService(knex,redisClient); // REDIS ONLY REQUIRED FOR USER RELATED SERVICES?
 
-const {app,server,io} = require('./utils/init-app')(redisClient);
+const {app,server,io} = require('./utils/init-app')(knex, redisClient);
 
+app.use((req, res, next) => {
+    if (req.isAuthenticated()) {
+        res.locals = {
+            loggedIn: true
+        };
+    }
+});
 
 new SocketIORouter(io,userService).router();
 app.use('/',new ViewRouter().router());

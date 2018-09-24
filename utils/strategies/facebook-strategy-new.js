@@ -10,10 +10,7 @@ module.exports = (passport)=>{
         passReqToCallback : true
     },
 
-    function(req, token, refreshToken, profile, done) {
-
-        // asynchronous
-        process.nextTick(function() {
+    function(accessToken, refreshToken, profile, done) {  // THIS IS AN EXAMPLE OF USING MONGO DB
 
             // check if the user is already logged in
             if (!req.user) {
@@ -69,8 +66,6 @@ module.exports = (passport)=>{
                     return done(null, user);
                 });
             }
-
-        });
 
     }));
 }

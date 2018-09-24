@@ -13,7 +13,7 @@ $(()=>{
     const DishDetail = (name,img)=>{
         return `
             <div class="info-container">
-                <label class="lbl-info">Name: </label><p>${name}</p>
+                <label class="lbl-info">Name: </label><p>${escape(name)}</p>
                 <label class="lbl-info">img: </label><p>${img}</p>
             </div>`
     }

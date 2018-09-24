@@ -44,21 +44,21 @@ module.exports = class ViewRouter {
                 });
         });
 
-        router.get('/', isLoggedIn, (req, res, next) => { // May not work
-            unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?number=3&random=true&maxCalories=800&minCalories=600`)
-                .header("X-Mashape-Key", "vCWPJf4dnVmsh6TnOwGo3q8oKumOp14Hxw8jsnhOrBKwlELEZm")
-                .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
-                .end(function (result) {
-                    console.log(result.status, result.headers, result.body);
-                    let dataString = JSON.stringify(result.body);
-                    console.log(dataString);
-                    res.render('index', {
-                        title: 'HealthQuarter // uncover your healthy lifestyle',
-                        data: dataString,
-                        css: ['index.css', 'recipeFinder.css']
-                    });
-                });
-        });
+        // router.get('/', isLoggedIn, (req, res, next) => { // May not work
+        //     unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?number=3&random=true&maxCalories=800&minCalories=600`)
+        //         .header("X-Mashape-Key", "vCWPJf4dnVmsh6TnOwGo3q8oKumOp14Hxw8jsnhOrBKwlELEZm")
+        //         .header("X-Mashape-Host", "spoonacular-recipe-food-nutrition-v1.p.mashape.com")
+        //         .end(function (result) {
+        //             console.log(result.status, result.headers, result.body);
+        //             let dataString = JSON.stringify(result.body);
+        //             console.log(dataString);
+        //             res.render('index', {
+        //                 title: 'HealthQuarter // uncover your healthy lifestyle',
+        //                 data: dataString,
+        //                 css: ['index.css', 'recipeFinder.css']
+        //             });
+        //         });
+        // });
 
         // Personalised home page
         router.get('/home', isLoggedIn, (req, res, next) => {
@@ -100,10 +100,10 @@ module.exports = class ViewRouter {
 
         // //Recipe Finder page
         router.get('/recipeFinder', (req, res) => res.render("recipeFinder", { css: ['index.css', 'recipeFinder.css'] }));
-        router.get('/recipeFinder', passport.authenticate('local-signup', {
-            failureRedirect: '/error',
-            failureFlash: true
-        }), (req, res) => { res.render("recipeFinder", { userID: req.session.passport.user.id, css: ['index.css', 'recipeFinder.css'] }) }); // DISPLAY CUSTOM LISTS FOR LOGGED IN USERS (FAV TAGS)
+        // router.get('/recipeFinder', passport.authenticate('local-signup', {
+        //     failureRedirect: '/error',
+        //     failureFlash: true
+        // }), (req, res) => { res.render("recipeFinder", { userID: req.session.passport.user.id, css: ['index.css', 'recipeFinder.css'] }) }); // DISPLAY CUSTOM LISTS FOR LOGGED IN USERS (FAV TAGS)
 
         //search by calorie
 
@@ -166,7 +166,7 @@ module.exports = class ViewRouter {
 
         //search by ingredient
 
-        router.post('/searching', isLoggedInRF, urlencodedParser, function (req, res) {
+        router.post('/searching', isLoggedInRF, function (req, res) {
             if (req.isLoggedInRF === true){
             console.log(req.body);
             unirest.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients?ingredients=${req.body.tag1}%2C${req.body.tag2}%2C${req.body.tag3}%2C${req.body.tag4}%2C${req.body.tag5}&number=${req.body.quantity}&ranking=1`)

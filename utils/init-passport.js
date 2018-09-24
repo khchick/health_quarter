@@ -1,7 +1,7 @@
 const passport = require('passport')
 
 
-module.exports = (app)=>{
+module.exports = (app, knex)=>{
     app.use(passport.initialize());
     app.use(passport.session());
 
@@ -22,7 +22,7 @@ module.exports = (app)=>{
     //     return done(null, user);
     // });
     
-    require('./strategies/local-strategy')(passport);
+    require('./strategies/local-strategy')(passport, knex);
     require('./strategies/facebook-strategy')(passport);
 
 }

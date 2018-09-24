@@ -4,7 +4,7 @@ const hb = require('express-handlebars');
 const flash = require('connect-flash');
 
 
-module.exports = (redisClient)=>{
+module.exports = (knex, redisClient)=>{
     let app = express();
     let server = require('http').Server(app);
     let io = require('socket.io')(server);
@@ -17,7 +17,7 @@ module.exports = (redisClient)=>{
 
 
     require('./init-sessions')(app,io,redisClient);
-    require('./init-passport')(app);
+    require('./init-passport')(app,knex);
 
     return{
         app : app,

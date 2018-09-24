@@ -1,15 +1,10 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-require('dotenv').config();
-
-const NODE_ENV = process.env.NODE_ENV || 'development' 
-const knexFile = require('../../knexfile')[NODE_ENV]
-const knex = require('knex')(knexFile)
 
 const bcrypt = require('../../bcrypt.js');
 
 
-module.exports = (app) => {
+module.exports = (app, knex) => {
     app.use(passport.initialize());
     app.use(passport.session());
 
@@ -34,6 +29,18 @@ module.exports = (app) => {
 
                 for(let i = 0; i < req.body.tag.length; i++) {
                     let favTagId = await knex("users_fav_tag").insert({users_id:`${newUser.id}`,tag_id:req.body.tag[i]}).returning('tag_id');
+                }
+
+                if (user.length !== 0) {
+                    var payload = {
+                        id: userId[0].id
+                    };
+                    var token = jwt.encode(payload, config.jwtSecret);
+                    res.json({
+                        token: token
+                    });
+                } else {
+                    res.sendStatus(401);
                 }
 
                 done(null,newUser);

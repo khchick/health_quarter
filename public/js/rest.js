@@ -158,11 +158,11 @@ $(() => {
                     <span class="date">${dateSubmitted}</span>
                 </div>
                 <div class="col-8 user-comment">
-                    <p>${comment}</p>
+                    <p>${escape(comment)}</p>
                 </div>
                 <div class="user-info d-flex justify-content-flex-start align-items-center">
                     <img class="avatar" src="../images/users/khc.png" alt="">
-                    <p id="user-name">${name}</p>
+                    <p id="user-name">${escape(name)}</p>
                 </div>
             </div>
             `
